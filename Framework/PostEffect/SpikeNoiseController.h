@@ -9,11 +9,11 @@
 
 #include "../../main.h"
 #include "../Pattern/BaseSingleton.h"
-#include "Effect/SpikeNoise.h"
 
 /**************************************
-マクロ定義
+前方宣言
 ***************************************/
+class SpikeNoise;
 
 /**************************************
 クラス定義
@@ -51,6 +51,10 @@ private:
 	int state;
 	float destPower, srcPower;
 	float base;
+
+	void OnStart();
+	void OnWait();
+	void OnEnd();
 };
 
 #endif

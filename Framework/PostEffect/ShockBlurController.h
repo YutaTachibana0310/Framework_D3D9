@@ -50,6 +50,10 @@ private:
 	int cntFrame;
 	int state;
 	int effectTime;
+
+	void OnStart();
+	void OnWait();
+	void OnEnd();
 };
 
 #endif

@@ -25,47 +25,74 @@
 ***************************************/
 void ShockBlurController::Update()
 {
-	const int Duration = 10;
-	const int EaseType[State::Max] = { EasingType::InCubic, EasingType::Linear, EasingType::OutCubic };
-
 	//非アクティブであれば早期リターン
 	if (!active)
 		return;
 
 	cntFrame++;
 
-	//ブラーの強さをアニメーション
-	int effectDuration = state == State::Wait ? effectTime : Duration;
-	float t = (float)cntFrame / (float)effectDuration;
-	float power = Easing<float>::GetEasingValue(t, &srcPower, &destPower, (EasingType)EaseType[state]);
-	shockBlur->SetPower(power);
-
-	//状態遷移
-	if (cntFrame == effectDuration)
-	{
-		state++;
-		cntFrame = 0;
-		switch (state)
-		{
-		case State::Wait:
-			srcPower = destPower;
-			break;
-
-		case State::End:
-			destPower = 0.0f;
-			break;
-
-		case State::Max:
-			active = false;
-			break;
-
-		default:
-			break;
-		}
-	}
+	//各ステート更新処理
+	if (state == State::Start)
+		OnStart();
+	else if (state == State::Wait)
+		OnWait();
+	else
+		OnEnd();
 
 	//ドローフラグを立てる
 	drawFlag = true;
+}
+
+/**************************************
+Start更新処理
+***************************************/
+void ShockBlurController::OnStart()
+{
+	const int Duration = 10;
+
+	//ブラーの強さをアニメーション
+	float t = (float)cntFrame / (float)Duration;
+	float power = Easing::InCubic(t, srcPower, destPower);
+
+	if (cntFrame == Duration)
+	{
+		cntFrame = 0;
+		state++;
+	}
+}
+
+/**************************************
+Wait更新処理
+***************************************/
+void ShockBlurController::OnWait()
+{
+	//待機のみ
+
+	if (cntFrame == effectTime)
+	{
+		cntFrame = 0;
+		srcPower = destPower;
+		destPower = 0.0f;
+		state++;
+	}
+}
+
+/**************************************
+End更新処理
+***************************************/
+void ShockBlurController::OnEnd()
+{
+	const int Duration = 10;
+
+	//ブラーの強さをアニメーション
+	float t = (float)cntFrame / (float)Duration;
+	float power = Easing::OutCubic(t, srcPower, destPower);
+
+	if (cntFrame == Duration)
+	{
+		cntFrame = 0;
+		active = false;
+	}
 }
 
 /**************************************

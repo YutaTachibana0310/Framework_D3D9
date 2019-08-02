@@ -5,6 +5,7 @@
 //
 //=====================================
 #include "SpikeNoiseController.h"
+#include "Effect\SpikeNoise.h"
 #include "../Math/Easing.h"
 
 /**************************************
@@ -44,51 +45,79 @@ void SpikeNoiseController::SetNoise(float power, int effectTime)
 ***************************************/
 void SpikeNoiseController::Update()
 {
-	const int Duration = 10;
-	const int EaseType[State::Max] = {EasingType::InCubic, EasingType::Linear, EasingType::OutCubic};
-
 	if (!active)
 		return;
 
 	cntFrame++;
 
-	//ノイズの強さをアニメーション
-	int effectTime = state == State::Wait ? this->effectTime : Duration;
-	float t = (float)cntFrame / (float)effectTime;
-	float power = Easing<float>::GetEasingValue(t, &this->srcPower, &this->destPower, (EasingType)EaseType[this->state]);
-	this->spikeNoise->SetLength(power);
-	
 	//ノイズをスクロール
 	base = Math::WrapAround(0.0f, 1.0f, base + SPIKENOISE_SCROLL_SPEED);
 	spikeNoise->SetBaseY(base);
 
+	//各ステート更新処理
+	if (state == State::Start)
+		OnStart();
+	else if (state == State::Wait)
+		OnWait();
+	else
+		OnEnd();
+
+	//ドローフラグを立てる
+	this->drawFlag = true;
+}
+
+/**************************************
+Start更新処理
+***************************************/
+void SpikeNoiseController::OnStart()
+{
+	const int Duration = 10;
+
+	//ノイズの強さをアニメーション
+	float t = (float)cntFrame / (float)Duration;
+	float power = Easing::InCubic(t, this->srcPower, this->destPower);
+	this->spikeNoise->SetLength(power);
+
+	//遷移判定
+	if (cntFrame == Duration)
+	{
+		state++;
+		this->cntFrame = 0;
+	}
+}
+
+/**************************************
+Wait更新処理
+***************************************/
+void SpikeNoiseController::OnWait()
+{
 	//遷移判定
 	if (cntFrame == effectTime)
 	{
 		state++;
 		this->cntFrame = 0;
-		
-		switch (state)
-		{
-		case State::Wait:
-			srcPower = destPower;
-			break;
-
-		case State::End:
-			destPower = 0;
-			break;
-
-		case State::Max:
-			active = false;
-			break;
-
-		default:
-			break;
-		}
+		srcPower = destPower;
+		destPower = 0.0f;
 	}
+}
 
-	//ドローフラグを立てる
-	this->drawFlag = true;
+/**************************************
+End更新処理
+***************************************/
+void SpikeNoiseController::OnEnd()
+{
+	const int Duration = 10;
+
+	//ノイズの強さをアニメーション
+	float t = (float)cntFrame / (float)Duration;
+	float power = Easing::OutCubic(t, this->srcPower, this->destPower);
+	this->spikeNoise->SetLength(power);
+
+	//遷移判定
+	if (cntFrame == Duration)
+	{
+		active = false;
+	}
 }
 
 /**************************************
