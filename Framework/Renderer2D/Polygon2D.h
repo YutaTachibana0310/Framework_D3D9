@@ -36,7 +36,7 @@ private:
 	VERTEX_2D vtxWk[NUM_VERTEX];
 	LPDIRECT3DTEXTURE9 texture;
 
-	float radius, angle;
+	D3DXVECTOR3 vtxPos[NUM_VERTEX];
 
 	LPDIRECT3DDEVICE9 pDevice;
 

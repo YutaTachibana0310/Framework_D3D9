@@ -9,14 +9,17 @@
 /**************************************
 マクロ定義
 ***************************************/
+#define POLYGON2D_DEFAULT_SIZE		(20.0f)
 
 /**************************************
 コンストラクタ
 ***************************************/
 Polygon2D::Polygon2D()
 {
-	radius = D3DXVec2Length(&D3DXVECTOR2(5.0f, 5.0f));
-	angle = atan2f(5.0f, 5.0f);
+	vtxPos[0] = D3DXVECTOR3(-POLYGON2D_DEFAULT_SIZE, -POLYGON2D_DEFAULT_SIZE, 0.0f);
+	vtxPos[1] = D3DXVECTOR3( POLYGON2D_DEFAULT_SIZE, -POLYGON2D_DEFAULT_SIZE, 0.0f);
+	vtxPos[2] = D3DXVECTOR3(-POLYGON2D_DEFAULT_SIZE, POLYGON2D_DEFAULT_SIZE, 0.0f);
+	vtxPos[3] = D3DXVECTOR3( POLYGON2D_DEFAULT_SIZE, POLYGON2D_DEFAULT_SIZE, 0.0f);
 
 	vtxWk[0].tex = D3DXVECTOR2(0.0f, 0.0f);
 	vtxWk[1].tex = D3DXVECTOR2(1.0f, 0.0f);
@@ -63,8 +66,10 @@ void Polygon2D::Draw()
 ***************************************/
 void Polygon2D::SetSize(float x, float y)
 {
-	radius = D3DXVec2Length(&D3DXVECTOR2(x, y));
-	angle = atan2f(y, x);
+	vtxPos[0] = D3DXVECTOR3(-x, -y, 0.0f);
+	vtxPos[1] = D3DXVECTOR3( x, -y, 0.0f);
+	vtxPos[2] = D3DXVECTOR3(-x,  y, 0.0f);
+	vtxPos[3] = D3DXVECTOR3( x,  y, 0.0f);
 }
 
 /**************************************
@@ -104,12 +109,10 @@ void Polygon2D::LoadTexture(const char* path)
 ***************************************/
 void Polygon2D::SetVertex()
 {
-	vtxWk[0].vtx.x = transform.pos.x - cosf(angle + transform.rot.z) * radius * transform.scale.x;
-	vtxWk[0].vtx.y = transform.pos.y - sinf(angle + transform.rot.z) * radius * transform.scale.y;
-	vtxWk[1].vtx.x = transform.pos.x + cosf(angle - transform.rot.z) * radius * transform.scale.x;
-	vtxWk[1].vtx.y = transform.pos.y - sinf(angle - transform.rot.z) * radius * transform.scale.y;
-	vtxWk[2].vtx.x = transform.pos.x - cosf(angle - transform.rot.z) * radius * transform.scale.x;
-	vtxWk[2].vtx.y = transform.pos.y + sinf(angle - transform.rot.z) * radius * transform.scale.y;
-	vtxWk[3].vtx.x = transform.pos.x + cosf(angle + transform.rot.z) * radius * transform.scale.x;
-	vtxWk[3].vtx.y = transform.pos.y + sinf(angle + transform.rot.z) * radius * transform.scale.y;
+	D3DXMATRIX mtxTransform = transform.GetMatrix();
+
+	for (int i = 0; i < NUM_VERTEX; i++)
+	{
+		D3DXVec3TransformCoord(&vtxWk[i].vtx, &vtxPos[i], &mtxTransform);
+	}
 }

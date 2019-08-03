@@ -151,3 +151,28 @@ D3DXVECTOR3 Transform::Up()
 
 	return up;
 }
+
+/**************************************
+ワールド行列取得処理
+***************************************/
+D3DXMATRIX Transform::GetMatrix()
+{
+	D3DXMATRIX world, rotation, scaling, translation;
+
+	//初期化
+	D3DXMatrixIdentity(&world);
+
+	//スケーリング
+	D3DXMatrixScaling(&scaling, scale.x, scale.y, scale.z);
+	D3DXMatrixMultiply(&world, &world, &scaling);
+
+	//回転
+	D3DXMatrixRotationQuaternion(&rotation, &rot);
+	D3DXMatrixMultiply(&world, &world, &rotation);
+
+	//移動
+	D3DXMatrixTranslation(&translation, pos.x, pos.y, pos.z);
+	D3DXMatrixMultiply(&world, &world, &translation);
+
+	return world;
+}

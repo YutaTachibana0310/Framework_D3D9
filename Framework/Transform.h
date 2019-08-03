@@ -36,12 +36,10 @@ public:
 	D3DXVECTOR3 Right();
 	D3DXVECTOR3 Up();
 
-	//オイラー角取得処理
-	D3DXVECTOR3 GetEulerAngle();
-
 	//ワールド変換設定処理
 	void SetWorld();
 	void SetWorldInvView();
+	D3DXMATRIX GetMatrix();
 
 private:
 	D3DXQUATERNION rot;	//回転
