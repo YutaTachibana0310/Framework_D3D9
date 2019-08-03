@@ -272,3 +272,5 @@ main.cpp
 data/MODEL/
 TransformTest.h
 TransformTest.cpp
+TestTransition.h
+TransitionTest.cpp
