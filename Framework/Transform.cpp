@@ -129,7 +129,7 @@ D3DXVECTOR3 Transform::Forward()
 ***************************************/
 D3DXVECTOR3 Transform::Right()
 {
-	D3DXVECTOR3 right = D3DXVECTOR3(1.0f, 0.0f, 1.0f);
+	D3DXVECTOR3 right = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
 	D3DXMATRIX rotation;
 
 	D3DXMatrixRotationQuaternion(&rotation, &rot);
