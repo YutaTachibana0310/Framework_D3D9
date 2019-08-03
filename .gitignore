@@ -266,3 +266,6 @@ __pycache__/
 *.vcxproj.filters
 EasingTest.h
 EasginTest.cpp
+imgui.ini
+data/TEXTURE/
+main.cpp

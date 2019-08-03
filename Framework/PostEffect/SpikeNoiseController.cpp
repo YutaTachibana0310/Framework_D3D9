@@ -75,7 +75,7 @@ void SpikeNoiseController::OnStart()
 
 	//ノイズの強さをアニメーション
 	float t = (float)cntFrame / (float)Duration;
-	float power = Easing::InCubic(t, this->srcPower, this->destPower);
+	float power = Easing::EaseValue(t, this->srcPower, this->destPower, EaseType::InCubic);
 	this->spikeNoise->SetLength(power);
 
 	//遷移判定
@@ -110,7 +110,7 @@ void SpikeNoiseController::OnEnd()
 
 	//ノイズの強さをアニメーション
 	float t = (float)cntFrame / (float)Duration;
-	float power = Easing::OutCubic(t, this->srcPower, this->destPower);
+	float power = Easing::EaseValue(t, this->srcPower, this->destPower, OutCubic);
 	this->spikeNoise->SetLength(power);
 
 	//遷移判定

@@ -52,7 +52,7 @@ void ShockBlurController::OnStart()
 
 	//ブラーの強さをアニメーション
 	float t = (float)cntFrame / (float)Duration;
-	float power = Easing::InCubic(t, srcPower, destPower);
+	float power = Easing::EaseValue(t, srcPower, destPower, EaseType::InCubic);
 
 	if (cntFrame == Duration)
 	{
@@ -86,7 +86,7 @@ void ShockBlurController::OnEnd()
 
 	//ブラーの強さをアニメーション
 	float t = (float)cntFrame / (float)Duration;
-	float power = Easing::OutCubic(t, srcPower, destPower);
+	float power = Easing::EaseValue(t, srcPower, destPower, EaseType::OutCubic);
 
 	if (cntFrame == Duration)
 	{
