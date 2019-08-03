@@ -74,7 +74,7 @@ public:
 	2次ベジェ曲線関数
 	***************************************/
 	template <typename T>
-	static T QuadraticBezier(T start, T end, T c, float t)
+	static T QuadraticBezier(const T& start, const T& end, const T& c, float t)
 	{
 		return powf(1.0f - t, 2.0f) * start + 2 * t * (1.0f - t) * c + powf(t, 2.0f) * end;
 	}
@@ -83,7 +83,7 @@ public:
 	3次ベジェ曲線関数
 	***************************************/
 	template<typename T>
-	static T CubibBezier(T start, T end, T c1, T c2, float t)
+	static T CubibBezier(const T&start, const T&end, const T&c1, const T&c2, float t)
 	{
 		return powf(1.0f - t, 3.0f) * start
 			+ 3.0f * powf(1.0f - t, 2.0f) * t * c1
