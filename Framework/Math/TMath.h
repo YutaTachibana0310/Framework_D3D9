@@ -25,10 +25,9 @@ public:
 		return rand() % (max - min) + min;
 	}
 
-	float RandomRange(float min, float max)
+	static float RandomRange(float min, float max)
 	{
-		unsigned ran = (rand() >> 9) | 0x3f800000;
-		return ((*(float*)&ran) - 1.0f) * (max - min) + min;
+		return (float)rand() / RAND_MAX * (max - min) + min;
 	}
 
 	/**************************************
