@@ -160,36 +160,6 @@ void MeshContainer::Draw()
 }
 
 /**************************************
-マテリアル取得
-***************************************/
-void MeshContainer::GetMaterial(unsigned id, D3DMATERIAL9 *pOut)
-{
-	if (id >= materialNum || id < 0)
-		return;
-
-	*pOut = materials[id];
-}
-
-/**************************************
-テクスチャ取得
-***************************************/
-void MeshContainer::GetTexture(unsigned id, LPDIRECT3DTEXTURE9 *pOut)
-{
-	if (id >= materialNum || id < 0)
-		return;
-
-	*pOut = textures[id];
-}
-
-/**************************************
-マテリアル数取得
-***************************************/
-DWORD MeshContainer::GetMaterialNum()
-{
-	return materialNum;
-}
-
-/**************************************
 マテリアルカラー設定処理
 ***************************************/
 void MeshContainer::SetMaterialColor(D3DXCOLOR& color)

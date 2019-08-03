@@ -26,10 +26,6 @@ public:
 	void Release();						//モデルデータを解放
 	void Draw();						//モデルを描画
 
-	void GetMaterial(unsigned id, D3DMATERIAL9 *pOut);		//マテリアル取得
-	void GetTexture(unsigned id, LPDIRECT3DTEXTURE9 *pOut);	//テクスチャ取得
-	DWORD GetMaterialNum();								//マテリアル数取得
-
 	void SetMaterialColor(D3DXCOLOR& color);
 	void SetMaterialAlpha(float alpha);
 private:								
