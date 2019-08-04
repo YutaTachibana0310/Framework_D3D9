@@ -23,6 +23,10 @@
 ***************************************/
 BaseParticle::BaseParticle()
 {
+	transform.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	transform.IdentifyRotation();
+	transform.scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+
 	uv.u = uv.v = 0.0f;
 	active = false;
 }
