@@ -26,6 +26,7 @@ HexaPopTransitionMask::HexaPopTransitionMask()
 	float sizeX = (float)SCREEN_WIDTH / HEXAPOPTRANSITION_DIVINE_X;
 	float sizeY = (float)SCREEN_HEIGHT / HEXAPOPTRANSITION_DIVINE_Y;
 	polygon->SetSize(sizeX, sizeY);
+	polygon->LoadTexture("data/TRANSITION/HexaMask.png");
 
 	//X方向1列で一つのベクターとして
 	//2次元配列のようにベクターのベクターを作る

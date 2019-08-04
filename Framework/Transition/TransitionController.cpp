@@ -10,6 +10,7 @@
 
 #include "HexaRotTransitionMask.h"
 #include "HexaPopTransitionMask.h"
+#include "MistTransitionMask.h"
 
 using namespace std;
 
@@ -32,6 +33,7 @@ TransitionController::TransitionController()
 	maskContainer.resize(TransitionType::TransitionMax);
 	maskContainer[TransitionType::HexaRotation] = new HexaRotTransitionMask();
 	maskContainer[TransitionType::HexaPop] = new HexaPopTransitionMask();
+	maskContainer[TransitionType::Mist] = new MistTransitionMask();
 
 	usingMask = TransitionType::HexaRotation;
 }

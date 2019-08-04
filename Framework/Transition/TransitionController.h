@@ -26,6 +26,7 @@ enum TransitionType
 {
 	HexaRotation,
 	HexaPop,
+	Mist,
 	TransitionMax
 };
 
@@ -56,6 +57,8 @@ protected:
 
 	bool isRunning;
 	bool isDrawBG;
+
+	
 };
 
 #endif

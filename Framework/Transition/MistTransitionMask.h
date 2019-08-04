@@ -1,11 +1,11 @@
 //=====================================
 //
-//ヘキサトランジションヘッダ[HexaRotTransitionMask.h]
+//ミストトランジションマスクヘッダ[MistTransitionMask.h]
 //Author:GP12B332 21 立花雄太
 //
 //=====================================
-#ifndef _HEXAROTTRANSITIONMASK_H_
-#define _HEXAROTTRANSITIONMASK_H_
+#ifndef _MISTTRANSITIONMASK_H_
+#define _MISTTRANSITIONMASK_H_
 
 #include "../../main.h"
 #include "BaseTransitionMask.h"
@@ -18,20 +18,21 @@
 /**************************************
 クラス定義
 ***************************************/
-class HexaRotTransitionMask : public BaseTransitionMask
+class MistTransitionMask : public BaseTransitionMask
 {
 public:
-	HexaRotTransitionMask();
+	MistTransitionMask();
 
-	MaskResult Update();
-
-	void Set(bool isTransitionOut);
+	MaskResult Update() override;
+	void Draw() override;
+	void Set(bool isOut) override;
 
 private:
+	DWORD alphaRef;
 	int cntFrame;
-	D3DXVECTOR3 initScale;
-	D3DXVECTOR3 goalScale;
-	EaseType easeType;
+
+	float startRef, endRef;
+	EaseType type;
 };
 
 #endif

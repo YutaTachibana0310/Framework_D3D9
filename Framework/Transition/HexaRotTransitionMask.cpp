@@ -13,6 +13,17 @@
 #define HEXATRANSITION_DURATION		(60)
 
 /**************************************
+コンストラクタ
+***************************************/
+HexaRotTransitionMask::HexaRotTransitionMask()
+{
+	//ポリゴン初期化
+	polygon->LoadTexture("data/TRANSITION/HexaMask.png");
+	polygon->SetSize((float)SCREEN_WIDTH, (float)SCREEN_WIDTH);
+	polygon->transform.pos = D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f);
+}
+
+/**************************************
 更新処理
 ***************************************/
 MaskResult HexaRotTransitionMask::Update()

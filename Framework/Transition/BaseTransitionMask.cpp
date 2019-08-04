@@ -18,9 +18,6 @@ BaseTransitionMask::BaseTransitionMask()
 {
 	//ƒ|ƒŠƒSƒ“ì¬
 	polygon = new Polygon2D();
-	polygon->LoadTexture("data/TRANSITION/HexaMask.png");
-	polygon->SetSize((float)SCREEN_WIDTH, (float)SCREEN_WIDTH);
-	polygon->transform.pos = D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f);
 
 	//ƒtƒ‰ƒO‰Šú‰»
 	active = false;
