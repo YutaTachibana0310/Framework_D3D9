@@ -1,10 +1,10 @@
 //=====================================
 //
-//ヘキサトランジション処理[HexaTransitionMask.cpp]
+//ヘキサトランジション処理[HexaRotTransitionMask.cpp]
 //Author:GP12A332 21 立花雄太
 //
 //=====================================
-#include "HexaTransitionMask.h"
+#include "HexaRotTransitionMask.h"
 #include "../Renderer2D/Polygon2D.h"
 
 /**************************************
@@ -15,7 +15,7 @@
 /**************************************
 更新処理
 ***************************************/
-MaskResult HexaTransitionMask::Update()
+MaskResult HexaRotTransitionMask::Update()
 {
 	if (!active)
 		return Continuous;
@@ -46,7 +46,7 @@ MaskResult HexaTransitionMask::Update()
 /**************************************
 トランジション開始処理
 ***************************************/
-void HexaTransitionMask::Set(bool isTransitionOut)
+void HexaRotTransitionMask::Set(bool isTransitionOut)
 {
 	//すでにマスク中であれば開始しない
 	if (active)

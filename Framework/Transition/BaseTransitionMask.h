@@ -19,11 +19,12 @@ enum MaskResult
 	FinishTransitionOut
 };
 
-/**************************************
-クラス定義
-***************************************/
 class Polygon2D;
 
+/**************************************
+BaseTransitionMaskクラス
+※継承先でMaskResult Update()、Set(bool isTransitionOut)を実装する
+***************************************/
 class BaseTransitionMask
 {
 public:

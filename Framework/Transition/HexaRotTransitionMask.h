@@ -1,11 +1,11 @@
 //=====================================
 //
-//ヘキサトランジションヘッダ[HexaTransitionMask.h]
+//ヘキサトランジションヘッダ[HexaRotTransitionMask.h]
 //Author:GP12B332 21 立花雄太
 //
 //=====================================
-#ifndef _HEXATRANSITIONMASK_H_
-#define _HEXATRANSITIONMASK_H_
+#ifndef _HEXAROTTRANSITIONMASK_H_
+#define _HEXAROTTRANSITIONMASK_H_
 
 #include "../../main.h"
 #include "BaseTransitionMask.h"
@@ -18,10 +18,10 @@
 /**************************************
 クラス定義
 ***************************************/
-class HexaTransitionMask : public BaseTransitionMask
+class HexaRotTransitionMask : public BaseTransitionMask
 {
 public:
-	HexaTransitionMask()
+	HexaRotTransitionMask()
 	{
 		cntFrame = 120;
 	}

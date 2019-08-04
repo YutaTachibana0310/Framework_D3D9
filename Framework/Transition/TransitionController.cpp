@@ -8,7 +8,8 @@
 #include "BaseTransitionMask.h"
 #include "../Renderer2D/Polygon2D.h"
 
-#include "HexaTransitionMask.h"
+#include "HexaRotTransitionMask.h"
+#include "HexaPopTransitionMask.h"
 
 using namespace std;
 
@@ -29,7 +30,8 @@ TransitionController::TransitionController()
 	transitionBG->transform.pos = D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f);
 
 	maskContainer.resize(TransitionType::TransitionMax);
-	maskContainer[TransitionType::HexaRotation] = new HexaTransitionMask();
+	maskContainer[TransitionType::HexaRotation] = new HexaRotTransitionMask();
+	maskContainer[TransitionType::HexaPop] = new HexaPopTransitionMask();
 
 	usingMask = TransitionType::HexaRotation;
 }

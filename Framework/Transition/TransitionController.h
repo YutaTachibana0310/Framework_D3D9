@@ -25,6 +25,7 @@ class BaseTransitionMask;
 enum TransitionType
 {
 	HexaRotation,
+	HexaPop,
 	TransitionMax
 };
 
