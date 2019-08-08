@@ -27,7 +27,7 @@ public:
 	virtual ~SceneParticleManager();
 
 	//初期化、終了、更新、描画処理
-	virtual void Init();
+	virtual void Init() = 0;
 	virtual void Uninit();
 	virtual void Update();
 	virtual void Draw();

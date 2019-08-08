@@ -85,12 +85,12 @@ void BaseParticleController::Uninit()
 {
 	for (auto& particle : particleContainer)
 	{
-		particle->Uninit();
+		particle->active = false;
 	}
 
 	for (auto& emitter : emitterContainer)
 	{
-		emitter->Uninit();
+		emitter->active = false;
 	}
 }
 
@@ -115,26 +115,12 @@ void BaseParticleController::Update()
 		if (!emitter->active)
 			continue;
 
-		//引数で指定された数だけパーティクル放出
-		UINT emitCount = 0;
-		for (BaseParticle *particle : particleContainer)
-		{
-			//アクティブなパーティクルに対してはcontinue
-			if (particle->active)
-				continue;
+		//放出処理
+		bool res = emitter->Emit(particleContainer);
 
-			//放出処理
-			Emit(emitter, particle);
-
-			//カウントして、指定された数だけ放出していたらbreak
-			emitCount++;
-			if (emitCount == emitter->emitNum)
-				break;
-		}
-
-		//放出できるパーティクルが無いためリターン
-		if (emitCount != emitter->emitNum)
-			return;
+		//放出できるパーティクルが残っていなければbreak
+		if (!res)
+			break;		
 	}
 
 	//パーティクル更新
@@ -178,7 +164,7 @@ bool BaseParticleController::Draw()
 /**************************************
 パーティクル単位バッファ作成処理
 ***************************************/
-void BaseParticleController::MakeUnitBuffer(const D3DXVECTOR2 *size, const D3DXVECTOR2 *texDiv)
+void BaseParticleController::MakeUnitBuffer(const D3DXVECTOR2& size, const D3DXVECTOR2& texDiv)
 {
 	if (unitBuff != NULL)
 		return;
@@ -190,14 +176,14 @@ void BaseParticleController::MakeUnitBuffer(const D3DXVECTOR2 *size, const D3DXV
 	unitBuff->Lock(0, 0, (void**)&p, 0);
 
 	//単位サイズ設定
-	p[0].vtx = D3DXVECTOR3(-size->x / 2.0f, size->y / 2.0f, 0.0f);
-	p[1].vtx = D3DXVECTOR3(size->x / 2.0f, size->y / 2.0f, 0.0f);
-	p[2].vtx = D3DXVECTOR3(-size->x / 2.0f, -size->y / 2.0f, 0.0f);
-	p[3].vtx = D3DXVECTOR3(size->x / 2.0f, -size->y / 2.0f, 0.0f);
+	p[0].vtx = D3DXVECTOR3(-size.x / 2.0f, size.y / 2.0f, 0.0f);
+	p[1].vtx = D3DXVECTOR3(size.x / 2.0f, size.y / 2.0f, 0.0f);
+	p[2].vtx = D3DXVECTOR3(-size.x / 2.0f, -size.y / 2.0f, 0.0f);
+	p[3].vtx = D3DXVECTOR3(size.x / 2.0f, -size.y / 2.0f, 0.0f);
 
 	//単位UV設定
-	float u = 1.0f / texDiv->x;
-	float v = 1.0f / texDiv->y;
+	float u = 1.0f / texDiv.x;
+	float v = 1.0f / texDiv.y;
 	p[0].tex = D3DXVECTOR2(0.0f, 0.0f);
 	p[1].tex = D3DXVECTOR2(u, 0.0f);
 	p[2].tex = D3DXVECTOR2(0.0f, v);
@@ -411,7 +397,7 @@ UINT BaseParticleController::EmbedParameterUV()
 /**************************************
 エミッタセット処理
 ***************************************/
-BaseEmitter* BaseParticleController::SetEmitter(D3DXVECTOR3 *pos)
+BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
 {
 	auto emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter* emitter)
 	{
@@ -421,7 +407,7 @@ BaseEmitter* BaseParticleController::SetEmitter(D3DXVECTOR3 *pos)
 	if (emitter == emitterContainer.end())
 		return NULL;
 
-	(*emitter)->transform.pos = *pos;
+	(*emitter)->transform.pos = pos;
 	(*emitter)->Init();
 
 	return (*emitter);

@@ -23,12 +23,28 @@
 ***************************************/
 BaseParticle::BaseParticle()
 {
-	transform.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	transform.IdentifyRotation();
-	transform.scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
-
 	uv.u = uv.v = 0.0f;
 	active = false;
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+BaseParticle::BaseParticle(int life)
+{
+	uv.u = uv.v = 0.0f;
+	active = false;
+	this->lifeFrame = life;
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+BaseParticle::BaseParticle(int lifeMin, int lifeMax)
+{
+	uv.u = uv.v = 0.0f;
+	active = false;
+	this->lifeFrame = Math::RandomRange(lifeMin, lifeMax);
 }
 
 /**************************************
@@ -36,21 +52,4 @@ BaseParticle::BaseParticle()
 ***************************************/
 BaseParticle::~BaseParticle()
 {
-}
-
-/**************************************
-終了処理
-***************************************/
-void BaseParticle::Uninit()
-{
-	active = false;
-}
-
-/**************************************
-トランスフォーム情報埋め込み処理
-***************************************/
-void BaseParticle::EmbedTransform(Transform *pTransform)
-{
-	*pTransform = transform;
-	pTransform++;
 }

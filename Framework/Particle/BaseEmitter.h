@@ -8,36 +8,36 @@
 #define _BASEEMITTER_H_
 
 #include "../../main.h"
+#include "BaseParticle.h"
 #include <vector>
-#include <memory>
-
-/**************************************
-‘O•ûéŒ¾
-***************************************/
-class BaseParticle;
 
 /**************************************
 BaseEmitterƒNƒ‰ƒX
-¦Œp³æ‚ÅInit(), Update()‚ğÀ‘•‚·‚é
 ***************************************/
+class BaseParticle;
+
 class BaseEmitter
 {
 public:
-	BaseEmitter(D3DXVECTOR3 *pos);
 	BaseEmitter();
+	BaseEmitter(int emitNum);
+	BaseEmitter(int emitNum, int duration);
+	BaseEmitter(int emitNum, int durationMin, int durationMax);
+	BaseEmitter(int emitNumMin, int emitNumMax, int durationMin, int durationMax);
+
 	virtual ~BaseEmitter();
 
-	virtual void Init() = 0;
-	virtual void Uninit();
-	virtual void Update() = 0;
+	virtual void Init();
+	virtual void Update();
+	virtual bool Emit(std::vector<BaseParticle*>& container);
+	
 	bool active;
-
 	Transform transform;
-	int cntFrame;
-	int emitNum;
 
 protected:
+	int cntFrame;
 	int duration;
+	int emitNum;
 };
 
 #endif
