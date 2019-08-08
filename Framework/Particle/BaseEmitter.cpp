@@ -21,20 +21,51 @@
 /**************************************
 コンストラクタ
 ***************************************/
-BaseEmitter::BaseEmitter(D3DXVECTOR3 *pos)
+BaseEmitter::BaseEmitter()
 {
-	this->transform.pos = *pos;
+	active = false;
 	emitNum = 1;
-	active = true;
+	duration = 1;
 }
 
 /**************************************
 コンストラクタ
 ***************************************/
-BaseEmitter::BaseEmitter()
+BaseEmitter::BaseEmitter(int emitNum)
 {
 	active = false;
-	emitNum = 1;
+	this->emitNum = emitNum;
+	duration = 1;
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+BaseEmitter::BaseEmitter(int emitNum, int duration)
+{
+	active = false;
+	this->emitNum = emitNum;
+	this->duration = duration;
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+BaseEmitter::BaseEmitter(int emitNum, int durationMin, int durationMax)
+{
+	active = false;
+	this->emitNum = emitNum;
+	this->duration = Math::RandomRange(durationMin, durationMax);
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+BaseEmitter::BaseEmitter(int emitNumMin, int emitNumMax, int durationMin, int durationMax)
+{
+	active = false;
+	this->emitNum = Math::RandomRange(emitNumMin, emitNumMax);
+	this->duration = Math::RandomRange(durationMin, durationMax);
 }
 
 /**************************************
@@ -46,9 +77,21 @@ BaseEmitter::~BaseEmitter()
 }
 
 /**************************************
-終了処理
+初期化処理
 ***************************************/
-void BaseEmitter::Uninit()
+void BaseEmitter::Init()
 {
-	active = false;
+	active = true;
+	cntFrame = 0;
+}
+
+/**************************************
+更新処理
+***************************************/
+void BaseEmitter::Update()
+{
+	cntFrame++;
+
+	if (cntFrame > duration)
+		active = false;
 }
