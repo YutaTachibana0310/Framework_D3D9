@@ -89,6 +89,9 @@ public:
 			+ 3.0f * (1.0f - t) * powf(t, 2.0f) * c2
 			+ powf(t, 3.0f) * end;
 	}
+
+private:
+	Math();
 };
 
 #endif
