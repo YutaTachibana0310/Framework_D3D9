@@ -8,7 +8,6 @@
 #define _EASING_H_
 
 #include "TMath.h"
-#include <functional>
 
 enum EaseType
 {

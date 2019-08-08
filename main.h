@@ -16,6 +16,7 @@
 #include "d3dx9.h"
 #include "Framework\Transform.h"
 #include "Framework\Math\TMath.h"
+#include "Framework\Math\Vector3.h"
 
 #define DIRECTINPUT_VERSION (0x0800)	// åxçêëŒçÙ
 #include "dinput.h"
