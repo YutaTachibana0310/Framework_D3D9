@@ -85,12 +85,12 @@ void BaseParticleController::Uninit()
 {
 	for (auto& particle : particleContainer)
 	{
-		particle->Uninit();
+		particle->active = false;
 	}
 
 	for (auto& emitter : emitterContainer)
 	{
-		emitter->Uninit();
+		emitter->active = false;
 	}
 }
 
@@ -115,26 +115,12 @@ void BaseParticleController::Update()
 		if (!emitter->active)
 			continue;
 
-		//引数で指定された数だけパーティクル放出
-		UINT emitCount = 0;
-		for (BaseParticle *particle : particleContainer)
-		{
-			//アクティブなパーティクルに対してはcontinue
-			if (particle->active)
-				continue;
+		//放出処理
+		bool res = emitter->Emit(particleContainer);
 
-			//放出処理
-			Emit(emitter, particle);
-
-			//カウントして、指定された数だけ放出していたらbreak
-			emitCount++;
-			if (emitCount == emitter->emitNum)
-				break;
-		}
-
-		//放出できるパーティクルが無いためリターン
-		if (emitCount != emitter->emitNum)
-			return;
+		//放出できるパーティクルが残っていなければbreak
+		if (!res)
+			break;		
 	}
 
 	//パーティクル更新
@@ -238,6 +224,7 @@ void BaseParticleController::MakeVertexDeclaration()
 	if (declare != NULL)
 		return;
 
+	int hoge;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 	D3DVERTEXELEMENT9 elems[] =
 	{
@@ -411,7 +398,7 @@ UINT BaseParticleController::EmbedParameterUV()
 /**************************************
 エミッタセット処理
 ***************************************/
-BaseEmitter* BaseParticleController::SetEmitter(D3DXVECTOR3 *pos)
+BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
 {
 	auto emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter* emitter)
 	{
@@ -421,7 +408,7 @@ BaseEmitter* BaseParticleController::SetEmitter(D3DXVECTOR3 *pos)
 	if (emitter == emitterContainer.end())
 		return NULL;
 
-	(*emitter)->transform.pos = *pos;
+	(*emitter)->transform.pos = pos;
 	(*emitter)->Init();
 
 	return (*emitter);

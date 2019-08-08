@@ -32,12 +32,11 @@ public:
 	BaseParticleController();
 	virtual ~BaseParticleController();
 
-	//初期化と放出処理は継承先に実装する
+	//初期化は継承先に実装する
 	virtual void Init() = 0;
-	virtual void Emit(BaseEmitter* emitter, BaseParticle* particle) = 0;
 
-	virtual BaseEmitter* SetEmitter(D3DXVECTOR3 *pos);	//エミッタセット処理
-	virtual void Uninit();						//終了処理
+	virtual BaseEmitter* SetEmitter(const D3DXVECTOR3& pos);	//エミッタセット処理
+	virtual void Uninit();				//終了処理
 	void Update();						//更新処理
 	bool Draw();						//描画処理
 
