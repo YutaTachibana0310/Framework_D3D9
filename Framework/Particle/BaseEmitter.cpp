@@ -5,6 +5,7 @@
 //
 //=====================================
 #include "BaseEmitter.h"
+#include "BaseParticle.h"
 
 /**************************************
 マクロ定義
@@ -94,4 +95,30 @@ void BaseEmitter::Update()
 
 	if (cntFrame > duration)
 		active = false;
+}
+
+/**************************************
+放出処理
+***************************************/
+bool BaseEmitter::Emit(std::vector<BaseParticle*>& container)
+{
+	UINT cntEmit = 0;
+	for (auto& particle : container)
+	{
+		if (particle->active)
+			continue;
+
+		//初期化処理
+		particle->transform = this->transform;
+		particle->Init();
+
+		//カウント
+		cntEmit++;
+
+		//決められ数だけ放出していたら終了
+		if (cntEmit == emitNum)
+			return true;
+	}
+
+	return false;
 }

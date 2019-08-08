@@ -8,18 +8,14 @@
 #define _BASEEMITTER_H_
 
 #include "../../main.h"
+#include "BaseParticle.h"
 #include <vector>
-#include <memory>
-
-/**************************************
-‘O•ûéŒ¾
-***************************************/
-class BaseParticle;
 
 /**************************************
 BaseEmitterƒNƒ‰ƒX
-¦Œp³æ‚ÅInit(), Update()‚ğÀ‘•‚·‚é
 ***************************************/
+class BaseParticle;
+
 class BaseEmitter
 {
 public:
@@ -33,6 +29,7 @@ public:
 
 	virtual void Init();
 	virtual void Update();
+	virtual bool Emit(std::vector<BaseParticle*>& container);
 	
 	bool active;
 	Transform transform;
