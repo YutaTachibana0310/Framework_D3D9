@@ -23,7 +23,10 @@
 
 /**************************************
 BasePartlceControllerクラス
-※継承先でInit(), Emit(), SetEmitter()を実装する
+継承先で
+・単位頂点バッファ作成、テクスチャ読み込み
+・void MakeParticleContainer(), MakeEmitterContainer()
+を実装する
 ***************************************/
 class BaseParticleController
 {
@@ -31,9 +34,6 @@ public:
 	//コンストラクタ、デストラクタ
 	BaseParticleController();
 	virtual ~BaseParticleController();
-
-	//初期化は継承先に実装する
-	virtual void Init() = 0;
 
 	virtual BaseEmitter* SetEmitter(const D3DXVECTOR3& pos);	//エミッタセット処理
 	virtual void Uninit();				//終了処理
@@ -50,8 +50,13 @@ protected:
 	std::vector<BaseParticle*> particleContainer;	//パーティクルコンテナ
 	std::vector<BaseEmitter*> emitterContainer;		//エミッタコンテナ
 
-	void MakeUnitBuffer(const D3DXVECTOR2* size, const D3DXVECTOR2* texDix);	//単位頂点バッファ作成処理
+	//単位頂点バッファ作成処理
+	void MakeUnitBuffer(const D3DXVECTOR2& size, const D3DXVECTOR2& texDix = D3DXVECTOR2(1.0f, 1.0f));	
 	void LoadTexture(const char* filePath);			//テクスチャ読み込み処理
+
+	//コンテナ作成
+	virtual void MakeParticleContainer() = 0;
+	virtual void MakeEmitterContainer() = 0;
 
 private:
 	//インスタンシングに必要な静的メンバ

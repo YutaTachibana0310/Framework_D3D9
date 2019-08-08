@@ -277,3 +277,4 @@ TransitionTest.cpp
 *.exe
 VectorTest.h
 VectorTest.cpp
+TestObject.h

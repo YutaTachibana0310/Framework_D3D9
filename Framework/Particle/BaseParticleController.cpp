@@ -164,7 +164,7 @@ bool BaseParticleController::Draw()
 /**************************************
 パーティクル単位バッファ作成処理
 ***************************************/
-void BaseParticleController::MakeUnitBuffer(const D3DXVECTOR2 *size, const D3DXVECTOR2 *texDiv)
+void BaseParticleController::MakeUnitBuffer(const D3DXVECTOR2& size, const D3DXVECTOR2& texDiv)
 {
 	if (unitBuff != NULL)
 		return;
@@ -176,14 +176,14 @@ void BaseParticleController::MakeUnitBuffer(const D3DXVECTOR2 *size, const D3DXV
 	unitBuff->Lock(0, 0, (void**)&p, 0);
 
 	//単位サイズ設定
-	p[0].vtx = D3DXVECTOR3(-size->x / 2.0f, size->y / 2.0f, 0.0f);
-	p[1].vtx = D3DXVECTOR3(size->x / 2.0f, size->y / 2.0f, 0.0f);
-	p[2].vtx = D3DXVECTOR3(-size->x / 2.0f, -size->y / 2.0f, 0.0f);
-	p[3].vtx = D3DXVECTOR3(size->x / 2.0f, -size->y / 2.0f, 0.0f);
+	p[0].vtx = D3DXVECTOR3(-size.x / 2.0f, size.y / 2.0f, 0.0f);
+	p[1].vtx = D3DXVECTOR3(size.x / 2.0f, size.y / 2.0f, 0.0f);
+	p[2].vtx = D3DXVECTOR3(-size.x / 2.0f, -size.y / 2.0f, 0.0f);
+	p[3].vtx = D3DXVECTOR3(size.x / 2.0f, -size.y / 2.0f, 0.0f);
 
 	//単位UV設定
-	float u = 1.0f / texDiv->x;
-	float v = 1.0f / texDiv->y;
+	float u = 1.0f / texDiv.x;
+	float v = 1.0f / texDiv.y;
 	p[0].tex = D3DXVECTOR2(0.0f, 0.0f);
 	p[1].tex = D3DXVECTOR2(u, 0.0f);
 	p[2].tex = D3DXVECTOR2(0.0f, v);
@@ -224,7 +224,6 @@ void BaseParticleController::MakeVertexDeclaration()
 	if (declare != NULL)
 		return;
 
-	int hoge;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 	D3DVERTEXELEMENT9 elems[] =
 	{
