@@ -21,20 +21,21 @@ class BaseParticle
 {
 public:
 	BaseParticle();
+	BaseParticle(int life);
+	BaseParticle(int lifeMin, int lifeMax);
 	virtual ~BaseParticle();
 
 	virtual void Init() = 0;
-	virtual void Uninit();
 	virtual void Update() = 0;
-	void EmbedTransform(Transform *pTransform);
-	bool active;
 
+	bool active;
 	Transform transform;
 	ParticleUV uv;
-	int lifeFrame;
 
 protected:
 	int cntFrame;
+	int lifeFrame;
+
 };
 
 #endif
