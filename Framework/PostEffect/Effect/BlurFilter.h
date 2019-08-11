@@ -7,7 +7,7 @@
 #ifndef _BLURFILTER_H_
 #define _BLURFILTER_H_
 
-#include "../../main.h"
+#include "../../../main.h"
 #include "../ScreenObject.h"
 
 /**************************************

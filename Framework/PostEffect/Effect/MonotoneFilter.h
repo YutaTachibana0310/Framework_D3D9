@@ -7,7 +7,7 @@
 #ifndef _MONOTONEFILTER_H_
 #define _MONOTONEFILTER_H_
 
-#include "../../main.h"
+#include "../../../main.h"
 #include "../ScreenObject.h"
 
 /**************************************

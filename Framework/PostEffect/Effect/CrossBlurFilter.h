@@ -7,7 +7,7 @@
 #ifndef _CROSSBLURFILTER_H_
 #define _CROSSBLURFILTER_H_
 
-#include "../../main.h"
+#include "../../../main.h"
 #include "../ScreenObject.h"
 
 /**************************************

@@ -7,7 +7,7 @@
 #ifndef _BLOOMFILTER_H_
 #define _BLOOMFILTER_H_
 
-#include "../../main.h"
+#include "../../../main.h"
 #include "../ScreenObject.h"
 
 /**************************************
