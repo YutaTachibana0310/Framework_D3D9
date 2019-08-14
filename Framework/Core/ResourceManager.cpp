@@ -5,8 +5,8 @@
 //
 //=====================================
 #include "ResourceManager.h"
-#include "MeshContainer.h"
-#include "BoardPolygon.h"
+#include "../Renderer3D/MeshContainer.h"
+#include "../Renderer3D/BoardPolygon.h"
 
 using namespace std;
 
