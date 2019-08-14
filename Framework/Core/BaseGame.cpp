@@ -12,7 +12,7 @@
 /**************************************
 マクロ定義
 ***************************************/
-
+#define BACKCOLOR	(D3DCOLOR_RGBA(0, 0, 50, 255))
 /**************************************
 コンストラクタ
 ***************************************/
@@ -45,6 +45,9 @@ BaseGame::~BaseGame()
 	SAFE_RELEASE(renderTexture);
 	SAFE_RELEASE(renderSurface);
 	SAFE_RELEASE(screenVtx);
+
+	Debug::Uninit();
+	UninitInput();
 }
 
 /**************************************
@@ -55,6 +58,8 @@ void BaseGame::Update()
 	Debug::Update();
 	UpdateInput();
 	Camera::Instance()->Update();
+
+	sceneManager->Update();
 }
 
 /**************************************
@@ -68,12 +73,13 @@ void BaseGame::Draw()
 	LPDIRECT3DSURFACE9 oldSuf;
 	pDevice->GetRenderTarget(0, &oldSuf);
 	pDevice->SetRenderTarget(0, renderSurface);
-	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0, 1.0f, 0);
+	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, BACKCOLOR, 1.0f, 0);
 
 	//カメラ設定
 	Camera::Instance()->Set();
 
 	//シーンを描画
+	sceneManager->Draw();
 
 	//レンダーターゲット復元
 	pDevice->SetRenderTarget(0, oldSuf);
