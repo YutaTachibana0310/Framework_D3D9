@@ -36,6 +36,11 @@ SceneManager::~SceneManager()
 		SAFE_DELETE(pair.second);
 	}
 	sceneContainer.clear();
+
+	if (mInstance == this)
+	{
+		mInstance = NULL;
+	}
 }
 
 /**************************************

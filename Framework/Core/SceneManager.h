@@ -21,23 +21,34 @@ class BaseScene;
 class SceneManager
 {
 public:
+	//コンストラクタ、デストラクタ
 	SceneManager();
 	~SceneManager();
 
+	//シーン切り替え処理
 	static void ChangeScene(const char* sceneName);
 
+	//シーン追加処理
 	void Add(const char* sceneName, BaseScene* scene);
 
+	//更新処理、描画処理
 	void Update();
 	void Draw();
+
+	//シーン確認処理
 	bool ExistsScene(const char* sceneName);
 
 private:
+	//シーンコンテナ
 	std::unordered_map<std::string, BaseScene*> sceneContainer;
+
+	//現在のシーン、一つ前のシーン
 	BaseScene *current, *prev;
 
+	//シーン切り替え（内部処理）
 	void _ChengeScene(std::string next);
 
+	//staticインスタンス
 	static SceneManager* mInstance;
 };
 
