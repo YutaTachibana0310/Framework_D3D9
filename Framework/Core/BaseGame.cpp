@@ -20,6 +20,9 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
+	//シーンマネージャ作成
+	sceneManager = new SceneManager();
+
 	//描画領域作成
 	MakeScreen();
 	MakeRenderTarget();

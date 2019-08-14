@@ -8,6 +8,7 @@
 #define _BASEGAME_H_
 
 #include "../../main.h"
+#include "SceneManager.h"
 
 /**************************************
 É}ÉNÉçíËã`
@@ -26,6 +27,8 @@ public:
 	virtual void Draw();
 
 protected:
+	SceneManager* sceneManager;
+
 	LPDIRECT3DTEXTURE9 renderTexture;
 	LPDIRECT3DSURFACE9 renderSurface;
 	LPDIRECT3DVERTEXBUFFER9 screenVtx;
