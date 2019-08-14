@@ -164,7 +164,7 @@ void BloomController::SampleBrightness(LPDIRECT3DTEXTURE9 targetTexture)
 
 		//Œ»Ý‚Ì•`‰æî•ñ‚©‚ç‹P“x‚ð’Šo
 		if (targetTexture == NULL)
-			pDevice->SetTexture(0, GetCurrentDrawData());
+			pDevice->SetTexture(0, defaultTarget);
 		else
 			pDevice->SetTexture(0, targetTexture);
 

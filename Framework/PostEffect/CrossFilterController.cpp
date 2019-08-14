@@ -168,7 +168,7 @@ void CrossFilterController::SampleBrightness(LPDIRECT3DTEXTURE9 targetTexture)
 	if (targetTexture != NULL)
 		pDevice->SetTexture(0, targetTexture);
 	else
-		pDevice->SetTexture(0, GetCurrentDrawData());
+		pDevice->SetTexture(0, defaultTarget);
 
 	//縮小バッファ用に頂点をリサイズ
 	bloomFilter->Resize(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);

@@ -9,6 +9,7 @@
 
 #include "../../main.h"
 #include "../Pattern/BaseSingleton.h"
+#include "BaseEffectController.h"
 #include "Effect/BloomFilter.h"
 #include "Effect/CrossBlurFilter.h"
 
@@ -19,7 +20,7 @@
 /**************************************
 ƒNƒ‰ƒX’è‹`
 ***************************************/
-class CrossFilterController : public BaseSingleton<CrossFilterController>
+class CrossFilterController : public BaseSingleton<CrossFilterController>, public BaseEffectController
 {
 public:
 	friend class BaseSingleton<CrossFilterController>;
