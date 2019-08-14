@@ -34,7 +34,7 @@ IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARA
 /**************************************
 デバッグウィンドウ用コールバック
 ***************************************/
-LRESULT DebugWindPrcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT Debug::WindPrcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 #ifdef USE_DEBUGFUNC
 	return ImGui_ImplWin32_WndProcHandler(hwnd, msg, wParam, lParam);
@@ -46,7 +46,7 @@ LRESULT DebugWindPrcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 /**************************************
 初期化処理
 ***************************************/
-void InitDebugWindow(HWND hWnd, LPDIRECT3DDEVICE9 pDevice)
+void Debug::Init(HWND hWnd, LPDIRECT3DDEVICE9 pDevice)
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::CreateContext();
@@ -61,7 +61,7 @@ void InitDebugWindow(HWND hWnd, LPDIRECT3DDEVICE9 pDevice)
 /**************************************
 終了処理
 ***************************************/
-void UninitDebugWindow(int num)
+void Debug::Uninit()
 {
 #ifdef USE_DEBUGFUNC
 	ImGui_ImplDX9_Shutdown();
@@ -72,7 +72,7 @@ void UninitDebugWindow(int num)
 /**************************************
 更新処理
 ***************************************/
-void UpdateDebugWindow(void)
+void Debug::Update(void)
 {
 #ifdef USE_DEBUGFUNC
 	if (GetKeyboardTrigger(DIK_D) && GetKeyboardPress(DIK_LCONTROL))
@@ -91,7 +91,7 @@ void UpdateDebugWindow(void)
 /**************************************
 描画処理
 ***************************************/
-void DrawDebugWindow(void)
+void Debug::Draw(void)
 {
 #ifdef USE_DEBUGFUNC
 	if (!enableDraw)
@@ -105,85 +105,10 @@ void DrawDebugWindow(void)
 #endif
 }
 
-/**************************************
-高解像度タイマーでの計測開始処理
-***************************************/
-void BeginTimerCount(void)
-{
-#ifdef USE_DEBUGFUNC
-	QueryPerformanceCounter(&timeCountBegin);
-#endif
-}
-
-/**************************************
-計測開始からの経過時間[単位：msec]
-***************************************/
-double GetProgressTimerCount(void)
-{
-#ifdef USE_DEBUGFUNC
-	//タイマーの周波数を取得
-	LARGE_INTEGER frequencyTimer;
-	QueryPerformanceFrequency(&frequencyTimer);
-
-	//カウント取得
-	LARGE_INTEGER timeCurrent;
-	QueryPerformanceCounter(&timeCurrent);
-
-	//計測開始からの経過時間[msec]を計算
-	LONGLONG span = timeCurrent.QuadPart - timeCountBegin.QuadPart;
-	double msec = (double)span * 1000 / (double)frequencyTimer.QuadPart;
-
-	return msec;
-#else 
-	return 0.0f;
-#endif
-}
-
-/**************************************
-タイマーカウント取得処理（20フレームおきに動作）
-***************************************/
-void GetTimerCount(LARGE_INTEGER *ptr)
-{
-#ifdef	USE_DEBUGFUNC
-	if (cntFrame % INTERBAL_GETTIMER != 0)
-		return;
-
-	QueryPerformanceCounter(ptr);
-#endif
-}
-
-/**************************************
-経過時間取得処理[msec]
-***************************************/
-double CalcProgressTime(LARGE_INTEGER start, LARGE_INTEGER end)
-{
-#ifdef USE_DEBUGFUNC
-	//タイマーの周波数取得
-	LARGE_INTEGER frequency;
-	QueryPerformanceFrequency(&frequency);
-
-	//経過時間を計算
-	LONGLONG span = end.QuadPart - start.QuadPart;
-	double msec = (double)span * 1000.0f / (double)frequency.QuadPart;
-
-	return msec;
-#else
-	return 0.0f;
-#endif
-}
-
-/*************************************
-表示切り替え処理
-***************************************/
-void SetActiveDebugWindow(bool state)
-{
-	enableDraw = state;
-}
-
 /*************************************
 デバッグウィンドウ開始処理
 ***************************************/
-void BeginDebugWindow(const char *label, bool menuBar)
+void Debug::Begin(const char *label, bool menuBar)
 {
 #ifdef USE_DEBUGFUNC
 	ImGuiWindowFlags flag = 0;
@@ -197,7 +122,7 @@ void BeginDebugWindow(const char *label, bool menuBar)
 /*************************************
 デバッグウィンドウ終了処理
 ***************************************/
-void EndDebugWindow(const char *label)
+void Debug::End()
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::End();
@@ -205,9 +130,25 @@ void EndDebugWindow(const char *label)
 }
 
 /*************************************
+汎用デバッグテキスト表示
+***************************************/
+void Debug::Log(const char *str, ...)
+{
+#ifdef USE_DEBUGFUNC
+	Begin("Console");
+	va_list ap;
+	va_start(ap, str);
+	ImGui::TextV(str, ap);
+	//ImGui::Text(str, ap);
+	va_end(ap);
+	End();
+#endif
+}
+
+/*************************************
 デバッグテキスト表示処理
 ***************************************/
-void DebugText(const char *str, ...)
+void Debug::Text(const char *str, ...)
 {
 #ifdef USE_DEBUGFUNC
 	va_list ap;
@@ -221,17 +162,17 @@ void DebugText(const char *str, ...)
 /*************************************
 デバッグテキスト表示処理
 ***************************************/
-void DebugText(std::string str)
+void Debug::Text(const D3DXVECTOR3& arg, const char* name)
 {
 #ifdef USE_DEBUGFUNC
-	DebugText(str.c_str());
+	Text("%s : %f %f, %f", name, arg.x, arg.y, arg.z);
 #endif
 }
 
 /*************************************
 デバッグボタン表示処理
 ***************************************/
-bool DebugButton(const char *label)
+bool Debug::Button(const char *label)
 {
 #ifdef USE_DEBUGFUNC
 	return ImGui::Button(label);
@@ -241,12 +182,103 @@ bool DebugButton(const char *label)
 }
 
 /*************************************
-デバッグボタン表示処理(string版)
+ラジオボタン処理
 ***************************************/
-bool DebugButton(const std::string *label)
+bool Debug::RadioButton(const char* label, int& output, int val)
 {
 #ifdef USE_DEBUGFUNC
-	return ImGui::Button(label->c_str());
+	return ImGui::RadioButton(label, &output, val);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+チェックボックス処理
+***************************************/
+bool Debug::CheckBox(const char* label, bool& val)
+{
+#ifdef USE_DEBUGFUNC
+	return ImGui::Checkbox(label, &val);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+入力処理
+***************************************/
+bool Debug::Input(const char* label, float& out)
+{
+#ifdef USE_DEBUGFUNC
+	return ImGui::InputFloat(label, &out);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+入力処理
+***************************************/
+bool Debug::Input(const char* label, int& out)
+{
+#ifdef USE_DEBUGFUNC
+	return ImGui::InputInt(label, &out);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+入力処理
+***************************************/
+bool Debug::Debug::Input(const char* label, char* out, size_t sizeBuff)
+{
+#ifdef USE_DEBUGFUNC
+	return ImGui::InputText(label, out, sizeBuff);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+入力処理
+***************************************/
+bool Debug::Input(const char* label, D3DXVECTOR3& out)
+{
+#ifdef USE_DEBUGFUNC
+	return ImGui::InputFloat3(label, (float*)&out);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+入力処理
+***************************************/
+bool Debug::Input(const char* label, D3DXVECTOR2& out)
+{
+#ifdef USE_DEBUGFUNC
+	return ImGui::InputFloat2(label, (float*)&out);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+入力処理
+***************************************/
+bool Debug::Input(const char* label, std::string& out)
+{
+#ifdef USE_DEBUGFUNC
+	char tmp[128];
+	strcpy(tmp, out.c_str());
+	bool res = ImGui::InputText(label, tmp, 128);
+	if (res)
+	{
+		out = std::string(tmp);
+	}
+	return res;
 #else
 	return false;
 #endif
@@ -255,10 +287,10 @@ bool DebugButton(const std::string *label)
 /*************************************
 デバッグスライダー処理
 ***************************************/
-bool DebugSliderFloat(const char *label, float *adr, float min, float max)
+bool Debug::Slider(const char *label, float& adr, float min, float max)
 {
 #ifdef USE_DEBUGFUNC
-	return ImGui::SliderFloat(label, adr, min, max);
+	return ImGui::SliderFloat(label, &adr, min, max);
 
 #else
 	return false;
@@ -266,12 +298,43 @@ bool DebugSliderFloat(const char *label, float *adr, float min, float max)
 }
 
 /*************************************
-デバッグスライダー処理(string版)
+デバッグスライダー処理
 ***************************************/
-bool DebugSliderFloat(const std::string *label, float *adr, float min, float max)
+bool Debug::Slider(const char* label, int& out, int min, int max)
 {
 #ifdef USE_DEBUGFUNC
-	return ImGui::SliderFloat(label->c_str(), adr, min, max);
+	return ImGui::SliderInt(label, &out, min, max);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+デバッグスライダー処理
+***************************************/
+bool Debug::Slider(const char* label, D3DXVECTOR3& out, const D3DXVECTOR3& min, const D3DXVECTOR3& max)
+{
+#ifdef USE_DEBUGFUNC
+	bool res = false;
+	res |= ImGui::SliderFloat((std::string(label) + std::string(".x")).c_str(), &out.x, min.x, max.x);
+	res |= ImGui::SliderFloat((std::string(label) + std::string(".y")).c_str(), &out.y, min.x, max.y);
+	res |= ImGui::SliderFloat((std::string(label) + std::string(".z")).c_str(), &out.z, min.x, max.z);
+	return res;
+#else
+	return false;
+#endif
+}
+
+/*************************************
+デバッグスライダー処理
+***************************************/
+bool Debug::Slider(const char* label, D3DXVECTOR2& out, const D3DXVECTOR2& min, const D3DXVECTOR2& max)
+{
+#ifdef USE_DEBUGFUNC
+	bool res = false;
+	res |= ImGui::SliderFloat((std::string(label) + std::string(".x")).c_str(), &out.x, min.x, max.x);
+	res |= ImGui::SliderFloat((std::string(label) + std::string(".y")).c_str(), &out.y, min.x, max.y);
+	return res;
 #else
 	return false;
 #endif
@@ -280,17 +343,40 @@ bool DebugSliderFloat(const std::string *label, float *adr, float min, float max
 /*************************************
 デバッグカラーピッカー処理
 ***************************************/
-void DebugColorEditor(const char *label, float array[4])
+bool Debug::ColorEdit(const char *label, D3DXCOLOR& out)
 {
 #ifdef USE_DEBUGFUNC
-	ImGui::ColorEdit4(label, array);
+	return ImGui::ColorEdit4(label, (float*)&out);
+#else
+	return false;
+#endif
+}
+
+/*************************************
+テクスチャ表示処理
+***************************************/
+void Debug::DrawTexture(LPDIRECT3DTEXTURE9 texture, const D3DXVECTOR2& size)
+{
+#ifdef USE_DEBUGFUNC
+	ImGui::Image((void*)texture, ImVec2(size.x, size.y));
+#endif
+}
+
+
+/*************************************
+プログレスバー処理
+***************************************/
+void Debug::ProgressBar(const char* label, float fraction, const D3DXVECTOR2& size)
+{
+#ifdef USE_DEBUGFUNC
+	ImGui::ProgressBar(fraction, ImVec2(size.x, size.y), label);
 #endif
 }
 
 /*************************************
 デバッグウィンドウ改行処理
 ***************************************/
-void DebugNewLine(void)
+void Debug::NewLine(void)
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::NewLine();
@@ -300,7 +386,7 @@ void DebugNewLine(void)
 /*************************************
 デバッグウィンドウ連続行処理
 ***************************************/
-void DebugSameLine(void)
+void Debug::SameLine(void)
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::SameLine();
@@ -310,7 +396,7 @@ void DebugSameLine(void)
 /*************************************
 ツリー構造展開処理
 ***************************************/
-void DebugTreeExpansion(bool isOpen)
+void Debug::ExpandTree(bool isOpen)
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::SetNextTreeNodeOpen(isOpen, ImGuiSetCond_Once);
@@ -320,7 +406,7 @@ void DebugTreeExpansion(bool isOpen)
 /*************************************
 ツリー構造プッシュ処理
 ***************************************/
-bool DebugTreePush(const char *label)
+bool Debug::PushTree(const char *label)
 {
 #ifdef USE_DEBUGFUNC
 	return ImGui::TreeNode(label);
@@ -332,7 +418,7 @@ bool DebugTreePush(const char *label)
 /*************************************
 ツリー構造ポップ処理
 ***************************************/
-void DebugTreePop(void)
+void Debug::PopTree(void)
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::TreePop();
@@ -340,152 +426,9 @@ void DebugTreePop(void)
 }
 
 /*************************************
-プログレスバー処理
-***************************************/
-void DebugProgressBar(float fraction, const char* label, D3DXVECTOR2 size)
-{
-#ifdef USE_DEBUGFUNC
-	ImGui::ProgressBar(fraction, ImVec2(size.x, size.y), label);
-#endif
-}
-
-/*************************************
-3次元ベクトル入力処理
-***************************************/
-void DebugInputVector3(const char* label, D3DXVECTOR3 *vec)
-{
-#ifdef USE_DEBUGFUNC
-	ImGui::InputFloat3(label, (float*)vec);
-#endif
-}
-
-/*************************************
-3次元ベクトルスライダー入力処理
-***************************************/
-void DebugSliderVector3(const char* label, D3DXVECTOR3 *vec, float min, float max)
-{
-#ifdef USE_DEBUGFUNC
-	ImGui::SliderFloat3(label, (float*)vec, min, max);
-#endif
-}
-
-/*************************************
-2次元ベクトル入力処理
-***************************************/
-void DebugInputVector2(const char* label, D3DXVECTOR2 *vec)
-{
-#ifdef USE_DEBUGFUNC
-	ImGui::InputFloat2(label, (float*)vec);
-#endif
-}
-
-/*************************************
-float型入力処理
-***************************************/
-void DebugInputFloat(const char* label, float *var)
-{
-#ifdef USE_DEBUGFUNC
-	ImGui::InputFloat(label, var);
-#endif
-}
-
-/*************************************
-int型入力処理
-***************************************/
-bool DebugInputInt(const char* label, int* val)
-{
-#ifdef USE_DEBUGFUNC
-	return ImGui::InputInt(label, val);
-#else
-	return false;
-#endif
-}
-
-/*************************************
-文字列入力処理
-***************************************/
-bool DebugInputText(const char* label, char *buf, size_t buf_size)
-{
-#ifdef USE_DEBUGFUNC
-	return ImGui::InputText(label, buf, buf_size);
-#else
-	return false;
-#endif
-}
-
-/*************************************
-文字列入力処理
-***************************************/
-bool DebugInputText(const char* label, std::string* pStr)
-{
-#ifdef USE_DEBUGFUNC
-	char tmp[128];
-	strcpy(tmp, pStr->c_str());
-	bool res = ImGui::InputText(label, tmp, 128);
-	if (res)
-	{
-		*pStr = tmp;
-	}
-	return res;
-#else
-	return false;
-#endif
-}
-
-/*************************************
-ラジオボタン処理
-***************************************/
-bool DebugRadioButton(const char* label, int* output, int val)
-{
-#ifdef USE_DEBUGFUNC
-	return ImGui::RadioButton(label, output, val);
-#else
-	return false;
-#endif
-}
-
-/*************************************
-チェックボックス処理
-***************************************/
-bool DebugChechBox(const char* label, bool* val)
-{
-#ifdef USE_DEBUGFUNC
-	return ImGui::Checkbox(label, val);
-#else
-	return false;
-#endif
-}
-
-/*************************************
-テクスチャ表示処理
-***************************************/
-void DebugDrawTexture(LPDIRECT3DTEXTURE9 texture, float sizeX, float sizeY)
-{
-#ifdef USE_DEBUGFUNC
-	ImGui::Image((void*)texture, ImVec2(sizeX, sizeY));
-#endif
-}
-
-/*************************************
-汎用デバッグテキスト表示
-***************************************/
-void DebugLog(const char *str, ...)
-{
-#ifdef USE_DEBUGFUNC
-	BeginDebugWindow("Console");
-	va_list ap;
-	va_start(ap, str);
-	ImGui::TextV(str, ap);
-	//ImGui::Text(str, ap);
-	va_end(ap);
-	EndDebugWindow("Console");
-#endif
-}
-
-/*************************************
 メニューバー設定開始処理
 ***************************************/
-bool BeginMenuBar()
+bool Debug::BeginMenu()
 {
 #ifdef USE_DEBUGFUNC
 	return ImGui::BeginMenuBar();
@@ -497,7 +440,7 @@ bool BeginMenuBar()
 /*************************************
 メニューバー設定終了処理
 ***************************************/
-void EndMenuBar()
+void Debug::EndMenu()
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::EndMenuBar();
@@ -507,7 +450,7 @@ void EndMenuBar()
 /*************************************
 メニュー設定終了処理
 ***************************************/
-bool BeginMenuItem(const char* label)
+bool Debug::BeginMenuItem(const char* label)
 {
 #ifdef USE_DEBUGFUNC
 	return ImGui::BeginMenu(label);
@@ -519,7 +462,7 @@ bool BeginMenuItem(const char* label)
 /*************************************
 メニュー設定終了処理
 ***************************************/
-void EndMenuItem()
+void Debug::EndMenuItem()
 {
 #ifdef  USE_DEBUGFUNC
 	ImGui::EndMenu();
@@ -528,22 +471,9 @@ void EndMenuItem()
 }
 
 /*************************************
-メニューアイテム設定処理
-***************************************/
-void MenuItem(const char* label, std::function<void(void)> func)
-{
-#ifdef USE_DEBUGFUNC
-	if (ImGui::MenuItem(label))
-	{
-		func();
-	}
-#endif
-}
-
-/*************************************
 子供開始処理
 ***************************************/
-bool BeginChild(const char* id)
+bool Debug::BeginChild(const char* id)
 {
 #ifdef USE_DEBUGFUNC
 	return ImGui::BeginChild(ImGui::GetID((void*)0));
@@ -555,9 +485,76 @@ bool BeginChild(const char* id)
 /*************************************
 子供終了処理
 ***************************************/
-void EndChild()
+void Debug::EndChild()
 {
 #ifdef USE_DEBUGFUNC
 	ImGui::EndChild();
 #endif
 }
+
+///**************************************
+//高解像度タイマーでの計測開始処理
+//***************************************/
+//void BeginTimerCount(void)
+//{
+//#ifdef USE_DEBUGFUNC
+//	QueryPerformanceCounter(&timeCountBegin);
+//#endif
+//}
+//
+///**************************************
+//計測開始からの経過時間[単位：msec]
+//***************************************/
+//double GetProgressTimerCount(void)
+//{
+//#ifdef USE_DEBUGFUNC
+//	//タイマーの周波数を取得
+//	LARGE_INTEGER frequencyTimer;
+//	QueryPerformanceFrequency(&frequencyTimer);
+//
+//	//カウント取得
+//	LARGE_INTEGER timeCurrent;
+//	QueryPerformanceCounter(&timeCurrent);
+//
+//	//計測開始からの経過時間[msec]を計算
+//	LONGLONG span = timeCurrent.QuadPart - timeCountBegin.QuadPart;
+//	double msec = (double)span * 1000 / (double)frequencyTimer.QuadPart;
+//
+//	return msec;
+//#else 
+//	return 0.0f;
+//#endif
+//}
+//
+///**************************************
+//タイマーカウント取得処理（20フレームおきに動作）
+//***************************************/
+//void GetTimerCount(LARGE_INTEGER *ptr)
+//{
+//#ifdef	USE_DEBUGFUNC
+//	if (cntFrame % INTERBAL_GETTIMER != 0)
+//		return;
+//
+//	QueryPerformanceCounter(ptr);
+//#endif
+//}
+//
+///**************************************
+//経過時間取得処理[msec]
+//***************************************/
+//double CalcProgressTime(LARGE_INTEGER start, LARGE_INTEGER end)
+//{
+//#ifdef USE_DEBUGFUNC
+//	//タイマーの周波数取得
+//	LARGE_INTEGER frequency;
+//	QueryPerformanceFrequency(&frequency);
+//
+//	//経過時間を計算
+//	LONGLONG span = end.QuadPart - start.QuadPart;
+//	double msec = (double)span * 1000.0f / (double)frequency.QuadPart;
+//
+//	return msec;
+//#else
+//	return 0.0f;
+//#endif
+//}

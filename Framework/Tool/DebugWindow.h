@@ -10,13 +10,13 @@
 #include "../../main.h"
 
 #include <string>
-#include <functional>
 
 /**************************************
 マクロ定義
 ***************************************/
 #define USE_DEBUGFUNC
 #define STR(var) #var		//varを文字列に置換するマクロ
+
 /**************************************
 構造体定義
 ***************************************/
@@ -24,83 +24,90 @@
 /**************************************
 プロトタイプ宣言
 ***************************************/
-void DebugLog(const char *str, ...);	//汎用デバッグログ出力関数
 
 /**************************************/
-//ImGUIラッパー関数
+//ImGUIラッパークラス
 /***************************************/
-void BeginDebugWindow(const char *label, bool menuBar = false);	//デバッグ出力の最初に呼ぶ関数
-void EndDebugWindow(const char* label);		//デバッグ出力の最後に呼ぶ関数
+class Debug
+{
+public:
+	//開始、終了処理
+	static void Begin(const char* label, bool menuBar = false);
+	static void End();
 
-//テキスト出力機能
-void DebugText(const char *str, ...);
-void DebugText(std::string str);
+	//Console表示
+	static void Log(const char *str, ...);
 
-//ボタン機能
-bool DebugButton(const char *label);
-bool DebugButton(const std::string *label);
-bool DebugRadioButton(const char* label, int* output, int val);
-bool DebugChechBox(const char* label, bool* val);
+	//テキスト表示
+	static void Text(const char* str, ...);
+	static void Text(const D3DXVECTOR3& arg, const char* name);
 
-//スライダーでfloat値を入力できる機能
-bool DebugSliderFloat(const char *label, float *adr, float min, float max);
-bool DebugSliderFloat(const std::string *label, float *adr, float min, float max);
+	//ボタン入力関連
+	static bool Button(const char* label);
+	static bool RadioButton(const char* label, int& out, int val);
+	static bool CheckBox(const char* label, bool& val);
+	
+	//パラメータ入力関連
+	static bool Input(const char* label, float& out);
+	static bool Input(const char* label, int& out);
+	static bool Input(const char* label, char* out, size_t sizeBuff);
+	static bool Input(const char* label, D3DXVECTOR3& out);
+	static bool Input(const char* label, D3DXVECTOR2& out);
+	static bool Input(const char* label, std::string& out);
 
-//カラーエディット機能
-void DebugColorEditor(const char *label, float array[4]);
+	//パラメータスライダー入力関連
+	static bool Slider(const char* label, float& out, float min, float max);
+	static bool Slider(const char* label, int& out, int min, int max);
+	static bool Slider(const char* label, D3DXVECTOR3& out, const D3DXVECTOR3& min, const D3DXVECTOR3& max);
+	static bool Slider(const char* label, D3DXVECTOR2& out, const D3DXVECTOR2& min, const D3DXVECTOR2& max);
 
-//ベクトル入力処理
-void DebugSliderVector3(const char* label, D3DXVECTOR3 *vec, float min, float max);
-void DebugInputVector3(const char* label, D3DXVECTOR3 *vec);
-void DebugInputVector2(const char* label, D3DXVECTOR2 *vec);
+	//テクスチャ描画
+	static void DrawTexture(LPDIRECT3DTEXTURE9 texture, const D3DXVECTOR2& size);
 
-//データ入力機能
-void DebugInputFloat(const char* label, float *var);
-bool DebugInputInt(const char* label, int* val);
-bool DebugInputText(const char* label, char *buf, size_t buf_size);
-bool DebugInputText(const char* label, std::string* pStr);
+	//カラーエディタ
+	static bool ColorEdit(const char* label, D3DXCOLOR& out);
+	
+	//プログレスバー
+	static void ProgressBar(const char* label, float fraction, const D3DXVECTOR2& size = D3DXVECTOR2(-1.0f, 0.0f));
 
-//テクスチャ描画機能
-void DebugDrawTexture(LPDIRECT3DTEXTURE9 texture, float sizeX, float sizeY);
+	//改行、同行
+	static void NewLine();
+	static void SameLine();
 
-//プログレスバー表示機能
-void DebugProgressBar(float fraction, const char* label, D3DXVECTOR2 size = D3DXVECTOR2(-1.0f, 0.0f));
+	//ツリー関連
+	static void ExpandTree(bool isOpen);
+	static bool PushTree(const char* label);
+	static void PopTree();
 
-//表示形式調整機能
-void DebugNewLine(void);
-void DebugSameLine(void);
+	//メニューバー関連
+	static bool BeginMenu();
+	static void EndMenu();
+	static bool BeginMenuItem(const char* label);
+	static void EndMenuItem();
+	template <class T>
+	static void MenuItem(const char* label, T func)
+	{
+#ifdef USE_DEBUGFUNC
+		if (ImGui::MenuItem(label))
+		{
+			func();
+		}
+#endif
+	}
 
-//ツリー表示機能
-void DebugTreeExpansion(bool isOpen);
-bool DebugTreePush(const char *label);
-void DebugTreePop(void);
+	//子要素関連
+	static bool BeginChild(const char* label);
+	static void EndChild();
 
-//メニューバー関連
-bool BeginMenuBar();
-void EndMenuBar();
-bool BeginMenuItem(const char* label);
-void EndMenuItem();
-void MenuItem(const char* label, std::function<void(void)> func);
+	//各種処理
+	static LRESULT WindPrcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	static void Init(HWND hWnd, LPDIRECT3DDEVICE9 pDevice);
+	static void Uninit();
+	static void Update();
+	static void Draw();
 
-//部品関連
-bool BeginChild(const char* id);
-void EndChild();
-
-//プロシージャ
-LRESULT DebugWindPrcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
-
-//各種処理
-void InitDebugWindow(HWND hWnd, LPDIRECT3DDEVICE9 pDevice);
-void UninitDebugWindow(int num);
-void UpdateDebugWindow(void);
-void DrawDebugWindow(void);
-
-void SetActiveDebugWindow(bool state = true);	//表示切替処理
-
-//処理時間計測機能
-void BeginTimerCount(void);				//高解像度タイマー計測開始
-double GetProgressTimerCount(void);		//タイマー経過時間取得処理
-void GetTimerCount(LARGE_INTEGER *ptr);	//タイマーカウント取得(20フレーム間隔)
-double CalcProgressTime(LARGE_INTEGER start, LARGE_INTEGER end);	//経過時間取得	
+private:
+	Debug();
+};
 
 #endif
