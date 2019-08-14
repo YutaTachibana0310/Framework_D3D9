@@ -10,7 +10,7 @@
 #include "..\..\main.h"
 #include "..\Pattern\BaseSingleton.h"
 
-#include <map>
+#include <unordered_map>
 
 class ProfilerNode;
 /**************************************
@@ -29,17 +29,20 @@ public:
 	void Draw();
 	void Clear();
 
-	void Begin( const char* tag);
+	void BeginLabel(const char* labe);
+	void EndLabel();
+
+	void Begin(const char* tag);
 	void End(const char* tag);
 
 private:
-	std::map<std::string, std::map<std::string, ProfilerNode>> profilerMap;
+	std::unordered_map<std::string, std::unordered_map<std::string, ProfilerNode>> profilerMap;
 	DWORD cntFrame;
-	std::string currentLabel;
+	std::string currentLabel, prevLabel;
 
 	void CalcElapsed();
 	
-	ProfilerCPU() {}
+	ProfilerCPU();
 	ProfilerCPU(const ProfilerCPU&) {}
 	~ProfilerCPU() {}
 };

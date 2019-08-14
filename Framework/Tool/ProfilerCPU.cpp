@@ -14,11 +14,20 @@ using namespace std;
 /**************************************
 マクロ定義
 ***************************************/
-#define PROFILER_CPU_COUNT_INTERBAL	(20)
+#define PROFILER_CPU_COUNT_INTERBAL		(20)
 #define PROFILER_CPU_BAR_SIZE			(D3DXVECTOR2(75.0f, 0.0f))
+#define PROFILER_LABEL_DEFAULT			"Profiler"
 
 /**************************************
-ProfilerCPUコ更新処理
+Profilerコンストラクタ
+***************************************/
+ProfilerCPU::ProfilerCPU()
+{
+	currentLabel = prevLabel = string(PROFILER_LABEL_DEFAULT);
+}
+
+/**************************************
+ProfilerCPU更新処理
 ***************************************/
 void ProfilerCPU::Update()
 {
@@ -76,28 +85,49 @@ void ProfilerCPU::Clear()
 }
 
 /**************************************
+ラベル開始処理
+***************************************/
+void ProfilerCPU::BeginLabel(const char* label)
+{
+#ifdef USE_PROFILER_CPU
+	prevLabel = currentLabel;
+	currentLabel = string(label);
+#endif
+}
+
+/**************************************
+ラベル終了処理
+***************************************/
+void ProfilerCPU::EndLabel()
+{
+#ifdef USE_PROFILER_CPU
+	currentLabel = prevLabel;
+#endif
+}
+
+/**************************************
 計測開始処理
 ***************************************/
-void ProfilerCPU::BeginProfile(const char* tag, const char* label)
+void ProfilerCPU::Begin(const char* tag)
 {
 #ifdef USE_PROFILER_CPU
 	if (cntFrame % 20 != 0)
 		return;
 
-	profilerMap[string(tag)][string(label)].Count(true);
+	profilerMap[currentLabel][string(tag)].Count(true);
 #endif
 }
 
 /**************************************
 計測終了処理
 ***************************************/
-void ProfilerCPU::EndProfile(const char* tag, const char* label)
+void ProfilerCPU::End(const char* tag)
 {
 #ifdef USE_PROFILER_CPU
 	if (cntFrame % 20 != 0)
 		return;
 
-	profilerMap[string(tag)][string(label)].Count(false);
+	profilerMap[currentLabel][string(tag)].Count(false);
 #endif
 }
 
