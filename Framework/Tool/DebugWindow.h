@@ -108,14 +108,6 @@ public:
 
 private:
 	Debug();
-
-	LARGE_INTEGER timeCountBegin;
 };
-
-//プロファイラ用機能
-static void BeginTimerCount();					//高解像度タイマー計測開始
-static double GetTimerProgress();				//タイマー経過取得処理
-static void GetTimerCount(LARGE_INTEGER& out);	//カウント取得
-static double CalcProgress(const LARGE_INTEGER& start, const LARGE_INTEGER& end); //経過時間計算
 
 #endif
