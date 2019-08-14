@@ -14,7 +14,7 @@
 //*****************************************************************************
 #include <windows.h>
 #include "d3dx9.h"
-#include "Framework\Transform.h"
+#include "Framework\Core\Transform.h"
 #include "Framework\Math\TMath.h"
 #include "Framework\Math\Vector3.h"
 
