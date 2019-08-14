@@ -7,10 +7,10 @@
 #ifndef _INPUT_H_
 #define _INPUT_H_
 
-#include "main.h"
-#include "Framework\input\Gamepad.h"
-#include "Framework\input\Mouse.h"
-#include "Framework\input\Keyboard.h"
+#include "../../main.h"
+#include "Gamepad.h"
+#include "Mouse.h"
+#include "Keyboard.h"
 
 //*****************************************************************************
 // É}ÉNÉçíËã`
