@@ -37,6 +37,8 @@ void Camera::Init()
 	viewAspect = InitViewAspect;
 	viewNear = InitViewNear;
 	viewFar = InitViewFar;
+
+	Set();
 }
 
 /**************************************
