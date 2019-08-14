@@ -53,7 +53,7 @@ private:
 
 public:
 	//カメラを揺らすプラグイン
-	class CameraShakePlugin;
+	class ShakePlugin;
 	
 };
 

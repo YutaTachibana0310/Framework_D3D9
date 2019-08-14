@@ -16,7 +16,7 @@
 ***************************************/
 Camera::Camera()
 {
-	pluginList.push_back(CameraShakePlugin::Instance());
+	pluginList.push_back(ShakePlugin::Instance());
 }
 
 /**************************************

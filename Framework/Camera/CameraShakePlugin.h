@@ -1,6 +1,6 @@
 //=====================================
 //
-//カメラシェイクプラグインヘッダ[CameraShakePlugin.h]
+//カメラシェイクプラグインヘッダ[ShakePlugin.h]
 //Author:GP12B332 21 立花雄太
 //
 //=====================================
@@ -16,13 +16,13 @@
 /**************************************
 クラス定義
 ***************************************/
-class Camera::CameraShakePlugin : public BaseCameraPlugin, public BaseSingleton<CameraShakePlugin>
+class Camera::ShakePlugin : public BaseCameraPlugin, public BaseSingleton<ShakePlugin>
 {
-	friend class BaseSingleton<CameraShakePlugin>;
+	friend class BaseSingleton<ShakePlugin>;
 public:
 	void Update();
 	void Apply(Camera& camera);
-	void Set(D3DXVECTOR3 amplitude, int duration = 30);
+	void Set(const D3DXVECTOR3& amplitude, int duration = 30);
 
 private:
 	int cntFrame;
@@ -30,9 +30,9 @@ private:
 	int duration;
 	bool active;
 
-	CameraShakePlugin();
-	CameraShakePlugin(const CameraShakePlugin&) {}
-	~CameraShakePlugin() {}
+	ShakePlugin();
+	ShakePlugin(const ShakePlugin&) {}
+	~ShakePlugin() {}
 };
 
 #endif
