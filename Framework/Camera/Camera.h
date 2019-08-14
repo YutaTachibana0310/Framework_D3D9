@@ -13,17 +13,7 @@
 
 #include <vector>
 
-/**************************************
-カメラプラグイン基底クラス
-***************************************/
-class Camera;
-class BaseCameraPlugin
-{
-public:
-	virtual void Update() = 0;
-	virtual void Apply(Camera& camera) = 0;
-};
-
+class BaseCameraPlugin;
 /**************************************
 Cameraクラス
 ***************************************/
@@ -62,27 +52,19 @@ private:
 	~Camera() {}
 
 public:
-	/**************************************
-	カメラを揺らすプラグインクラス
-	***************************************/
-	class CameraShakePlugin : public BaseCameraPlugin, public BaseSingleton<CameraShakePlugin>
-	{
-		friend class BaseSingleton<CameraShakePlugin>;
-	public:
-		void Update();
-		void Apply(Camera& camera);
-		void Set(D3DXVECTOR3 amplitude, int duration = 30);
+	//カメラを揺らすプラグイン
+	class CameraShakePlugin;
+	
+};
 
-	private:
-		int cntFrame;
-		D3DXVECTOR3 amplitude;
-		int duration;
-		bool active;
-
-		CameraShakePlugin();
-		CameraShakePlugin(const CameraShakePlugin&) {}
-		~CameraShakePlugin(){}
-	};
+/**************************************
+カメラプラグイン基底クラス
+***************************************/
+class BaseCameraPlugin
+{
+public:
+	virtual void Update() = 0;
+	virtual void Apply(Camera& camera) = 0;
 };
 
 #endif
