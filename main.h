@@ -14,7 +14,8 @@
 //*****************************************************************************
 #include <windows.h>
 #include "d3dx9.h"
-#include "Framework\Transform.h"
+#include "Framework\Core\Transform.h"
+#include "Framework\Core\GameObject.h"
 #include "Framework\Math\TMath.h"
 #include "Framework\Math\Vector3.h"
 
@@ -118,9 +119,4 @@ typedef struct
 //*****************************************************************************
 LPDIRECT3DDEVICE9 GetDevice(void);
 LPDIRECT3DTEXTURE9 CreateTextureFromFile(LPSTR szName, LPDIRECT3DDEVICE9 lpD3DDevice);
-void TranslateViewPort(D3DXVECTOR3 *out, D3DXVECTOR3 *pos);
-void SetBackColor(D3DXCOLOR color);
-int GetCurrentScene(void);
-int GetCurrentFPS(void);
-LPDIRECT3DTEXTURE9 GetCurrentDrawData();
 #endif

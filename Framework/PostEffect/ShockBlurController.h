@@ -9,6 +9,7 @@
 
 #include "../../main.h"
 #include "../Pattern/BaseSingleton.h"
+#include "BaseEffectController.h"
 #include "Effect/ShockBlur.h"
 
 /**************************************
@@ -18,7 +19,7 @@
 /**************************************
 ƒNƒ‰ƒX’è‹`
 ***************************************/
-class ShockBlurController : public BaseSingleton<ShockBlurController>
+class ShockBlurController : public BaseSingleton<ShockBlurController>, public BaseEffectController
 {
 public:
 	friend class BaseSingleton<ShockBlurController>;

@@ -9,6 +9,7 @@
 
 #include "../../main.h"
 #include "../Pattern/BaseSingleton.h"
+#include "BaseEffectController.h"
 
 /**************************************
 マクロ定義
@@ -22,12 +23,13 @@ class SpeedBlur;
 /**************************************
 クラス定義
 ***************************************/
-class SpeedBlurController : public BaseSingleton<SpeedBlurController>
+class SpeedBlurController : public BaseSingleton<SpeedBlurController>, public BaseEffectController
 {
 public:
 	friend class BaseSingleton<SpeedBlurController>;
 
-	void Draw();
+	void Update();
+	void Draw(LPDIRECT3DTEXTURE9 targetTexture = NULL);
 
 private:
 	SpeedBlurController();

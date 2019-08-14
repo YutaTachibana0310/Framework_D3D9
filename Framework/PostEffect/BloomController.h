@@ -9,6 +9,7 @@
 
 #include "../../main.h"
 #include "../Pattern/BaseSingleton.h"
+#include "BaseEffectController.h"
 #include "Effect/BloomFilter.h"
 #include "Effect/BlurFilter.h"
 
@@ -19,7 +20,7 @@
 /**************************************
 ƒNƒ‰ƒX’è‹`
 ***************************************/
-class BloomController : public BaseSingleton<BloomController>
+class BloomController : public BaseSingleton<BloomController>, public BaseEffectController
 {
 public:
 	friend class BaseSingleton<BloomController>;

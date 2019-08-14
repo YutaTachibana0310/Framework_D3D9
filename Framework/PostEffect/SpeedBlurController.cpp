@@ -25,9 +25,17 @@
 ***************************************/
 
 /**************************************
+XVˆ—
+***************************************/
+void SpeedBlurController::Update()
+{
+
+}
+
+/**************************************
 •`‰æˆ—
 ***************************************/
-void SpeedBlurController::Draw()
+void SpeedBlurController::Draw(LPDIRECT3DTEXTURE9 targetTexture)
 {
 #ifdef SPEEDBLURCTRL_USE_DEBUG
 	Debug::Begin("SpeedBlur");
@@ -50,7 +58,7 @@ void SpeedBlurController::Draw()
 	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, false);
 
-	pDevice->SetTexture(0, GetCurrentDrawData());
+	pDevice->SetTexture(0, defaultTarget);
 	speedBlur->DrawEffect();
 
 	pDevice->SetRenderTarget(0, oldSuf);

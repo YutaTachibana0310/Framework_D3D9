@@ -9,7 +9,7 @@
 
 #include "../../main.h"
 #include "../Pattern/BaseSingleton.h"
-
+#include "BaseEffectController.h"
 /**************************************
 前方宣言
 ***************************************/
@@ -18,14 +18,14 @@ class SpikeNoise;
 /**************************************
 クラス定義
 ***************************************/
-class SpikeNoiseController : public BaseSingleton<SpikeNoiseController>
+class SpikeNoiseController : public BaseSingleton<SpikeNoiseController>, public BaseEffectController
 {
 public:
 	friend class BaseSingleton<SpikeNoiseController>;
 
 	void SetNoise(float power, int duration);
 	void Update();
-	void Draw();
+	void Draw(LPDIRECT3DTEXTURE9 targetTexture = NULL);
 
 private:
 	enum State

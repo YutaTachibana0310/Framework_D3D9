@@ -123,7 +123,7 @@ void SpikeNoiseController::OnEnd()
 /**************************************
 描画処理
 ***************************************/
-void SpikeNoiseController::Draw()
+void SpikeNoiseController::Draw(LPDIRECT3DTEXTURE9 targetTexture)
 {
 	//非アクティブであれば早期リターン
 	if (!this->active)
@@ -143,7 +143,7 @@ void SpikeNoiseController::Draw()
 	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSU, D3DTADDRESS_CLAMP);
 	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
 
-	pDevice->SetTexture(0, GetCurrentDrawData());
+	pDevice->SetTexture(0, defaultTarget);
 	spikeNoise->DrawEffect();
 
 	pDevice->SetRenderTarget(0, oldSuf);

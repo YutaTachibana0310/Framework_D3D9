@@ -119,7 +119,7 @@ void ShockBlurController::Draw()
 	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, false);
 
-	pDevice->SetTexture(0, GetCurrentDrawData());
+	pDevice->SetTexture(0, defaultTarget);
 	shockBlur->DrawEffect();
 
 	pDevice->SetRenderTarget(0, oldSuf);
