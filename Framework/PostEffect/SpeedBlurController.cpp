@@ -30,7 +30,7 @@
 void SpeedBlurController::Draw()
 {
 #ifdef SPEEDBLURCTRL_USE_DEBUG
-	BeginDebugWindow("SpeedBlur");
+	Debug::Begin("SpeedBlur");
 	static float startLen = 0.05f;
 	static float power = 5.0f;
 	DebugSliderFloat("StartLength", &startLen, 0.0f, 1.0f);

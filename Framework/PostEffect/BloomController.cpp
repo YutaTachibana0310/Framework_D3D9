@@ -31,7 +31,7 @@
 void BloomController::Update()
 {
 #ifdef BLOOM_USE_DEBUG
-	BeginDebugWindow("Bloom");
+	Debug::Begin("Bloom");
 	static float threthold = BLOOM_THRETHOLD_DEFAULT;
 	DebugSliderFloat("Threthold", &threthold, 0.0f, 1.0f);
 	for (int i = 0; i < 3; i++)
