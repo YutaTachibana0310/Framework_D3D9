@@ -98,7 +98,7 @@ void ShockBlurController::OnEnd()
 /**************************************
 描画処理
 ***************************************/
-void ShockBlurController::Draw()
+void ShockBlurController::Draw(LPDIRECT3DTEXTURE9 targetTexture)
 {
 	//非アクティブであれば早期リターン
 	if (!active)
