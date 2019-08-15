@@ -25,7 +25,7 @@ public:
 	friend class BaseSingleton<ShockBlurController>;
 
 	void Update();
-	void Draw();
+	void Draw(LPDIRECT3DTEXTURE9 targetTexture = NULL);
 	void SetBlur(D3DXVECTOR3 pos, float power, int duration);
 
 private:

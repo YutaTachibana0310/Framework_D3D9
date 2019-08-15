@@ -8,6 +8,7 @@
 #include "..\Input\input.h"
 #include "..\Camera\Camera.h"
 #include "..\Tool\DebugWindow.h"
+#include "..\PostEffect\PostEffectManager.h"
 
 /**************************************
 マクロ定義
@@ -28,7 +29,7 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 	MakeRenderTarget();
 
 	//ポストエフェクトにレンダーテクスチャへの参照を渡す
-
+	PostEffectManager::Instance()->PassDefaultTarget(renderTexture);
 
 	//各種初期化
 	InitInput(hInstance, hWnd);
