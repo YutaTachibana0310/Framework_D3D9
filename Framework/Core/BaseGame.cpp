@@ -31,6 +31,15 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 	//ポストエフェクトにレンダーテクスチャへの参照を渡す
 	PostEffectManager::Instance()->PassDefaultTarget(renderTexture);
 
+	//ポストエフェクト有効化
+	unsigned flgEffect = 0;
+	for (int i = 0; i < PostEffectManager::PostEffect::Max; i++)
+	{
+		flgEffect |= 0x01;
+		flgEffect = flgEffect << 1;
+	}
+	PostEffectManager::Instance()->SetUse(flgEffect);
+
 	//各種初期化
 	InitInput(hInstance, hWnd);
 	Camera::Instance()->Init();
@@ -61,6 +70,8 @@ void BaseGame::Update()
 	Camera::Instance()->Update();
 
 	sceneManager->Update();
+
+	PostEffectManager::Instance()->Update();
 }
 
 /**************************************
