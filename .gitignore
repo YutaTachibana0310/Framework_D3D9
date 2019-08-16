@@ -260,25 +260,3 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-
-*.sln
-*.vcxproj
-*.vcxproj.filters
-EasingTest.h
-EasginTest.cpp
-imgui.ini
-data/TEXTURE/
-main.cpp
-data/MODEL/
-TransformTest.h
-TransformTest.cpp
-TestTransition.h
-TransitionTest.cpp
-*.exe
-VectorTest.h
-VectorTest.cpp
-TestObject.h
-ParticleTest.h
-ParticleTest.cpp
-Framework.h
-Framework.cpp
