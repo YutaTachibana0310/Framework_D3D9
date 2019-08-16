@@ -7,10 +7,10 @@
 #ifndef _VECTORTEST_H_
 #define _VECTORTEST_H_
 
-#include "main.h"
-#include "Framework\Renderer3D\MeshContainer.h"
-#include "Framework\Renderer2D\Polygon2D.h"
-#include "Framework\Core\BaseScene.h"
+#include "../main.h"
+#include "../Framework\Renderer3D\MeshContainer.h"
+#include "../Framework\Renderer2D\Polygon2D.h"
+#include "../Framework\Core\BaseScene.h"
 
 /**************************************
 É}ÉNÉçíËã`

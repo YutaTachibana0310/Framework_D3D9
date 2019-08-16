@@ -7,8 +7,8 @@
 #ifndef _FRAMEWORK_H_
 #define _FRAMEWORK_H_
 
-#include "main.h"
-#include "Framework\Core\BaseGame.h"
+#include "../main.h"
+#include "../Framework\Core\BaseGame.h"
 
 /**************************************
 É}ÉNÉçíËã`

@@ -5,10 +5,10 @@
 //
 //=====================================
 #include "ParticleTest.h"
-#include "Framework\Tool\DebugWindow.h"
-#include "Framework\Tool\ProfilerCPU.h"
-#include "Framework\PostEffect\PostEffectManager.h"
-#include "Framework\PostEffect\SpikeNoiseController.h"
+#include "../Framework\Tool\DebugWindow.h"
+#include "../Framework\Tool\ProfilerCPU.h"
+#include "../Framework\PostEffect\PostEffectManager.h"
+#include "../Framework\PostEffect\SpikeNoiseController.h"
 
 /**************************************
 É}ÉNÉçíËã`

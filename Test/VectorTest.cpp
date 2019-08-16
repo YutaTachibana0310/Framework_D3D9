@@ -5,7 +5,7 @@
 //
 //=====================================
 #include "VectorTest.h"
-#include "Framework\Tool\DebugWindow.h"
+#include "../Framework\Tool\DebugWindow.h"
 
 /**************************************
 É}ÉNÉçíËã`

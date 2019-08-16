@@ -5,8 +5,8 @@
 //
 //=====================================
 #include "TestTransition.h"
-#include "Framework\Tool\DebugWindow.h"
-#include "Framework\Pattern\IState.h"
+#include "../Framework\Tool\DebugWindow.h"
+#include "../Framework\Pattern\IState.h"
 /**************************************
 É}ÉNÉçíËã`
 ***************************************/

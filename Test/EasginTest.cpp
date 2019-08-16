@@ -5,8 +5,8 @@
 //
 //=====================================
 #include "EasingTest.h"
-#include "Framework\Tool\DebugWindow.h"
-#include "Framework\Tool\ProfilerCPU.h"
+#include "../Framework\Tool\DebugWindow.h"
+#include "../Framework\Tool\ProfilerCPU.h"
 
 /**************************************
 É}ÉNÉçíËã`

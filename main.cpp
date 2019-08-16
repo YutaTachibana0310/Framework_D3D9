@@ -7,7 +7,7 @@
 #include "main.h"
 #include <time.h>
 #include "Framework\Tool\DebugWindow.h"
-#include "Framework.h"
+#include "Test/Framework.h"
 
 //*****************************************************************************
 // É}ÉNÉçíËã`

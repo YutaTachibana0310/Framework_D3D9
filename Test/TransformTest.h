@@ -1,16 +1,15 @@
 //=====================================
 //
-//イージングテストヘッダ[EasingTest.h]
+//トランスフォームテストヘッダ[TransformTest.h]
 //Author:GP12B332 21 立花雄太
 //
 //=====================================
-#ifndef _EASINGTEST_H_
-#define _EASINGTEST_H_
+#ifndef _TRANSFORMTEST_H_
+#define _TRANSFORMTEST_H_
 
-#include "main.h"
-#include "Framework\Renderer2D\Polygon2D.h"
-#include "Framework\Math\Easing.h"
-#include "Framework\Core\BaseScene.h"
+#include "../main.h"
+#include "../Framework\Renderer3D\MeshContainer.h"
+#include "../Framework\Core\BaseScene.h"
 
 /**************************************
 マクロ定義
@@ -19,7 +18,7 @@
 /**************************************
 クラス定義
 ***************************************/
-class EasingTest : public BaseScene
+class TransformTest : public BaseScene
 {
 public:
 	void Init();
@@ -27,11 +26,9 @@ public:
 	void Update();
 	void Draw();
 
+	Transform transform;
 private:
-	int cntFrame;
-	Polygon2D* polygon;
-	int type;
-
+	MeshContainer *mesh;
 };
 
 #endif

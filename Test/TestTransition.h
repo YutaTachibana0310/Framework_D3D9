@@ -1,15 +1,15 @@
 //=====================================
 //
-//トランスフォームテストヘッダ[TransformTest.h]
+//テストトランジションヘッダ[TestTransition.h]
 //Author:GP12B332 21 立花雄太
 //
 //=====================================
-#ifndef _TRANSFORMTEST_H_
-#define _TRANSFORMTEST_H_
+#ifndef _TESTTRANSITION_H_
+#define _TESTTRANSITION_H_
 
-#include "main.h"
-#include "Framework\Renderer3D\MeshContainer.h"
-#include "Framework\Core\BaseScene.h"
+#include "../main.h"
+#include "../Framework\Transition\TransitionController.h"
+#include "../Framework\Core\BaseScene.h"
 
 /**************************************
 マクロ定義
@@ -18,7 +18,7 @@
 /**************************************
 クラス定義
 ***************************************/
-class TransformTest : public BaseScene
+class TestTransition: public BaseScene
 {
 public:
 	void Init();
@@ -26,9 +26,9 @@ public:
 	void Update();
 	void Draw();
 
-	Transform transform;
+	int type;
+	bool transitionOut;
 private:
-	MeshContainer *mesh;
 };
 
 #endif

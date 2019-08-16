@@ -5,10 +5,10 @@
 //
 //=====================================
 #include "TransformTest.h"
-#include "Framework\Input\input.h"
-#include "Framework\Tool\DebugWindow.h"
-#include "Framework\Camera\Camera.h"
-#include "Framework\Camera\CameraShakePlugin.h"
+#include "../Framework\Input\input.h"
+#include "../Framework\Tool\DebugWindow.h"
+#include "../Framework\Camera\Camera.h"
+#include "../Framework\Camera\CameraShakePlugin.h"
 
 /**************************************
 É}ÉNÉçíËã`

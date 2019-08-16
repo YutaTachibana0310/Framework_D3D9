@@ -1,510 +1,140 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework">
-      <UniqueIdentifier>{ce0eeaf1-ca86-4070-9342-12ee98761012}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework">
-      <UniqueIdentifier>{13dba677-a06e-4c87-b6b3-88abea5f95e1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Collider">
-      <UniqueIdentifier>{e03b9c95-13c0-47a3-a23e-2f3aaed3a54a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Input">
-      <UniqueIdentifier>{18a6df1c-11cd-4fa9-b62b-53b224faf217}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Particle">
-      <UniqueIdentifier>{15f9b070-ef2a-4c62-8a8f-d332af2e94e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\PostEffect">
-      <UniqueIdentifier>{bb042128-c558-4d7c-a784-69ec8fb55998}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Collider">
-      <UniqueIdentifier>{ba4bc644-2a6d-49bb-8997-899325ae7ad9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Input">
-      <UniqueIdentifier>{bef18444-9af4-43e6-8b81-78223da3d7f4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Math">
-      <UniqueIdentifier>{a72a5187-4511-481b-a794-c620acdea73a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\PostEffect">
-      <UniqueIdentifier>{5634d1c1-dfaa-4683-8b5d-a75fd9b8e867}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Particle">
-      <UniqueIdentifier>{54e72303-6fe1-4e2a-8623-d389cd91ceb3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\PostEffect\Effect">
-      <UniqueIdentifier>{a2513f06-734e-4e00-a335-9761bf06b5d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Pattern">
-      <UniqueIdentifier>{354fa35b-4482-4694-baae-2c0b66bdf7d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Pattern">
-      <UniqueIdentifier>{01a1787a-4d53-45c1-a56c-1dee3ec1f191}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Tool">
-      <UniqueIdentifier>{5a8ef899-f55c-4ed6-8a14-b9309a7136af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Tool">
-      <UniqueIdentifier>{140148eb-3e9f-426b-97f6-c234fe936679}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\PostEffect\Effect">
-      <UniqueIdentifier>{7fa8a07e-f541-4345-98d1-094d9cf1cbfe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\imgui">
-      <UniqueIdentifier>{de427d9d-68a6-4b47-89a9-6d39d8af4b35}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\imgui">
-      <UniqueIdentifier>{58363e25-e0d9-4e97-873d-03ea20b140ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Renderer3D">
-      <UniqueIdentifier>{28a5257e-7ec5-41cd-bb20-355a6d981d68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Renderer2D">
-      <UniqueIdentifier>{47196dd9-5e10-48a1-bbdf-c3cb84eac1a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Renderer3D">
-      <UniqueIdentifier>{abee4128-3b0e-4e9d-b893-32cfbe650bd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Renderer2D">
-      <UniqueIdentifier>{d6f8273b-530a-4312-bdf0-35df60abed19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Transition">
-      <UniqueIdentifier>{d796c977-65a4-4549-bc1b-ce3c7981962a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Transition">
-      <UniqueIdentifier>{97090b8a-d509-4b37-8a59-dc25b7b8f953}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Math">
-      <UniqueIdentifier>{30e0b513-75b6-4f99-a409-f56215800af1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Camera">
-      <UniqueIdentifier>{ca23da58-2157-425e-8e18-477bcca80811}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Camera">
-      <UniqueIdentifier>{95ffb860-7a5f-4589-a8a4-c2c56f449903}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Test">
-      <UniqueIdentifier>{c7673be4-262c-4d22-92e3-6ad1c69ce66b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Test">
-      <UniqueIdentifier>{c44b7842-7b50-4101-b67b-8c1dca4203c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\Framework\Core">
-      <UniqueIdentifier>{633a103b-9501-4e30-b9ff-44c27ed4e196}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Framework\Core">
-      <UniqueIdentifier>{0bfeada3-dcd2-45af-92f0-a9220df86dbd}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Framework\Camera\Camera.cpp" />
+    <ClCompile Include="Framework\Camera\CameraShakePlugin.cpp" />
+    <ClCompile Include="Framework\Collider\BoxCollider3D.cpp" />
+    <ClCompile Include="Framework\Core\BaseGame.cpp" />
+    <ClCompile Include="Framework\Core\GameObject.cpp" />
+    <ClCompile Include="Framework\Core\ResourceManager.cpp" />
+    <ClCompile Include="Framework\Core\SceneManager.cpp" />
+    <ClCompile Include="Framework\Core\Transform.cpp" />
+    <ClCompile Include="Framework\Input\Gamepad.cpp" />
+    <ClCompile Include="Framework\Input\input.cpp" />
+    <ClCompile Include="Framework\Input\Keyboard.cpp" />
+    <ClCompile Include="Framework\Input\Mouse.cpp" />
+    <ClCompile Include="Framework\Math\Vector3.cpp" />
+    <ClCompile Include="Framework\Particle\AnimationParticle.cpp" />
+    <ClCompile Include="Framework\Particle\BaseEmitter.cpp" />
+    <ClCompile Include="Framework\Particle\BaseParticle.cpp" />
+    <ClCompile Include="Framework\Particle\BaseParticleController.cpp" />
+    <ClCompile Include="Framework\Particle\ParticleRenderer.cpp" />
+    <ClCompile Include="Framework\Particle\SceneParticleManager.cpp" />
+    <ClCompile Include="Framework\Pattern\ObserveSubject.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\BloomFilter.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\BlurFilter.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\CrossBlurFilter.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\MonotoneFilter.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\ShockBlur.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\SpeedBlurFilter.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\SpikeNoise.cpp" />
+    <ClCompile Include="Framework\PostEffect\Effect\StrongBlurFilter.cpp" />
+    <ClCompile Include="Framework\PostEffect\BaseEffectController.cpp" />
+    <ClCompile Include="Framework\PostEffect\BloomController.cpp" />
+    <ClCompile Include="Framework\PostEffect\CrossFilterController.cpp" />
+    <ClCompile Include="Framework\PostEffect\PostEffectManager.cpp" />
+    <ClCompile Include="Framework\PostEffect\ScreenObject.cpp" />
+    <ClCompile Include="Framework\PostEffect\ShockBlurController.cpp" />
+    <ClCompile Include="Framework\PostEffect\SpeedBlurController.cpp" />
+    <ClCompile Include="Framework\PostEffect\SpikeNoiseController.cpp" />
+    <ClCompile Include="Framework\Renderer2D\Polygon2D.cpp" />
+    <ClCompile Include="Framework\Renderer3D\AnimationManager.cpp" />
+    <ClCompile Include="Framework\Renderer3D\AnimContainer.cpp" />
+    <ClCompile Include="Framework\Renderer3D\BoardPolygon.cpp" />
+    <ClCompile Include="Framework\Renderer3D\MeshContainer.cpp" />
+    <ClCompile Include="Framework\Renderer3D\MyAllocateHierarchy.cpp" />
+    <ClCompile Include="Framework\Tool\DebugWindow.cpp" />
+    <ClCompile Include="Framework\Tool\ProfilerCPU.cpp" />
+    <ClCompile Include="Framework\Transition\BaseTransitionMask.cpp" />
+    <ClCompile Include="Framework\Transition\HexaPopTransitionMask.cpp" />
+    <ClCompile Include="Framework\Transition\HexaRotTransitionMask.cpp" />
+    <ClCompile Include="Framework\Transition\MistTransitionMask.cpp" />
+    <ClCompile Include="Framework\Transition\TransitionController.cpp" />
+    <ClCompile Include="Test\EasginTest.cpp" />
+    <ClCompile Include="Test\ParticleTest.cpp" />
+    <ClCompile Include="Test\TransformTest.cpp" />
+    <ClCompile Include="Test\TransitionTest.cpp" />
+    <ClCompile Include="Test\VectorTest.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Test\Framework.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Framework\Collider\BoxCollider3D.cpp">
-      <Filter>ソース ファイル\Framework\Collider</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Input\Keyboard.cpp">
-      <Filter>ソース ファイル\Framework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Input\Mouse.cpp">
-      <Filter>ソース ファイル\Framework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Input\Gamepad.cpp">
-      <Filter>ソース ファイル\Framework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\BloomFilter.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\BlurFilter.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\CrossBlurFilter.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\MonotoneFilter.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\ShockBlur.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\SpeedBlurFilter.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\SpikeNoise.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\Effect\StrongBlurFilter.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\BloomController.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\CrossFilterController.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\ScreenObject.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\ShockBlurController.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\SpeedBlurController.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\SpikeNoiseController.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Particle\AnimationParticle.cpp">
-      <Filter>ソース ファイル\Framework\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Particle\BaseEmitter.cpp">
-      <Filter>ソース ファイル\Framework\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Particle\BaseParticle.cpp">
-      <Filter>ソース ファイル\Framework\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Particle\BaseParticleController.cpp">
-      <Filter>ソース ファイル\Framework\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Particle\SceneParticleManager.cpp">
-      <Filter>ソース ファイル\Framework\Particle</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Pattern\ObserveSubject.cpp">
-      <Filter>ソース ファイル\Framework\Pattern</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui.cpp">
-      <Filter>ソース ファイル\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_demo.cpp">
-      <Filter>ソース ファイル\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_draw.cpp">
-      <Filter>ソース ファイル\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_dx9.cpp">
-      <Filter>ソース ファイル\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_impl_win32.cpp">
-      <Filter>ソース ファイル\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_widgets.cpp">
-      <Filter>ソース ファイル\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Tool\DebugWindow.cpp">
-      <Filter>ソース ファイル\Framework\Tool</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Renderer3D\AnimContainer.cpp">
-      <Filter>ソース ファイル\Framework\Renderer3D</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Renderer3D\BoardPolygon.cpp">
-      <Filter>ソース ファイル\Framework\Renderer3D</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Renderer3D\MeshContainer.cpp">
-      <Filter>ソース ファイル\Framework\Renderer3D</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Renderer3D\MyAllocateHierarchy.cpp">
-      <Filter>ソース ファイル\Framework\Renderer3D</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Renderer2D\Polygon2D.cpp">
-      <Filter>ソース ファイル\Framework\Renderer2D</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Transition\BaseTransitionMask.cpp">
-      <Filter>ソース ファイル\Framework\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Transition\TransitionController.cpp">
-      <Filter>ソース ファイル\Framework\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Transition\HexaRotTransitionMask.cpp">
-      <Filter>ソース ファイル\Framework\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Transition\HexaPopTransitionMask.cpp">
-      <Filter>ソース ファイル\Framework\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Transition\MistTransitionMask.cpp">
-      <Filter>ソース ファイル\Framework\Transition</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Math\Vector3.cpp">
-      <Filter>ソース ファイル\Framework\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleTest.cpp">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="TransformTest.cpp">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="TransitionTest.cpp">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="VectorTest.cpp">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="EasginTest.cpp">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Camera\Camera.cpp">
-      <Filter>ソース ファイル\Framework\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Camera\CameraShakePlugin.cpp">
-      <Filter>ソース ファイル\Framework\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Tool\ProfilerCPU.cpp">
-      <Filter>ソース ファイル\Framework\Tool</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Core\Transform.cpp">
-      <Filter>ソース ファイル\Framework\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Core\GameObject.cpp">
-      <Filter>ソース ファイル\Framework\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Input\input.cpp">
-      <Filter>ソース ファイル\Framework\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Core\BaseGame.cpp">
-      <Filter>ソース ファイル\Framework\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Core\SceneManager.cpp">
-      <Filter>ソース ファイル\Framework\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Core\ResourceManager.cpp">
-      <Filter>ソース ファイル\Framework\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework.cpp">
-      <Filter>ソース ファイル\Test</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\BaseEffectController.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\PostEffect\PostEffectManager.cpp">
-      <Filter>ソース ファイル\Framework\PostEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Renderer3D\AnimationManager.cpp">
-      <Filter>ソース ファイル\Framework\Renderer3D</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Framework\Collider\BoxCollider3D.h">
-      <Filter>ヘッダー ファイル\Framework\Collider</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Input\Gamepad.h">
-      <Filter>ヘッダー ファイル\Framework\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Input\Keyboard.h">
-      <Filter>ヘッダー ファイル\Framework\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Input\Mouse.h">
-      <Filter>ヘッダー ファイル\Framework\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Math\Easing.h">
-      <Filter>ヘッダー ファイル\Framework\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Particle\SceneParticleManager.h">
-      <Filter>ヘッダー ファイル\Framework\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Particle\AnimationParticle.h">
-      <Filter>ヘッダー ファイル\Framework\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Particle\BaseEmitter.h">
-      <Filter>ヘッダー ファイル\Framework\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Particle\BaseParticle.h">
-      <Filter>ヘッダー ファイル\Framework\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Particle\BaseParticleController.h">
-      <Filter>ヘッダー ファイル\Framework\Particle</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Pattern\BaseObserver.h">
-      <Filter>ヘッダー ファイル\Framework\Pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Pattern\BaseSingleton.h">
-      <Filter>ヘッダー ファイル\Framework\Pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Pattern\ObserveSubject.h">
-      <Filter>ヘッダー ファイル\Framework\Pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\StrongBlurFilter.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\BloomFilter.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\BlurFilter.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\CrossBlurFilter.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\MonotoneFilter.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\ShockBlur.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\SpeedBlurFilter.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\Effect\SpikeNoise.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\BloomController.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\CrossFilterController.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\ScreenObject.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\ShockBlurController.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\SpeedBlurController.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\SpikeNoiseController.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imstb_truetype.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imconfig.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_dx9.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui_impl_win32.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imgui_internal.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imstb_rectpack.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="imgui\imstb_textedit.h">
-      <Filter>ヘッダー ファイル\imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Math\TMath.h">
-      <Filter>ヘッダー ファイル\Framework\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Renderer3D\AnimContainer.h">
-      <Filter>ヘッダー ファイル\Framework\Renderer3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Renderer3D\BoardPolygon.h">
-      <Filter>ヘッダー ファイル\Framework\Renderer3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Renderer3D\MeshContainer.h">
-      <Filter>ヘッダー ファイル\Framework\Renderer3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Renderer3D\MyAllocateHierarchy.h">
-      <Filter>ヘッダー ファイル\Framework\Renderer3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Renderer2D\Polygon2D.h">
-      <Filter>ヘッダー ファイル\Framework\Renderer2D</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Transition\BaseTransitionMask.h">
-      <Filter>ヘッダー ファイル\Framework\Transition</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Transition\TransitionController.h">
-      <Filter>ヘッダー ファイル\Framework\Transition</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Transition\HexaRotTransitionMask.h">
-      <Filter>ヘッダー ファイル\Framework\Transition</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Transition\HexaPopTransitionMask.h">
-      <Filter>ヘッダー ファイル\Framework\Transition</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Transition\MistTransitionMask.h">
-      <Filter>ヘッダー ファイル\Framework\Transition</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Pattern\IState.h">
-      <Filter>ヘッダー ファイル\Framework\Pattern</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Math\Vector3.h">
-      <Filter>ヘッダー ファイル\Framework\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleTest.h">
-      <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="TestObject.h">
-      <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="TestTransition.h">
-      <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformTest.h">
-      <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="VectorTest.h">
-      <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="EasingTest.h">
-      <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Camera\Camera.h">
-      <Filter>ヘッダー ファイル\Framework\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Camera\CameraShakePlugin.h">
-      <Filter>ヘッダー ファイル\Framework\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Tool\DebugWindow.h">
-      <Filter>ヘッダー ファイル\Framework\Tool</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Tool\ProfilerCPU.h">
-      <Filter>ヘッダー ファイル\Framework\Tool</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Core\Transform.h">
-      <Filter>ヘッダー ファイル\Framework\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Core\GameObject.h">
-      <Filter>ヘッダー ファイル\Framework\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Core\BaseScene.h">
-      <Filter>ヘッダー ファイル\Framework\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Input\input.h">
-      <Filter>ヘッダー ファイル\Framework\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Core\BaseGame.h">
-      <Filter>ヘッダー ファイル\Framework\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Core\SceneManager.h">
-      <Filter>ヘッダー ファイル\Framework\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Core\ResourceManager.h">
-      <Filter>ヘッダー ファイル\Framework\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework.h">
-      <Filter>ヘッダー ファイル\Test</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\BaseEffectController.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\PostEffect\PostEffectManager.h">
-      <Filter>ヘッダー ファイル\Framework\PostEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Renderer3D\AnimationManager.h">
-      <Filter>ヘッダー ファイル\Framework\Renderer3D</Filter>
-    </ClInclude>
+    <ClInclude Include="Framework\Camera\Camera.h" />
+    <ClInclude Include="Framework\Camera\CameraShakePlugin.h" />
+    <ClInclude Include="Framework\Collider\BoxCollider3D.h" />
+    <ClInclude Include="Framework\Core\BaseGame.h" />
+    <ClInclude Include="Framework\Core\BaseScene.h" />
+    <ClInclude Include="Framework\Core\GameObject.h" />
+    <ClInclude Include="Framework\Core\ResourceManager.h" />
+    <ClInclude Include="Framework\Core\SceneManager.h" />
+    <ClInclude Include="Framework\Core\Transform.h" />
+    <ClInclude Include="Framework\Input\Gamepad.h" />
+    <ClInclude Include="Framework\Input\input.h" />
+    <ClInclude Include="Framework\Input\Keyboard.h" />
+    <ClInclude Include="Framework\Input\Mouse.h" />
+    <ClInclude Include="Framework\Math\Easing.h" />
+    <ClInclude Include="Framework\Math\TMath.h" />
+    <ClInclude Include="Framework\Math\Vector3.h" />
+    <ClInclude Include="Framework\Particle\AnimationParticle.h" />
+    <ClInclude Include="Framework\Particle\BaseEmitter.h" />
+    <ClInclude Include="Framework\Particle\BaseParticle.h" />
+    <ClInclude Include="Framework\Particle\BaseParticleController.h" />
+    <ClInclude Include="Framework\Particle\ParticleRenderer.h" />
+    <ClInclude Include="Framework\Particle\SceneParticleManager.h" />
+    <ClInclude Include="Framework\Pattern\BaseObserver.h" />
+    <ClInclude Include="Framework\Pattern\BaseSingleton.h" />
+    <ClInclude Include="Framework\Pattern\IState.h" />
+    <ClInclude Include="Framework\Pattern\ObserveSubject.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\BloomFilter.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\BlurFilter.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\CrossBlurFilter.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\MonotoneFilter.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\ShockBlur.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\SpeedBlurFilter.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\SpikeNoise.h" />
+    <ClInclude Include="Framework\PostEffect\Effect\StrongBlurFilter.h" />
+    <ClInclude Include="Framework\PostEffect\BaseEffectController.h" />
+    <ClInclude Include="Framework\PostEffect\BloomController.h" />
+    <ClInclude Include="Framework\PostEffect\CrossFilterController.h" />
+    <ClInclude Include="Framework\PostEffect\PostEffectManager.h" />
+    <ClInclude Include="Framework\PostEffect\ScreenObject.h" />
+    <ClInclude Include="Framework\PostEffect\ShockBlurController.h" />
+    <ClInclude Include="Framework\PostEffect\SpeedBlurController.h" />
+    <ClInclude Include="Framework\PostEffect\SpikeNoiseController.h" />
+    <ClInclude Include="Framework\Renderer2D\Polygon2D.h" />
+    <ClInclude Include="Framework\Renderer3D\AnimationManager.h" />
+    <ClInclude Include="Framework\Renderer3D\AnimContainer.h" />
+    <ClInclude Include="Framework\Renderer3D\BoardPolygon.h" />
+    <ClInclude Include="Framework\Renderer3D\MeshContainer.h" />
+    <ClInclude Include="Framework\Renderer3D\MyAllocateHierarchy.h" />
+    <ClInclude Include="Framework\Tool\DebugWindow.h" />
+    <ClInclude Include="Framework\Tool\ProfilerCPU.h" />
+    <ClInclude Include="Framework\Transition\BaseTransitionMask.h" />
+    <ClInclude Include="Framework\Transition\HexaPopTransitionMask.h" />
+    <ClInclude Include="Framework\Transition\HexaRotTransitionMask.h" />
+    <ClInclude Include="Framework\Transition\MistTransitionMask.h" />
+    <ClInclude Include="Framework\Transition\TransitionController.h" />
+    <ClInclude Include="Test\EasingTest.h" />
+    <ClInclude Include="Test\Framework.h" />
+    <ClInclude Include="Test\ParticleTest.h" />
+    <ClInclude Include="Test\TestObject.h" />
+    <ClInclude Include="Test\TestTransition.h" />
+    <ClInclude Include="Test\TransformTest.h" />
+    <ClInclude Include="Test\VectorTest.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="imgui\imgui_impl_win32.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\imstb_rectpack.h" />
+    <ClInclude Include="imgui\imstb_textedit.h" />
+    <ClInclude Include="imgui\imstb_truetype.h" />
   </ItemGroup>
 </Project>

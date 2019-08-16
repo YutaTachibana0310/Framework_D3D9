@@ -7,13 +7,13 @@
 #ifndef _PARTICLETEST_H_
 #define _PARTICLETEST_H_
 
-#include "main.h"
+#include "../main.h"
 #include "TestObject.h"
-#include "Framework\Particle\BaseParticleController.h"
-#include "Framework\Particle\SceneParticleManager.h"
-#include "Framework\Particle\BaseParticle.h"
-#include "Framework\Particle\BaseEmitter.h"
-#include "Framework\Core\BaseScene.h"
+#include "../Framework\Particle\BaseParticleController.h"
+#include "../Framework\Particle\SceneParticleManager.h"
+#include "../Framework\Particle\BaseParticle.h"
+#include "../Framework\Particle\BaseEmitter.h"
+#include "../Framework\Core\BaseScene.h"
 
 /**************************************
 É}ÉNÉçíËã`
