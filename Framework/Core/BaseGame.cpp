@@ -14,6 +14,9 @@
 マクロ定義
 ***************************************/
 #define BACKCOLOR	(D3DCOLOR_RGBA(0, 0, 50, 255))
+
+Camera* Camera::instance = NULL;
+
 /**************************************
 コンストラクタ
 ***************************************/
@@ -21,8 +24,9 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 {
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	//シーンマネージャ作成
+	//インスタンス作成
 	sceneManager = new SceneManager();
+	Camera::instance = new Camera();
 
 	//描画領域作成
 	MakeScreen();
@@ -42,7 +46,7 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 
 	//各種初期化
 	InitInput(hInstance, hWnd);
-	Camera::Instance()->Init();
+	Camera::instance->Init();
 	Debug::Init(hWnd, pDevice);
 
 }
@@ -67,7 +71,7 @@ void BaseGame::Update()
 {
 	Debug::Update();
 	UpdateInput();
-	Camera::Instance()->Update();
+	Camera::instance->Update();
 
 	sceneManager->Update();
 
@@ -88,7 +92,7 @@ void BaseGame::Draw()
 	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, BACKCOLOR, 1.0f, 0);
 
 	//カメラ設定
-	Camera::Instance()->Set();
+	Camera::instance->Set();
 
 	//シーンを描画
 	sceneManager->Draw();

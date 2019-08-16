@@ -8,6 +8,7 @@
 #define _CAMERASHAKEPLUGIN_H_
 
 #include "Camera.h"
+#include "../Pattern/BaseSingleton.h"
 
 /**************************************
 É}ÉNÉçíËã`
