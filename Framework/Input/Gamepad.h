@@ -39,19 +39,17 @@ public:
 	~GamePad(); 
 	HRESULT Init(LPDIRECTINPUT8 pInput);
 
-	BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface);	// パッド検査コールバック
-
 	void Update();
 
-	static BOOL IsButtonPressed(int padNo, DWORD button);
-	static BOOL IsButtonTriggered(int padNo, DWORD button);
-	static BOOL IsButtonReleased(int padNo, DWORD button);
+	static BOOL GetPress(int padNo, DWORD button);
+	static BOOL GetTrigger(int padNo, DWORD button);
+	static BOOL GetRelease(int padNo, DWORD button);
 
-	static float GetStickAxisX(int padNo);
-	static float GetStickAxisY(int padNo);
+	static float GetRightStickX(int padNo);
+	static float GetRightStickY(int padNo);
 
-	static int GetPadAxisXTriggered(int padNo);
-	static int GetPadAxisYTriggered(int padNo);
+	static int GetTriggerX(int padNo);
+	static int GetTriggerY(int padNo);
 
 	static int GetPadCount();
 

@@ -43,8 +43,8 @@ void TransformTest::Update()
 {
 	Debug::Begin("Transform");
 
-	float x = GetKeyboardPress(DIK_LEFT) ? -1.0f : GetKeyboardPress(DIK_RIGHT) ? 1.0f : 0.0f;
-	float y = GetKeyboardPress(DIK_DOWN) ? -1.0f : GetKeyboardPress(DIK_UP) ? 1.0f : 0.0f;
+	float x = Input::GetPressHorizontail(0);
+	float y = Input::GetPressVertical(0);
 
 	float rotAngle = 2.0f;
 	transform.Rotate(0.0f, x * rotAngle, 0.0f);
@@ -52,8 +52,8 @@ void TransformTest::Update()
 
 	D3DXVECTOR3 dir;
 	ZeroMemory(&dir, sizeof(dir));
-	x = GetKeyboardPress(DIK_A) ? -1.0f : GetKeyboardPress(DIK_D) ? 1.0f : 0.0f;
-	y = GetKeyboardPress(DIK_S) ? -1.0f : GetKeyboardPress(DIK_W) ? 1.0f : 0.0f;
+	x = Keyboard::GetPress(DIK_W) ? -1.0f : Keyboard::GetPress(DIK_S) ? 1.0f : 0.0f;
+	y = Keyboard::GetPress(DIK_A) ? -1.0f : Keyboard::GetPress(DIK_D) ? 1.0f : 0.0f;
 	transform.pos += x * transform.Right();
 	transform.pos += y * transform.Forward();
 

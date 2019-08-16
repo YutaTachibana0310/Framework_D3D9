@@ -16,6 +16,8 @@
 #define INPUT_SHORTWAIT (6)
 
 GamePad* GamePad::mInstance = NULL;
+LPDIRECTINPUTDEVICE8	pGamePad[GAMEPADMAX] = { NULL,NULL,NULL,NULL };// パッドデバイス
+int		padCount;			// 検出したパッドの数
 
 /*************************************
 コンストラクタ
@@ -31,7 +33,7 @@ GamePad::GamePad()
 /**************************************
 パッド検査コールバック
 ***************************************/
-BOOL CALLBACK GamePad::SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface)
+BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface)
 {
 	HRESULT result;
 
@@ -50,7 +52,7 @@ HRESULT GamePad::Init(LPDIRECTINPUT8 inputInterface)			// パッド初期化
 
 	padCount = 0;
 	// ジョイパッドを探す
-	inputInterface->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)this->SearchPadCallback, NULL, DIEDFL_ATTACHEDONLY);
+	inputInterface->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)SearchPadCallback, NULL, DIEDFL_ATTACHEDONLY);
 	// セットしたコールバック関数が、パッドを発見した数だけ呼ばれる。
 
 	for (i = 0; i < padCount; i++) {
@@ -205,7 +207,7 @@ void GamePad::Update(void)
 			& (~padState[i]);				//今OFFのやつ
 
 											//スティックのRepeat判定処理
-		padAxisYRepeat[i] = GetPadAxisYTriggered(i);
+		padAxisYRepeat[i] = GetTriggerY(i);
 
 		if (BUTTON_UP & padState[i])
 		{
@@ -229,7 +231,7 @@ void GamePad::Update(void)
 			padAxisYRepeat[i] = 0;
 		}
 
-		padAxisXRepeat[i] = GetPadAxisXTriggered(i);
+		padAxisXRepeat[i] = GetTriggerX(i);
 
 		if (BUTTON_RIGHT & padState[i])
 		{
@@ -260,7 +262,7 @@ void GamePad::Update(void)
 /**************************************
 プレス検出処理
 ***************************************/
-BOOL GamePad::IsButtonPressed(int padNo, DWORD button)
+BOOL GamePad::GetPress(int padNo, DWORD button)
 {
 	return (button & mInstance->padState[padNo]);
 }
@@ -268,7 +270,7 @@ BOOL GamePad::IsButtonPressed(int padNo, DWORD button)
 /**************************************
 トリガー検出処理
 ***************************************/
-BOOL GamePad::IsButtonTriggered(int padNo, DWORD button)
+BOOL GamePad::GetTrigger(int padNo, DWORD button)
 {
 	return (button & mInstance->padTrigger[padNo]);
 }
@@ -276,7 +278,7 @@ BOOL GamePad::IsButtonTriggered(int padNo, DWORD button)
 /**************************************
 リリース検出処理
 ***************************************/
-BOOL GamePad::IsButtonReleased(int padNo, DWORD button)
+BOOL GamePad::GetRelease(int padNo, DWORD button)
 {
 	return (button & mInstance->padRelease[padNo]);
 }
@@ -284,12 +286,12 @@ BOOL GamePad::IsButtonReleased(int padNo, DWORD button)
 /**************************************
 X軸トリガー検出処理
 ***************************************/
-int GamePad::GetPadAxisXTriggered(int padNo)
+int GamePad::GetTriggerX(int padNo)
 {
-	if (IsButtonTriggered(padNo, BUTTON_RIGHT))
+	if (GetTrigger(padNo, BUTTON_RIGHT))
 		return 1;
 
-	else if (IsButtonTriggered(padNo, BUTTON_LEFT))
+	else if (GetTrigger(padNo, BUTTON_LEFT))
 		return -1;
 
 	else
@@ -299,12 +301,12 @@ int GamePad::GetPadAxisXTriggered(int padNo)
 /**************************************
 Y軸トリガー検出処理
 ***************************************/
-int GamePad::GetPadAxisYTriggered(int padNo)
+int GamePad::GetTriggerY(int padNo)
 {
-	if (IsButtonTriggered(padNo, BUTTON_UP))
+	if (GetTrigger(padNo, BUTTON_UP))
 		return 1;
 
-	else if (IsButtonTriggered(padNo, BUTTON_DOWN))
+	else if (GetTrigger(padNo, BUTTON_DOWN))
 		return -1;
 
 	else
@@ -322,7 +324,7 @@ int GamePad::GetPadCount(void)
 /**************************************
 右スティックX軸入力計算処理
 ***************************************/
-float GamePad::GetStickAxisX(int padNo)
+float GamePad::GetRightStickX(int padNo)
 {
 	if (padNo >= mInstance->padCount)
 	{
@@ -336,7 +338,7 @@ float GamePad::GetStickAxisX(int padNo)
 /**************************************
 右スティックY軸入力計算処理
 ***************************************/
-float GamePad::GetStickAxisY(int padNo)
+float GamePad::GetRightStickY(int padNo)
 {
 	if (padNo >= mInstance->padCount)
 	{

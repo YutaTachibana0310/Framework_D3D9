@@ -127,7 +127,7 @@ void Keyboard::Update(void)
 //=============================================================================
 // キーボードのプレス状態を取得
 //=============================================================================
-bool Keyboard::GetKeyboardPress(int nKey)
+bool Keyboard::GetPress(int nKey)
 {
 	return (mInstance->m_aKeyState[nKey] & 0x80) ? true : false;
 }
@@ -135,7 +135,7 @@ bool Keyboard::GetKeyboardPress(int nKey)
 //=============================================================================
 // キーボードのトリガー状態を取得
 //=============================================================================
-bool Keyboard::GetKeyboardTrigger(int nKey)
+bool Keyboard::GetTrigger(int nKey)
 {
 	return (mInstance->m_aKeyStateTrigger[nKey] & 0x80) ? true : false;
 }
@@ -143,7 +143,7 @@ bool Keyboard::GetKeyboardTrigger(int nKey)
 //=============================================================================
 // キーボードのリピート状態を取得
 //=============================================================================
-bool Keyboard::GetKeyboardRepeat(int nKey)
+bool Keyboard::GetRepeat(int nKey)
 {
 	return (mInstance->m_aKeyStateRepeat[nKey] & 0x80) ? true : false;
 }
@@ -151,7 +151,7 @@ bool Keyboard::GetKeyboardRepeat(int nKey)
 //=============================================================================
 // キーボードのリリ－ス状態を取得
 //=============================================================================
-bool Keyboard::GetKeyboardRelease(int nKey)
+bool Keyboard::GetRelease(int nKey)
 {
 	return (mInstance->m_aKeyStateRelease[nKey] & 0x80) ? true : false;
 }

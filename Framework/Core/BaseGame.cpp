@@ -15,8 +15,8 @@
 ***************************************/
 #define BACKCOLOR	(D3DCOLOR_RGBA(0, 0, 50, 255))
 
-Camera* Camera::instance = NULL;
-
+Camera* Camera::mInstance = NULL;
+Input* Input::mInstance = NULL;
 /**************************************
 コンストラクタ
 ***************************************/
@@ -26,7 +26,8 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 
 	//インスタンス作成
 	sceneManager = new SceneManager();
-	Camera::instance = new Camera();
+	Camera::mInstance = new Camera();
+	Input::mInstance = new Input();
 
 	//描画領域作成
 	MakeScreen();
@@ -45,8 +46,8 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 	PostEffectManager::Instance()->SetUse(flgEffect);
 
 	//各種初期化
-	InitInput(hInstance, hWnd);
-	Camera::instance->Init();
+	Input::mInstance->Init(hInstance, hWnd);
+	Camera::mInstance->Init();
 	Debug::Init(hWnd, pDevice);
 
 }
@@ -60,8 +61,10 @@ BaseGame::~BaseGame()
 	SAFE_RELEASE(renderSurface);
 	SAFE_RELEASE(screenVtx);
 
+	SAFE_DELETE(Camera::mInstance);
+	SAFE_DELETE(Input::mInstance);
+
 	Debug::Uninit();
-	UninitInput();
 }
 
 /**************************************
@@ -70,8 +73,8 @@ BaseGame::~BaseGame()
 void BaseGame::Update()
 {
 	Debug::Update();
-	UpdateInput();
-	Camera::instance->Update();
+	Input::mInstance->Update();
+	Camera::mInstance->Update();
 
 	sceneManager->Update();
 
@@ -92,7 +95,7 @@ void BaseGame::Draw()
 	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, BACKCOLOR, 1.0f, 0);
 
 	//カメラ設定
-	Camera::instance->Set();
+	Camera::mInstance->Set();
 
 	//シーンを描画
 	sceneManager->Draw();

@@ -26,10 +26,10 @@ public:
 	HRESULT Init(HINSTANCE hInst, HWND hWnd, LPDIRECTINPUT8 pInput);
 	void Update();
 
-	static bool GetKeyboardPress(int nKey);
-	static bool GetKeyboardTrigger(int nKey);
-	static bool GetKeyboardRepeat(int nKey);
-	static bool GetKeyboardRelease(int nKey);
+	static bool GetPress(int nKey);
+	static bool GetTrigger(int nKey);
+	static bool GetRepeat(int nKey);
+	static bool GetRelease(int nKey);
 
 private:
 	LPDIRECTINPUTDEVICE8 m_pDIDevKeyboard = NULL;			// IDirectInputDevice8インターフェースへのポインタ(キーボード)

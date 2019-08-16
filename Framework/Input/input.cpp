@@ -9,7 +9,6 @@
 //*****************************************************************************
 // staticメンバ
 //*****************************************************************************
-Input* Input::mInstance = NULL;
 
 //*****************************************************************************
 // コンストラクタ
@@ -71,6 +70,11 @@ Input::~Input()
 		pDInput->Release();
 		pDInput = NULL;
 	}
+
+	if (mInstance == this)
+	{
+		mInstance = NULL;
+	}
 }
 
 //=============================================================================
@@ -86,4 +90,54 @@ void Input::Update(void)
 
 	//ゲームパッド更新処理
 	pad->Update();
+}
+
+//=============================================================================
+// 水平方向への入力処理
+//=============================================================================
+float Input::GetPressHorizontail(int no)
+{
+	if (no == 0)
+	{
+		if (Keyboard::GetPress(DIK_LEFT) || GamePad::GetPress(0, BUTTON_LEFT))
+			return -1.0f;
+
+		if (Keyboard::GetPress(DIK_RIGHT) || GamePad::GetPress(0, BUTTON_RIGHT))
+			return 1.0f;
+
+		return 0.0f;
+	}
+
+	if (GamePad::GetPress(no, BUTTON_LEFT))
+		return -1.0f;
+
+	if (GamePad::GetPress(no, BUTTON_RIGHT))
+		return 1.0f;
+
+	return 0.0f;
+}
+
+//=============================================================================
+// 垂直方向への入力処理
+//=============================================================================
+float Input::GetPressVertical(int no)
+{
+	if (no == 0)
+	{
+		if (Keyboard::GetPress(DIK_DOWN) || GamePad::GetPress(0, BUTTON_DOWN))
+			return -1.0f;
+
+		if (Keyboard::GetPress(DIK_UP) || GamePad::GetPress(0, BUTTON_UP))
+			return 1.0f;
+
+		return 0.0f;
+	}
+
+	if (GamePad::GetPress(no, BUTTON_DOWN))
+		return -1.0f;
+
+	if (GamePad::GetPress(no, BUTTON_UP))
+		return 1.0f;
+
+	return 0.0f;
 }
