@@ -15,35 +15,23 @@
 
 #define INPUT_SHORTWAIT (6)
 
-/**************************************
-クラス定義
+GamePad* GamePad::mInstance = NULL;
+
+/*************************************
+コンストラクタ
 ***************************************/
-
-/**************************************
-グローバル変数
-***************************************/
-//スティックのRepeat状態検出用
-static int		padAxisXRepeat[GAMEPADMAX];
-static int		padAxisYRepeat[GAMEPADMAX];
-static int		lastAxisX[GAMEPADMAX];
-static int		lastAxisY[GAMEPADMAX];
-static int		axisXRepeatCnt[GAMEPADMAX];
-static int		axisYRepeatCnt[GAMEPADMAX];
-
-static float	padAxislRx[GAMEPADMAX];
-static float	padAxislRy[GAMEPADMAX];
-
-static LPDIRECTINPUTDEVICE8	pGamePad[GAMEPADMAX] = { NULL,NULL,NULL,NULL };// パッドデバイス
-
-static DWORD	padState[GAMEPADMAX];	// パッド情報（複数対応）
-static DWORD	padTrigger[GAMEPADMAX];
-static DWORD	padRelease[GAMEPADMAX];
-static int		padCount = 0;			// 検出したパッドの数
+GamePad::GamePad()
+{
+	if (mInstance == NULL)
+	{
+		mInstance = this;
+	}
+}
 
 /**************************************
 パッド検査コールバック
 ***************************************/
-BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface)
+BOOL CALLBACK GamePad::SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface)
 {
 	HRESULT result;
 
@@ -55,14 +43,14 @@ BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8
 /**************************************
 初期化処理
 ***************************************/
-HRESULT InitializePad(LPDIRECTINPUT8 inputInterface)			// パッド初期化
+HRESULT GamePad::Init(LPDIRECTINPUT8 inputInterface)			// パッド初期化
 {
 	HRESULT		result;
 	int			i;
 
 	padCount = 0;
 	// ジョイパッドを探す
-	inputInterface->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)SearchPadCallback, NULL, DIEDFL_ATTACHEDONLY);
+	inputInterface->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)this->SearchPadCallback, NULL, DIEDFL_ATTACHEDONLY);
 	// セットしたコールバック関数が、パッドを発見した数だけ呼ばれる。
 
 	for (i = 0; i < padCount; i++) {
@@ -120,7 +108,7 @@ HRESULT InitializePad(LPDIRECTINPUT8 inputInterface)			// パッド初期化
 /**************************************
 終了処理
 ***************************************/
-void UninitPad(void)
+GamePad::~GamePad()
 {
 	for (int i = 0; i < GAMEPADMAX; i++) {
 		if (pGamePad[i])
@@ -130,12 +118,16 @@ void UninitPad(void)
 		}
 	}
 
+	if (mInstance == this)
+	{
+		mInstance = NULL;
+	}
 }
 
 /**************************************
 更新処理
 ***************************************/
-void UpdatePad(void)
+void GamePad::Update(void)
 {
 	HRESULT			result;
 	DIJOYSTATE2		dijs;
@@ -268,31 +260,31 @@ void UpdatePad(void)
 /**************************************
 プレス検出処理
 ***************************************/
-BOOL IsButtonPressed(int padNo, DWORD button)
+BOOL GamePad::IsButtonPressed(int padNo, DWORD button)
 {
-	return (button & padState[padNo]);
+	return (button & mInstance->padState[padNo]);
 }
 
 /**************************************
 トリガー検出処理
 ***************************************/
-BOOL IsButtonTriggered(int padNo, DWORD button)
+BOOL GamePad::IsButtonTriggered(int padNo, DWORD button)
 {
-	return (button & padTrigger[padNo]);
+	return (button & mInstance->padTrigger[padNo]);
 }
 
 /**************************************
 リリース検出処理
 ***************************************/
-BOOL IsButtonReleased(int padNo, DWORD button)
+BOOL GamePad::IsButtonReleased(int padNo, DWORD button)
 {
-	return (button & padRelease[padNo]);
+	return (button & mInstance->padRelease[padNo]);
 }
 
 /**************************************
 X軸トリガー検出処理
 ***************************************/
-int GetPadAxisXTriggered(int padNo)
+int GamePad::GetPadAxisXTriggered(int padNo)
 {
 	if (IsButtonTriggered(padNo, BUTTON_RIGHT))
 		return 1;
@@ -307,7 +299,7 @@ int GetPadAxisXTriggered(int padNo)
 /**************************************
 Y軸トリガー検出処理
 ***************************************/
-int GetPadAxisYTriggered(int padNo)
+int GamePad::GetPadAxisYTriggered(int padNo)
 {
 	if (IsButtonTriggered(padNo, BUTTON_UP))
 		return 1;
@@ -322,37 +314,37 @@ int GetPadAxisYTriggered(int padNo)
 /**************************************
 パッド数を返す処理
 ***************************************/
-int GetPadCount(void)
+int GamePad::GetPadCount(void)
 {
-	return padCount;
+	return mInstance->padCount;
 }
 
 /**************************************
 右スティックX軸入力計算処理
 ***************************************/
-float GetStickAxisX(int padNo)
+float GamePad::GetStickAxisX(int padNo)
 {
-	if (padNo >= padCount)
+	if (padNo >= mInstance->padCount)
 	{
 		return 0.0f;
 	}
 
-	return (padAxislRx[padNo] / 65535.0f) - 0.5f;
+	return (mInstance->padAxislRx[padNo] / 65535.0f) - 0.5f;
 }
 
 
 /**************************************
 右スティックY軸入力計算処理
 ***************************************/
-float GetStickAxisY(int padNo)
+float GamePad::GetStickAxisY(int padNo)
 {
-	if (padNo >= padCount)
+	if (padNo >= mInstance->padCount)
 	{
 		return 0.0f;
 	}
 
 
-	return (padAxislRy[padNo] / 65535.0f) - 0.5f;
+	return (mInstance->padAxislRy[padNo] / 65535.0f) - 0.5f;
 }
 
 

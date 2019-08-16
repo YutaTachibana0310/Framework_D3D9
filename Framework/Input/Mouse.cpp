@@ -11,21 +11,25 @@
 ***************************************/
 
 /**************************************
-クラス定義
-***************************************/
-
-/**************************************
 グローバル変数
 ***************************************/
-static LPDIRECTINPUTDEVICE8 pMouse = NULL; // mouse
+Mouse* Mouse::mInstance = NULL;
 
-static DIMOUSESTATE2   mouseState;		// マウスのダイレクトな状態
-static DIMOUSESTATE2   mouseTrigger;	// 押された瞬間だけON
+/**************************************
+コンストラクタ
+***************************************/
+Mouse::Mouse()
+{
+	if (mInstance == NULL)
+	{
+		mInstance = this;
+	}
+}
 
 /**************************************
 初期化処理
 ***************************************/
-HRESULT InitializeMouse(HINSTANCE hInst, HWND hWindow, LPDIRECTINPUT8 inputInterface)
+HRESULT Mouse::Init(HINSTANCE hInst, HWND hWindow, LPDIRECTINPUT8 inputInterface)
 {
 	HRESULT result;
 	// デバイス作成
@@ -74,7 +78,7 @@ HRESULT InitializeMouse(HINSTANCE hInst, HWND hWindow, LPDIRECTINPUT8 inputInter
 /**************************************
 終了処理
 ***************************************/
-void UninitMouse()
+Mouse::~Mouse()
 {
 	if (pMouse)
 	{
@@ -83,12 +87,16 @@ void UninitMouse()
 		pMouse = NULL;
 	}
 
+	if (mInstance == this)
+	{
+		mInstance = NULL;
+	}
 }
 
 /**************************************
 更新処理
 ***************************************/
-HRESULT UpdateMouse()
+HRESULT Mouse::Update()
 {
 	HRESULT result;
 	// 前回の値保存
@@ -120,10 +128,10 @@ HRESULT UpdateMouse()
 /**************************************
 マウス座標取得処理
 ***************************************/
-D3DXVECTOR3 GetMousePosition(HWND hWnd)
+D3DXVECTOR3 Mouse::GetMousePosition(HWND hWnd)
 {
 	POINT position;
-	//DebugLog(I)
+	
 	if (GetCursorPos(&position))
 	{
 		ScreenToClient(hWnd, &position);
@@ -157,43 +165,43 @@ D3DXVECTOR3 GetMousePosition(HWND hWnd)
 /**************************************
 マウス入力検出処理
 ***************************************/
-BOOL IsMouseLeftPressed(void)
+BOOL Mouse::IsMouseLeftPressed(void)
 {
-	return (BOOL)(mouseState.rgbButtons[0] & 0x80);	// 押されたときに立つビットを検査
+	return (BOOL)(mInstance->mouseState.rgbButtons[0] & 0x80);	// 押されたときに立つビットを検査
 }
-BOOL IsMouseLeftTriggered(void)
+BOOL Mouse::IsMouseLeftTriggered(void)
 {
-	return (BOOL)(mouseTrigger.rgbButtons[0] & 0x80);
+	return (BOOL)(mInstance->mouseTrigger.rgbButtons[0] & 0x80);
 }
-BOOL IsMouseRightPressed(void)
+BOOL Mouse::IsMouseRightPressed(void)
 {
-	return (BOOL)(mouseState.rgbButtons[1] & 0x80);
+	return (BOOL)(mInstance->mouseState.rgbButtons[1] & 0x80);
 }
-BOOL IsMouseRightTriggered(void)
+BOOL Mouse::IsMouseRightTriggered(void)
 {
-	return (BOOL)(mouseTrigger.rgbButtons[1] & 0x80);
+	return (BOOL)(mInstance->mouseTrigger.rgbButtons[1] & 0x80);
 }
-BOOL IsMouseCenterPressed(void)
+BOOL Mouse::IsMouseCenterPressed(void)
 {
-	return (BOOL)(mouseState.rgbButtons[2] & 0x80);
+	return (BOOL)(mInstance->mouseState.rgbButtons[2] & 0x80);
 }
-BOOL IsMouseCenterTriggered(void)
+BOOL Mouse::IsMouseCenterTriggered(void)
 {
-	return (BOOL)(mouseTrigger.rgbButtons[2] & 0x80);
+	return (BOOL)(mInstance->mouseTrigger.rgbButtons[2] & 0x80);
 }
 
 /**************************************
 マウス座標取得処理
 ***************************************/
-float GetMouseX(void)
+float Mouse::GetMouseX(void)
 {
-	return float(mouseState.lX);
+	return float(mInstance->mouseState.lX);
 }
-float GetMouseY(void)
+float Mouse::GetMouseY(void)
 {
-	return float(mouseState.lY);
+	return float(mInstance->mouseState.lY);
 }
-float GetMouseZ(void)
+float Mouse::GetMouseZ(void)
 {
-	return float(mouseState.lZ);
+	return float(mInstance->mouseState.lZ);
 }

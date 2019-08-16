@@ -32,23 +32,49 @@
 /**************************************
 クラス定義
 ***************************************/
+class GamePad
+{
+public:
+	GamePad();
+	~GamePad(); 
+	HRESULT Init(LPDIRECTINPUT8 pInput);
 
-/**************************************
-プロトタイプ宣言
-***************************************/
-HRESULT InitializePad(LPDIRECTINPUT8 inputInterface);			// パッド初期化
-BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface);	// パッド検査コールバック
-void UpdatePad(void);
-void UninitPad(void);
+	BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface);	// パッド検査コールバック
 
-BOOL IsButtonPressed(int padNo, DWORD button);
-BOOL IsButtonTriggered(int padNo, DWORD button);
-BOOL IsButtonReleased(int padNo, DWORD button);
+	void Update();
 
-float GetStickAxisX(int padNo);
-float GetStickAxisY(int padNo);
+	static BOOL IsButtonPressed(int padNo, DWORD button);
+	static BOOL IsButtonTriggered(int padNo, DWORD button);
+	static BOOL IsButtonReleased(int padNo, DWORD button);
 
-int GetPadAxisXTriggered(int padNo);
-int GetPadAxisYTriggered(int padNo);
+	static float GetStickAxisX(int padNo);
+	static float GetStickAxisY(int padNo);
+
+	static int GetPadAxisXTriggered(int padNo);
+	static int GetPadAxisYTriggered(int padNo);
+
+	static int GetPadCount();
+
+private:
+	//スティックのRepeat状態検出用
+	int		padAxisXRepeat[GAMEPADMAX];
+	int		padAxisYRepeat[GAMEPADMAX];
+	int		lastAxisX[GAMEPADMAX];
+	int		lastAxisY[GAMEPADMAX];
+	int		axisXRepeatCnt[GAMEPADMAX];
+	int		axisYRepeatCnt[GAMEPADMAX];
+
+	float	padAxislRx[GAMEPADMAX];
+	float	padAxislRy[GAMEPADMAX];
+
+	LPDIRECTINPUTDEVICE8	pGamePad[GAMEPADMAX] = { NULL,NULL,NULL,NULL };// パッドデバイス
+
+	DWORD	padState[GAMEPADMAX];	// パッド情報（複数対応）
+	DWORD	padTrigger[GAMEPADMAX];
+	DWORD	padRelease[GAMEPADMAX];
+	int		padCount;			// 検出したパッドの数
+
+	static GamePad* mInstance;
+};
 
 #endif

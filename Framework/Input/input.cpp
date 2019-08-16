@@ -7,32 +7,47 @@
 #include "input.h"
 
 //*****************************************************************************
-// グローバル変数
+// staticメンバ
 //*****************************************************************************
-LPDIRECTINPUT8			g_pDInput = NULL;					// IDirectInput8インターフェースへのポインタ
+Input* Input::mInstance = NULL;
+
+//*****************************************************************************
+// コンストラクタ
+//*****************************************************************************
+Input::Input()
+{
+	if (mInstance == NULL)
+	{
+		mInstance = this;
+	}
+
+	pad = new GamePad();
+	keyboard = new Keyboard();
+	mouse = new Mouse();
+}
 
 //=============================================================================
 // 入力処理の初期化
 //=============================================================================
-HRESULT InitInput(HINSTANCE hInst, HWND hWnd)
+HRESULT Input::Init(HINSTANCE hInst, HWND hWnd)
 {
 	HRESULT hr;
 
-	if(!g_pDInput)
+	if(!pDInput)
 	{
 		// DirectInputオブジェクトの作成
 		hr = DirectInput8Create(hInst, DIRECTINPUT_VERSION,
-									IID_IDirectInput8, (void**)&g_pDInput, NULL);
+									IID_IDirectInput8, (void**)&pDInput, NULL);
 	}
 
 	// キーボードの初期化
-	InitKeyboard(hInst, hWnd, g_pDInput);
+	keyboard->Init(hInst, hWnd, pDInput);
 
 	//マウス初期化
-	InitializeMouse(hInst, hWnd, g_pDInput);
+	mouse->Init(hInst, hWnd, pDInput);
 
 	//パッド初期化処理
-	InitializePad(g_pDInput);
+	pad->Init(pDInput);
 
 	return S_OK;
 }
@@ -40,35 +55,35 @@ HRESULT InitInput(HINSTANCE hInst, HWND hWnd)
 //=============================================================================
 // 入力処理の終了処理
 //=============================================================================
-void UninitInput(void)
+Input::~Input()
 {
 	// キーボードの終了処理
-	UninitKeyboard();
+	SAFE_DELETE(keyboard);
 
 	//マウス終了処理
-	UninitMouse();
+	SAFE_DELETE(mouse);
 
 	//パッド終了処理
-	UninitPad();
+	SAFE_DELETE(pad);
 
-	if(g_pDInput)
+	if(pDInput)
 	{// DirectInputオブジェクトの開放
-		g_pDInput->Release();
-		g_pDInput = NULL;
+		pDInput->Release();
+		pDInput = NULL;
 	}
 }
 
 //=============================================================================
 // 入力処理の更新処理
 //=============================================================================
-void UpdateInput(void)
+void Input::Update(void)
 {
 	// キーボードの更新
-	UpdateKeyboard();
+	keyboard->Update();
 
 	//マウス更新処理
-	UpdateMouse();
+	mouse->Update();
 
 	//ゲームパッド更新処理
-	UpdatePad();
+	pad->Update();
 }

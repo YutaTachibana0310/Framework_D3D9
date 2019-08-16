@@ -13,15 +13,27 @@
 #include "Keyboard.h"
 
 //*****************************************************************************
-// マクロ定義
+// クラス定義
 //*****************************************************************************
+class Input
+{
+public:
+	Input();
+	~Input();
 
+	HRESULT Init(HINSTANCE hInst, HWND hWnd);
+	void Update();
+
+private:
+	LPDIRECTINPUT8 pDInput;					// IDirectInput8インターフェースへのポインタ
+	GamePad *pad;
+	Keyboard *keyboard;
+	Mouse *mouse;
+
+	static Input* mInstance;
+};
 //*****************************************************************************
 // プロトタイプ宣言
 //*****************************************************************************
-HRESULT InitInput(HINSTANCE hInst, HWND hWnd);
-void UninitInput(void);
-void UpdateInput(void);
-
 
 #endif
