@@ -25,8 +25,8 @@ public:
 	HRESULT Init(HINSTANCE hInst, HWND hWnd);
 	void Update();
 
-	static float GetPressHorizontail(int no);
-	static float GetPressVertical(int no);
+	static float GetPressHorizontail(int no = 0);
+	static float GetPressVertical(int no = 0);
 
 private:
 	LPDIRECTINPUT8 pDInput;					// IDirectInput8インターフェースへのポインタ

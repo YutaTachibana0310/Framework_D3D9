@@ -43,8 +43,8 @@ void TransformTest::Update()
 {
 	Debug::Begin("Transform");
 
-	float x = Input::GetPressHorizontail(0);
-	float y = Input::GetPressVertical(0);
+	float x = Input::GetPressHorizontail();
+	float y = Input::GetPressVertical();
 
 	float rotAngle = 2.0f;
 	transform.Rotate(0.0f, x * rotAngle, 0.0f);
