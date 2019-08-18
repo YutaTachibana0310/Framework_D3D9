@@ -90,6 +90,15 @@ public:
 			+ powf(t, 3.0f) * end;
 	}
 
+	/**************************************
+	•‚“®¬”“_”äŠrˆ—
+	***************************************/
+	template<typename T>
+	static bool Approximately(const T& a, const T& b)
+	{
+		return fabs(a - b) <= DBL_EPSILON * fmax(1, fmax(fabs(a), fabs(b)));
+	}
+
 private:
 	Math();
 };
