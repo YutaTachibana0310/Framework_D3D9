@@ -11,7 +11,7 @@
 #include "../Math/Easing.h"
 #include "../Core/Transform.h"
 
-#include <vector>
+#include <list>
 #include <memory>
 #include <iterator>
 
@@ -45,8 +45,7 @@ private:
 	void ClearContainer();
 
 	class Tweener;
-	std::vector<Tween::Tweener*> tweenerContainer;
-	std::vector<Tween::Tweener*>::iterator itrEmpty;
+	std::list<Tween::Tweener*> tweenerContainer;
 
 	static Tween* mInstance;
 	Tween();

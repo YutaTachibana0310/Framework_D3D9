@@ -60,15 +60,15 @@ void Tween::ClearContainer()
 {
 	for (auto&& tweener : tweenerContainer)
 	{
-		if (!tweener == NULL)
+		if (!tweener->IsFinished())
 			continue;
 
 		SAFE_DELETE(tweener);
 	}
 
-	itrEmpty = remove_if(tweenerContainer.begin(), tweenerContainer.end(), [](auto&& tweener)
+	tweenerContainer.remove_if([](auto&& tweener)
 	{
-		return tweener->IsFinished();
+		return tweener == NULL;
 	});
 }
 
@@ -78,17 +78,7 @@ void Tween::ClearContainer()
 void Tween::Move(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 {
 	MoveTweener *tweener = new MoveTweener(ref, start, end, duration, type);
-
-	if (mInstance->itrEmpty == mInstance->tweenerContainer.end())
-	{
-		mInstance->tweenerContainer.push_back(tweener);
-		mInstance->itrEmpty = mInstance->tweenerContainer.end();
-	}
-	else
-	{
-		*(mInstance->itrEmpty) = tweener;
-		mInstance->itrEmpty++;
-	}
+	mInstance->tweenerContainer.push_back(tweener);
 }
 
 /**************************************
@@ -106,17 +96,7 @@ void Tween::Move(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int du
 void Tween::Scale(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 {
 	ScaleTweener *tweener = new ScaleTweener(ref, start, end, duration, type);
-
-	if (mInstance->itrEmpty == mInstance->tweenerContainer.end())
-	{
-		mInstance->tweenerContainer.push_back(tweener);
-		mInstance->itrEmpty = mInstance->tweenerContainer.end();
-	}
-	else
-	{
-		*(mInstance->itrEmpty) = tweener;
-		mInstance->itrEmpty++;
-	}
+	mInstance->tweenerContainer.push_back(tweener);
 }
 
 /**************************************
@@ -174,7 +154,7 @@ inline bool Tween::Tweener::IsFinished()
 /**************************************
 MoveTweenerコンストラクタ
 ***************************************/
-Tween::MoveTweener::MoveTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type) 
+Tween::MoveTweener::MoveTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 	: Tweener(ref, duration, type)
 {
 	this->start = start;
