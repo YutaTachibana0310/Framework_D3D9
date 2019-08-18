@@ -60,7 +60,7 @@ private:
 		virtual void Update() = 0;
 
 	protected:
-		std::shared_ptr<Transform> reference;
+		std::weak_ptr<Transform> reference;
 		int cntFrame;
 		int duration;
 		EaseType type;

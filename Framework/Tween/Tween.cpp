@@ -151,6 +151,9 @@ TweenerI—¹”»’è
 ***************************************/
 inline bool Tween::Tweener::IsFinished()
 {
+	if (!reference.lock())
+		return true;
+
 	return cntFrame >= duration;
 }
 
@@ -171,8 +174,12 @@ void Tween::MoveTweener::Update()
 {
 	cntFrame++;
 
-	float t = (float)cntFrame / duration;
-	reference->pos = Easing::EaseValue(t, start, end, type);
+	shared_ptr<Transform> transform = reference.lock();
+	if (transform)
+	{
+		float t = (float)cntFrame / duration;
+		transform->pos = Easing::EaseValue(t, start, end, type);
+	}
 }
 
 /**************************************
@@ -192,8 +199,12 @@ void Tween::ScaleTweener::Update()
 {
 	cntFrame++;
 
-	float t = (float)cntFrame / duration;
-	reference->scale = Easing::EaseValue(t, start, end, type);
+	shared_ptr<Transform> transform = reference.lock();
+	if (transform)
+	{
+		float t = (float)cntFrame / duration;
+		transform->scale = Easing::EaseValue(t, start, end, type);
+	}
 }
 
 /**************************************
@@ -213,7 +224,11 @@ void Tween::RotateTweener::Update()
 {
 	cntFrame++;
 
-	float t = (float)cntFrame / duration;
-	reference->rot = Easing::EaseValue(t, start, end, type);
-	D3DXQuaternionNormalize(&reference->rot, &reference->rot);
+	shared_ptr<Transform> transform = reference.lock();
+	if (transform)
+	{
+		float t = (float)cntFrame / duration;
+		transform->rot = Easing::EaseValue(t, start, end, type);
+		D3DXQuaternionNormalize(&transform->rot, &transform->rot);
+	}
 }
