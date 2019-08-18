@@ -25,9 +25,6 @@ public:
 	GameObject();
 	virtual ~GameObject();
 
-	//描画処理
-	virtual void Draw() = 0;
-
 	//アクティブ判定
 	inline bool IsActive();
 
