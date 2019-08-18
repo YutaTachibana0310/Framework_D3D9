@@ -6,7 +6,7 @@
 //=====================================
 #include "TestTransition.h"
 #include "../Framework\Tool\DebugWindow.h"
-#include "../Framework\Pattern\IState.h"
+#include "../Framework\Pattern\BaseState.h"
 /**************************************
 É}ÉNÉçíËã`
 ***************************************/

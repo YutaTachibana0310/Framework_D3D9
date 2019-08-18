@@ -68,6 +68,7 @@
     <ClCompile Include="Framework\Transition\HexaRotTransitionMask.cpp" />
     <ClCompile Include="Framework\Transition\MistTransitionMask.cpp" />
     <ClCompile Include="Framework\Transition\TransitionController.cpp" />
+    <ClCompile Include="Framework\Tween\Tween.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -107,7 +108,7 @@
     <ClInclude Include="Framework\Particle\SceneParticleManager.h" />
     <ClInclude Include="Framework\Pattern\BaseObserver.h" />
     <ClInclude Include="Framework\Pattern\BaseSingleton.h" />
-    <ClInclude Include="Framework\Pattern\IState.h" />
+    <ClInclude Include="Framework\Pattern\BaseState.h" />
     <ClInclude Include="Framework\Pattern\ObserveSubject.h" />
     <ClInclude Include="Framework\PostEffect\BaseEffectController.h" />
     <ClInclude Include="Framework\PostEffect\BloomController.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Framework\Transition\HexaRotTransitionMask.h" />
     <ClInclude Include="Framework\Transition\MistTransitionMask.h" />
     <ClInclude Include="Framework\Transition\TransitionController.h" />
+    <ClInclude Include="Framework\Tween\Tween.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx9.h" />
