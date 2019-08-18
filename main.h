@@ -50,10 +50,6 @@
 #define SCREEN_WIDTH	(1800)
 #define SCREEN_HEIGHT	(1000)
 
-//WQHD用
-//#define SCREEN_WIDTH	(1500)
-//#define SCREEN_HEIGHT	(900)
-
 #define SCREEN_CENTER_X	(SCREEN_WIDTH / 2)
 #define SCREEN_CENTER_Y	(SCREEN_HEIGHT / 2)
 
@@ -62,11 +58,9 @@
 
 //解放、削除関連
 #define SAFE_RELEASE(p)				{if(p){p->Release(); p = NULL;}}
-#define SAFE_DELETE(p)				{if(p){delete(p); p = NULL;}}
+#define SAFE_DELETE(p)				{delete(p); p = NULL;}
 #define SAFE_DELETE_ARRAY(p)		{if(p){delete[](p); p = NULL;}}
 #define SAFE_DELETE_VECTOR(vector)	{for(auto& p : vector){ SAFE_DELETE(p);} vector.clear();}
-
-#define TARGETPLAYER_MAX	(2)	//一度に参加できるプレイヤーの最大数
 
 // 上記２Ｄポリゴン頂点フォーマットに合わせた構造体を定義
 typedef struct
@@ -106,13 +100,6 @@ typedef struct
 {
 	float u, v;
 }ParticleUV;
-
-typedef struct
-{
-	D3DXVECTOR3 vtx[4];
-	D3DXVECTOR3 nor;
-}PLANE;
-
 
 //*****************************************************************************
 // プロトタイプ宣言
