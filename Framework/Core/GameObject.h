@@ -36,11 +36,13 @@ public:
 	D3DXVECTOR3 GetPosition();
 	D3DXVECTOR3 GetRotation();
 	D3DXVECTOR3 GetScale();
+	Transform GetTransform();
 
 	//SRT情報セッター（なるべく使いたくない）
 	void SetPosition(const D3DXVECTOR3& position);
 	void SetRotatition(const D3DXVECTOR3& rotation);
 	void SetScale(const D3DXVECTOR3& scale);
+	void SetTransform(const Transform& transform);
 
 protected:
 	//アクティブ状態

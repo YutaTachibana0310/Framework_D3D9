@@ -20,9 +20,18 @@
 MistTransitionMask::MistTransitionMask()
 {
 	//ポリゴン初期化
+	polygon = new Polygon2D();
 	polygon->SetSize((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT);
 	polygon->LoadTexture(MISTTRANSITION_TEX_NAME);
-	polygon->transform.pos = D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f);
+	polygon->SetPosition(D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f));
+}
+
+/**************************************
+デストラクタ
+***************************************/
+MistTransitionMask::~MistTransitionMask()
+{
+	SAFE_DELETE(polygon);
 }
 
 /**************************************

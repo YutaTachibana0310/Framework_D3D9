@@ -30,7 +30,7 @@ public:
 	MaskResult Update() override;				//更新処理
 	void Draw() override;						//描画処理
 	void Set(bool isTransitionOut) override;	//セット処理
-	
+
 private:
 	//マスク領域となる六角形のインナークラス
 	class Hexagon
@@ -61,5 +61,9 @@ private:
 
 	//終了フラグ
 	bool isFinished;
+
+	//ポリゴン
+	Polygon2D *polygon;
 };
+
 #endif

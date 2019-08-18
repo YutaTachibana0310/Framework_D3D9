@@ -33,15 +33,13 @@ public:
 
 	virtual MaskResult Update() = 0;
 
-	virtual void Draw();
+	virtual void Draw() = 0;
 
 	virtual void Set(bool isTransitionOut) = 0;
 
 protected:
 	bool active;
 	bool isTransitionOut;
-
-	Polygon2D *polygon;
 
 	virtual void BeginMask();
 	virtual void EndMask();

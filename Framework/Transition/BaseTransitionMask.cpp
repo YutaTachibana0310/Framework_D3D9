@@ -16,9 +16,6 @@
 ***************************************/
 BaseTransitionMask::BaseTransitionMask()
 {
-	//ポリゴン作成
-	polygon = new Polygon2D();
-
 	//フラグ初期化
 	active = false;
 	isTransitionOut = false;
@@ -29,7 +26,7 @@ BaseTransitionMask::BaseTransitionMask()
 ***************************************/
 BaseTransitionMask::~BaseTransitionMask()
 {
-	SAFE_DELETE(polygon);
+
 }
 
 /**************************************
@@ -55,21 +52,6 @@ void BaseTransitionMask::BeginMask()
 	pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
 
 	pDevice->Clear(0, 0, D3DCLEAR_STENCIL, 0, 0.0f, 0);
-}
-
-/**************************************
-マスク描画処理
-***************************************/
-void BaseTransitionMask::Draw()
-{
-	if (!active)
-		return;
-
-	BeginMask();
-
-	polygon->Draw();
-
-	EndMask();
 }
 
 /**************************************

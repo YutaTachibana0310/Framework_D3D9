@@ -77,8 +77,7 @@ void EasingTest::Update()
 
 	float t = (float)(cntFrame - buffer) / EASING_DURATION;
 	float posX = Easing::EaseValue(t, Start, End, (EaseType)type);
-	polygon->transform.pos.x = posX;
-	polygon->transform.pos.y = SCREEN_CENTER_Y * 1.0f;
+	polygon->SetPosition(D3DXVECTOR3(posX, SCREEN_CENTER_Y, 0.0f));
 
 	Debug::Text("t : %f", t);
 

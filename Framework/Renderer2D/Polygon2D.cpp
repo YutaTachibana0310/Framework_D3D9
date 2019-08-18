@@ -109,7 +109,7 @@ void Polygon2D::LoadTexture(const char* path)
 ***************************************/
 void Polygon2D::SetVertex()
 {
-	D3DXMATRIX mtxTransform = transform.GetMatrix();
+	D3DXMATRIX mtxTransform = transform->GetMatrix();
 
 	for (int i = 0; i < NUM_VERTEX; i++)
 	{

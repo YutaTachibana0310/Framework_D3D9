@@ -6,6 +6,7 @@
 //=====================================
 #include "HexaRotTransitionMask.h"
 #include "../Renderer2D/Polygon2D.h"
+#include "../Tween/Tween.h"
 
 /**************************************
 マクロ定義
@@ -18,9 +19,18 @@
 HexaRotTransitionMask::HexaRotTransitionMask()
 {
 	//ポリゴン初期化
-	polygon->LoadTexture("data/TRANSITION/HexaMask.png");
-	polygon->SetSize((float)SCREEN_WIDTH, (float)SCREEN_WIDTH);
-	polygon->transform.pos = D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f);
+	hex = new RotationHexa();
+	hex->LoadTexture("data/TRANSITION/HexaMask.png");
+	hex->SetSize((float)SCREEN_WIDTH, (float)SCREEN_WIDTH);
+	hex->SetPosition(D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f));
+}
+
+/**************************************
+デストラクタ
+***************************************/
+HexaRotTransitionMask::~HexaRotTransitionMask()
+{
+	SAFE_DELETE(hex);
 }
 
 /**************************************
@@ -35,12 +45,7 @@ MaskResult HexaRotTransitionMask::Update()
 
 	cntFrame++;
 
-	//マスク画像のスケールをイージングする
-	float t = 1.f * cntFrame / HEXATRANSITION_DURATION;
-	polygon->transform.scale = Easing::EaseValue(t, initScale, goalScale, easeType);
-
-	//回転させる
-	polygon->transform.Rotate(0.0f, 0.0f, 10.0f);
+	hex->Update();
 
 	//トランジションの終了確認
 	if (cntFrame == HEXATRANSITION_DURATION)
@@ -50,8 +55,22 @@ MaskResult HexaRotTransitionMask::Update()
 		
 		result = isTransitionOut ? FinishTransitionOut : FinishTransitionIn;
 	}
-
 	return result;
+}
+
+/**************************************
+トランジション開始処理
+***************************************/
+void HexaRotTransitionMask::Draw()
+{
+	if (!active)
+		return;
+
+	BeginMask();
+
+	hex->Draw();
+
+	EndMask();
 }
 
 /**************************************
@@ -63,14 +82,31 @@ void HexaRotTransitionMask::Set(bool isTransitionOut)
 	if (active)
 		return;
 
-	//イージング用のパラメータ初期化
-	initScale = isTransitionOut ? D3DXVECTOR3(0.0f, 0.0f, 0.0f) : D3DXVECTOR3(1.0f, 1.0f, 1.0f);
-	goalScale = D3DXVECTOR3(1.0f, 1.0f, 1.0f) - initScale;
-	easeType = isTransitionOut ? EaseType::InExpo : EaseType::OutExpo;
-	cntFrame = 0;
+	//イージング開始
+	hex->Init(isTransitionOut);
 
 	//フラグ初期化
+	cntFrame = 0;
 	active = true;
 	this->isTransitionOut = isTransitionOut;
 }
 
+/**************************************
+回転六角形初期化処理
+***************************************/
+void RotationHexa::Init(bool isTransitionOut)
+{
+	const D3DXVECTOR3 InitScale = isTransitionOut ? Vector3::Zero : Vector3::One;
+	const D3DXVECTOR3 EndScale = Vector3::One - InitScale;
+	const EaseType Type = isTransitionOut ? EaseType::InExpo : EaseType::OutExpo;
+
+	Tween::Scale(*this, InitScale, EndScale, HEXATRANSITION_DURATION, Type);
+}
+
+/**************************************
+回転六角形更新処理
+***************************************/
+void RotationHexa::Update()
+{
+	transform->Rotate(0.0f, 0.0f, 10.0f);
+}

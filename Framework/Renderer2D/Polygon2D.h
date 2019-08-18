@@ -16,11 +16,11 @@
 /**************************************
 ƒNƒ‰ƒX’è‹`
 ***************************************/
-class Polygon2D
+class Polygon2D : public GameObject
 {
 public:
 	Polygon2D();
-	~Polygon2D();
+	virtual ~Polygon2D();
 
 	void Draw();
 
@@ -29,8 +29,6 @@ public:
 	void SetUV(float left, float top, float width, float height);
 
 	void LoadTexture(const char* path);
-
-	Transform transform;
 
 private:
 	VERTEX_2D vtxWk[NUM_VERTEX];

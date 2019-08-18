@@ -22,6 +22,7 @@ class MistTransitionMask : public BaseTransitionMask
 {
 public:
 	MistTransitionMask();
+	~MistTransitionMask();
 
 	MaskResult Update() override;
 	void Draw() override;
@@ -33,6 +34,8 @@ private:
 
 	float startRef, endRef;
 	EaseType type;
+
+	Polygon2D *polygon;
 };
 
 #endif

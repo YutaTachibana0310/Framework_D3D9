@@ -22,6 +22,8 @@ typedef BaseTransitionMask Base;
 ***************************************/
 HexaPopTransitionMask::HexaPopTransitionMask()
 {
+	polygon = new Polygon2D();
+
 	//ƒ|ƒŠƒSƒ“‚Ì‘å‚«‚³‚ðŒvŽZ
 	float sizeX = (float)SCREEN_WIDTH / HEXAPOPTRANSITION_DIVINE_X;
 	float sizeY = (float)SCREEN_HEIGHT / HEXAPOPTRANSITION_DIVINE_Y;
@@ -63,6 +65,8 @@ HexaPopTransitionMask::~HexaPopTransitionMask()
 		SAFE_DELETE_VECTOR(list);
 	}
 	hexList.clear();
+
+	SAFE_DELETE(polygon);
 }
 
 /**************************************
@@ -125,7 +129,7 @@ void HexaPopTransitionMask::Draw()
 	{
 		for (auto& hex : list)
 		{
-			polygon->transform = hex->transform;
+			polygon->SetTransform(hex->transform);
 			polygon->Draw();
 		}
 	}

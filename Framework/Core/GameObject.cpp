@@ -90,3 +90,19 @@ void GameObject::SetScale(const D3DXVECTOR3& scale)
 {
 	transform->scale = scale;
 }
+
+/**************************************
+SRT情報ゲット
+***************************************/
+Transform GameObject::GetTransform()
+{
+	return *transform;
+}
+
+/**************************************
+スケール情報ゲット
+***************************************/
+void GameObject::SetTransform(const Transform& transform)
+{
+	*this->transform = transform;
+}
