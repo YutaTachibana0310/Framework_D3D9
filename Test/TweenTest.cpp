@@ -16,7 +16,8 @@
 ***************************************/
 void TweenTest::Init()
 {
-	object = new TransformObject();
+	if(object == NULL)
+		object = new TransformObject();
 }
 
 /**************************************
@@ -68,8 +69,15 @@ void TweenTest::Update()
 		target.y = Math::RandomRange(-150.0f, 50.0f);
 		target.z = Math::RandomRange(0.0f, 100.0f);
 
-		Tween::Move(object->transform, target, 120, (EaseType)type);
+		if(object != NULL)
+			Tween::Move(object->transform, target, 300, (EaseType)type);
 	}
+
+	if (Debug::Button("delete"))
+		SAFE_DELETE(object);
+
+	if (Debug::Button("Create") && object == NULL)
+		object = new TransformObject();
 
 	Debug::End();
 }
@@ -79,5 +87,6 @@ void TweenTest::Update()
 ***************************************/
 void TweenTest::Draw()
 {
-	object->Draw();
+	if(object != NULL)
+		object->Draw();
 }
