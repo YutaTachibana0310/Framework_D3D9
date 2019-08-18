@@ -8,6 +8,7 @@
 #define _TRANSFORM_H_
 
 #include "../../main.h"
+#include "../Math/Quaternion.h"
 
 /**************************************
 マクロ定義
@@ -21,6 +22,7 @@ class Transform
 public:
 	D3DXVECTOR3 pos;	//座標
 	D3DXVECTOR3 scale;	//スケール
+	D3DXQUATERNION rot;	//回転
 
 	//コンストラクタ
 	Transform();
@@ -29,6 +31,8 @@ public:
 	//回転処理
 	void Rotate(float degX, float degY, float degZ);
 	void RotateByAxis(float deg, D3DXVECTOR3 axis);
+	void SetRotation(float x, float y, float z);
+	D3DXVECTOR3 GetEulerAngle();
 	void IdentifyRotation();
 
 	//向き
@@ -40,9 +44,6 @@ public:
 	void SetWorld();
 	void SetWorldInvView();
 	D3DXMATRIX GetMatrix();
-
-private:
-	D3DXQUATERNION rot;	//回転
 	
 };
 

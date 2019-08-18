@@ -47,6 +47,23 @@ void Transform::RotateByAxis(float deg, D3DXVECTOR3 axis)
 }
 
 /***************************************
+‰ñ“]İ’èˆ—
+***************************************/
+void Transform::SetRotation(float x, float y, float z)
+{
+	IdentifyRotation();
+	Rotate(x, y, z);
+}
+
+/***************************************
+ƒIƒCƒ‰[Špæ“¾ˆ—
+***************************************/
+D3DXVECTOR3 Transform::GetEulerAngle()
+{
+	return Quaternion::ToEuler(rot);
+}
+
+/***************************************
 ‰ñ“]‰Šú‰»ˆ—
 ***************************************/
 void Transform::IdentifyRotation()
