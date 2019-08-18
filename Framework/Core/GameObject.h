@@ -31,12 +31,22 @@ public:
 	//アクティブ状態セット処理
 	inline void SetActive(bool active);
 
-	//SRT情報
-	std::shared_ptr<Transform> transform;
+	//SRT情報ゲッター（なるべく使いたくない）
+	D3DXVECTOR3 GetPosition();
+	D3DXVECTOR3 GetRotation();
+	D3DXVECTOR3 GetScale();
+
+	//SRT情報セッター（なるべく使いたくない）
+	void SetPosition(const D3DXVECTOR3& position);
+	void SetRotatition(const D3DXVECTOR3& rotation);
+	void SetScale(const D3DXVECTOR3& scale);
 
 protected:
 	//アクティブ状態
 	bool active;
+
+	//SRT情報
+	std::shared_ptr<Transform> transform;
 };
 
 #endif

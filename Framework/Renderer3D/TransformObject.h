@@ -28,7 +28,7 @@ public:
 	~TransformObject();
 
 	void Draw();
-	
+
 private:
 	MeshContainer *mesh;
 };
