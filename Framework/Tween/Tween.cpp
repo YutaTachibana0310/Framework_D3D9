@@ -5,6 +5,7 @@
 //
 //=====================================
 #include "Tween.h"
+#include "../Math/Quaternion.h"
 #include <algorithm>
 
 using namespace std;
@@ -113,7 +114,8 @@ void Tween::Scale(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int d
 ***************************************/
 void Tween::Rotate(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-
+	RotateTweener *tweener = new RotateTweener(ref, start, end, duration, type);
+	mInstance->tweenerContainer.push_back(tweener);
 }
 
 /**************************************
@@ -121,7 +123,8 @@ void Tween::Rotate(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, co
 ***************************************/
 void Tween::Rotate(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-
+	D3DXVECTOR3 start = ref->GetEulerAngle();
+	Rotate(ref, start, end, duration, type);
 }
 
 /**************************************
@@ -199,7 +202,8 @@ RotateTweenerコンストラクタ
 Tween::RotateTweener::RotateTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 	: Tweener(ref, duration, type)
 {
-
+	this->start = Quaternion::ToQuaternion(start);
+	this->end = Quaternion::ToQuaternion(end);
 }
 
 /**************************************
@@ -207,5 +211,9 @@ RotateTweener更新処理
 ***************************************/
 void Tween::RotateTweener::Update()
 {
+	cntFrame++;
 
+	float t = (float)cntFrame / duration;
+	reference->rot = Easing::EaseValue(t, start, end, type);
+	D3DXQuaternionNormalize(&reference->rot, &reference->rot);
 }

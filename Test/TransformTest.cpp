@@ -69,6 +69,7 @@ void TransformTest::Update()
 	if (Debug::Button("Shake"))
 		Camera::ShakePlugin::Instance()->Set(D3DXVECTOR3(10.0f, 10.0f, 10.0f), 300);
 
+	Debug::Text(object->transform->GetEulerAngle(), "Euler");
 	Debug::End();
 }
 

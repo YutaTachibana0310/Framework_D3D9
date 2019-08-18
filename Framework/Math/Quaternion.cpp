@@ -12,7 +12,7 @@
 ***************************************/
 
 /**************************************
-クラス定義
+オイラー角をクォータニオンに変換する処理
 ***************************************/
 D3DXVECTOR3 Quaternion::ToEuler(const D3DXQUATERNION& q)
 {
@@ -80,5 +80,17 @@ D3DXVECTOR3 Quaternion::ToEuler(const D3DXQUATERNION& q)
 	out.y = Math::WrapAround(0.0f, 360.0f, D3DXToDegree(ty));
 	out.z = Math::WrapAround(0.0f, 360.0f, D3DXToDegree(tz));
 
+	return out;
+}
+
+/**************************************
+クォータニオンからオイラー角に変換する処理
+***************************************/
+D3DXQUATERNION Quaternion::ToQuaternion(const D3DXVECTOR3& euler)
+{
+	D3DXVECTOR3 v = D3DXVECTOR3(D3DXToRadian(euler.x), D3DXToRadian(euler.y), D3DXToRadian(euler.z));
+
+	D3DXQUATERNION out;
+	D3DXQuaternionRotationYawPitchRoll(&out, v.y, v.x, v.z);
 	return out;
 }

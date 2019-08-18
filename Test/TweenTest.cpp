@@ -16,7 +16,7 @@
 ***************************************/
 void TweenTest::Init()
 {
-	if(object == NULL)
+	if (object == NULL)
 		object = new TransformObject();
 }
 
@@ -33,7 +33,7 @@ void TweenTest::Uninit()
 ***************************************/
 void TweenTest::Update()
 {
-	Debug::Begin("Ease");
+	Debug::Begin("Tween");
 
 	static int type;
 	Debug::RadioButton("Linear", type, EaseType::Linear);
@@ -62,15 +62,37 @@ void TweenTest::Update()
 	Debug::RadioButton("OutBack", type, EaseType::OutBack);
 	Debug::RadioButton("InOutBack", type, EaseType::InOutBack);
 
-	if (Debug::Button("Start"))
-	{
-		D3DXVECTOR3 target;
-		target.x = Math::RandomRange(-150.0f, 50.0f);
-		target.y = Math::RandomRange(-150.0f, 50.0f);
-		target.z = Math::RandomRange(0.0f, 100.0f);
 
-		if(object != NULL)
-			Tween::Move(object->transform, target, 300, (EaseType)type);
+	static D3DXVECTOR3 targetPos;
+	static D3DXVECTOR3 targetScale;
+	static D3DXVECTOR3 targetRot;
+
+	if (Debug::Button("position"))
+	{
+		targetPos.x = Math::RandomRange(-150.0f, 50.0f);
+		targetPos.y = Math::RandomRange(-150.0f, 50.0f);
+		targetPos.z = Math::RandomRange(0.0f, 100.0f);
+
+		if (object != NULL)
+			Tween::Move(object->transform, targetPos, 30, (EaseType)type);
+	}
+
+	if (Debug::Button("scale"))
+	{
+		targetScale = Vector3::One * Math::RandomRange(0.5f, 5.0f);
+
+		if (object != NULL)
+			Tween::Scale(object->transform, targetScale, 30, (EaseType)type);
+	}
+
+	if (Debug::Button("rotate"))
+	{
+		targetRot.x = Math::RandomRange(0.0f, 360.0f);
+		targetRot.y = Math::RandomRange(0.0f, 360.0f);
+		targetRot.z = Math::RandomRange(0.0f, 360.0f);
+
+		if (object != NULL)
+			Tween::Rotate(object->transform, targetRot, 30, (EaseType)type);
 	}
 
 	if (Debug::Button("delete"))
@@ -78,6 +100,13 @@ void TweenTest::Update()
 
 	if (Debug::Button("Create") && object == NULL)
 		object = new TransformObject();
+
+	Debug::Text(targetPos, "TargetPos");
+	Debug::Text(targetRot, "TargetRot");
+	Debug::Text(targetScale, "TargetScale");
+	Debug::Text(object->transform->pos, "position");
+	Debug::Text(object->transform->GetEulerAngle(), "rotation");
+	Debug::Text(object->transform->scale, "scale");
 
 	Debug::End();
 }
@@ -87,6 +116,6 @@ void TweenTest::Update()
 ***************************************/
 void TweenTest::Draw()
 {
-	if(object != NULL)
+	if (object != NULL)
 		object->Draw();
 }
