@@ -128,7 +128,7 @@ void TweenTest::Draw()
 ***************************************/
 void TweenObject::Move(const D3DXVECTOR3& target, EaseType type)
 {
-	Tween::Move(transform, target, 30, type);
+	Tween::Move(*this, target, 30, type);
 }
 
 /**************************************
@@ -136,7 +136,7 @@ void TweenObject::Move(const D3DXVECTOR3& target, EaseType type)
 ***************************************/
 void TweenObject::Rotate(const D3DXVECTOR3& target, EaseType type)
 {
-	Tween::Rotate(transform, target, 30, type);
+	Tween::Rotate(*this, target, 30, type);
 }
 
 /**************************************
@@ -144,5 +144,5 @@ void TweenObject::Rotate(const D3DXVECTOR3& target, EaseType type)
 ***************************************/
 void TweenObject::Scale(const D3DXVECTOR3& target, EaseType type)
 {
-	Tween::Scale(transform, target, 30, type);
+	Tween::Scale(*this, target, 30, type);
 }

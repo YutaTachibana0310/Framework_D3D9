@@ -31,14 +31,14 @@ class Tween
 {
 	friend class BaseGame;
 public:
-	static void Move(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type);
-	static void Move(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int duratino, EaseType type);
+	static void Move(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type);
+	static void Move(GameObject& ref, const D3DXVECTOR3& end, int duratino, EaseType type);
 
-	static void Scale(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type);
-	static void Scale(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int duration, EaseType type);
+	static void Scale(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type);
+	static void Scale(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type);
 
-	static void Rotate(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type);
-	static void Rotate(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int duration, EaseType type);
+	static void Rotate(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type);
+	static void Rotate(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type);
 
 private:
 	void Update();

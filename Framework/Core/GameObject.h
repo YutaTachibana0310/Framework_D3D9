@@ -20,6 +20,7 @@ class Transform;
 ***************************************/
 class GameObject
 {
+	friend class Tween;
 public:
 	//コンストラクタ、デストラクタ
 	GameObject();

@@ -76,54 +76,54 @@ void Tween::ClearContainer()
 /**************************************
 移動処理
 ***************************************/
-void Tween::Move(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
+void Tween::Move(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	MoveTweener *tweener = new MoveTweener(ref, start, end, duration, type);
+	MoveTweener *tweener = new MoveTweener(ref.transform, start, end, duration, type);
 	mInstance->tweenerContainer.push_back(tweener);
 }
 
 /**************************************
 移動処理
 ***************************************/
-void Tween::Move(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int duration, EaseType type)
+void Tween::Move(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	D3DXVECTOR3 start = ref->pos;
+	D3DXVECTOR3 start = ref.transform->pos;
 	Move(ref, start, end, duration, type);
 }
 
 /**************************************
 スケール処理
 ***************************************/
-void Tween::Scale(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
+void Tween::Scale(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	ScaleTweener *tweener = new ScaleTweener(ref, start, end, duration, type);
+	ScaleTweener *tweener = new ScaleTweener(ref.transform, start, end, duration, type);
 	mInstance->tweenerContainer.push_back(tweener);
 }
 
 /**************************************
 スケール処理
 ***************************************/
-void Tween::Scale(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int duration, EaseType type)
+void Tween::Scale(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	D3DXVECTOR3 start = ref->scale;
+	D3DXVECTOR3 start = ref.transform->scale;
 	Scale(ref, start, end, duration, type);
 }
 
 /**************************************
 回転処理
 ***************************************/
-void Tween::Rotate(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
+void Tween::Rotate(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	RotateTweener *tweener = new RotateTweener(ref, start, end, duration, type);
+	RotateTweener *tweener = new RotateTweener(ref.transform, start, end, duration, type);
 	mInstance->tweenerContainer.push_back(tweener);
 }
 
 /**************************************
 回転処理
 ***************************************/
-void Tween::Rotate(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& end, int duration, EaseType type)
+void Tween::Rotate(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	D3DXVECTOR3 start = ref->GetEulerAngle();
+	D3DXVECTOR3 start = ref.transform->GetEulerAngle();
 	Rotate(ref, start, end, duration, type);
 }
 
