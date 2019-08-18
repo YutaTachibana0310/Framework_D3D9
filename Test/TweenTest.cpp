@@ -17,7 +17,7 @@
 void TweenTest::Init()
 {
 	if (object == NULL)
-		object = new TransformObject();
+		object = new TweenObject();
 }
 
 /**************************************
@@ -74,7 +74,7 @@ void TweenTest::Update()
 		targetPos.z = Math::RandomRange(0.0f, 100.0f);
 
 		if (object != NULL)
-			Tween::Move(object->transform, targetPos, 30, (EaseType)type);
+			object->Move(targetPos, (EaseType)type);
 	}
 
 	if (Debug::Button("scale"))
@@ -82,7 +82,7 @@ void TweenTest::Update()
 		targetScale = Vector3::One * Math::RandomRange(0.5f, 5.0f);
 
 		if (object != NULL)
-			Tween::Scale(object->transform, targetScale, 30, (EaseType)type);
+			object->Scale(targetScale, (EaseType)type);
 	}
 
 	if (Debug::Button("rotate"))
@@ -92,21 +92,24 @@ void TweenTest::Update()
 		targetRot.z = Math::RandomRange(0.0f, 360.0f);
 
 		if (object != NULL)
-			Tween::Rotate(object->transform, targetRot, 30, (EaseType)type);
+			object->Rotate(targetRot, (EaseType)type);
 	}
 
 	if (Debug::Button("delete"))
 		SAFE_DELETE(object);
 
 	if (Debug::Button("Create") && object == NULL)
-		object = new TransformObject();
+		object = new TweenObject();
 
 	Debug::Text(targetPos, "TargetPos");
 	Debug::Text(targetRot, "TargetRot");
 	Debug::Text(targetScale, "TargetScale");
-	Debug::Text(object->transform->pos, "position");
-	Debug::Text(object->transform->GetEulerAngle(), "rotation");
-	Debug::Text(object->transform->scale, "scale");
+	if (object != NULL)
+	{
+		Debug::Text(object->GetPosition(), "position");
+		Debug::Text(object->GetRotation(), "rotation");
+		Debug::Text(object->GetScale(), "scale");
+	}
 
 	Debug::End();
 }
@@ -118,4 +121,28 @@ void TweenTest::Draw()
 {
 	if (object != NULL)
 		object->Draw();
+}
+
+/**************************************
+移動
+***************************************/
+void TweenObject::Move(const D3DXVECTOR3& target, EaseType type)
+{
+	Tween::Move(transform, target, 30, type);
+}
+
+/**************************************
+回転
+***************************************/
+void TweenObject::Rotate(const D3DXVECTOR3& target, EaseType type)
+{
+	Tween::Rotate(transform, target, 30, type);
+}
+
+/**************************************
+スケーリング
+***************************************/
+void TweenObject::Scale(const D3DXVECTOR3& target, EaseType type)
+{
+	Tween::Scale(transform, target, 30, type);
 }

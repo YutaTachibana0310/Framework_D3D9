@@ -29,10 +29,9 @@ void TransformTest::Init()
 {
 	object = new TransformObject();
 
-	object->transform->pos = D3DXVECTOR3(0.0f, -15.0f, 0.0f);
-	object->transform->scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
-	object->transform->IdentifyRotation();
-	object->transform->Rotate(0.0f, 45.0f, 0.0f);
+	object->SetPosition(D3DXVECTOR3(0.0f, -15.0f, 0.0f));
+	object->SetScale(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
+	object->SetRotatition(D3DXVECTOR3(0.0f, 45.0f, 0.0f));
 }
 
 /**************************************
@@ -42,34 +41,35 @@ void TransformTest::Update()
 {
 	Debug::Begin("Transform");
 
-	float x = Input::GetPressHorizontail();
-	float y = Input::GetPressVertical();
+	//float x = Input::GetPressHorizontail();
+	//float y = Input::GetPressVertical();
 
-	float rotAngle = 2.0f;
-	object->transform->Rotate(0.0f, x * rotAngle, 0.0f);
-	object->transform->RotateByAxis(rotAngle * y, object->transform->Right());
+	//float rotAngle = 2.0f;
+	//static D3DXVECTOR3 angle = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	//object->transform->Rotate(0.0f, x * rotAngle, 0.0f);
+	//object->transform->RotateByAxis(rotAngle * y, object->transform->Right());
 
-	D3DXVECTOR3 dir;
-	ZeroMemory(&dir, sizeof(dir));
-	x = Keyboard::GetPress(DIK_W) ? -1.0f : Keyboard::GetPress(DIK_S) ? 1.0f : 0.0f;
-	y = Keyboard::GetPress(DIK_A) ? -1.0f : Keyboard::GetPress(DIK_D) ? 1.0f : 0.0f;
-	object->transform->pos += x * object->transform->Right();
-	object->transform->pos += y * object->transform->Forward();
+	//D3DXVECTOR3 dir;
+	//ZeroMemory(&dir, sizeof(dir));
+	//x = Keyboard::GetPress(DIK_W) ? -1.0f : Keyboard::GetPress(DIK_S) ? 1.0f : 0.0f;
+	//y = Keyboard::GetPress(DIK_A) ? -1.0f : Keyboard::GetPress(DIK_D) ? 1.0f : 0.0f;
+	//object->transform->pos += x * object->transform->Right();
+	//object->transform->pos += y * object->transform->Forward();
 
-	if (Debug::Button("Init Angle"))
-		object->transform->IdentifyRotation();
+	//if (Debug::Button("Init Angle"))
+	//	object->transform->IdentifyRotation();
 
-	if (Debug::Button("Init Pos"))
-		object->transform->pos = D3DXVECTOR3(0.0f, -15.0f, 0.0f);
+	//if (Debug::Button("Init Pos"))
+	//	object->transform->pos = D3DXVECTOR3(0.0f, -15.0f, 0.0f);
 
-	static float scale = 1.0f;
-	Debug::Slider("scale", scale, 0.0f, 10.0f);
-	object->transform->scale = scale * D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	//static float scale = 1.0f;
+	//Debug::Slider("scale", scale, 0.0f, 10.0f);
+	//object->transform->scale = scale * D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 
 	if (Debug::Button("Shake"))
 		Camera::ShakePlugin::Instance()->Set(D3DXVECTOR3(10.0f, 10.0f, 10.0f), 300);
 
-	Debug::Text(object->transform->GetEulerAngle(), "Euler");
+	//Debug::Text(object->transform->GetEulerAngle(), "Euler");
 	Debug::End();
 }
 

@@ -10,6 +10,7 @@
 #include "../main.h"
 #include "../Framework\Core\BaseScene.h"
 #include "../Framework/Renderer3D/TransformObject.h"
+#include "../Framework/Math/Easing.h"
 
 /**************************************
 前方宣言
@@ -22,6 +23,15 @@
 /**************************************
 クラス定義
 ***************************************/
+class TweenObject : public TransformObject
+{
+	using TransformObject::TransformObject;
+public:
+	void Move(const D3DXVECTOR3& target, EaseType type);
+	void Rotate(const D3DXVECTOR3& target, EaseType type);
+	void Scale(const D3DXVECTOR3& target, EaseType type);
+};
+
 class TweenTest : public BaseScene
 {
 public:
@@ -31,7 +41,7 @@ public:
 	void Draw();
 
 private:
-	TransformObject *object;
+	TweenObject *object;
 };
 
 #endif
