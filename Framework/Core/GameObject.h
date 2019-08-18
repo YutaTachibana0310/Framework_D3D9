@@ -7,6 +7,9 @@
 #ifndef _GAMEOBJECT_H_
 #define _GAMEOBJECT_H_
 
+#include "Transform.h"
+#include <memory>
+
 class Transform;
 /**************************************
 マクロ定義
@@ -26,15 +29,15 @@ public:
 	virtual void Draw() = 0;
 
 	//アクティブ判定
-	bool IsActive();
+	inline bool IsActive();
 
 	//アクティブ状態セット処理
-	void SetActive(bool active);
+	inline void SetActive(bool active);
 
-private:
 	//SRT情報
-	Transform* transform;
+	std::shared_ptr<Transform> transform;
 
+protected:
 	//アクティブ状態
 	bool active;
 };

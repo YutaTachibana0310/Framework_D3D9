@@ -1,24 +1,28 @@
 //=====================================
 //
-//トランスフォームテストヘッダ[TransformTest.h]
+//トゥイーンテストヘッダ[TweenTest.h]
 //Author:GP12B332 21 立花雄太
 //
 //=====================================
-#ifndef _TRANSFORMTEST_H_
-#define _TRANSFORMTEST_H_
+#ifndef _TWEENTEST_H_
+#define _TWEENTEST_H_
 
 #include "../main.h"
 #include "../Framework\Core\BaseScene.h"
 #include "../Framework/Renderer3D/TransformObject.h"
 
 /**************************************
-マクロ定義
+前方宣言
+***************************************/
+
+/**************************************
+マクロ・列挙子定義
 ***************************************/
 
 /**************************************
 クラス定義
 ***************************************/
-class TransformTest : public BaseScene
+class TweenTest : public BaseScene
 {
 public:
 	void Init();
@@ -28,7 +32,6 @@ public:
 
 private:
 	TransformObject *object;
-
 };
 
 #endif

@@ -1,11 +1,10 @@
 //=====================================
 //
-//ゲームオブジェクト処理[GameObject.cpp]
+//トランスフォームオブジェクト処理[TransformObject.cpp]
 //Author:GP12A332 21 立花雄太
 //
 //=====================================
-#include "GameObject.h"
-#include "Transform.h"
+#include "TransformObject.h"
 
 /**************************************
 マクロ定義
@@ -14,32 +13,25 @@
 /**************************************
 コンストラクタ
 ***************************************/
-GameObject::GameObject()
+TransformObject::TransformObject()
 {
-	transform = std::make_shared<Transform>();
-	active = true;
+	mesh = new MeshContainer();
+	mesh->Load("data/MODEL/transform.x");
 }
 
 /**************************************
 デストラクタ
 ***************************************/
-GameObject::~GameObject()
+TransformObject::~TransformObject()
 {
-	transform.reset();
+	SAFE_DELETE(mesh);
 }
 
 /**************************************
-アクティブ判定
+描画処理
 ***************************************/
-inline bool GameObject::IsActive()
+void TransformObject::Draw()
 {
-	return active;
-}
-
-/**************************************
-アクティブ状態セット処理
-***************************************/
-inline void GameObject::SetActive(bool active)
-{
-	this->active = active;
+	transform->SetWorld();
+	mesh->Draw();
 }

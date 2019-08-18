@@ -61,6 +61,7 @@
     <ClCompile Include="Framework\Renderer3D\BoardPolygon.cpp" />
     <ClCompile Include="Framework\Renderer3D\MeshContainer.cpp" />
     <ClCompile Include="Framework\Renderer3D\MyAllocateHierarchy.cpp" />
+    <ClCompile Include="Framework\Renderer3D\TransformObject.cpp" />
     <ClCompile Include="Framework\Tool\DebugWindow.cpp" />
     <ClCompile Include="Framework\Tool\ProfilerCPU.cpp" />
     <ClCompile Include="Framework\Transition\BaseTransitionMask.cpp" />
@@ -81,6 +82,7 @@
     <ClCompile Include="Test\ParticleTest.cpp" />
     <ClCompile Include="Test\TransformTest.cpp" />
     <ClCompile Include="Test\TransitionTest.cpp" />
+    <ClCompile Include="Test\TweenTest.cpp" />
     <ClCompile Include="Test\VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +134,7 @@
     <ClInclude Include="Framework\Renderer3D\BoardPolygon.h" />
     <ClInclude Include="Framework\Renderer3D\MeshContainer.h" />
     <ClInclude Include="Framework\Renderer3D\MyAllocateHierarchy.h" />
+    <ClInclude Include="Framework\Renderer3D\TransformObject.h" />
     <ClInclude Include="Framework\Tool\DebugWindow.h" />
     <ClInclude Include="Framework\Tool\ProfilerCPU.h" />
     <ClInclude Include="Framework\Transition\BaseTransitionMask.h" />
@@ -155,6 +158,7 @@
     <ClInclude Include="Test\TestObject.h" />
     <ClInclude Include="Test\TestTransition.h" />
     <ClInclude Include="Test\TransformTest.h" />
+    <ClInclude Include="Test\TweenTest.h" />
     <ClInclude Include="Test\VectorTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
