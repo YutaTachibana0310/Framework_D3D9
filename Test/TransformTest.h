@@ -8,8 +8,8 @@
 #define _TRANSFORMTEST_H_
 
 #include "../main.h"
-#include "../Framework\Renderer3D\MeshContainer.h"
 #include "../Framework\Core\BaseScene.h"
+#include "../Framework/Renderer3D/TransformObject.h"
 
 /**************************************
 É}ÉNÉçíËã`
@@ -26,9 +26,9 @@ public:
 	void Update();
 	void Draw();
 
-	Transform transform;
 private:
-	MeshContainer *mesh;
+	TransformObject *object;
+
 };
 
 #endif

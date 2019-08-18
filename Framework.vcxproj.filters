@@ -63,6 +63,10 @@
     <ClCompile Include="imgui\imgui_impl_dx9.cpp" />
     <ClCompile Include="imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Framework\Tween\Tween.cpp" />
+    <ClCompile Include="Framework\Renderer3D\TransformObject.cpp" />
+    <ClCompile Include="Test\TweenTest.cpp" />
+    <ClCompile Include="Framework\Math\Quaternion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -89,7 +93,6 @@
     <ClInclude Include="Framework\Particle\SceneParticleManager.h" />
     <ClInclude Include="Framework\Pattern\BaseObserver.h" />
     <ClInclude Include="Framework\Pattern\BaseSingleton.h" />
-    <ClInclude Include="Framework\Pattern\IState.h" />
     <ClInclude Include="Framework\Pattern\ObserveSubject.h" />
     <ClInclude Include="Framework\PostEffect\Effect\BloomFilter.h" />
     <ClInclude Include="Framework\PostEffect\Effect\BlurFilter.h" />
@@ -136,5 +139,10 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
+    <ClInclude Include="Framework\Pattern\BaseState.h" />
+    <ClInclude Include="Framework\Tween\Tween.h" />
+    <ClInclude Include="Framework\Renderer3D\TransformObject.h" />
+    <ClInclude Include="Test\TweenTest.h" />
+    <ClInclude Include="Framework\Math\Quaternion.h" />
   </ItemGroup>
 </Project>

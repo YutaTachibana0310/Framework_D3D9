@@ -19,7 +19,7 @@
 ***************************************/
 void TransformTest::Uninit()
 {
-	SAFE_DELETE(mesh);
+	SAFE_DELETE(object);
 }
 
 /**************************************
@@ -27,13 +27,11 @@ void TransformTest::Uninit()
 ***************************************/
 void TransformTest::Init()
 {
-	mesh = new MeshContainer();
-	mesh->Load("data/MODEL/transform.x");
+	object = new TransformObject();
 
-	transform.pos = D3DXVECTOR3(0.0f, -15.0f, 0.0f);
-	transform.scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
-	transform.IdentifyRotation();
-	transform.Rotate(0.0f, 45.0f, 0.0f);
+	object->SetPosition(D3DXVECTOR3(0.0f, -15.0f, 0.0f));
+	object->SetScale(D3DXVECTOR3(1.0f, 1.0f, 1.0f));
+	object->SetRotatition(D3DXVECTOR3(0.0f, 45.0f, 0.0f));
 }
 
 /**************************************
@@ -43,33 +41,35 @@ void TransformTest::Update()
 {
 	Debug::Begin("Transform");
 
-	float x = Input::GetPressHorizontail();
-	float y = Input::GetPressVertical();
+	//float x = Input::GetPressHorizontail();
+	//float y = Input::GetPressVertical();
 
-	float rotAngle = 2.0f;
-	transform.Rotate(0.0f, x * rotAngle, 0.0f);
-	transform.RotateByAxis(rotAngle * y, transform.Right());
+	//float rotAngle = 2.0f;
+	//static D3DXVECTOR3 angle = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	//object->transform->Rotate(0.0f, x * rotAngle, 0.0f);
+	//object->transform->RotateByAxis(rotAngle * y, object->transform->Right());
 
-	D3DXVECTOR3 dir;
-	ZeroMemory(&dir, sizeof(dir));
-	x = Keyboard::GetPress(DIK_W) ? -1.0f : Keyboard::GetPress(DIK_S) ? 1.0f : 0.0f;
-	y = Keyboard::GetPress(DIK_A) ? -1.0f : Keyboard::GetPress(DIK_D) ? 1.0f : 0.0f;
-	transform.pos += x * transform.Right();
-	transform.pos += y * transform.Forward();
+	//D3DXVECTOR3 dir;
+	//ZeroMemory(&dir, sizeof(dir));
+	//x = Keyboard::GetPress(DIK_W) ? -1.0f : Keyboard::GetPress(DIK_S) ? 1.0f : 0.0f;
+	//y = Keyboard::GetPress(DIK_A) ? -1.0f : Keyboard::GetPress(DIK_D) ? 1.0f : 0.0f;
+	//object->transform->pos += x * object->transform->Right();
+	//object->transform->pos += y * object->transform->Forward();
 
-	if (Debug::Button("Init Angle"))
-		transform.IdentifyRotation();
+	//if (Debug::Button("Init Angle"))
+	//	object->transform->IdentifyRotation();
 
-	if (Debug::Button("Init Pos"))
-		transform.pos = D3DXVECTOR3(0.0f, -15.0f, 0.0f);
+	//if (Debug::Button("Init Pos"))
+	//	object->transform->pos = D3DXVECTOR3(0.0f, -15.0f, 0.0f);
 
-	static float scale = 1.0f;
-	Debug::Slider("scale", scale, 0.0f, 10.0f);
-	transform.scale = scale * D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	//static float scale = 1.0f;
+	//Debug::Slider("scale", scale, 0.0f, 10.0f);
+	//object->transform->scale = scale * D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 
 	if (Debug::Button("Shake"))
 		Camera::ShakePlugin::Instance()->Set(D3DXVECTOR3(10.0f, 10.0f, 10.0f), 300);
 
+	//Debug::Text(object->transform->GetEulerAngle(), "Euler");
 	Debug::End();
 }
 
@@ -78,9 +78,5 @@ void TransformTest::Update()
 ***************************************/
 void TransformTest::Draw()
 {
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-	transform.SetWorld();
-
-	mesh->Draw();
+	object->Draw();
 }

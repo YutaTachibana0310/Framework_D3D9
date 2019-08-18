@@ -31,6 +31,7 @@
     <ClCompile Include="Framework\Input\input.cpp" />
     <ClCompile Include="Framework\Input\Keyboard.cpp" />
     <ClCompile Include="Framework\Input\Mouse.cpp" />
+    <ClCompile Include="Framework\Math\Quaternion.cpp" />
     <ClCompile Include="Framework\Math\Vector3.cpp" />
     <ClCompile Include="Framework\Particle\AnimationParticle.cpp" />
     <ClCompile Include="Framework\Particle\BaseEmitter.cpp" />
@@ -61,6 +62,7 @@
     <ClCompile Include="Framework\Renderer3D\BoardPolygon.cpp" />
     <ClCompile Include="Framework\Renderer3D\MeshContainer.cpp" />
     <ClCompile Include="Framework\Renderer3D\MyAllocateHierarchy.cpp" />
+    <ClCompile Include="Framework\Renderer3D\TransformObject.cpp" />
     <ClCompile Include="Framework\Tool\DebugWindow.cpp" />
     <ClCompile Include="Framework\Tool\ProfilerCPU.cpp" />
     <ClCompile Include="Framework\Transition\BaseTransitionMask.cpp" />
@@ -68,6 +70,7 @@
     <ClCompile Include="Framework\Transition\HexaRotTransitionMask.cpp" />
     <ClCompile Include="Framework\Transition\MistTransitionMask.cpp" />
     <ClCompile Include="Framework\Transition\TransitionController.cpp" />
+    <ClCompile Include="Framework\Tween\Tween.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -80,6 +83,7 @@
     <ClCompile Include="Test\ParticleTest.cpp" />
     <ClCompile Include="Test\TransformTest.cpp" />
     <ClCompile Include="Test\TransitionTest.cpp" />
+    <ClCompile Include="Test\TweenTest.cpp" />
     <ClCompile Include="Test\VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +101,7 @@
     <ClInclude Include="Framework\Input\Keyboard.h" />
     <ClInclude Include="Framework\Input\Mouse.h" />
     <ClInclude Include="Framework\Math\Easing.h" />
+    <ClInclude Include="Framework\Math\Quaternion.h" />
     <ClInclude Include="Framework\Math\TMath.h" />
     <ClInclude Include="Framework\Math\Vector3.h" />
     <ClInclude Include="Framework\Particle\AnimationParticle.h" />
@@ -107,7 +112,7 @@
     <ClInclude Include="Framework\Particle\SceneParticleManager.h" />
     <ClInclude Include="Framework\Pattern\BaseObserver.h" />
     <ClInclude Include="Framework\Pattern\BaseSingleton.h" />
-    <ClInclude Include="Framework\Pattern\IState.h" />
+    <ClInclude Include="Framework\Pattern\BaseState.h" />
     <ClInclude Include="Framework\Pattern\ObserveSubject.h" />
     <ClInclude Include="Framework\PostEffect\BaseEffectController.h" />
     <ClInclude Include="Framework\PostEffect\BloomController.h" />
@@ -131,6 +136,7 @@
     <ClInclude Include="Framework\Renderer3D\BoardPolygon.h" />
     <ClInclude Include="Framework\Renderer3D\MeshContainer.h" />
     <ClInclude Include="Framework\Renderer3D\MyAllocateHierarchy.h" />
+    <ClInclude Include="Framework\Renderer3D\TransformObject.h" />
     <ClInclude Include="Framework\Tool\DebugWindow.h" />
     <ClInclude Include="Framework\Tool\ProfilerCPU.h" />
     <ClInclude Include="Framework\Transition\BaseTransitionMask.h" />
@@ -138,6 +144,7 @@
     <ClInclude Include="Framework\Transition\HexaRotTransitionMask.h" />
     <ClInclude Include="Framework\Transition\MistTransitionMask.h" />
     <ClInclude Include="Framework\Transition\TransitionController.h" />
+    <ClInclude Include="Framework\Tween\Tween.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_dx9.h" />
@@ -153,6 +160,7 @@
     <ClInclude Include="Test\TestObject.h" />
     <ClInclude Include="Test\TestTransition.h" />
     <ClInclude Include="Test\TransformTest.h" />
+    <ClInclude Include="Test\TweenTest.h" />
     <ClInclude Include="Test\VectorTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

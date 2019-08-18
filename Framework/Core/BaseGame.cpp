@@ -9,6 +9,7 @@
 #include "..\Camera\Camera.h"
 #include "..\Tool\DebugWindow.h"
 #include "..\PostEffect\PostEffectManager.h"
+#include "..\Tween\Tween.h"
 
 /**************************************
 マクロ定義
@@ -17,6 +18,7 @@
 
 Camera* Camera::mInstance = NULL;
 Input* Input::mInstance = NULL;
+Tween* Tween::mInstance = NULL;
 /**************************************
 コンストラクタ
 ***************************************/
@@ -28,6 +30,7 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 	sceneManager = new SceneManager();
 	Camera::mInstance = new Camera();
 	Input::mInstance = new Input();
+	Tween::mInstance = new Tween();
 
 	//描画領域作成
 	MakeScreen();
@@ -79,6 +82,7 @@ void BaseGame::Update()
 	sceneManager->Update();
 
 	PostEffectManager::Instance()->Update();
+	Tween::mInstance->Update();
 }
 
 /**************************************

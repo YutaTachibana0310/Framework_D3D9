@@ -51,6 +51,14 @@ HRESULT GamePad::Init(LPDIRECTINPUT8 inputInterface)			// パッド初期化
 	int			i;
 
 	padCount = 0;
+
+	for (i = 0; i < GAMEPADMAX; i++)
+	{
+		padState[i] = 0x00000000l;	// 初期化
+		padTrigger[i] = 0x00000000l;	// 初期化
+		padRelease[i] = 0x00000000l;	// 初期化
+	}
+
 	// ジョイパッドを探す
 	inputInterface->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)SearchPadCallback, NULL, DIEDFL_ATTACHEDONLY);
 	// セットしたコールバック関数が、パッドを発見した数だけ呼ばれる。
@@ -170,33 +178,47 @@ void GamePad::Update(void)
 
 		// ３２の各ビットに意味を持たせ、ボタン押下に応じてビットをオンにする
 		//* y-axis (forward)
-		if (dijs.lY < 0)					padState[i] |= BUTTON_UP;
+		if (dijs.lY < 0)		
+			padState[i] |= BUTTON_UP;
 		//* y-axis (backward)
-		if (dijs.lY > 0)					padState[i] |= BUTTON_DOWN;
+		if (dijs.lY > 0)				
+			padState[i] |= BUTTON_DOWN;
 		//* x-axis (left)
-		if (dijs.lX < 0)					padState[i] |= BUTTON_LEFT;
+		if (dijs.lX < 0)			
+			padState[i] |= BUTTON_LEFT;
 		//* x-axis (right)
-		if (dijs.lX > 0)					padState[i] |= BUTTON_RIGHT;
+		if (dijs.lX > 0)				
+			padState[i] |= BUTTON_RIGHT;
 		//* Ａボタン
-		if (dijs.rgbButtons[0] & 0x80)	padState[i] |= BUTTON_A;
+		if (dijs.rgbButtons[0] & 0x80)
+			padState[i] |= BUTTON_A;
 		//* Ｂボタン
-		if (dijs.rgbButtons[1] & 0x80)	padState[i] |= BUTTON_B;
+		if (dijs.rgbButtons[1] & 0x80)
+			padState[i] |= BUTTON_B;
 		//* Ｃボタン
-		if (dijs.rgbButtons[2] & 0x80)	padState[i] |= BUTTON_C;
+		if (dijs.rgbButtons[2] & 0x80)
+			padState[i] |= BUTTON_C;
 		//* Ｘボタン
-		if (dijs.rgbButtons[3] & 0x80)	padState[i] |= BUTTON_X;
+		if (dijs.rgbButtons[3] & 0x80)
+			padState[i] |= BUTTON_X;
 		//* Ｙボタン
-		if (dijs.rgbButtons[4] & 0x80)	padState[i] |= BUTTON_Y;
+		if (dijs.rgbButtons[4] & 0x80)
+			padState[i] |= BUTTON_Y;
 		//* Ｚボタン
-		if (dijs.rgbButtons[5] & 0x80)	padState[i] |= BUTTON_Z;
+		if (dijs.rgbButtons[5] & 0x80)
+			padState[i] |= BUTTON_Z;
 		//* Ｌボタン
-		if (dijs.rgbButtons[6] & 0x80)	padState[i] |= BUTTON_L;
+		if (dijs.rgbButtons[6] & 0x80)
+			padState[i] |= BUTTON_L;
 		//* Ｒボタン
-		if (dijs.rgbButtons[7] & 0x80)	padState[i] |= BUTTON_R;
+		if (dijs.rgbButtons[7] & 0x80)
+			padState[i] |= BUTTON_R;
 		//* ＳＴＡＲＴボタン
-		if (dijs.rgbButtons[8] & 0x80)	padState[i] |= BUTTON_START;
+		if (dijs.rgbButtons[8] & 0x80)
+			padState[i] |= BUTTON_START;
 		//* Ｍボタン
-		if (dijs.rgbButtons[9] & 0x80)	padState[i] |= BUTTON_M;
+		if (dijs.rgbButtons[9] & 0x80)
+			padState[i] |= BUTTON_M;
 
 		// Trigger設定
 		padTrigger[i] = ((lastPadState ^ padState[i])	// 前回と違っていて

@@ -10,6 +10,7 @@
 #include "TestTransition.h"
 #include "VectorTest.h"
 #include "ParticleTest.h"
+#include "TweenTest.h"
 
 #include "../Framework\Tool\DebugWindow.h"
 
@@ -23,6 +24,7 @@ Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 	sceneManager->Add("Transition", new TestTransition());
 	sceneManager->Add("Vector", new VectorTest());
 	sceneManager->Add("Particle", new ParticleTest());
+	sceneManager->Add("Tween", new TweenTest());
 
 	sceneManager->ChangeScene("Easing");
 }
@@ -48,6 +50,9 @@ void Framework::Update()
 
 	if (Debug::Button("Particle"))
 		SceneManager::ChangeScene("Particle");
+
+	if (Debug::Button("Tween"))
+		SceneManager::ChangeScene("Tween");
 }
 
 /**************************************
