@@ -16,7 +16,7 @@
 ***************************************/
 void VectorTest::Uninit()
 {
-	SAFE_DELETE(mesh);
+	SAFE_RELEASE(mesh);
 }
 
 /**************************************
@@ -24,7 +24,7 @@ void VectorTest::Uninit()
 ***************************************/
 void VectorTest::Init()
 {
-	mesh = new MeshContainer();
+	mesh = MeshContainer::Create();
 	mesh->Load("data/MODEL/transform.x");
 
 	transform3D.pos = Vector3::Zero;

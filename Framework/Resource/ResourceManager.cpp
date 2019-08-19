@@ -59,15 +59,16 @@ bool ResourceManager::GetMesh(const char* tag, MeshContainer*& pOut)
 
 	//メッシュへの参照を格納
 	pOut = meshPool[tagStr];
+	pOut->AddRef();
 	return true;
 }
 
 /**************************************
 テクスチャ読み込み処理
 ***************************************/
-void ResourceManager::LoadTexture(const char* tag, const char* path)
+void ResourceManager::LoadTexture(const char* path)
 {
-	string tagStr = string(tag);
+	string tagStr = string(path);
 
 	//重複確認
 	if (texturePool.count(tagStr) != 0)
@@ -95,13 +96,15 @@ void ResourceManager::ReleaseTexture(const char* tag)
 /**************************************
 テクスチャ参照処理
 ***************************************/
-bool ResourceManager::GetTexture(const char* tag, LPDIRECT3DTEXTURE9& pOut)
+bool ResourceManager::GetTexture(const char* path, LPDIRECT3DTEXTURE9& pOut)
 {
-	string tagStr = string(tag);
+	string tagStr = string(path);
 
 	//登録確認
 	if (texturePool.count(tagStr) == 0)
-		return false;
+	{
+		LoadTexture(path);
+	}
 
 	pOut = texturePool[tagStr];
 	return true;
@@ -151,6 +154,7 @@ bool ResourceManager::GetPolygon(const char* tag, BoardPolygon*& pOut)
 		return false;
 
 	pOut = polygonPool[tagStr];
+	pOut->AddRef();
 	return true;
 }
 

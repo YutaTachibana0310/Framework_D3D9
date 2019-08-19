@@ -18,21 +18,32 @@
 ***************************************/
 class MeshContainer
 {
+	friend class ResourceManager;
 public:
+	static MeshContainer* Create();
+	void Release();
+
+	HRESULT Load(const char* filePath);	//Xファイルの読み込み
+	void Draw();						//モデルを描画
+
+	UINT GetMaterialNum();
+	void GetMaterial(UINT index, D3DMATERIAL9& out);
+	void SetMaterialColor(const D3DXCOLOR& color, UINT index);
+	void SetMaterialAlpha(float alpha, UINT index);
+
+	void AddRef();
+
+protected:								
 	MeshContainer();					//コンストラクタ
 	~MeshContainer();					//デストラクタ
 
-	HRESULT Load(const char* filePath);	//Xファイルの読み込み
-	void Release();						//モデルデータを解放
-	void Draw();						//モデルを描画
 
-	void SetMaterialColor(D3DXCOLOR& color);
-	void SetMaterialAlpha(float alpha);
-private:								
 	LPD3DXMESH mesh;					//メッシュデータ
 	D3DMATERIAL9* materials;			//マテリアル情報
 	LPDIRECT3DTEXTURE9 *textures;		//テクスチャ
 	DWORD materialNum;					//マテリアル数
+
+	UINT cntReference;
 };
 
 #endif

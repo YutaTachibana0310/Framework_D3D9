@@ -6,8 +6,7 @@
 //=====================================
 #include "SceneManager.h"
 #include "BaseScene.h"
-#include "ResourceManager.h"
-
+#include "../Resource/ResourceManager.h"
 
 using namespace std;
 /**************************************

@@ -12,6 +12,35 @@
 #define BILLBOARD_DEFAULT_SIZE		(10.0f)
 
 /**************************************
+Create関数
+***************************************/
+BoardPolygon* BoardPolygon::Create()
+{
+	BoardPolygon* ptr = new BoardPolygon();
+	return ptr;
+}
+
+/**************************************
+Release関数
+***************************************/
+void BoardPolygon::Release()
+{
+	cntReference--;
+	if (cntReference == 0)
+	{
+		delete this;
+	}
+}
+
+/**************************************
+AddRef関数
+***************************************/
+void BoardPolygon::AddRef()
+{
+	cntReference++;
+}
+
+/**************************************
 コンストラクタ
 ***************************************/
 BoardPolygon::BoardPolygon()
@@ -44,6 +73,8 @@ BoardPolygon::BoardPolygon()
 		pVtx[3].diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 
 	vtxBuff->Unlock();
+
+	cntReference++;
 }
 
 /**************************************
