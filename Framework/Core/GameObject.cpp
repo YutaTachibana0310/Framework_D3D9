@@ -31,7 +31,7 @@ GameObject::~GameObject()
 /**************************************
 アクティブ判定
 ***************************************/
-inline bool GameObject::IsActive()
+bool GameObject::IsActive() const 
 {
 	return active;
 }
@@ -39,7 +39,7 @@ inline bool GameObject::IsActive()
 /**************************************
 アクティブ状態セット処理
 ***************************************/
-inline void GameObject::SetActive(bool active)
+void GameObject::SetActive(bool active)
 {
 	this->active = active;
 }
@@ -47,7 +47,7 @@ inline void GameObject::SetActive(bool active)
 /**************************************
 座標セット
 ***************************************/
-D3DXVECTOR3 GameObject::GetPosition()
+D3DXVECTOR3 GameObject::GetPosition() const
 {
 	return transform->pos;
 }
@@ -62,7 +62,7 @@ void GameObject::SetPosition(const D3DXVECTOR3& position)
 /**************************************
 回転角度ゲット
 ***************************************/
-D3DXVECTOR3 GameObject::GetRotation()
+D3DXVECTOR3 GameObject::GetRotation() const
 {
 	return transform->GetEulerAngle();
 }
@@ -78,7 +78,7 @@ void GameObject::SetRotatition(const D3DXVECTOR3& rotation)
 /**************************************
 スケールゲット
 ***************************************/
-D3DXVECTOR3 GameObject::GetScale()
+D3DXVECTOR3 GameObject::GetScale() const
 {
 	return transform->scale;
 }
@@ -94,7 +94,7 @@ void GameObject::SetScale(const D3DXVECTOR3& scale)
 /**************************************
 SRT情報ゲット
 ***************************************/
-Transform GameObject::GetTransform()
+Transform GameObject::GetTransform() const
 {
 	return *transform;
 }

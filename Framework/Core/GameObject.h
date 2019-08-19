@@ -27,16 +27,16 @@ public:
 	virtual ~GameObject();
 
 	//アクティブ判定
-	inline bool IsActive();
+	bool IsActive() const;
 
 	//アクティブ状態セット処理
-	inline void SetActive(bool active);
+	void SetActive(bool active);
 
 	//SRT情報ゲッター（なるべく使いたくない）
-	D3DXVECTOR3 GetPosition();
-	D3DXVECTOR3 GetRotation();
-	D3DXVECTOR3 GetScale();
-	Transform GetTransform();
+	D3DXVECTOR3 GetPosition() const;
+	D3DXVECTOR3 GetRotation() const;
+	D3DXVECTOR3 GetScale() const;
+	Transform GetTransform() const;
 
 	//SRT情報セッター（なるべく使いたくない）
 	void SetPosition(const D3DXVECTOR3& position);
