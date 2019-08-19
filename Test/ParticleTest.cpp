@@ -79,7 +79,7 @@ void TestParticleManager::Set()
 ***************************************/
 ParticleController::ParticleController()
 {
-	MakeUnitBuffer(D3DXVECTOR2(5.0f, 5.0f));
+	MakeUnitBuffer(D3DXVECTOR2(2.0f, 2.0f));
 	LoadTexture("data/TEXTURE/particle.png");
 
 	MakeParticleContainer();
@@ -131,6 +131,9 @@ void Particle::Init()
 ***************************************/
 void Particle::Update()
 {
+	if (!active)
+		return;
+
 	cntFrame++;
 
 	transform->pos += moveDir * speed;

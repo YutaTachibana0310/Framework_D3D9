@@ -91,6 +91,9 @@ void BaseEmitter::Init()
 ***************************************/
 void BaseEmitter::Update()
 {
+	if (!active)
+		return;
+
 	cntFrame++;
 
 	if (cntFrame > duration)
@@ -102,6 +105,9 @@ void BaseEmitter::Update()
 ***************************************/
 bool BaseEmitter::Emit(std::vector<BaseParticle*>& container)
 {
+	if (!active)
+		return true;
+
 	UINT cntEmit = 0;
 	for (auto& particle : container)
 	{
