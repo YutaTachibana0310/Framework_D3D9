@@ -31,13 +31,13 @@ public:
 	void LoadTexture(const char* tag, const char* path);
 	void ReleaseTexture(const char* tag);
 
-	void MakePolygon(const char* tag, const char* path, D3DXVECTOR2 size, D3DXVECTOR2 uv = D3DXVECTOR2(1.0f, 1.0f));
+	void MakePolygon(const char* tag, const char* path, const D3DXVECTOR2& size, const D3DXVECTOR2& uv = D3DXVECTOR2(1.0f, 1.0f));
 	void ReleasePolygon(const char* tag);
 
 	//リソース参照処理
-	bool GetMesh(const char* tag, MeshContainer** pOut);
-	bool GetTexture(const char* tag, LPDIRECT3DTEXTURE9* pOut);
-	bool GetPolygon(const char* tag, BoardPolygon** pOut);
+	bool GetMesh(const char* tag, MeshContainer*&  pOut);
+	bool GetTexture(const char* tag, LPDIRECT3DTEXTURE9& pOut);
+	bool GetPolygon(const char* tag, BoardPolygon*& pOut);
 
 	//全リソース解放処理
 	void AllRelease();

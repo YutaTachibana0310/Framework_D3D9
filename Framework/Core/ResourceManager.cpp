@@ -49,7 +49,7 @@ void ResourceManager::ReleaseMesh(const char* tag)
 /**************************************
 メッシュ取得処理
 ***************************************/
-bool ResourceManager::GetMesh(const char* tag, MeshContainer** pOut)
+bool ResourceManager::GetMesh(const char* tag, MeshContainer*& pOut)
 {
 	string tagStr = string(tag);
 
@@ -58,7 +58,7 @@ bool ResourceManager::GetMesh(const char* tag, MeshContainer** pOut)
 		return false;
 
 	//メッシュへの参照を格納
-	*pOut = meshPool[tagStr];
+	pOut = meshPool[tagStr];
 	return true;
 }
 
@@ -95,7 +95,7 @@ void ResourceManager::ReleaseTexture(const char* tag)
 /**************************************
 テクスチャ参照処理
 ***************************************/
-bool ResourceManager::GetTexture(const char* tag, LPDIRECT3DTEXTURE9* pOut)
+bool ResourceManager::GetTexture(const char* tag, LPDIRECT3DTEXTURE9& pOut)
 {
 	string tagStr = string(tag);
 
@@ -103,14 +103,14 @@ bool ResourceManager::GetTexture(const char* tag, LPDIRECT3DTEXTURE9* pOut)
 	if (texturePool.count(tagStr) == 0)
 		return false;
 
-	*pOut = texturePool[tagStr];
+	pOut = texturePool[tagStr];
 	return true;
 }
 
 /**************************************
 板ポリゴン作成処理
 ***************************************/
-void ResourceManager::MakePolygon(const char* tag, const char* path, D3DXVECTOR2 size, D3DXVECTOR2 uv)
+void ResourceManager::MakePolygon(const char* tag, const char* path, const D3DXVECTOR2& size, const D3DXVECTOR2& uv)
 {
 	string tagStr = string(tag);
 
@@ -142,7 +142,7 @@ void ResourceManager::ReleasePolygon(const char* tag)
 /**************************************
 板ポリゴン参照処理
 ***************************************/
-bool ResourceManager::GetPolygon(const char* tag, BoardPolygon** pOut)
+bool ResourceManager::GetPolygon(const char* tag, BoardPolygon*& pOut)
 {
 	string tagStr = string(tag);
 
@@ -150,7 +150,7 @@ bool ResourceManager::GetPolygon(const char* tag, BoardPolygon** pOut)
 	if (polygonPool.count(tagStr) == 0)
 		return false;
 
-	*pOut = polygonPool[tagStr];
+	pOut = polygonPool[tagStr];
 	return true;
 }
 
