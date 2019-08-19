@@ -13,6 +13,12 @@
 /**************************************
 マクロ定義
 ***************************************/
+#define PARTICLE_NUM_MAX	(2048)
+
+/**************************************
+前方宣言
+***************************************/
+class BaseParticle;
 
 /**************************************
 クラス定義
@@ -26,20 +32,21 @@ public:
 	void BeginDraw();
 	void EndDraw();
 
-	void EmbedTransform(const 
+	UINT EmbedTransform(const std::vector<BaseParticle*> container);
+	UINT EmbedUV(const std::vector<BaseParticle*> container);
 
 private:
 	LPDIRECT3DVERTEXDECLARATION9 declare;
 	LPD3DXEFFECT effect;
 	LPDIRECT3DINDEXBUFFER9 indexBuff;
 	LPDIRECT3DVERTEXBUFFER9 transformBuff, uvBuff;
-	static D3DXHANDLE hMtxView, hMtxProjection, hMtxInvView;
+	D3DXHANDLE hMtxView, hMtxProjection, hMtxInvView;
 
 	void LoadEffect();
 	void MakeDeclaration();
 	void MakeTransformBuffer();
 	void MakeUVBuffer();
 	void MakeIndexBuffer();
-;
+};
 
 #endif
