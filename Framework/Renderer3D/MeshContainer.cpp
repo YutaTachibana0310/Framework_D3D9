@@ -13,8 +13,34 @@
 ***************************************/
 
 /**************************************
-構造体定義
+Create関数
 ***************************************/
+MeshContainer* MeshContainer::Create()
+{
+	MeshContainer* ptr = new MeshContainer();
+	ptr->AddRef();
+	return ptr;
+}
+
+/**************************************
+Release関数
+***************************************/
+void MeshContainer::Release()
+{
+	cntReference++;
+	if (cntReference == 0)
+	{
+		delete this;
+	}
+}
+
+/**************************************
+AddRef関数
+***************************************/
+void MeshContainer::AddRef()
+{
+	cntReference++;
+}
 
 /**************************************
 グローバル変数
