@@ -18,7 +18,6 @@ Create関数
 MeshContainer* MeshContainer::Create()
 {
 	MeshContainer* ptr = new MeshContainer();
-	ptr->AddRef();
 	return ptr;
 }
 
@@ -27,7 +26,7 @@ Release関数
 ***************************************/
 void MeshContainer::Release()
 {
-	cntReference++;
+	cntReference--;
 	if (cntReference == 0)
 	{
 		delete this;
@@ -51,7 +50,7 @@ void MeshContainer::AddRef()
 ***************************************/
 MeshContainer::MeshContainer()
 {
-
+	cntReference++;
 }
 
 /**************************************
@@ -146,19 +145,6 @@ HRESULT MeshContainer::Load(const char* filePath)
 }
 
 /**************************************
-解放処理
-***************************************/
-void MeshContainer::Release()
-{
-	for (unsigned i = 0; i < materialNum; i++)
-	{
-		SAFE_RELEASE(textures[i]);
-	}
-
-	SAFE_RELEASE(mesh);
-}
-
-/**************************************
 描画処理
 ***************************************/
 void MeshContainer::Draw()
@@ -186,23 +172,38 @@ void MeshContainer::Draw()
 }
 
 /**************************************
+マテリアル数取得処理
+***************************************/
+UINT MeshContainer::GetMaterialNum()
+{
+	return materialNum;
+}
+
+/**************************************
+マテリアル取得処理
+***************************************/
+void MeshContainer::GetMaterial(UINT index, D3DMATERIAL9& out)
+{
+	assert(index >= 0 && index < materialNum);
+	out = materials[index];
+}
+
+/**************************************
 マテリアルカラー設定処理
 ***************************************/
-void MeshContainer::SetMaterialColor(D3DXCOLOR& color)
+void MeshContainer::SetMaterialColor(const D3DXCOLOR& color, UINT index)
 {
-	for (UINT i = 0; i < materialNum; i++)
-	{
-		materials[i].Diffuse = color;
-	}
+	assert(index >= 0 && index < materialNum);
+
+	materials[index].Diffuse = color;
+
 }
 
 /**************************************
 マテリアルアルファ設定処理
 ***************************************/
-void MeshContainer::SetMaterialAlpha(float alpha)
+void MeshContainer::SetMaterialAlpha(float alpha, UINT index)
 {
-	for (UINT i = 0; i < materialNum; i++)
-	{
-		materials[i].Diffuse.a = alpha;
-	}
+	assert(index >= 0 && index < materialNum);
+	materials[index].Diffuse.a = alpha;
 }

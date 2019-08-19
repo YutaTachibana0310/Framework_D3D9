@@ -17,7 +17,6 @@ CreateŠÖ”
 BoardPolygon* BoardPolygon::Create()
 {
 	BoardPolygon* ptr = new BoardPolygon();
-	ptr->AddRef();
 	return ptr;
 }
 
@@ -74,6 +73,8 @@ BoardPolygon::BoardPolygon()
 		pVtx[3].diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 
 	vtxBuff->Unlock();
+
+	cntReference++;
 }
 
 /**************************************

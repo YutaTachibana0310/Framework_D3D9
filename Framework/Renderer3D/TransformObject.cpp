@@ -15,7 +15,7 @@
 ***************************************/
 TransformObject::TransformObject()
 {
-	mesh = new MeshContainer();
+	mesh = MeshContainer::Create();
 	mesh->Load("data/MODEL/transform.x");
 }
 
@@ -24,7 +24,7 @@ TransformObject::TransformObject()
 ***************************************/
 TransformObject::~TransformObject()
 {
-	SAFE_DELETE(mesh);
+	SAFE_RELEASE(mesh);
 }
 
 /**************************************

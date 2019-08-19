@@ -6,7 +6,6 @@
     <ClCompile Include="Framework\Collider\BoxCollider3D.cpp" />
     <ClCompile Include="Framework\Core\BaseGame.cpp" />
     <ClCompile Include="Framework\Core\GameObject.cpp" />
-    <ClCompile Include="Framework\Core\ResourceManager.cpp" />
     <ClCompile Include="Framework\Core\SceneManager.cpp" />
     <ClCompile Include="Framework\Core\Transform.cpp" />
     <ClCompile Include="Framework\Input\Gamepad.cpp" />
@@ -38,11 +37,8 @@
     <ClCompile Include="Framework\PostEffect\SpeedBlurController.cpp" />
     <ClCompile Include="Framework\PostEffect\SpikeNoiseController.cpp" />
     <ClCompile Include="Framework\Renderer2D\Polygon2D.cpp" />
-    <ClCompile Include="Framework\Renderer3D\AnimationManager.cpp" />
-    <ClCompile Include="Framework\Renderer3D\AnimContainer.cpp" />
     <ClCompile Include="Framework\Renderer3D\BoardPolygon.cpp" />
     <ClCompile Include="Framework\Renderer3D\MeshContainer.cpp" />
-    <ClCompile Include="Framework\Renderer3D\MyAllocateHierarchy.cpp" />
     <ClCompile Include="Framework\Tool\DebugWindow.cpp" />
     <ClCompile Include="Framework\Tool\ProfilerCPU.cpp" />
     <ClCompile Include="Framework\Transition\BaseTransitionMask.cpp" />
@@ -67,6 +63,10 @@
     <ClCompile Include="Framework\Renderer3D\TransformObject.cpp" />
     <ClCompile Include="Test\TweenTest.cpp" />
     <ClCompile Include="Framework\Math\Quaternion.cpp" />
+    <ClCompile Include="Framework\Resource\ResourceManager.cpp" />
+    <ClCompile Include="Framework\Animation\AnimationManager.cpp" />
+    <ClCompile Include="Framework\Animation\AnimContainer.cpp" />
+    <ClCompile Include="Framework\Animation\MyAllocateHierarchy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -75,7 +75,6 @@
     <ClInclude Include="Framework\Core\BaseGame.h" />
     <ClInclude Include="Framework\Core\BaseScene.h" />
     <ClInclude Include="Framework\Core\GameObject.h" />
-    <ClInclude Include="Framework\Core\ResourceManager.h" />
     <ClInclude Include="Framework\Core\SceneManager.h" />
     <ClInclude Include="Framework\Core\Transform.h" />
     <ClInclude Include="Framework\Input\Gamepad.h" />
@@ -111,11 +110,8 @@
     <ClInclude Include="Framework\PostEffect\SpeedBlurController.h" />
     <ClInclude Include="Framework\PostEffect\SpikeNoiseController.h" />
     <ClInclude Include="Framework\Renderer2D\Polygon2D.h" />
-    <ClInclude Include="Framework\Renderer3D\AnimationManager.h" />
-    <ClInclude Include="Framework\Renderer3D\AnimContainer.h" />
     <ClInclude Include="Framework\Renderer3D\BoardPolygon.h" />
     <ClInclude Include="Framework\Renderer3D\MeshContainer.h" />
-    <ClInclude Include="Framework\Renderer3D\MyAllocateHierarchy.h" />
     <ClInclude Include="Framework\Tool\DebugWindow.h" />
     <ClInclude Include="Framework\Tool\ProfilerCPU.h" />
     <ClInclude Include="Framework\Transition\BaseTransitionMask.h" />
@@ -144,5 +140,9 @@
     <ClInclude Include="Framework\Renderer3D\TransformObject.h" />
     <ClInclude Include="Test\TweenTest.h" />
     <ClInclude Include="Framework\Math\Quaternion.h" />
+    <ClInclude Include="Framework\Resource\ResourceManager.h" />
+    <ClInclude Include="Framework\Animation\AnimationManager.h" />
+    <ClInclude Include="Framework\Animation\AnimContainer.h" />
+    <ClInclude Include="Framework\Animation\MyAllocateHierarchy.h" />
   </ItemGroup>
 </Project>
