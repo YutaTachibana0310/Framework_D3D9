@@ -16,7 +16,7 @@ BaseEmitterƒNƒ‰ƒX
 ***************************************/
 class BaseParticle;
 
-class BaseEmitter
+class BaseEmitter : public GameObject
 {
 public:
 	BaseEmitter();
@@ -30,9 +30,6 @@ public:
 	virtual void Init();
 	virtual void Update();
 	virtual bool Emit(std::vector<BaseParticle*>& container);
-	
-	bool active;
-	Transform transform;
 
 protected:
 	int cntFrame;

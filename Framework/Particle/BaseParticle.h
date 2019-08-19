@@ -17,7 +17,7 @@
 BaseParticleƒNƒ‰ƒX
 ¦Œp³æ‚ÅInit(), Update()‚ğÀ‘•‚·‚é
 ***************************************/
-class BaseParticle
+class BaseParticle : public GameObject
 {
 public:
 	BaseParticle();
@@ -28,8 +28,6 @@ public:
 	virtual void Init() = 0;
 	virtual void Update() = 0;
 
-	bool active;
-	Transform transform;
 	ParticleUV uv;
 
 protected:
