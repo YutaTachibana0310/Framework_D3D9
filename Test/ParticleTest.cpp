@@ -133,7 +133,7 @@ void Particle::Update()
 {
 	cntFrame++;
 
-	transform.pos += moveDir * speed;
+	transform->pos += moveDir * speed;
 
 	if (cntFrame == lifeFrame)
 		active = false;

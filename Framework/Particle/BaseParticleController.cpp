@@ -6,6 +6,9 @@
 //=====================================
 #include "BaseParticleController.h"
 #include "../Tool/DebugWindow.h"
+#include "../Resource/ResourceManager.h"
+#include "ParticleRenderer.h"
+
 #include <algorithm>
 
 using namespace std;
@@ -21,15 +24,8 @@ using namespace std;
 /**************************************
 staticメンバ
 ***************************************/
-LPDIRECT3DVERTEXDECLARATION9 BaseParticleController::declare;	//頂点宣言
-LPD3DXEFFECT BaseParticleController::effect;					//エフェクト
-LPDIRECT3DINDEXBUFFER9 BaseParticleController::indexBuff;		//インデックバッファ
-LPDIRECT3DVERTEXBUFFER9 BaseParticleController::transformBuff;	//トランスフォーム頂点バッファ
-LPDIRECT3DVERTEXBUFFER9 BaseParticleController::uvBuff;			//UV情報頂点バッファ
-UINT BaseParticleController::instanceCount;						//インスタンス数
-D3DXHANDLE BaseParticleController::hMtxView;					//エフェクトのビュー行列へのハンドル
-D3DXHANDLE BaseParticleController::hMtxProj;					//エフェクトのプロジェクション行列へのハンドル
-D3DXHANDLE BaseParticleController::hMtxInvView;					//エフェクトのビュー逆行列へのハンドル
+ParticleRenderer* BaseParticleController::renderer = NULL;
+UINT BaseParticleController::instanceCount = 0;
 
 /**************************************
 コンストラクタ
@@ -38,11 +34,7 @@ BaseParticleController::BaseParticleController()
 {
 	if (instanceCount == 0)
 	{
-		MakeVertexDeclaration();
-		MakeTransformBuffer();
-		MakeUVBuffer();
-		MakeIndexBuffer();
-		LoadEffect();
+		renderer = new ParticleRenderer();
 	}
 	instanceCount++;
 }
@@ -52,8 +44,9 @@ BaseParticleController::BaseParticleController()
 ***************************************/
 BaseParticleController::~BaseParticleController()
 {
+	//テクスチャはResourceManagerにまかせているので開放しない
+
 	SAFE_RELEASE(unitBuff);
-	SAFE_RELEASE(texture);
 
 	for (BaseParticle *particle : particleContainer)
 	{
@@ -70,11 +63,7 @@ BaseParticleController::~BaseParticleController()
 	instanceCount--;
 	if (instanceCount == 0)
 	{
-		SAFE_RELEASE(declare);
-		SAFE_RELEASE(transformBuff);
-		SAFE_RELEASE(uvBuff);
-		SAFE_RELEASE(indexBuff);
-		SAFE_RELEASE(effect);
+		SAFE_DELETE(renderer);
 	}
 }
 
@@ -85,12 +74,12 @@ void BaseParticleController::Uninit()
 {
 	for (auto& particle : particleContainer)
 	{
-		particle->active = false;
+		particle->SetActive(false);
 	}
 
 	for (auto& emitter : emitterContainer)
 	{
-		emitter->active = false;
+		emitter->SetActive(false);
 	}
 }
 
@@ -102,19 +91,12 @@ void BaseParticleController::Update()
 	//エミッタ更新
 	for (BaseEmitter *emitter : emitterContainer)
 	{
-		if (!emitter->active)
-			continue;
-
 		emitter->Update();
 	}
 
 	//全エミッタに対して放出処理
 	for (BaseEmitter* emitter : emitterContainer)
 	{
-		//非アクティブなエミッタについては実行しない
-		if (!emitter->active)
-			continue;
-
 		//放出処理
 		bool res = emitter->Emit(particleContainer);
 
@@ -126,9 +108,6 @@ void BaseParticleController::Update()
 	//パーティクル更新
 	for (BaseParticle *particle : particleContainer)
 	{
-		if (!particle->active)
-			continue;
-
 		particle->Update();
 	}
 }
@@ -142,11 +121,12 @@ bool BaseParticleController::Draw()
 
 	//各パーティクルのパラメータを頂点バッファにセット
 	UINT particleCount = 0;
-	particleCount = EmbedParameterTransform();
-	EmbedParameterUV();
+	particleCount = renderer->EmbedUV(particleContainer);
 
 	if (particleCount == 0)
 		return false;
+
+	particleCount = renderer->EmbedTransform(particleContainer);
 
 	//ストリームソース設定
 	pDevice->SetStreamSource(0, unitBuff, 0, sizeof(ParticleUnit));
@@ -193,205 +173,11 @@ void BaseParticleController::MakeUnitBuffer(const D3DXVECTOR2& size, const D3DXV
 }
 
 /**************************************
-トランスフォームバッファ作成処理
-***************************************/
-void BaseParticleController::MakeTransformBuffer()
-{
-	if (transformBuff != NULL)
-		return;
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	pDevice->CreateVertexBuffer(sizeof(Transform) * PARTICLE_NUM_MAX, 0, 0, D3DPOOL_MANAGED, &transformBuff, 0);
-}
-
-/**************************************
-UVバッファ作成処理
-***************************************/
-void BaseParticleController::MakeUVBuffer()
-{
-	if (uvBuff != NULL)
-		return;
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	pDevice->CreateVertexBuffer(sizeof(ParticleUV) * PARTICLE_NUM_MAX, 0, 0, D3DPOOL_MANAGED, &uvBuff, 0);
-}
-
-/**************************************
-頂点宣言作成処理
-***************************************/
-void BaseParticleController::MakeVertexDeclaration()
-{
-	if (declare != NULL)
-		return;
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	D3DVERTEXELEMENT9 elems[] =
-	{
-		{ 0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },	//単位頂点（頂点座標）
-		{ 0, 12, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0 },	//単位頂点（テクスチャ座標）
-		{ 1, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 1 },	//ワールド変換情報（ポジション）
-		{ 1, 12, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 2 },	//ワールド変換情報（スケール）
-		{ 1, 24, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 3 },	//ワールド変換情報（ローテーション）
-		{ 2, 0, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 4 },	//個別のテクスチャ
-		D3DDECL_END()
-	};
-	pDevice->CreateVertexDeclaration(elems, &declare);
-}
-
-/**************************************
-エフェクト読み込み処理
-***************************************/
-void BaseParticleController::LoadEffect()
-{
-	if (effect != NULL)
-		return;
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	D3DXCreateEffectFromFile(pDevice, "data/EFFECT/particle3D.cfx", 0, 0, D3DXSHADER_SKIPVALIDATION, 0, &effect, 0);
-
-	hMtxView = effect->GetParameterByName(NULL, "mtxView");
-	hMtxProj = effect->GetParameterByName(NULL, "mtxProj");
-	hMtxInvView = effect->GetParameterByName(NULL, "mtxInvView");
-}
-
-/**************************************
-インデックバッファ作成処理
-***************************************/
-void BaseParticleController::MakeIndexBuffer()
-{
-	if (indexBuff != NULL)
-		return;
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	WORD index[] = { 0, 1, 2, 2, 1, 3 };
-	pDevice->CreateIndexBuffer(sizeof(index), 0, D3DFMT_INDEX16, D3DPOOL_MANAGED, &indexBuff, 0);
-
-	void* p;
-	indexBuff->Lock(0, 0, &p, 0);
-	memcpy(p, index, sizeof(index));
-	indexBuff->Unlock();
-}
-
-/**************************************
 テクスチャ読み込み処理
 ***************************************/
 void BaseParticleController::LoadTexture(const char* filePath)
 {
-	if (texture != NULL)
-		return;
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	texture = CreateTextureFromFile((LPSTR)filePath, pDevice);
-}
-
-/**************************************
-描画開始処理
-***************************************/
-void BaseParticleController::BeginDraw()
-{
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-	//レンダーステート切り替え
-	pDevice->SetRenderState(D3DRS_LIGHTING, false);
-	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, false);
-
-	//ビュー行列、プロジェクション行列、ビュー逆行列を取得
-	D3DXMATRIX view, proj, invView;
-	pDevice->GetTransform(D3DTS_VIEW, &view);
-	pDevice->GetTransform(D3DTS_PROJECTION, &proj);
-	D3DXMatrixInverse(&invView, NULL, &view);
-	invView._41 = invView._42 = invView._43 = 0.0f;
-
-	//シェーダに各行列を設定
-	effect->SetMatrix(hMtxView, &view);
-	effect->SetMatrix(hMtxProj, &proj);
-	effect->SetMatrix(hMtxInvView, &invView);
-
-	//各頂点バッファを設定
-	pDevice->SetStreamSource(1, transformBuff, 0, sizeof(Transform));
-	pDevice->SetStreamSource(2, uvBuff, 0, sizeof(ParticleUV));
-	pDevice->SetIndices(indexBuff);
-	pDevice->SetVertexDeclaration(declare);
-
-	//ストリーム周波数設定
-	pDevice->SetStreamSourceFreq(1, D3DSTREAMSOURCE_INSTANCEDATA | 1);
-	pDevice->SetStreamSourceFreq(2, D3DSTREAMSOURCE_INSTANCEDATA | 1);
-	
-	//シェーダによる描画開始
-	effect->Begin(0, 0);
-	effect->BeginPass(0);
-}
-
-/**************************************
-描画終了処理
-***************************************/
-void BaseParticleController::EndDraw()
-{
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-	//シェーダによる描画終了
-	effect->EndPass();
-	effect->End();
-
-	//レンダーステート復元
-	pDevice->SetRenderState(D3DRS_LIGHTING, true);
-	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, true);
-
-	//ストリーム周波数復元
-	pDevice->SetStreamSourceFreq(0, 1);
-	pDevice->SetStreamSourceFreq(1, 1);
-	pDevice->SetStreamSourceFreq(2, 1);
-}
-
-/**************************************
-トランスフォーム情報埋め込み処理
-***************************************/
-UINT BaseParticleController::EmbedParameterTransform()
-{
-	if (particleContainer.size() > PARTICLE_NUM_MAX)
-		return 0;
-
-	UINT count = 0;
-	Transform *pTr;
-	transformBuff->Lock(0, 0, (void**)&pTr, 0);
-	for (BaseParticle *particle : particleContainer)
-	{
-		if (!particle->active)
-			continue;
-
-		*pTr = particle->transform;
-		pTr++;
-		count++;
-	}
-	transformBuff->Unlock();
-
-	return count;
-}
-
-/**************************************
-UV情報埋め込み処理
-***************************************/
-UINT BaseParticleController::EmbedParameterUV()
-{
-	if (particleContainer.size() > PARTICLE_NUM_MAX)
-		return 0;
-
-	UINT count = 0;
-	ParticleUV *pUV;
-	uvBuff->Lock(0, 0, (void**)&pUV, 0);
-	for (BaseParticle *particle : particleContainer)
-	{
-		if (!particle->active)
-			continue;
-
-		*pUV = particle->uv;
-		pUV++;
-		count++;
-	}
-	transformBuff->Unlock();
-
-	return count;
+	ResourceManager::Instance()->GetTexture(filePath, texture);
 }
 
 /**************************************
@@ -401,15 +187,32 @@ BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
 {
 	auto emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter* emitter)
 	{
-		return !emitter->active;
+		return !emitter->IsActive();
 	});
 
 	if (emitter == emitterContainer.end())
 		return NULL;
 
-	(*emitter)->transform.pos = pos;
-	(*emitter)->Init();
+	BaseEmitter* ptr = (*emitter);
+	ptr->SetPosition(pos);
+	ptr->Init();
 
-	return (*emitter);
+	return ptr;
 
+}
+
+/**************************************
+描画開始処理
+***************************************/
+void BaseParticleController::BeginDraw()
+{
+	renderer->BeginDraw();
+}
+
+/**************************************
+描画終了処理
+***************************************/
+void BaseParticleController::EndDraw()
+{
+	renderer->EndDraw();
 }

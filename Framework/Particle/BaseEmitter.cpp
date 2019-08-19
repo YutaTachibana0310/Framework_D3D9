@@ -105,11 +105,11 @@ bool BaseEmitter::Emit(std::vector<BaseParticle*>& container)
 	UINT cntEmit = 0;
 	for (auto& particle : container)
 	{
-		if (particle->active)
+		if (particle->IsActive())
 			continue;
 
 		//‰Šú‰»ˆ—
-		particle->transform = this->transform;
+		particle->SetTransform(*transform);
 		particle->Init();
 
 		//ƒJƒEƒ“ƒg
