@@ -10,8 +10,31 @@
 #include "../../main.h"
 
 /**************************************
-マクロ定義
+前方宣言
 ***************************************/
+
+/**************************************
+パーティクルのUV座標
+***************************************/
+class ParticleUV
+{
+public:
+	float u, v;
+
+	ParticleUV() :
+		u(0.0f),
+		v(0.0f)
+	{
+
+	}
+
+	ParticleUV(float u, float v) :
+		u(u),
+		v(v)
+	{
+
+	}
+};
 
 /**************************************
 BaseParticleクラス
@@ -27,6 +50,8 @@ public:
 
 	virtual void Init() = 0;
 	virtual void Update() = 0;
+
+	virtual bool IsActive() const override;
 
 	ParticleUV uv;
 

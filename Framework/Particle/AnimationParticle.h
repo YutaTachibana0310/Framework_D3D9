@@ -20,9 +20,14 @@ AnimationParticleƒNƒ‰ƒX
 ***************************************/
 class AnimationParticle : public BaseParticle
 {
+	using BaseParticle::BaseParticle;
 public:
+	AnimationParticle(float fivX, float divY);
+	AnimationParticle(float divX, float divY, int life);
+	AnimationParticle(float divX, float divY, int lifeMin, int lifeMax);
+
 	void SetAnimParameter(float texDixX, float texDivY);
-	void SetAnimParameter(D3DXVECTOR2* texDiv);
+	void SetAnimParameter(const D3DXVECTOR2& texDiv);
 
 protected:
 	void Animation(float t);

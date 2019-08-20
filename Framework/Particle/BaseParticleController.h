@@ -20,6 +20,7 @@
 前方宣言
 ***************************************/
 class ParticleRenderer;
+class ParticleUnit;
 
 /**************************************
 BasePartlceControllerクラス
@@ -35,7 +36,10 @@ public:
 	BaseParticleController();
 	virtual ~BaseParticleController();
 
-	virtual BaseEmitter* SetEmitter(const D3DXVECTOR3& pos);	//エミッタセット処理
+	//エミッタセット処理
+	virtual BaseEmitter* SetEmitter(const D3DXVECTOR3& pos);	
+	virtual BaseEmitter* SetEmitter(const Transform& transform);
+
 	virtual void Uninit();				//終了処理
 	void Update();						//更新処理
 	bool Draw();						//描画処理
@@ -62,6 +66,16 @@ private:
 	//インスタンシングに必要な静的メンバ
 	static ParticleRenderer* renderer;
 	static UINT instanceCount;
+};
+
+/**************************************
+パーティクルの単位頂点
+***************************************/
+class ParticleUnit
+{
+public:
+	D3DXVECTOR3 vtx;	//頂点座標
+	D3DXVECTOR2 tex;	//UV座標
 };
 
 #endif

@@ -88,19 +88,6 @@ typedef struct
 	D3DXVECTOR2 tex;		// テクスチャ座標
 } VERTEX_BILLBOARD;
 
-//パーティクルの単位頂点
-typedef struct
-{
-	D3DXVECTOR3 vtx;	//頂点座標
-	D3DXVECTOR2 tex;	//UV座標
-} ParticleUnit;
-
-//パーティクルのUV情報
-typedef struct
-{
-	float u, v;
-}ParticleUV;
-
 //*****************************************************************************
 // プロトタイプ宣言
 //*****************************************************************************

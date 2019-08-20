@@ -177,7 +177,7 @@ void BaseParticleController::LoadTexture(const char* filePath)
 ***************************************/
 BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
 {
-	auto emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter* emitter)
+	auto& emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter* emitter)
 	{
 		return !emitter->IsActive();
 	});
@@ -191,6 +191,26 @@ BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
 
 	return ptr;
 
+}
+
+/**************************************
+エミッタセット処理
+***************************************/
+BaseEmitter* BaseParticleController::SetEmitter(const Transform& transform)
+{
+	auto& emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter *emitter)
+	{
+		return !emitter->IsActive();
+	});
+
+	if (emitter == emitterContainer.end())
+		return;
+
+	BaseEmitter* ptr = *emitter;
+	ptr->SetTransform(transform);
+	ptr->Init();
+
+	return ptr;
 }
 
 /**************************************

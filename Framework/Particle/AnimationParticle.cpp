@@ -11,6 +11,33 @@
 ***************************************/
 
 /**************************************
+コンストラクタ
+***************************************/
+AnimationParticle::AnimationParticle(float divX, float divY) :
+	BaseParticle()
+{
+	SetAnimParameter(divX, divY);
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+AnimationParticle::AnimationParticle(float divX, float divY, int life) :
+	BaseParticle(life)
+{
+	SetAnimParameter(divX, divY);
+};
+
+/**************************************
+コンストラクタ
+***************************************/
+AnimationParticle::AnimationParticle(float divX, float divY, int lifeMin, int lifeMax) :
+	BaseParticle(lifeMin, lifeMax)
+{
+	SetAnimParameter(divX, divY);
+}
+
+/**************************************
 アニメーション処理
 ***************************************/
 void AnimationParticle::Animation(float t)
@@ -39,11 +66,11 @@ void AnimationParticle::SetAnimParameter(float divX, float divY)
 /**************************************
 アニメーションパラメータセット処理
 ***************************************/
-void AnimationParticle::SetAnimParameter(D3DXVECTOR2* texDiv)
+void AnimationParticle::SetAnimParameter(const D3DXVECTOR2& texDiv)
 {
-	this->texDiv = *texDiv;
-	texSize.x = 1.0f / texDiv->x;
-	texSize.y = 1.0f / texDiv->y;
+	this->texDiv = texDiv;
+	texSize.x = 1.0f / texDiv.x;
+	texSize.y = 1.0f / texDiv.y;
 
-	animIndexMax = (int)(texDiv->x * texDiv->y) - 1;
+	animIndexMax = (int)(texDiv.x * texDiv.y) - 1;
 }

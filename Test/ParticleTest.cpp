@@ -131,13 +131,10 @@ void Particle::Init()
 ***************************************/
 void Particle::Update()
 {
-	if (!active)
+	if (!IsActive())
 		return;
 
 	cntFrame++;
 
 	transform->pos += moveDir * speed;
-
-	if (cntFrame == lifeFrame)
-		active = false;
 }
