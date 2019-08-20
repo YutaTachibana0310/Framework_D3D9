@@ -20,6 +20,7 @@
 前方宣言
 ***************************************/
 class ParticleRenderer;
+class ParticleUnit;
 
 /**************************************
 BasePartlceControllerクラス
@@ -62,6 +63,16 @@ private:
 	//インスタンシングに必要な静的メンバ
 	static ParticleRenderer* renderer;
 	static UINT instanceCount;
+};
+
+/**************************************
+パーティクルの単位頂点
+***************************************/
+class ParticleUnit
+{
+public:
+	D3DXVECTOR3 vtx;	//頂点座標
+	D3DXVECTOR2 tex;	//UV座標
 };
 
 #endif

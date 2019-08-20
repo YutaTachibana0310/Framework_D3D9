@@ -21,30 +21,33 @@
 /**************************************
 コンストラクタ
 ***************************************/
-BaseParticle::BaseParticle()
+BaseParticle::BaseParticle() :
+	GameObject(false),
+	uv(ParticleUV())
 {
-	uv.u = uv.v = 0.0f;
-	active = false;
+
 }
 
 /**************************************
 コンストラクタ
 ***************************************/
-BaseParticle::BaseParticle(int life)
+BaseParticle::BaseParticle(int life) :
+	GameObject(false),
+	uv(ParticleUV()),
+	lifeFrame(life)
 {
-	uv.u = uv.v = 0.0f;
-	active = false;
-	this->lifeFrame = life;
+
 }
 
 /**************************************
 コンストラクタ
 ***************************************/
-BaseParticle::BaseParticle(int lifeMin, int lifeMax)
+BaseParticle::BaseParticle(int lifeMin, int lifeMax) :
+	GameObject(false),
+	uv(ParticleUV()),
+	lifeFrame(Math::RandomRange(lifeMin, lifeMax))
 {
-	uv.u = uv.v = 0.0f;
-	active = false;
-	this->lifeFrame = Math::RandomRange(lifeMin, lifeMax);
+
 }
 
 /**************************************
