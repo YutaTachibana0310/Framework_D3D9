@@ -25,6 +25,8 @@ class Quaternion
 public:
 	static D3DXVECTOR3 ToEuler(const D3DXQUATERNION& q);
 	static D3DXQUATERNION ToQuaternion(const D3DXVECTOR3& euler);
+
+	static D3DXQUATERNION Identity;
 private:
 	Quaternion();
 };

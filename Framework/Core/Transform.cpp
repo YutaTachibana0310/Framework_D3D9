@@ -5,25 +5,28 @@
 //
 //=====================================
 #include "Transform.h"
+#include "../Math/Quaternion.h"
 
 /**************************************
 コンストラクタ
 ***************************************/
-Transform::Transform()
+Transform::Transform() :
+	pos(Vector3::Zero),
+	rot(Quaternion::Identity),
+	scale(Vector3::One)
 {
-	pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	D3DXQuaternionIdentity(&rot);
-	scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+
 }
 
 /**************************************
 コンストラクタ
 ***************************************/
-Transform::Transform(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale)
+Transform::Transform(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale) :
+	pos(pos),
+	rot(Quaternion::Identity),
+	scale(scale)
 {
-	this->pos = pos;
 	D3DXQuaternionRotationYawPitchRoll(&this->rot, rot.y, rot.x, rot.z);
-	this->scale = scale;
 }
 
 /**************************************
