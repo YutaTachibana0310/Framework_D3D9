@@ -87,8 +87,8 @@ BaseEmitter::~BaseEmitter()
 ***************************************/
 void BaseEmitter::Init()
 {
-	active = true;
 	cntFrame = 0;
+	active = true;
 }
 
 /**************************************
@@ -96,13 +96,10 @@ void BaseEmitter::Init()
 ***************************************/
 void BaseEmitter::Update()
 {
-	if (!active)
+	if (!IsActive())
 		return;
 
 	cntFrame++;
-
-	if (cntFrame > duration)
-		active = false;
 }
 
 /**************************************
@@ -110,7 +107,7 @@ void BaseEmitter::Update()
 ***************************************/
 bool BaseEmitter::Emit(std::vector<BaseParticle*>& container)
 {
-	if (!active)
+	if (!IsActive())
 		return true;
 
 	UINT cntEmit = 0;
@@ -132,4 +129,15 @@ bool BaseEmitter::Emit(std::vector<BaseParticle*>& container)
 	}
 
 	return false;
+}
+
+/**************************************
+アクティブ判定
+***************************************/
+bool BaseEmitter::IsActive() const
+{
+	if (!active)
+		return false;
+
+	return cntFrame <= duration;
 }

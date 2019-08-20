@@ -56,3 +56,14 @@ BaseParticle::BaseParticle(int lifeMin, int lifeMax) :
 BaseParticle::~BaseParticle()
 {
 }
+
+/**************************************
+アクティブ判定
+***************************************/
+bool BaseParticle::IsActive() const
+{
+	if (!active)
+		return false;
+
+	return cntFrame <= lifeFrame;
+}

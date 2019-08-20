@@ -31,6 +31,8 @@ public:
 	virtual void Update();
 	virtual bool Emit(std::vector<BaseParticle*>& container);
 
+	virtual bool IsActive() const override;
+
 protected:
 	int cntFrame;
 	int duration;
