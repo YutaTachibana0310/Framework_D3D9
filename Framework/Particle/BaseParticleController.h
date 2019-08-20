@@ -36,7 +36,10 @@ public:
 	BaseParticleController();
 	virtual ~BaseParticleController();
 
-	virtual BaseEmitter* SetEmitter(const D3DXVECTOR3& pos);	//エミッタセット処理
+	//エミッタセット処理
+	virtual BaseEmitter* SetEmitter(const D3DXVECTOR3& pos);	
+	virtual BaseEmitter* SetEmitter(const Transform& transform);
+
 	virtual void Uninit();				//終了処理
 	void Update();						//更新処理
 	bool Draw();						//描画処理

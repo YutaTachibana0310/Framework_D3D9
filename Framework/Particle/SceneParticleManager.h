@@ -22,15 +22,15 @@
 class SceneParticleManager
 {
 public:
-	//コンストラクタ、デストラクタ
-	SceneParticleManager();
-	virtual ~SceneParticleManager();
-
 	//初期化、終了、更新、描画処理
 	virtual void Init() = 0;
 	virtual void Uninit();
 	virtual void Update();
 	virtual void Draw();
+
+	//パーティクル発生処理
+	virtual BaseEmitter* Generate(UINT id, const D3DXVECTOR3& pos);
+	virtual BaseEmitter* Generate(UINT id, const Transform& transform);
 
 protected:
 	//レンダーターゲット関連

@@ -13,22 +13,6 @@
 #define SCENEMPARTICLEMANAGER_LABEL		"ParticleManager"
 
 /**************************************
-コンストラクタ
-***************************************/
-SceneParticleManager::SceneParticleManager()
-{
-
-}
-
-/**************************************
-デストラクタ
-***************************************/
-SceneParticleManager::~SceneParticleManager()
-{
-
-}
-
-/**************************************
 初期化処理
 ***************************************/
 void SceneParticleManager::Init()
@@ -108,6 +92,26 @@ void SceneParticleManager::Draw()
 	pDevice->SetRenderState(D3DRS_LIGHTING, true);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, true);
 	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+}
+
+/**************************************
+発生処理
+***************************************/
+BaseEmitter* SceneParticleManager::Generate(UINT id, const D3DXVECTOR3& pos)
+{
+	assert(id > 0 && id < controllers.size());
+
+	return controllers[id]->SetEmitter(pos);
+}
+
+/**************************************
+発生処理
+***************************************/
+BaseEmitter* SceneParticleManager::Generate(UINT id, const Transform& transform)
+{
+	assert(id > 0 && id < controllers.size());
+
+	return controllers[id]->SetEmitter(transform);
 }
 
 /**************************************
