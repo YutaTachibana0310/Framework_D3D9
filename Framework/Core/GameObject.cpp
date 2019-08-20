@@ -25,7 +25,7 @@ GameObject::GameObject() :
 コンストラクタ
 ***************************************/
 GameObject::GameObject(const GameObject& gameObject) :
-	transform(std::make_shared<Transform>(gameObject.transform)),
+	transform(std::make_shared<Transform>(*gameObject.transform)),
 	active(true)
 {
 	
