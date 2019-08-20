@@ -30,11 +30,7 @@ SceneManager::SceneManager()
 ***************************************/
 SceneManager::~SceneManager()
 {
-	for (auto&& pair : sceneContainer)
-	{
-		SAFE_DELETE(pair.second);
-	}
-	sceneContainer.clear();
+	Utility::DeleteMap(sceneContainer);
 
 	if (mInstance == this)
 	{

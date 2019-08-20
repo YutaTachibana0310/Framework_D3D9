@@ -144,5 +144,6 @@
     <ClInclude Include="Framework\Animation\AnimationManager.h" />
     <ClInclude Include="Framework\Animation\AnimContainer.h" />
     <ClInclude Include="Framework\Animation\MyAllocateHierarchy.h" />
+    <ClInclude Include="Framework\Core\Utility.h" />
   </ItemGroup>
 </Project>

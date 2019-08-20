@@ -56,11 +56,7 @@ void SceneParticleManager::Uninit()
 	SAFE_RELEASE(renderTexture);
 	SAFE_DELETE(screenObj);
 
-	for (auto& controller : controllers)
-	{
-		SAFE_DELETE(controller);
-	}
-	controllers.clear();
+	Utility::DeleteContainer(controllers);
 
 	initialized = false;
 }

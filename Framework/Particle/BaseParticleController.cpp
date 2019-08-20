@@ -48,17 +48,9 @@ BaseParticleController::~BaseParticleController()
 
 	SAFE_RELEASE(unitBuff);
 
-	for (BaseParticle *particle : particleContainer)
-	{
-		SAFE_DELETE(particle);
-	}
-	particleContainer.clear();
+	Utility::DeleteContainer(particleContainer);
 
-	for(BaseEmitter *emitter : emitterContainer)
-	{
-		SAFE_DELETE(emitter);
-	}
-	emitterContainer.clear();
+	Utility::DeleteContainer(emitterContainer);
 
 	instanceCount--;
 	if (instanceCount == 0)

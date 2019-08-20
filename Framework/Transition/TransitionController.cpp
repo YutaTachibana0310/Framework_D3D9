@@ -43,7 +43,7 @@ TransitionController::TransitionController()
 ***************************************/
 TransitionController::~TransitionController()
 {
-	SAFE_DELETE_VECTOR(maskContainer);
+	Utility::DeleteContainer(maskContainer);
 	SAFE_DELETE(transitionBG);
 }
 
