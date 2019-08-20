@@ -24,25 +24,32 @@ class GameObject
 public:
 	//コンストラクタ、デストラクタ
 	GameObject();
+	GameObject(const GameObject& gameObject);
+	GameObject(const Transform& transform);
+	GameObject(const bool& active);
+	GameObject(const Transform& transform, const bool& active);
 	virtual ~GameObject();
 
+	//代入演算子
+	virtual GameObject& operator=(const GameObject&);
+
 	//アクティブ判定
-	bool IsActive() const;
+	virtual bool IsActive() const;
 
 	//アクティブ状態セット処理
-	void SetActive(bool active);
+	virtual void SetActive(bool active);
 
 	//SRT情報ゲッター（なるべく使いたくない）
-	D3DXVECTOR3 GetPosition() const;
-	D3DXVECTOR3 GetRotation() const;
-	D3DXVECTOR3 GetScale() const;
-	Transform GetTransform() const;
+	virtual D3DXVECTOR3 GetPosition() const;
+	virtual D3DXVECTOR3 GetRotation() const;
+	virtual D3DXVECTOR3 GetScale() const;
+	virtual Transform GetTransform() const;
 
 	//SRT情報セッター（なるべく使いたくない）
-	void SetPosition(const D3DXVECTOR3& position);
-	void SetRotatition(const D3DXVECTOR3& rotation);
-	void SetScale(const D3DXVECTOR3& scale);
-	void SetTransform(const Transform& transform);
+	virtual void SetPosition(const D3DXVECTOR3& position);
+	virtual void SetRotatition(const D3DXVECTOR3& rotation);
+	virtual void SetScale(const D3DXVECTOR3& scale);
+	virtual void SetTransform(const Transform& transform);
 
 protected:
 	//アクティブ状態

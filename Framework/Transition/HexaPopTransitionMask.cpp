@@ -62,7 +62,7 @@ HexaPopTransitionMask::~HexaPopTransitionMask()
 {
 	for (auto& list : hexList)
 	{
-		SAFE_DELETE_VECTOR(list);
+		Utility::DeleteContainer(list);
 	}
 	hexList.clear();
 

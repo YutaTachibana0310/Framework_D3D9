@@ -14,10 +14,63 @@
 /**************************************
 コンストラクタ
 ***************************************/
-GameObject::GameObject()
+GameObject::GameObject() :
+	transform(std::make_shared<Transform>()),
+	active(true)
 {
-	transform = std::make_shared<Transform>();
-	active = true;
+
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+GameObject::GameObject(const GameObject& gameObject) :
+	transform(std::make_shared<Transform>(*gameObject.transform)),
+	active(true)
+{
+	
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+GameObject::GameObject(const Transform& transform) :
+	transform(std::make_shared<Transform>(transform)),
+	active(true)
+{
+
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+GameObject::GameObject(const bool& active) :
+	transform(std::make_shared<Transform>()),
+	active(active)
+{
+
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+GameObject::GameObject(const Transform& transform, const bool& active) :
+	transform(std::make_shared<Transform>(transform)),
+	active(active)
+{
+
+}
+
+/**************************************
+代入演算子
+***************************************/
+GameObject& GameObject::operator=(const GameObject& other)
+{
+	std::shared_ptr<Transform> sptr = transform;
+	transform.reset();
+
+	transform = std::make_shared<Transform>(*other.transform);
+	return *this;
 }
 
 /**************************************

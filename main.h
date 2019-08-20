@@ -18,6 +18,7 @@
 #include "Framework\Core\GameObject.h"
 #include "Framework\Math\TMath.h"
 #include "Framework\Math\Vector3.h"
+#include "Framework\Core\Utility.h"
 
 #define DIRECTINPUT_VERSION (0x0800)	// 警告対策
 #include "dinput.h"
@@ -60,7 +61,6 @@
 #define SAFE_RELEASE(p)				{if(p){p->Release(); p = NULL;}}
 #define SAFE_DELETE(p)				{delete(p); p = NULL;}
 #define SAFE_DELETE_ARRAY(p)		{if(p){delete[](p); p = NULL;}}
-#define SAFE_DELETE_VECTOR(vector)	{for(auto& p : vector){ SAFE_DELETE(p);} vector.clear();}
 
 // 上記２Ｄポリゴン頂点フォーマットに合わせた構造体を定義
 typedef struct
