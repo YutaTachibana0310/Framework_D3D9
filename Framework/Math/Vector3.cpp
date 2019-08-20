@@ -86,7 +86,7 @@ D3DXVECTOR3 Vector3::Axis(const D3DXVECTOR3& from, const D3DXVECTOR3& to)
 {
 	D3DXVECTOR3 cross;
 	D3DXVec3Cross(&cross, &from, &to);
-
+	D3DXVec3Normalize(&cross, &cross);
 	return cross;
 }
 
