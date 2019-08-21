@@ -10,6 +10,7 @@
 #include "..\Tool\DebugWindow.h"
 #include "..\PostEffect\PostEffectManager.h"
 #include "..\Tween\Tween.h"
+#include "../Tool/ProfilerCPU.h"
 
 /**************************************
 マクロ定義
@@ -114,6 +115,7 @@ void BaseGame::Draw()
 	pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
 
 	//デバッグウィンドウ描画
+	ProfilerCPU::Instance()->Draw();
 	Debug::Draw();
 }
 

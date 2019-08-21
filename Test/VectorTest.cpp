@@ -6,6 +6,7 @@
 //=====================================
 #include "VectorTest.h"
 #include "../Framework\Tool\DebugWindow.h"
+#include "../Framework/Tool/ProfilerCPU.h"
 
 /**************************************
 ƒ}ƒNƒ’è‹`
@@ -36,6 +37,8 @@ void VectorTest::Init()
 ***************************************/
 void VectorTest::Update()
 {
+	ProfilerCPU::Instance()->BeginLabel("Update");
+	ProfilerCPU::Instance()->Begin("Update");
 	Debug::Begin("Vector");
 
 	static D3DXVECTOR3 target = Vector3::Forward;
@@ -56,6 +59,8 @@ void VectorTest::Update()
 	Debug::Text("forward : %f, %f, %f", transform3D.Forward().x, transform3D.Forward().y, transform3D.Forward().z);
 
 	Debug::End();
+	ProfilerCPU::Instance()->End("Update");
+	ProfilerCPU::Instance()->EndLabel();
 }
 
 /**************************************
