@@ -136,5 +136,5 @@ void Particle::Update()
 
 	cntFrame++;
 
-	transform->pos += moveDir * speed;
+	transform->Move(moveDir * speed);
 }

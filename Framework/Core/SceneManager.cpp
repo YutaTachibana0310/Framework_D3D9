@@ -7,6 +7,7 @@
 #include "SceneManager.h"
 #include "BaseScene.h"
 #include "../Resource/ResourceManager.h"
+#include "../Tool/ProfilerCPU.h"
 
 using namespace std;
 /**************************************
@@ -64,6 +65,7 @@ void SceneManager::_ChengeScene(string next)
 	{
 		current->Uninit();
 		ResourceManager::Instance()->AllRelease();
+		ProfilerCPU::Instance()->Clear();
 	}
 
 	//Ø‚è‘Ö‚¦

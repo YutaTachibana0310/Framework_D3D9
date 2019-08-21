@@ -82,6 +82,8 @@ void ProfilerCPU::Clear()
 		nodeMap.second.clear();
 	}
 	profilerMap.clear();
+
+	cntFrame = 0;
 }
 
 /**************************************
@@ -111,7 +113,7 @@ void ProfilerCPU::EndLabel()
 void ProfilerCPU::Begin(const char* tag)
 {
 #ifdef USE_PROFILER_CPU
-	if (cntFrame % 20 != 0)
+	if (cntFrame % PROFILER_CPU_COUNT_INTERBAL != 0)
 		return;
 
 	profilerMap[currentLabel][string(tag)].Count(true);
@@ -124,7 +126,7 @@ void ProfilerCPU::Begin(const char* tag)
 void ProfilerCPU::End(const char* tag)
 {
 #ifdef USE_PROFILER_CPU
-	if (cntFrame % 20 != 0)
+	if (cntFrame % PROFILER_CPU_COUNT_INTERBAL != 0)
 		return;
 
 	profilerMap[currentLabel][string(tag)].Count(false);

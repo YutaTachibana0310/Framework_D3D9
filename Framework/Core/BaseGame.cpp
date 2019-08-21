@@ -10,6 +10,7 @@
 #include "..\Tool\DebugWindow.h"
 #include "..\PostEffect\PostEffectManager.h"
 #include "..\Tween\Tween.h"
+#include "../Tool/ProfilerCPU.h"
 
 /**************************************
 マクロ定義
@@ -52,7 +53,6 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 	Input::mInstance->Init(hInstance, hWnd);
 	Camera::mInstance->Init();
 	Debug::Init(hWnd, pDevice);
-
 }
 
 /**************************************
@@ -83,6 +83,7 @@ void BaseGame::Update()
 
 	PostEffectManager::Instance()->Update();
 	Tween::mInstance->Update();
+	ProfilerCPU::Instance()->Update();
 }
 
 /**************************************
@@ -115,6 +116,7 @@ void BaseGame::Draw()
 	pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, NUM_POLYGON);
 
 	//デバッグウィンドウ描画
+	ProfilerCPU::Instance()->Draw();
 	Debug::Draw();
 }
 

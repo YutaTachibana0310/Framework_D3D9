@@ -158,7 +158,7 @@ void HexaPopTransitionMask::Set(bool isTransitionOut)
 		for (auto& hex : list)
 		{
 			hex->active = false;
-			hex->transform.scale = startScale;
+			hex->transform.SetScale(startScale);
 		}
 	}
 
@@ -183,7 +183,7 @@ Hexagonコンストラクタ
 ***************************************/
 HexaPopTransitionMask::Hexagon::Hexagon(D3DXVECTOR3 pos)
 {
-	transform.pos = pos;
+	transform.SetPosition(pos);
 	cntFrame = 0;
 	active = false;
 }
@@ -208,7 +208,7 @@ void HexaPopTransitionMask::Hexagon::Update(HexaPopTransitionMask& parent)
 	//イージング
 	cntFrame++;
 	float t = (float)cntFrame / HEXAPOPTRANSITION_DURATION;
-	transform.scale = Easing::EaseValue(t, parent.startScale, parent.endScale, parent.type);
+	transform.SetScale(Easing::EaseValue(t, parent.startScale, parent.endScale, parent.type));
 
 	//終了判定
 	if (cntFrame == HEXAPOPTRANSITION_DURATION && IsLastHexa(parent))

@@ -23,10 +23,26 @@
 class Quaternion
 {
 public:
+	/**************************************
+	クォータニオンからオイラー角への変換処理
+	***************************************/
 	static D3DXVECTOR3 ToEuler(const D3DXQUATERNION& q);
+
+	/**************************************
+	オイラー角からクォータニオンへの変換処理
+	***************************************/
 	static D3DXQUATERNION ToQuaternion(const D3DXVECTOR3& euler);
 
+	/**************************************
+	等価比較処理（浮動小数点の誤差を考慮）
+	***************************************/
+	static bool Equal(const D3DXQUATERNION& q1, const D3DXQUATERNION& q2);
+
+	/**************************************
+	単位クォータニオン定数
+	***************************************/
 	static D3DXQUATERNION Identity;
+
 private:
 	Quaternion();
 };

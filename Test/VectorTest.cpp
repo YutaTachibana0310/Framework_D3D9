@@ -6,6 +6,7 @@
 //=====================================
 #include "VectorTest.h"
 #include "../Framework\Tool\DebugWindow.h"
+#include "../Framework/Tool/ProfilerCPU.h"
 
 /**************************************
 ƒ}ƒNƒ’è‹`
@@ -27,8 +28,8 @@ void VectorTest::Init()
 	mesh = MeshContainer::Create();
 	mesh->Load("data/MODEL/transform.x");
 
-	transform3D.pos = Vector3::Zero;
-	transform3D.IdentifyRotation();
+	transform3D.SetPosition(Vector3::Zero);
+	transform3D.SetRotation(Vector3::Zero);
 }
 
 /**************************************
@@ -36,6 +37,8 @@ void VectorTest::Init()
 ***************************************/
 void VectorTest::Update()
 {
+	ProfilerCPU::Instance()->BeginLabel("Update");
+	ProfilerCPU::Instance()->Begin("Update");
 	Debug::Begin("Vector");
 
 	static D3DXVECTOR3 target = Vector3::Forward;
@@ -48,7 +51,7 @@ void VectorTest::Update()
 
 	float angle = Vector3::Angle(transform3D.Forward(), target);
 	D3DXVECTOR3 axis = Vector3::Axis(transform3D.Forward(), target);
-	transform3D.RotateByAxis(angle * 0.3f, axis);
+	transform3D.Rotate(angle * 0.3f, axis);
 	
 	Debug::Text("target : %f, %f, %f", target.x, target.y, target.z);
 	Debug::Text("angle : %f", angle);
@@ -56,6 +59,15 @@ void VectorTest::Update()
 	Debug::Text("forward : %f, %f, %f", transform3D.Forward().x, transform3D.Forward().y, transform3D.Forward().z);
 
 	Debug::End();
+
+	D3DXMATRIX mtx;
+	for (int i = 0; i < 50000; i++)
+	{
+		mtx = transform3D.GetMatrix();
+	}
+
+	ProfilerCPU::Instance()->End("Update");
+	ProfilerCPU::Instance()->EndLabel();
 }
 
 /**************************************

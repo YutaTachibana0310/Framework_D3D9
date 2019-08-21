@@ -87,7 +87,7 @@ void Tween::Move(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& e
 ***************************************/
 void Tween::Move(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	D3DXVECTOR3 start = ref.transform->pos;
+	D3DXVECTOR3 start = ref.transform->GetPosition();
 	Move(ref, start, end, duration, type);
 }
 
@@ -105,7 +105,7 @@ void Tween::Scale(GameObject& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& 
 ***************************************/
 void Tween::Scale(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type)
 {
-	D3DXVECTOR3 start = ref.transform->scale;
+	D3DXVECTOR3 start = ref.transform->GetScale();
 	Scale(ref, start, end, duration, type);
 }
 
@@ -178,7 +178,7 @@ void Tween::MoveTweener::Update()
 	if (transform)
 	{
 		float t = (float)cntFrame / duration;
-		transform->pos = Easing::EaseValue(t, start, end, type);
+		transform->SetPosition(Easing::EaseValue(t, start, end, type));
 	}
 }
 
@@ -203,7 +203,7 @@ void Tween::ScaleTweener::Update()
 	if (transform)
 	{
 		float t = (float)cntFrame / duration;
-		transform->scale = Easing::EaseValue(t, start, end, type);
+		transform->SetScale(Easing::EaseValue(t, start, end, type));
 	}
 }
 
@@ -227,8 +227,9 @@ void Tween::RotateTweener::Update()
 	shared_ptr<Transform> transform = reference.lock();
 	if (transform)
 	{
-		float t = (float)cntFrame / duration;
-		transform->rot = Easing::EaseValue(t, start, end, type);
-		D3DXQuaternionNormalize(&transform->rot, &transform->rot);
+		float t = Easing::EaseValue((float)cntFrame / duration, 0.0f, 1.0f, type);
+		D3DXQUATERNION quaternion;
+		D3DXQuaternionSlerp(&quaternion, &start, &end, t);
+		transform->SetRotation(quaternion);
 	}
 }

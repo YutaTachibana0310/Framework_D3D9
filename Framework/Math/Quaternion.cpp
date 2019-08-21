@@ -95,3 +95,23 @@ D3DXQUATERNION Quaternion::ToQuaternion(const D3DXVECTOR3& euler)
 	D3DXQuaternionRotationYawPitchRoll(&out, v.y, v.x, v.z);
 	return out;
 }
+
+/**************************************
+==î‰ärèàóù
+***************************************/
+bool Quaternion::Equal(const D3DXQUATERNION & q1, const D3DXQUATERNION & q2)
+{
+	if (!Math::Approximately(q1.x, q2.x))
+		return false;
+
+	if (!Math::Approximately(q1.y, q2.y))
+		return false;
+
+	if (!Math::Approximately(q1.z, q2.z))
+		return false;
+
+	if (!Math::Approximately(q1.w, q2.w))
+		return false;
+
+	return true;
+}

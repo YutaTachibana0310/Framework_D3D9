@@ -23,7 +23,6 @@ void EasingTest::Init()
 	polygon->SetSize(50.0f, 50.0f);
 
 	cntFrame = 0;
-	ProfilerCPU::Instance()->Clear();
 }
 
 /**************************************
