@@ -102,14 +102,14 @@ void GameObject::SetActive(bool active)
 ***************************************/
 D3DXVECTOR3 GameObject::GetPosition() const
 {
-	return transform->pos;
+	return transform->GetPosition();
 }
 /**************************************
 À•WƒQƒbƒg
 ***************************************/
 void GameObject::SetPosition(const D3DXVECTOR3& position)
 {
-	transform->pos = position;
+	transform->SetPosition(position);
 }
 
 /**************************************
@@ -125,7 +125,7 @@ D3DXVECTOR3 GameObject::GetRotation() const
 ***************************************/
 void GameObject::SetRotatition(const D3DXVECTOR3& rotation)
 {
-	transform->rot = Quaternion::ToQuaternion(rotation);
+	transform->SetRotation(rotation);
 }
 
 /**************************************
@@ -133,7 +133,7 @@ void GameObject::SetRotatition(const D3DXVECTOR3& rotation)
 ***************************************/
 D3DXVECTOR3 GameObject::GetScale() const
 {
-	return transform->scale;
+	return transform->GetScale();
 }
 
 /**************************************
@@ -141,7 +141,7 @@ D3DXVECTOR3 GameObject::GetScale() const
 ***************************************/
 void GameObject::SetScale(const D3DXVECTOR3& scale)
 {
-	transform->scale = scale;
+	transform->SetScale(scale);
 }
 
 /**************************************

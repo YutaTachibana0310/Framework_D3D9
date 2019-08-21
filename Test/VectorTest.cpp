@@ -27,8 +27,8 @@ void VectorTest::Init()
 	mesh = MeshContainer::Create();
 	mesh->Load("data/MODEL/transform.x");
 
-	transform3D.pos = Vector3::Zero;
-	transform3D.IdentifyRotation();
+	transform3D.SetPosition(Vector3::Zero);
+	transform3D.SetRotation(Vector3::Zero);
 }
 
 /**************************************
@@ -48,7 +48,7 @@ void VectorTest::Update()
 
 	float angle = Vector3::Angle(transform3D.Forward(), target);
 	D3DXVECTOR3 axis = Vector3::Axis(transform3D.Forward(), target);
-	transform3D.RotateByAxis(angle * 0.3f, axis);
+	transform3D.Rotate(angle * 0.3f, axis);
 	
 	Debug::Text("target : %f, %f, %f", target.x, target.y, target.z);
 	Debug::Text("angle : %f", angle);

@@ -30,6 +30,38 @@ Transform::Transform(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale) :
 }
 
 /**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::Move(float x, float y, float z)
+{
+	pos += D3DXVECTOR3(x, y, z);
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::Move(const D3DXVECTOR3 & velocity)
+{
+	pos += velocity;
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::SetPosition(const D3DXVECTOR3 & position)
+{
+	pos = position;
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+D3DXVECTOR3 Transform::GetPosition()
+{
+	return D3DXVECTOR3();
+}
+
+/**************************************
 ‰ñ“]ˆ—
 ***************************************/
 void Transform::Rotate(float degX, float degY, float degZ)
@@ -42,7 +74,7 @@ void Transform::Rotate(float degX, float degY, float degZ)
 /***************************************
 ‰ñ“]ˆ—
 ***************************************/
-void Transform::RotateByAxis(float deg, D3DXVECTOR3 axis)
+void Transform::Rotate(float deg, const D3DXVECTOR3& axis)
 {
 	D3DXQUATERNION q;
 	D3DXQuaternionRotationAxis(&q, &axis, D3DXToRadian(deg));
@@ -54,8 +86,24 @@ void Transform::RotateByAxis(float deg, D3DXVECTOR3 axis)
 ***************************************/
 void Transform::SetRotation(float x, float y, float z)
 {
-	IdentifyRotation();
+	rot = Quaternion::Identity;
 	Rotate(x, y, z);
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::SetRotation(const D3DXVECTOR3 & rotation)
+{
+	rot = Quaternion::ToQuaternion(rotation);
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::SetRotation(const D3DXQUATERNION & rotation)
+{
+	rot = rotation;
 }
 
 /***************************************
@@ -66,18 +114,68 @@ D3DXVECTOR3 Transform::GetEulerAngle()
 	return Quaternion::ToEuler(rot);
 }
 
-/***************************************
-‰ñ“]‰Šú‰»ˆ—
+/**************************************
+ˆÚ“®ˆ—
 ***************************************/
-void Transform::IdentifyRotation()
+D3DXQUATERNION Transform::GetRotation()
 {
-	D3DXQuaternionIdentity(&rot);
+	return D3DXQUATERNION();
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::Scale(float deltaX, float deltaY, float deltaZ)
+{
+	scale.x *= deltaX;
+	scale.y *= deltaY;
+	scale.z *= deltaZ;
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::ScaleX(float delta)
+{
+	scale.x *= delta;
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::ScaleY(float delta)
+{
+	scale.y *= delta;
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::ScaleZ(float delta)
+{
+	scale.z *= delta;
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+void Transform::SetScale(const D3DXVECTOR3 & scale)
+{
+	this->scale = scale;
+}
+
+/**************************************
+ˆÚ“®ˆ—
+***************************************/
+D3DXVECTOR3 Transform::GetScale()
+{
+	return D3DXVECTOR3();
 }
 
 /**************************************
 ƒ[ƒ‹ƒh•ÏŠ·ˆ—
 ***************************************/
-void Transform::SetWorld()
+void Transform::SetWorld(const D3DXMATRIX* parent)
 {
 	D3DXMATRIX world, rotation, scaling, translation;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
@@ -97,13 +195,19 @@ void Transform::SetWorld()
 	D3DXMatrixTranslation(&translation, pos.x, pos.y, pos.z);
 	D3DXMatrixMultiply(&world, &world, &translation);
 
+	//e‚ð”½‰f
+	if (parent != NULL)
+	{
+		D3DXMatrixMultiply(&world, parent, &world);
+	}
+
 	pDevice->SetTransform(D3DTS_WORLD, &world);
 }
 
 /**************************************
 ƒrƒ‹ƒ{[ƒhˆ—
 ***************************************/
-void Transform::SetWorldInvView()
+void Transform::SetWorldInvView(const D3DXMATRIX* parent)
 {
 	D3DXMATRIX world, rotation, scaling, translation, view, invView;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
@@ -127,6 +231,12 @@ void Transform::SetWorldInvView()
 	//ˆÚ“®
 	D3DXMatrixTranslation(&translation, pos.x, pos.y, pos.z);
 	D3DXMatrixMultiply(&world, &world, &translation);
+
+	//e‚ð”½‰f
+	if (parent != NULL)
+	{
+		D3DXMatrixMultiply(&world, parent, &world);
+	}
 
 	pDevice->SetTransform(D3DTS_WORLD, &world);
 }

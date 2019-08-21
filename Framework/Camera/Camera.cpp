@@ -31,7 +31,7 @@ void Camera::Init()
 	const float InitViewNear = 10.0f;
 	const float InitViewFar = 50000.0f;
 
-	transform.pos = InitPos;
+	transform.SetPosition(InitPos);
 	target = InitTarget;
 	viewAngle = InitViewAngle;
 	viewAspect = InitViewAspect;
@@ -55,7 +55,7 @@ void Camera::Init()
 void Camera::Set()
 {
 	//ì‹Æ—Ìˆæ‚ÉŒ»İ‚Ìƒpƒ‰ƒ[ƒ^‚ğİ’è
-	eyeWork = transform.pos;
+	eyeWork = transform.GetPosition();
 	targetWork = target;
 	upWork = transform.Up();
 
