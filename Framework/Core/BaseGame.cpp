@@ -83,6 +83,7 @@ void BaseGame::Update()
 
 	PostEffectManager::Instance()->Update();
 	Tween::mInstance->Update();
+	ProfilerCPU::Instance()->Update();
 }
 
 /**************************************
