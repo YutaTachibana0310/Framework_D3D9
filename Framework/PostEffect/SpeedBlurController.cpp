@@ -6,6 +6,7 @@
 //=====================================
 #include "Effect/SpeedBlurFilter.h"
 #include "SpeedBlurController.h"
+#include "../Math/Easing.h"
 
 /**************************************
 マクロ定義
@@ -17,8 +18,9 @@
 #endif // SPEEDBLURCTRL_USE_DEBUG
 
 /**************************************
-クラス定義
+マクロ定義
 ***************************************/
+#define SPEEDBLUR_TRANSITION_DURATION		(30)
 
 /**************************************
 グローバル変数
@@ -29,7 +31,17 @@
 ***************************************/
 void SpeedBlurController::Update()
 {
+	if (cntPower > 0)
+	{
+		cntPower--;
 
+		float t = 1.0f - (float)cntPower / SPEEDBLUR_TRANSITION_DURATION;
+		float power = Easing::EaseValue(t, startPower, endPower, EaseType::OutCubic);
+		speedBlur->SetPower(power);
+
+		if (cntPower == 0)
+			startPower = endPower;
+	}
 }
 
 /**************************************
@@ -37,17 +49,6 @@ void SpeedBlurController::Update()
 ***************************************/
 void SpeedBlurController::Draw(LPDIRECT3DTEXTURE9 targetTexture)
 {
-#ifdef SPEEDBLURCTRL_USE_DEBUG
-	Debug::Begin("SpeedBlur");
-	static float startLen = 0.05f;
-	static float power = 5.0f;
-	DebugSliderFloat("StartLength", &startLen, 0.0f, 1.0f);
-	DebugSliderFloat("Power", &power, 0.0f, 150.0f);
-	speedBlur->SetStartLength(startLen);
-	speedBlur->SetPower(power);
-	EndDebugWindow("SpeedBlur");
-#endif // SPEEDBLURCTRL_USE_DEBUG
-
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
 	LPDIRECT3DSURFACE9 oldSuf;
@@ -58,7 +59,11 @@ void SpeedBlurController::Draw(LPDIRECT3DTEXTURE9 targetTexture)
 	pDevice->SetSamplerState(0, D3DSAMP_ADDRESSV, D3DTADDRESS_CLAMP);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, false);
 
-	pDevice->SetTexture(0, defaultTarget);
+	if (targetTexture == NULL)
+		pDevice->SetTexture(0, defaultTarget);
+	else
+		pDevice->SetTexture(0, targetTexture);
+
 	speedBlur->DrawEffect();
 
 	pDevice->SetRenderTarget(0, oldSuf);
@@ -73,12 +78,38 @@ void SpeedBlurController::Draw(LPDIRECT3DTEXTURE9 targetTexture)
 }
 
 /**************************************
+ブラーパワーセット処理
+***************************************/
+void SpeedBlurController::SetPower(float power)
+{
+	endPower = power;
+
+	if (cntPower != 0)
+		return;
+
+	cntPower = SPEEDBLUR_TRANSITION_DURATION;
+}
+
+/**************************************
+ブラーパワーセット処理
+***************************************/
+void SpeedBlurController::AddPower(float power)
+{
+	endPower += power;
+
+	if (cntPower != 0)
+		return;
+
+	cntPower = SPEEDBLUR_TRANSITION_DURATION;
+}
+
+/**************************************
 コンストラクタ
 ***************************************/
 SpeedBlurController::SpeedBlurController()
 {
-	const float InitStartLength = 0.3f;
-	const float InitPower = 5.0f;
+	const float InitStartLength = 0.25f;
+	const float InitPower = 0.0f;
 
 	speedBlur = new SpeedBlur();
 	speedBlur->SetSurfaceSize((float)SCREEN_WIDTH, (float)SCREEN_HEIGHT);
@@ -87,9 +118,12 @@ SpeedBlurController::SpeedBlurController()
 	pDevice->CreateTexture(SCREEN_WIDTH, SCREEN_HEIGHT, 1, D3DUSAGE_RENDERTARGET, D3DFMT_X8R8G8B8, D3DPOOL_DEFAULT, &texture, 0);
 	texture->GetSurfaceLevel(0, &surface);
 
-	speedBlur->SetCenterPos(D3DXVECTOR3(0.0f, 0.0f, 150.0f));
+	speedBlur->SetCenterPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	speedBlur->SetPower(InitPower);
 	speedBlur->SetStartLength(InitStartLength);
+
+	startPower = endPower = 0.0f;
+	cntPower = SPEEDBLUR_TRANSITION_DURATION;
 }
 
 /**************************************

@@ -306,7 +306,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <PreBuildEvent>
-      <Command>for %%1 in ($(InputDir)Shaders/*.hlsl) do fxc.exe $(InputDir)Shaders/%%~n1.hlsl /T fx_2_0 /Fo $(InputDir)Shaders/%%~n1.cfx</Command>
+      <Command>for %%1 in ($(InputDir)Shaders/*.fx) do fxc.exe $(InputDir)Shaders/%%~n1.fx /T fx_2_0 /Fo $(InputDir)data/EFFECT/%%~n1.cfx</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -329,7 +329,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Command>for %%1 in ($(InputDir)Shaders/*.hlsl) do fxc.exe $(InputDir)Shaders/%%~n1.hlsl /T fx_2_0 /Fo $(InputDir)Shaders/%%~n1.cfx</Command>
+      <Command>for %%1 in ($(InputDir)Shaders/*.fx) do fxc.exe $(InputDir)Shaders/%%~n1.fx /T fx_2_0 /Fo $(InputDir)data/EFFECT/%%~n1.cfx</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

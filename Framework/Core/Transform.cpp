@@ -348,8 +348,9 @@ D3DXMATRIX Transform::GetBillboardMtx()
 	D3DXMatrixRotationQuaternion(&world, &this->rotation);
 
 	////ビルボード処理
-	//D3DXMATRIX invView = Camera::GetInverseViewMtx();
-	//D3DXMatrixMultiply(&world, &world, &invView);
+	D3DXMATRIX invView = Camera::GetInverseViewMtx();
+	invView._41 = invView._42 = invView._43 = 0.0f;
+	D3DXMatrixMultiply(&world, &world, &invView);
 
 	//スケール
 	world._11 *= scale.x;
