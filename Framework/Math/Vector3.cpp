@@ -99,3 +99,20 @@ float Vector3::Distance(const D3DXVECTOR3& from, const D3DXVECTOR3& to)
 
 	return D3DXVec3Length(&diff);
 }
+
+/**************************************
+“™‰¿”äŠr
+***************************************/
+bool Vector3::Equal(const D3DXVECTOR3 & v1, const D3DXVECTOR3 & v2)
+{
+	if (!Math::Approximately(v1.x, v2.x))
+		return false;
+
+	if (!Math::Approximately(v1.y, v2.y))
+		return false;
+
+	if (!Math::Approximately(v1.z, v2.z))
+		return false;
+
+	return true;
+}

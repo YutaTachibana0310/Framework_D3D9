@@ -52,7 +52,6 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 	Input::mInstance->Init(hInstance, hWnd);
 	Camera::mInstance->Init();
 	Debug::Init(hWnd, pDevice);
-
 }
 
 /**************************************

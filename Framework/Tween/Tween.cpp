@@ -227,9 +227,9 @@ void Tween::RotateTweener::Update()
 	shared_ptr<Transform> transform = reference.lock();
 	if (transform)
 	{
-		float t = (float)cntFrame / duration;
-		D3DXQUATERNION quaternion = Easing::EaseValue(t, start, end, type);
-		D3DXQuaternionNormalize(&quaternion, &quaternion);
+		float t = Easing::EaseValue((float)cntFrame / duration, 0.0f, 1.0f, type);
+		D3DXQUATERNION quaternion;
+		D3DXQuaternionSlerp(&quaternion, &start, &end, t);
 		transform->SetRotation(quaternion);
 	}
 }
