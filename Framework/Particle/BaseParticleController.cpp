@@ -204,7 +204,7 @@ BaseEmitter* BaseParticleController::SetEmitter(const Transform& transform)
 	});
 
 	if (emitter == emitterContainer.end())
-		return;
+		return NULL;
 
 	BaseEmitter* ptr = *emitter;
 	ptr->SetTransform(transform);
