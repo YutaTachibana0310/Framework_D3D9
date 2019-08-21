@@ -74,6 +74,39 @@ void TestParticleManager::Set()
 {
 	controllers[0]->SetEmitter(Vector3::Zero);
 }
+
+/**************************************
+描画処理
+***************************************/
+void TestParticleManager::Draw()
+{
+	//レンダーパラメータ切り替え
+	ChangeRenderParameter();
+
+	//インスタンシング描画開始
+	BaseParticleController::BeginDraw();
+
+	//描画
+	bool isDrewd = false;
+	for (auto& controller : controllers)
+	{
+		isDrewd |= controller->Draw();
+	}
+
+	//インスタンシング描画終了
+	BaseParticleController::EndDraw();
+
+	//すべての結果を元のレンダーターゲットに描画
+	RestoreRenderParameter();
+	screenObj->Draw();
+
+	//レンダーステート復元
+	LPDIRECT3DDEVICE9 pDevice = GetDevice();
+	pDevice->SetRenderState(D3DRS_LIGHTING, true);
+	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, true);
+	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+}
+
 /**************************************
 プロトタイプ宣言
 ***************************************/

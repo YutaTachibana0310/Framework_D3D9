@@ -45,6 +45,7 @@ private:
 	std::vector<BaseEffectController*> effectContainer;
 
 	bool IsUse(unsigned flg);
+	bool IsBrightEffect(UINT id);
 
 	PostEffectManager();
 	PostEffectManager(const PostEffectManager&){}
