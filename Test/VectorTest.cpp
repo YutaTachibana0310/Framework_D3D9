@@ -59,6 +59,13 @@ void VectorTest::Update()
 	Debug::Text("forward : %f, %f, %f", transform3D.Forward().x, transform3D.Forward().y, transform3D.Forward().z);
 
 	Debug::End();
+
+	D3DXMATRIX mtx;
+	for (int i = 0; i < 50000; i++)
+	{
+		mtx = transform3D.GetMatrix();
+	}
+
 	ProfilerCPU::Instance()->End("Update");
 	ProfilerCPU::Instance()->EndLabel();
 }
