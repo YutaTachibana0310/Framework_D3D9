@@ -6,6 +6,7 @@
 //=====================================
 #include "Transform.h"
 #include "../Math/Quaternion.h"
+#include "../Camera/Camera.h"
 
 /**************************************
 コンストラクタ
@@ -310,6 +311,45 @@ D3DXMATRIX Transform::GetMatrix()
 
 	//回転
 	D3DXMatrixRotationQuaternion(&world, &this->rotation);
+
+	//スケール
+	world._11 *= scale.x;
+	world._12 *= scale.x;
+	world._13 *= scale.x;
+
+	world._21 *= scale.y;
+	world._22 *= scale.y;
+	world._23 *= scale.y;
+
+	world._31 *= scale.z;
+	world._32 *= scale.z;
+	world._33 *= scale.z;
+
+	//移動
+	world._41 = position.x;
+	world._42 = position.y;
+	world._43 = position.z;
+
+	return world;
+}
+
+/**************************************
+ワールド行列取得処理
+***************************************/
+D3DXMATRIX Transform::GetBillboardMtx()
+{
+	/*************************************
+	NOTE:正直に行列計算するより、要素を直接計算した方が早かったので
+	回転だけ行列で、それ以外は直接計算している
+	*************************************/
+	D3DXMATRIX world;
+
+	//回転
+	D3DXMatrixRotationQuaternion(&world, &this->rotation);
+
+	////ビルボード処理
+	//D3DXMATRIX invView = Camera::GetInverseViewMtx();
+	//D3DXMatrixMultiply(&world, &world, &invView);
 
 	//スケール
 	world._11 *= scale.x;

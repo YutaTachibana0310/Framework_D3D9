@@ -60,6 +60,7 @@ public:
 	void SetWorld(const D3DXMATRIX* parent = NULL);
 	void SetWorldInvView(const D3DXMATRIX* parent = NULL);
 	D3DXMATRIX GetMatrix();
+	D3DXMATRIX GetBillboardMtx();
 	
 private:
 	D3DXVECTOR3 position;	//ç¿ïW

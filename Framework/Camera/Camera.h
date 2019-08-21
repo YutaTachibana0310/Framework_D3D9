@@ -24,10 +24,19 @@ public:
 	void Set();			//カメラ情報反映処理
 
 	//与えたワールド座標をスクリーン座標に変換する関数
-	void Projection(D3DXVECTOR3& out, const D3DXVECTOR3& pos);
+	static void Projection(D3DXVECTOR3& out, const D3DXVECTOR3& pos);
 
 	//与えたスクリーン座標をワールド座標に変換する関数
-	void UnProjection(D3DXVECTOR3& out, const D3DXVECTOR3& pos, float z);
+	static void UnProjection(D3DXVECTOR3& out, const D3DXVECTOR3& pos, float z);
+
+	//ビュー行列取得処理
+	static D3DXMATRIX GetViewMtx();
+
+	//ビュー逆行列取得処理
+	static D3DXMATRIX GetInverseViewMtx();
+
+	//プロジェクション行列取得処理
+	static D3DXMATRIX GetProjectionMtx();
 
 protected:
 	//SRT情報

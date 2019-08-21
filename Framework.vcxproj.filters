@@ -146,4 +146,17 @@
     <ClInclude Include="Framework\Animation\MyAllocateHierarchy.h" />
     <ClInclude Include="Framework\Core\Utility.h" />
   </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\BloomFilter.fx" />
+    <FxCompile Include="Shaders\BlurFilter.fx" />
+    <FxCompile Include="Shaders\CrossBlur.fx" />
+    <FxCompile Include="Shaders\HexaCrossBlur.fx" />
+    <FxCompile Include="Shaders\ModelInstancing.fx" />
+    <FxCompile Include="Shaders\MonotoneFilter.fx" />
+    <FxCompile Include="Shaders\particle3D.fx" />
+    <FxCompile Include="Shaders\ShockBlur.fx" />
+    <FxCompile Include="Shaders\SpeedBlur.fx" />
+    <FxCompile Include="Shaders\SpikeNoise.fx" />
+    <FxCompile Include="Shaders\StrongBlurFilter.fx" />
+  </ItemGroup>
 </Project>

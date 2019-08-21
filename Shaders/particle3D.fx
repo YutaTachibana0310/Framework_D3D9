@@ -32,44 +32,24 @@ struct VS_OUTPUT {
 VS_OUTPUT vsMain(
 	float3 pos : POSITION,
 	float2 localUV : TEXCOORD0,
-	float3 worldPos : TEXCOORD1,
-	float3 worldScl : TEXCOORD2,
-	float4 worldRot : TEXCOORD3,
-	float2 texUV : TEXCOORD4
+	float4 mtxWorld1 : TEXCOORD1,
+	float4 mtxWorld2 : TEXCOORD2,
+	float4 mtxWorld3 : TEXCOORD3,
+	float4 mtxWorld4 : TEXCOORD4,
+	float2 texUV : TEXCOORD5
 ) {
 	VS_OUTPUT Out;
 
 	Out.pos = float4(pos, 1.0f);
 
-	//scale
-	Out.pos.x = Out.pos.x * worldScl.x;
-	Out.pos.y = Out.pos.y * worldScl.y;
-	Out.pos.z = Out.pos.z * worldScl.z;
-
-	//rotX
-	float4 tmp = Out.pos;
-	Out.pos.x =
-		tmp.x * (1 - 2 * worldRot.y*worldRot.y - 2 * worldRot.z*worldRot.z)
-		+ tmp.y * 2 * (worldRot.x*worldRot.y + worldRot.w*worldRot.z)
-		+ tmp.z * 2 * (worldRot.x*worldRot.z - worldRot.w*worldRot.x);
-
-	Out.pos.y =
-		tmp.x * 2 * (worldRot.x*worldRot.y - worldRot.w*worldRot.z)
-		+ tmp.y * (1 - 2 * worldRot.x*worldRot.x - 2 * worldRot.z*worldRot.z)
-		+ tmp.z * 2 * (worldRot.y*worldRot.z + worldRot.w*worldRot.x);
-
-	Out.pos.z =
-		tmp.x * 2 * (worldRot.x*worldRot.z + worldRot.w*worldRot.y)
-		+ tmp.y * 2 * (worldRot.y*worldRot.z - worldRot.w*worldRot.x)
-		+ tmp.z * (1 - 2 * worldRot.x*worldRot.x - 2 * worldRot.y*worldRot.y);
-
-	//InvView
-	Out.pos = mul(Out.pos, mtxInvView);
-
-	//Translate
-	Out.pos.x = Out.pos.x + worldPos.x;
-	Out.pos.y = Out.pos.y + worldPos.y;
-	Out.pos.z = Out.pos.z + worldPos.z;
+	//world
+	float4x4 mtxWorld = {
+		mtxWorld1,
+		mtxWorld2,
+		mtxWorld3,
+		mtxWorld4
+	};
+	Out.pos = mul(Out.pos, mtxWorld);
 
 	//view & projection
 	Out.pos = mul(Out.pos, mtxView);
