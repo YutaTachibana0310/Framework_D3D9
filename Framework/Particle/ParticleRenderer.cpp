@@ -59,7 +59,7 @@ void ParticleRenderer::BeginDraw()
 	effect->SetMatrix(hMtxInvView, &invView);
 
 	//各頂点バッファを設定
-	pDevice->SetStreamSource(1, transformBuff, 0, sizeof(Transform));
+	pDevice->SetStreamSource(1, transformBuff, 0, sizeof(D3DXMATRIX));
 	pDevice->SetStreamSource(2, uvBuff, 0, sizeof(ParticleUV));
 	pDevice->SetIndices(indexBuff);
 	pDevice->SetVertexDeclaration(declare);
@@ -103,14 +103,14 @@ UINT ParticleRenderer::EmbedTransform(const std::vector<BaseParticle*> container
 	assert(container.size() < PARTICLE_NUM_MAX);
 
 	UINT count = 0;
-	Transform *pTr;
+	D3DXMATRIX *pTr;
 	transformBuff->Lock(0, 0, (void**)&pTr, 0);
 	for (BaseParticle *particle : container)
 	{
 		if (!particle->IsActive())
 			continue;
 
-		*pTr = particle->GetTransform();
+		*pTr = particle->GetWorldMtx();
 		pTr++;
 		count++;
 	}
@@ -172,10 +172,11 @@ void ParticleRenderer::MakeDeclaration()
 	{
 		{ 0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },	//単位頂点（頂点座標）
 		{ 0, 12, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0 },	//単位頂点（テクスチャ座標）
-		{ 1, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 1 },	//ワールド変換情報（ポジション）
-		{ 1, 12, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 2 },	//ワールド変換情報（スケール）
-		{ 1, 24, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 3 },	//ワールド変換情報（ローテーション）
-		{ 2, 0, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 4 },	//個別のテクスチャ
+		{ 1, 0, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 1 },	//ワールド変換行列1行目）
+		{ 1, 16, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 2 },	//ワールド変換情報2行目
+		{ 1, 32, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 3 },	//ワールド変換情報3行目
+		{ 1, 48, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 4 },	//ワールド変換情報4行目
+		{ 2, 0, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 5 },	//個別のテクスチャ
 		D3DDECL_END()
 	};
 	pDevice->CreateVertexDeclaration(elems, &declare);
@@ -190,7 +191,7 @@ void ParticleRenderer::MakeTransformBuffer()
 		return;
 
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	pDevice->CreateVertexBuffer(sizeof(Transform) * PARTICLE_NUM_MAX, 0, 0, D3DPOOL_MANAGED, &transformBuff, 0);
+	pDevice->CreateVertexBuffer(sizeof(D3DXMATRIX) * PARTICLE_NUM_MAX, 0, 0, D3DPOOL_MANAGED, &transformBuff, 0);
 }
 
 /**************************************

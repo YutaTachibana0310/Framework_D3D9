@@ -67,3 +67,11 @@ bool BaseParticle::IsActive() const
 
 	return cntFrame <= lifeFrame;
 }
+
+/**************************************
+ワールド行列行列取得処理
+***************************************/
+D3DXMATRIX BaseParticle::GetWorldMtx()
+{
+	return transform->GetBillboardMtx();
+}

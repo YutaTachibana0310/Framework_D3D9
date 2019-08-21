@@ -49,6 +49,11 @@ void PostEffectManager::Draw()
 		if (!IsUse(i))
 			continue;
 
+		//ƒuƒ‹[ƒ€‚È‚Ç‚Ì‹P‚«Œn‚Í‰e‹¿‚ª‹­‚·‚¬‚é‚Ì‚Å
+		//ŠeƒV[ƒ“‚É•`‰æ‚ð”C‚¹‚é
+		if (IsBrightEffect(i))
+			continue;
+
 		effectContainer[i]->Draw();
 	}
 }
@@ -70,6 +75,14 @@ bool PostEffectManager::IsUse(unsigned flg)
 	check = check << (flg);
 
 	return check & flgUse;
+}
+
+/**************************************
+ƒfƒtƒHƒ‹ƒgƒ^[ƒQƒbƒgÝ’èˆ—
+***************************************/
+bool PostEffectManager::IsBrightEffect(UINT id)
+{
+	return id == PostEffect::CrossFilter || id == PostEffect::Bloom;
 }
 
 /**************************************

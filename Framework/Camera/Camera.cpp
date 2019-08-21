@@ -114,7 +114,7 @@ void Camera::Update()
 ***************************************/
 void Camera::Projection(D3DXVECTOR3& out, const D3DXVECTOR3& pos)
 {
-	D3DXVec3TransformCoord(&out, &pos, &VPV);
+	D3DXVec3TransformCoord(&out, &pos, &mInstance->VPV);
 }
 
 /**************************************
@@ -122,5 +122,30 @@ void Camera::Projection(D3DXVECTOR3& out, const D3DXVECTOR3& pos)
 ***************************************/
 void Camera::UnProjection(D3DXVECTOR3& out, const D3DXVECTOR3& pos, float z)
 {
-	D3DXVec3TransformCoord(&out, &D3DXVECTOR3(pos.x, pos.y, z), &invVPV);
+	D3DXVec3TransformCoord(&out, &D3DXVECTOR3(pos.x, pos.y, z), &mInstance->invVPV);
 }
+
+/**************************************
+ƒXƒNƒŠ[ƒ“‹t“Š‰eˆ—
+***************************************/
+D3DXMATRIX Camera::GetViewMtx()
+{
+	return mInstance->view;
+}
+
+/**************************************
+ƒXƒNƒŠ[ƒ“‹t“Š‰eˆ—
+***************************************/
+D3DXMATRIX Camera::GetInverseViewMtx()
+{
+	return mInstance->invView;
+}
+
+/**************************************
+ƒXƒNƒŠ[ƒ“‹t“Š‰eˆ—
+***************************************/
+D3DXMATRIX Camera::GetProjectionMtx()
+{
+	return mInstance->projection;
+}
+
