@@ -52,6 +52,7 @@ public:
 	virtual void Update() = 0;
 
 	virtual bool IsActive() const override;
+	virtual D3DXMATRIX GetWorldMtx();
 
 	ParticleUV uv;
 

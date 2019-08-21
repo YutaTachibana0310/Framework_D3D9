@@ -110,7 +110,7 @@ UINT ParticleRenderer::EmbedTransform(const std::vector<BaseParticle*> container
 		if (!particle->IsActive())
 			continue;
 
-		*pTr = particle->GetTransform().GetBillboardMtx();
+		*pTr = particle->GetWorldMtx();
 		pTr++;
 		count++;
 	}
