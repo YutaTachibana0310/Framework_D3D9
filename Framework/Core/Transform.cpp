@@ -11,8 +11,8 @@
 コンストラクタ
 ***************************************/
 Transform::Transform() :
-	pos(Vector3::Zero),
-	rot(Quaternion::Identity),
+	position(Vector3::Zero),
+	rotation(Quaternion::Identity),
 	scale(Vector3::One)
 {
 
@@ -22,11 +22,34 @@ Transform::Transform() :
 コンストラクタ
 ***************************************/
 Transform::Transform(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale) :
-	pos(pos),
-	rot(Quaternion::Identity),
+	position(pos),
+	rotation(Quaternion::Identity),
 	scale(scale)
 {
-	D3DXQuaternionRotationYawPitchRoll(&this->rot, rot.y, rot.x, rot.z);
+	D3DXQuaternionRotationYawPitchRoll(&this->rotation, rot.y, rot.x, rot.z);
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+Transform::Transform(const Transform &src) :
+	position(src.position),
+	rotation(src.rotation),
+	scale(src.scale)
+{
+
+}
+
+/**************************************
+代入演算子
+***************************************/
+Transform Transform::operator=(const Transform &src)
+{
+	this->position = src.position;
+	this->rotation = src.rotation;
+	this->scale = src.scale;
+
+	return *this;
 }
 
 /**************************************
@@ -34,7 +57,7 @@ Transform::Transform(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale) :
 ***************************************/
 void Transform::Move(float x, float y, float z)
 {
-	pos += D3DXVECTOR3(x, y, z);
+	position += D3DXVECTOR3(x, y, z);
 }
 
 /**************************************
@@ -42,7 +65,7 @@ void Transform::Move(float x, float y, float z)
 ***************************************/
 void Transform::Move(const D3DXVECTOR3 & velocity)
 {
-	pos += velocity;
+	position += velocity;
 }
 
 /**************************************
@@ -50,7 +73,7 @@ void Transform::Move(const D3DXVECTOR3 & velocity)
 ***************************************/
 void Transform::SetPosition(const D3DXVECTOR3 & position)
 {
-	pos = position;
+	this->position = position;
 }
 
 /**************************************
@@ -58,7 +81,7 @@ void Transform::SetPosition(const D3DXVECTOR3 & position)
 ***************************************/
 D3DXVECTOR3 Transform::GetPosition()
 {
-	return D3DXVECTOR3();
+	return position;
 }
 
 /**************************************
@@ -68,7 +91,7 @@ void Transform::Rotate(float degX, float degY, float degZ)
 {
 	D3DXQUATERNION q;
 	D3DXQuaternionRotationYawPitchRoll(&q, D3DXToRadian(degY), D3DXToRadian(degX), D3DXToRadian(degZ));
-	D3DXQuaternionMultiply(&rot, &rot, &q);
+	D3DXQuaternionMultiply(&rotation, &rotation, &q);
 }
 
 /***************************************
@@ -78,7 +101,7 @@ void Transform::Rotate(float deg, const D3DXVECTOR3& axis)
 {
 	D3DXQUATERNION q;
 	D3DXQuaternionRotationAxis(&q, &axis, D3DXToRadian(deg));
-	D3DXQuaternionMultiply(&rot, &rot, &q);
+	D3DXQuaternionMultiply(&rotation, &rotation, &q);
 }
 
 /***************************************
@@ -86,7 +109,7 @@ void Transform::Rotate(float deg, const D3DXVECTOR3& axis)
 ***************************************/
 void Transform::SetRotation(float x, float y, float z)
 {
-	rot = Quaternion::Identity;
+	rotation = Quaternion::Identity;
 	Rotate(x, y, z);
 }
 
@@ -95,7 +118,7 @@ void Transform::SetRotation(float x, float y, float z)
 ***************************************/
 void Transform::SetRotation(const D3DXVECTOR3 & rotation)
 {
-	rot = Quaternion::ToQuaternion(rotation);
+	this->rotation = Quaternion::ToQuaternion(rotation);
 }
 
 /**************************************
@@ -103,7 +126,7 @@ void Transform::SetRotation(const D3DXVECTOR3 & rotation)
 ***************************************/
 void Transform::SetRotation(const D3DXQUATERNION & rotation)
 {
-	rot = rotation;
+	this->rotation = rotation;
 }
 
 /***************************************
@@ -111,7 +134,7 @@ void Transform::SetRotation(const D3DXQUATERNION & rotation)
 ***************************************/
 D3DXVECTOR3 Transform::GetEulerAngle()
 {
-	return Quaternion::ToEuler(rot);
+	return Quaternion::ToEuler(rotation);
 }
 
 /**************************************
@@ -119,7 +142,7 @@ D3DXVECTOR3 Transform::GetEulerAngle()
 ***************************************/
 D3DXQUATERNION Transform::GetRotation()
 {
-	return D3DXQUATERNION();
+	return rotation;
 }
 
 /**************************************
@@ -169,7 +192,7 @@ void Transform::SetScale(const D3DXVECTOR3 & scale)
 ***************************************/
 D3DXVECTOR3 Transform::GetScale()
 {
-	return D3DXVECTOR3();
+	return scale;
 }
 
 /**************************************
@@ -188,11 +211,11 @@ void Transform::SetWorld(const D3DXMATRIX* parent)
 	D3DXMatrixMultiply(&world, &world, &scaling);
 
 	//回転
-	D3DXMatrixRotationQuaternion(&rotation, &rot);
+	D3DXMatrixRotationQuaternion(&rotation, &this->rotation);
 	D3DXMatrixMultiply(&world, &world, &rotation);
 
 	//移動
-	D3DXMatrixTranslation(&translation, pos.x, pos.y, pos.z);
+	D3DXMatrixTranslation(&translation, position.x, position.y, position.z);
 	D3DXMatrixMultiply(&world, &world, &translation);
 
 	//親を反映
@@ -220,7 +243,7 @@ void Transform::SetWorldInvView(const D3DXMATRIX* parent)
 	D3DXMatrixMultiply(&world, &world, &scaling);
 
 	//回転
-	D3DXMatrixRotationQuaternion(&rotation, &rot);
+	D3DXMatrixRotationQuaternion(&rotation, &this->rotation);
 	D3DXMatrixMultiply(&world, &world, &rotation);
 
 	//ビュー逆変換
@@ -229,7 +252,7 @@ void Transform::SetWorldInvView(const D3DXMATRIX* parent)
 	invView._41 = invView._42 = invView._43 = 0.0f;
 
 	//移動
-	D3DXMatrixTranslation(&translation, pos.x, pos.y, pos.z);
+	D3DXMatrixTranslation(&translation, position.x, position.y, position.z);
 	D3DXMatrixMultiply(&world, &world, &translation);
 
 	//親を反映
@@ -249,7 +272,7 @@ D3DXVECTOR3 Transform::Forward()
 	D3DXVECTOR3 forward = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 	D3DXMATRIX rotation;
 
-	D3DXMatrixRotationQuaternion(&rotation, &rot);
+	D3DXMatrixRotationQuaternion(&rotation, &this->rotation);
 	D3DXVec3TransformCoord(&forward, &forward, &rotation);
 
 	return forward;
@@ -263,7 +286,7 @@ D3DXVECTOR3 Transform::Right()
 	D3DXVECTOR3 right = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
 	D3DXMATRIX rotation;
 
-	D3DXMatrixRotationQuaternion(&rotation, &rot);
+	D3DXMatrixRotationQuaternion(&rotation, &this->rotation);
 	D3DXVec3TransformCoord(&right, &right, &rotation);
 
 	return right;
@@ -277,7 +300,7 @@ D3DXVECTOR3 Transform::Up()
 	D3DXVECTOR3 up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	D3DXMATRIX rotation;
 
-	D3DXMatrixRotationQuaternion(&rotation, &rot);
+	D3DXMatrixRotationQuaternion(&rotation, &this->rotation);
 	D3DXVec3TransformCoord(&up, &up, &rotation);
 
 	return up;
@@ -298,11 +321,11 @@ D3DXMATRIX Transform::GetMatrix()
 	D3DXMatrixMultiply(&world, &world, &scaling);
 
 	//回転
-	D3DXMatrixRotationQuaternion(&rotation, &rot);
+	D3DXMatrixRotationQuaternion(&rotation, &this->rotation);
 	D3DXMatrixMultiply(&world, &world, &rotation);
 
 	//移動
-	D3DXMatrixTranslation(&translation, pos.x, pos.y, pos.z);
+	D3DXMatrixTranslation(&translation, position.x, position.y, position.z);
 	D3DXMatrixMultiply(&world, &world, &translation);
 
 	return world;

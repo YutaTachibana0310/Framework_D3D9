@@ -20,10 +20,13 @@
 class Transform
 {
 public:
-
 	//コンストラクタ
 	Transform();
 	Transform(D3DXVECTOR3 pos, D3DXVECTOR3 rot, D3DXVECTOR3 scale);
+	Transform(const Transform&);
+
+	//演算子
+	Transform operator = (const Transform&);
 
 	//移動処理
 	void Move(float x, float y, float z);
@@ -59,9 +62,9 @@ public:
 	D3DXMATRIX GetMatrix();
 	
 private:
-	D3DXVECTOR3 pos;	//座標
+	D3DXVECTOR3 position;	//座標
 	D3DXVECTOR3 scale;	//スケール
-	D3DXQUATERNION rot;	//回転
+	D3DXQUATERNION rotation;	//回転
 };
 
 #endif
