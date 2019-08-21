@@ -44,7 +44,6 @@ public:
 
 	void Init();
 	void Set();
-	void Draw();
 };
 
 class ParticleController : public BaseParticleController
