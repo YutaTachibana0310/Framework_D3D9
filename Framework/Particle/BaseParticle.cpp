@@ -22,7 +22,7 @@
 コンストラクタ
 ***************************************/
 BaseParticle::BaseParticle() :
-	GameObject(false),
+	BillboardObject(false),
 	uv(ParticleUV())
 {
 
@@ -32,7 +32,7 @@ BaseParticle::BaseParticle() :
 コンストラクタ
 ***************************************/
 BaseParticle::BaseParticle(int life) :
-	GameObject(false),
+	BillboardObject(false),
 	uv(ParticleUV()),
 	lifeFrame(life)
 {
@@ -43,7 +43,7 @@ BaseParticle::BaseParticle(int life) :
 コンストラクタ
 ***************************************/
 BaseParticle::BaseParticle(int lifeMin, int lifeMax) :
-	GameObject(false),
+	BillboardObject(false),
 	uv(ParticleUV()),
 	lifeFrame(Math::RandomRange(lifeMin, lifeMax))
 {
@@ -73,5 +73,5 @@ bool BaseParticle::IsActive() const
 ***************************************/
 D3DXMATRIX BaseParticle::GetWorldMtx()
 {
-	return transform->GetBillboardMtx();
+	return transform->GetMatrix();
 }

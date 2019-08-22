@@ -15,7 +15,7 @@
 コンストラクタ
 ***************************************/
 BillboardObject::BillboardObject() :
-	GameObject(BillboardTransform())
+	GameObject(new BillboardTransform)
 {
 
 }
@@ -41,7 +41,7 @@ BillboardObject::BillboardObject(const BillboardTransform& transform) :
 コンストラクタ
 ***************************************/
 BillboardObject::BillboardObject(const bool & active) :
-	GameObject(BillboardTransform(), active)
+	GameObject(new BillboardTransform, active)
 {
 
 }

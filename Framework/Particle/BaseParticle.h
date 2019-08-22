@@ -8,6 +8,7 @@
 #define _BASEPARTICLE_H_
 
 #include "../../main.h"
+#include "../Renderer3D/BillboardObject.h"
 
 /**************************************
 ‘O•ûéŒ¾
@@ -40,7 +41,7 @@ public:
 BaseParticleƒNƒ‰ƒX
 ¦Œp³æ‚ÅInit(), Update()‚ğÀ‘•‚·‚é
 ***************************************/
-class BaseParticle : public GameObject
+class BaseParticle : public BillboardObject
 {
 public:
 	BaseParticle();
