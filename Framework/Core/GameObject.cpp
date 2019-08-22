@@ -62,6 +62,24 @@ GameObject::GameObject(const Transform& transform, const bool& active) :
 }
 
 /**************************************
+コンストラクタ
+***************************************/
+GameObject::GameObject(Transform * transform) :
+	active(true)
+{
+	this->transform.reset(transform);
+}
+
+/**************************************
+コンストラクタ
+***************************************/
+GameObject::GameObject(Transform* transform, const bool & active) :
+	active(active)
+{
+	this->transform.reset(transform);
+}
+
+/**************************************
 代入演算子
 ***************************************/
 GameObject& GameObject::operator=(const GameObject& other)

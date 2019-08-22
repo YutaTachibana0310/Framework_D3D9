@@ -92,7 +92,7 @@ ParticleController::ParticleController()
 ***************************************/
 void ParticleController::MakeParticleContainer()
 {
-	particleContainer.resize(1024);
+	particleContainer.resize(2047);
 	for (auto& particle : particleContainer)
 	{
 		particle = new Particle(60, 120);

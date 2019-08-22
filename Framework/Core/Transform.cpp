@@ -5,8 +5,6 @@
 //
 //=====================================
 #include "Transform.h"
-#include "../Math/Quaternion.h"
-#include "../Camera/Camera.h"
 
 /**************************************
 コンストラクタ
@@ -56,14 +54,6 @@ Transform Transform::operator=(const Transform &src)
 /**************************************
 移動処理
 ***************************************/
-void Transform::Move(float x, float y, float z)
-{
-	position += D3DXVECTOR3(x, y, z);
-}
-
-/**************************************
-移動処理
-***************************************/
 void Transform::Move(const D3DXVECTOR3 & velocity)
 {
 	position += velocity;
@@ -105,15 +95,6 @@ void Transform::Rotate(float deg, const D3DXVECTOR3& axis)
 	D3DXQuaternionMultiply(&rotation, &rotation, &q);
 }
 
-/***************************************
-回転設定処理
-***************************************/
-void Transform::SetRotation(float x, float y, float z)
-{
-	rotation = Quaternion::Identity;
-	Rotate(x, y, z);
-}
-
 /**************************************
 移動処理
 ***************************************/
@@ -149,35 +130,11 @@ D3DXQUATERNION Transform::GetRotation()
 /**************************************
 移動処理
 ***************************************/
-void Transform::Scale(float deltaX, float deltaY, float deltaZ)
+void Transform::Scale(const D3DXVECTOR3& delta)
 {
-	scale.x *= deltaX;
-	scale.y *= deltaY;
-	scale.z *= deltaZ;
-}
-
-/**************************************
-移動処理
-***************************************/
-void Transform::ScaleX(float delta)
-{
-	scale.x *= delta;
-}
-
-/**************************************
-移動処理
-***************************************/
-void Transform::ScaleY(float delta)
-{
-	scale.y *= delta;
-}
-
-/**************************************
-移動処理
-***************************************/
-void Transform::ScaleZ(float delta)
-{
-	scale.z *= delta;
+	scale.x *= delta.x;
+	scale.y *= delta.y;
+	scale.z *= delta.z;
 }
 
 /**************************************
@@ -203,49 +160,6 @@ void Transform::SetWorld(const D3DXMATRIX* parent)
 {
 	D3DXMATRIX world = GetMatrix();
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-	//親を反映
-	if (parent != NULL)
-	{
-		D3DXMatrixMultiply(&world, parent, &world);
-	}
-
-	pDevice->SetTransform(D3DTS_WORLD, &world);
-}
-
-/**************************************
-ビルボード処理
-***************************************/
-void Transform::SetWorldInvView(const D3DXMATRIX* parent)
-{
-	D3DXMATRIX world, rotation, view, invView;
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-	//回転
-	D3DXMatrixRotationQuaternion(&world, &this->rotation);
-
-	//ビルボード処理
-	pDevice->GetTransform(D3DTS_VIEW, &view);
-	D3DXMatrixInverse(&invView, NULL, &view);
-	D3DXMatrixMultiply(&world, &world, &invView);
-
-	//スケール
-	world._11 *= scale.x;
-	world._12 *= scale.x;
-	world._13 *= scale.x;
-
-	world._21 *= scale.y;
-	world._22 *= scale.y;
-	world._23 *= scale.y;
-
-	world._31 *= scale.z;
-	world._32 *= scale.z;
-	world._33 *= scale.z;
-
-	//移動
-	world._41 = position.x;
-	world._42 = position.y;
-	world._43 = position.z;
 
 	//親を反映
 	if (parent != NULL)
@@ -311,46 +225,6 @@ D3DXMATRIX Transform::GetMatrix()
 
 	//回転
 	D3DXMatrixRotationQuaternion(&world, &this->rotation);
-
-	//スケール
-	world._11 *= scale.x;
-	world._12 *= scale.x;
-	world._13 *= scale.x;
-
-	world._21 *= scale.y;
-	world._22 *= scale.y;
-	world._23 *= scale.y;
-
-	world._31 *= scale.z;
-	world._32 *= scale.z;
-	world._33 *= scale.z;
-
-	//移動
-	world._41 = position.x;
-	world._42 = position.y;
-	world._43 = position.z;
-
-	return world;
-}
-
-/**************************************
-ワールド行列取得処理
-***************************************/
-D3DXMATRIX Transform::GetBillboardMtx()
-{
-	/*************************************
-	NOTE:正直に行列計算するより、要素を直接計算した方が早かったので
-	回転だけ行列で、それ以外は直接計算している
-	*************************************/
-	D3DXMATRIX world;
-
-	//回転
-	D3DXMatrixRotationQuaternion(&world, &this->rotation);
-
-	////ビルボード処理
-	D3DXMATRIX invView = Camera::GetInverseViewMtx();
-	invView._41 = invView._42 = invView._43 = 0.0f;
-	D3DXMatrixMultiply(&world, &world, &invView);
 
 	//スケール
 	world._11 *= scale.x;

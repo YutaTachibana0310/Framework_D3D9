@@ -100,7 +100,7 @@ Transformî•ñ–„‚ß‚İˆ—
 ***************************************/
 UINT ParticleRenderer::EmbedTransform(const std::vector<BaseParticle*> container)
 {
-	assert(container.size() < PARTICLE_NUM_MAX);
+	assert(container.size() <= PARTICLE_NUM_MAX);
 
 	UINT count = 0;
 	D3DXMATRIX *pTr;

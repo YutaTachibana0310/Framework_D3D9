@@ -28,6 +28,8 @@ public:
 	GameObject(const Transform& transform);
 	GameObject(const bool& active);
 	GameObject(const Transform& transform, const bool& active);
+	GameObject(Transform* transform);
+	GameObject(Transform* tranfsorm, const bool& active);
 	virtual ~GameObject();
 
 	//‘ã“ü‰‰ŽZŽq
