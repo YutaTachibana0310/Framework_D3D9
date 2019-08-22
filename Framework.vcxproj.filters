@@ -67,6 +67,8 @@
     <ClCompile Include="Framework\Animation\AnimationManager.cpp" />
     <ClCompile Include="Framework\Animation\AnimContainer.cpp" />
     <ClCompile Include="Framework\Animation\MyAllocateHierarchy.cpp" />
+    <ClCompile Include="Framework\Renderer3D\BillboardObject.cpp" />
+    <ClCompile Include="Framework\Renderer3D\BillboardTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -145,6 +147,8 @@
     <ClInclude Include="Framework\Animation\AnimContainer.h" />
     <ClInclude Include="Framework\Animation\MyAllocateHierarchy.h" />
     <ClInclude Include="Framework\Core\Utility.h" />
+    <ClInclude Include="Framework\Renderer3D\BillboardObject.h" />
+    <ClInclude Include="Framework\Renderer3D\BillboardTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />

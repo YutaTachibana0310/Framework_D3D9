@@ -24,6 +24,8 @@
     <ClCompile Include="Framework\Collider\BoxCollider3D.cpp" />
     <ClCompile Include="Framework\Core\BaseGame.cpp" />
     <ClCompile Include="Framework\Core\GameObject.cpp" />
+    <ClCompile Include="Framework\Renderer3D\BillboardObject.cpp" />
+    <ClCompile Include="Framework\Renderer3D\BillboardTransform.cpp" />
     <ClCompile Include="Framework\Resource\ResourceManager.cpp" />
     <ClCompile Include="Framework\Core\SceneManager.cpp" />
     <ClCompile Include="Framework\Core\Transform.cpp" />
@@ -94,6 +96,8 @@
     <ClInclude Include="Framework\Core\BaseScene.h" />
     <ClInclude Include="Framework\Core\GameObject.h" />
     <ClInclude Include="Framework\Core\Utility.h" />
+    <ClInclude Include="Framework\Renderer3D\BillboardObject.h" />
+    <ClInclude Include="Framework\Renderer3D\BillboardTransform.h" />
     <ClInclude Include="Framework\Resource\ResourceManager.h" />
     <ClInclude Include="Framework\Core\SceneManager.h" />
     <ClInclude Include="Framework\Core\Transform.h" />
