@@ -116,3 +116,18 @@ bool Vector3::Equal(const D3DXVECTOR3 & v1, const D3DXVECTOR3 & v2)
 
 	return true;
 }
+
+/**************************************
+ランダムベクトル生成処理
+***************************************/
+D3DXVECTOR3 Vector3::Random()
+{
+	D3DXVECTOR3 out;
+	out.x = Math::RandomRange(-1.0f, 1.0f);
+	out.y = Math::RandomRange(-1.0f, 1.0f);
+	out.z = Math::RandomRange(-1.0f, 1.0f);
+	
+	D3DXVec3Normalize(&out, &out);
+	
+	return out;
+}
