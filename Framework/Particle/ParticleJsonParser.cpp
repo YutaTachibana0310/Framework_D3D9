@@ -19,7 +19,7 @@ using namespace std;
 ParticleJsonParser::ParticleJsonParser(const char * fileName)
 {
 	//JSONファイルを開く
-	string filePath = "data/PARTICLE/" + string(fileName);
+	string filePath = "data/PARTICLE/" + string(fileName) + ".json";
 	ifstream ifs;
 	ifs.open(filePath, std::ios::in);
 
@@ -43,12 +43,16 @@ ParticleJsonParser::ParticleJsonParser(const char * fileName)
 	emitNumMax = data["emitNumMax"].int_value();
 	durationMin = data["durationMin"].int_value();
 	durationMax = data["durationMax"].int_value();
+	size.x = (float)data["sizeX"].number_value();
+	size.y = (float)data["sizeY"].number_value();
+	texDiv.x = (float)data["divX"].number_value();
+	texDiv.y = (float)data["divY"].number_value();
 }
 
 /**************************************
 テクスチャパス取得
 ***************************************/
-std::string ParticleJsonParser::TexturePath() const
+std::string ParticleJsonParser::GetTexturePath() const
 {
 	return texturePath;
 }
@@ -56,7 +60,7 @@ std::string ParticleJsonParser::TexturePath() const
 /**************************************
 パーティクル最大数取得
 ***************************************/
-int ParticleJsonParser::ParticleMax() const
+int ParticleJsonParser::GetParticleMax() const
 {
 	return particleMax;
 }
@@ -64,7 +68,7 @@ int ParticleJsonParser::ParticleMax() const
 /**************************************
 エミッタ最大数取得
 ***************************************/
-int ParticleJsonParser::EmitterMax() const
+int ParticleJsonParser::GetEmitterMax() const
 {
 	return emitterMax;
 }
@@ -72,7 +76,7 @@ int ParticleJsonParser::EmitterMax() const
 /**************************************
 放出数取得
 ***************************************/
-int ParticleJsonParser::EmitNum() const
+int ParticleJsonParser::GetEmitNum() const
 {
 	if (emitNumMin != 0 && emitNumMax != 0)
 		return Math::RandomRange(emitNumMin, emitNumMax);
@@ -86,7 +90,7 @@ int ParticleJsonParser::EmitNum() const
 /**************************************
 放出期間取得
 ***************************************/
-int ParticleJsonParser::Duration() const
+int ParticleJsonParser::GetDuration() const
 {
 	if (durationMin != 0 && durationMax != 0)
 		return Math::RandomRange(durationMin, durationMax);
@@ -95,4 +99,20 @@ int ParticleJsonParser::Duration() const
 		return durationMax;
 
 	return durationMin;
+}
+
+/**************************************
+サイズ取得
+***************************************/
+D3DXVECTOR2 ParticleJsonParser::GetSize() const
+{
+	return size;
+}
+
+/**************************************
+UV分割取得
+***************************************/
+D3DXVECTOR2 ParticleJsonParser::GetTexDiv() const
+{
+	return texDiv;
 }
