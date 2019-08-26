@@ -9,6 +9,7 @@
 #include "../Framework\Tool\ProfilerCPU.h"
 #include "../Framework\PostEffect\PostEffectManager.h"
 #include "../Framework\PostEffect\SpikeNoiseController.h"
+#include "../Asset/Particle/ExplosionFire.h"
 
 /**************************************
 マクロ定義
@@ -19,27 +20,25 @@ void ParticleTest::Init()
 	manager->Init();
 }
 
+/**************************************
+マクロ定義
+***************************************/
 void ParticleTest::Uninit()
 {
 	SAFE_DELETE(manager);
 }
 
+/**************************************
+マクロ定義
+***************************************/
 void ParticleTest::Update()
 {
-	Debug::Begin("Particle");
-	if (Debug::Button("Set"))
-	{
-		manager->Set();
-	}
-	if (Debug::Button("SpileNoise"))
-	{
-		SpikeNoiseController::Instance()->SetNoise(20.0f, 120);
-	}
-	Debug::End();
-
 	manager->Update();
 }
 
+/**************************************
+マクロ定義
+***************************************/
 void ParticleTest::Draw()
 {
 	manager->Draw();
@@ -51,9 +50,8 @@ void ParticleTest::Draw()
 ***************************************/
 TestParticleManager::TestParticleManager()
 {
-	//controllers.push_back(new ParticleController());
 	controllers.push_back(new BaseParticleController(Particle(), ParticleJsonParser("test2")));
-	
+	controllers.push_back(new BaseParticleController(Asset::ExplosionFire(), ParticleJsonParser("ExplosionEffect")));
 }
 
 /**************************************
@@ -72,6 +70,9 @@ void TestParticleManager::Init()
 	SceneParticleManager::Init();
 }
 
+/**************************************
+プロトタイプ宣言
+***************************************/
 void TestParticleManager::Set()
 {
 	controllers[0]->SetEmitter(Vector3::Zero);
@@ -80,39 +81,25 @@ void TestParticleManager::Set()
 /**************************************
 プロトタイプ宣言
 ***************************************/
-ParticleController::ParticleController()
+void TestParticleManager::Update()
 {
-	MakeUnitBuffer(D3DXVECTOR2(2.0f, 2.0f));
-	LoadTexture("data/TEXTURE/particle.png");
+	Debug::Begin("Particle");
+	for (UINT i = 0; i < controllers.size(); i++)
+	{
+		std::string label = "Set" + std::to_string(i);
+		if (Debug::Button(label.c_str()))
+		{
+			controllers[i]->SetEmitter(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+		}
+	}
+	Debug::End();
 
-	MakeParticleContainer();
-	MakeEmitterContainer();
+	SceneParticleManager::Update();
 }
 
 /**************************************
 プロトタイプ宣言
 ***************************************/
-void ParticleController::MakeParticleContainer()
-{
-	particleContainer.resize(2047);
-	for (auto& particle : particleContainer)
-	{
-		particle = new Particle(60, 120);
-	}
-}
-
-/**************************************
-プロトタイプ宣言
-***************************************/
-void ParticleController::MakeEmitterContainer()
-{
-	emitterContainer.resize(5);
-	for (auto& emitter : emitterContainer)
-	{
-		emitter = new BaseEmitter(20, 100, 10, 60);
-	}
-}
-
 Particle::Particle() :
 	BaseParticle(60, 120)
 {

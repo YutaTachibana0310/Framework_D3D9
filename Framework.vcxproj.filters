@@ -71,6 +71,7 @@
     <ClCompile Include="Framework\Renderer3D\BillboardTransform.cpp" />
     <ClCompile Include="Framework\Particle\ParticleJsonParser.cpp" />
     <ClCompile Include="json11\json11.cpp" />
+    <ClCompile Include="Asset\Particle\ExplosionFire.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="Framework\Renderer3D\BillboardTransform.h" />
     <ClInclude Include="Framework\Particle\ParticleJsonParser.h" />
     <ClInclude Include="json11\json11.hpp" />
+    <ClInclude Include="Asset\Particle\ExplosionFire.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />
