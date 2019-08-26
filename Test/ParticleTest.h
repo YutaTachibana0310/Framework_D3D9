@@ -58,8 +58,9 @@ private:
 
 class Particle : public BaseParticle
 {
-public:
 	using BaseParticle::BaseParticle;
+public:
+	Particle();
 
 	void Init();
 	void Update();

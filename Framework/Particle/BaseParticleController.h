@@ -10,6 +10,8 @@
 #include "../../main.h"
 #include "BaseParticle.h"
 #include "BaseEmitter.h"
+#include "ParticleJsonParser.h"
+#include "ParticleRenderer.h"
 #include <vector>
 
 /**************************************
@@ -36,6 +38,33 @@ public:
 	BaseParticleController();
 	virtual ~BaseParticleController();
 
+	template<class T>
+	BaseParticleController(const T& src, const ParticleJsonParser& data)
+	{
+		if (!mRenderer)
+		{
+			mRenderer.reset(new ParticleRenderer());
+		}
+		renderer = mRenderer;
+
+		//テクスチャロード
+		LoadTexture(data.GetTexturePath().c_str());
+
+		//単位頂点バッファ作成
+		MakeUnitBuffer(data.GetSize(), data.GetTexDiv());
+
+		//パーティクルコンテナ作成
+		particleContainer.resize(data.GetParticleMax());
+		for (auto&& particle : particleContainer)
+		{
+			particle = new T();
+		}
+
+		//エミッタコンテナ作成
+		MakeEmitterContainer(data);
+
+	};
+
 	//エミッタセット処理
 	virtual BaseEmitter* SetEmitter(const D3DXVECTOR3& pos);	
 	virtual BaseEmitter* SetEmitter(const Transform& transform);
@@ -53,19 +82,18 @@ protected:
 	LPDIRECT3DTEXTURE9 texture;						//テクスチャ
 	std::vector<BaseParticle*> particleContainer;	//パーティクルコンテナ
 	std::vector<BaseEmitter*> emitterContainer;		//エミッタコンテナ
+	std::shared_ptr<ParticleRenderer> renderer;		//レンダラー
 
 	//単位頂点バッファ作成処理
 	void MakeUnitBuffer(const D3DXVECTOR2& size, const D3DXVECTOR2& texDix = D3DXVECTOR2(1.0f, 1.0f));	
 	void LoadTexture(const char* filePath);			//テクスチャ読み込み処理
 
 	//コンテナ作成
-	virtual void MakeParticleContainer() = 0;
-	virtual void MakeEmitterContainer() = 0;
+	virtual void MakeEmitterContainer(const ParticleJsonParser& data);
 
 private:
 	//インスタンシングに必要な静的メンバ
-	static ParticleRenderer* renderer;
-	static UINT instanceCount;
+	static std::shared_ptr<ParticleRenderer> mRenderer;
 };
 
 /**************************************

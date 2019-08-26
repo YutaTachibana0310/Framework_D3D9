@@ -69,6 +69,8 @@
     <ClCompile Include="Framework\Animation\MyAllocateHierarchy.cpp" />
     <ClCompile Include="Framework\Renderer3D\BillboardObject.cpp" />
     <ClCompile Include="Framework\Renderer3D\BillboardTransform.cpp" />
+    <ClCompile Include="Framework\Particle\ParticleJsonParser.cpp" />
+    <ClCompile Include="json11\json11.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -149,6 +151,8 @@
     <ClInclude Include="Framework\Core\Utility.h" />
     <ClInclude Include="Framework\Renderer3D\BillboardObject.h" />
     <ClInclude Include="Framework\Renderer3D\BillboardTransform.h" />
+    <ClInclude Include="Framework\Particle\ParticleJsonParser.h" />
+    <ClInclude Include="json11\json11.hpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />

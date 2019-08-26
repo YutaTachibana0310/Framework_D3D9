@@ -51,7 +51,9 @@ void ParticleTest::Draw()
 ***************************************/
 TestParticleManager::TestParticleManager()
 {
-	controllers.push_back(new ParticleController());
+	//controllers.push_back(new ParticleController());
+	controllers.push_back(new BaseParticleController(Particle(), ParticleJsonParser("test2")));
+	
 }
 
 /**************************************
@@ -109,6 +111,12 @@ void ParticleController::MakeEmitterContainer()
 	{
 		emitter = new BaseEmitter(20, 100, 10, 60);
 	}
+}
+
+Particle::Particle() :
+	BaseParticle(60, 120)
+{
+
 }
 
 /**************************************

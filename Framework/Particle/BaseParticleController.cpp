@@ -8,6 +8,7 @@
 #include "../Tool/DebugWindow.h"
 #include "../Resource/ResourceManager.h"
 #include "ParticleRenderer.h"
+#include "ParticleJsonParser.h"
 
 #include <algorithm>
 
@@ -24,19 +25,18 @@ using namespace std;
 /**************************************
 staticメンバ
 ***************************************/
-ParticleRenderer* BaseParticleController::renderer = NULL;
-UINT BaseParticleController::instanceCount = 0;
+shared_ptr<ParticleRenderer> BaseParticleController::mRenderer = NULL;
 
 /**************************************
 コンストラクタ
 ***************************************/
 BaseParticleController::BaseParticleController()
 {
-	if (instanceCount == 0)
+	if (!mRenderer)
 	{
-		renderer = new ParticleRenderer();
+		mRenderer.reset(new ParticleRenderer());
 	}
-	instanceCount++;
+	renderer = mRenderer;
 }
 
 /**************************************
@@ -52,11 +52,7 @@ BaseParticleController::~BaseParticleController()
 
 	Utility::DeleteContainer(emitterContainer);
 
-	instanceCount--;
-	if (instanceCount == 0)
-	{
-		SAFE_DELETE(renderer);
-	}
+	renderer.reset();
 }
 
 /**************************************
@@ -173,6 +169,20 @@ void BaseParticleController::LoadTexture(const char* filePath)
 }
 
 /**************************************
+エミッタコンテナ作成処理
+***************************************/
+void BaseParticleController::MakeEmitterContainer(const ParticleJsonParser & data)
+{
+	emitterContainer.resize(data.GetEmitterMax());
+	for (auto&& emitter : emitterContainer)
+	{
+		int emitNum = data.GetEmitNum();
+		int duration = data.GetDuration();
+		emitter = new BaseEmitter(emitNum, duration);
+	}
+}
+
+/**************************************
 エミッタセット処理
 ***************************************/
 BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
@@ -218,7 +228,7 @@ BaseEmitter* BaseParticleController::SetEmitter(const Transform& transform)
 ***************************************/
 void BaseParticleController::BeginDraw()
 {
-	renderer->BeginDraw();
+	mRenderer->BeginDraw();
 }
 
 /**************************************
@@ -226,5 +236,5 @@ void BaseParticleController::BeginDraw()
 ***************************************/
 void BaseParticleController::EndDraw()
 {
-	renderer->EndDraw();
+	mRenderer->EndDraw();
 }
