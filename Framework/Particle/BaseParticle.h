@@ -47,6 +47,7 @@ public:
 	BaseParticle();
 	BaseParticle(int life);
 	BaseParticle(int lifeMin, int lifeMax);
+	BaseParticle(float u, float v, int lifeMin, int lifeMax);
 	virtual ~BaseParticle();
 
 	virtual void Init() = 0;

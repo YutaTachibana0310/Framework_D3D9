@@ -10,6 +10,7 @@
 #include "../Framework\PostEffect\PostEffectManager.h"
 #include "../Framework\PostEffect\SpikeNoiseController.h"
 #include "../Asset/Particle/ExplosionFire.h"
+#include "../Asset/Particle/ExplosionFlare.h"
 
 /**************************************
 ƒ}ƒNƒ’è‹`
@@ -33,6 +34,23 @@ void ParticleTest::Uninit()
 ***************************************/
 void ParticleTest::Update()
 {
+	Debug::Begin("ParticleTest");
+
+	if (Debug::Button("ParticleTest"))
+	{
+		manager->Generate(1, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+		manager->Generate(2, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	}
+	Debug::End();
+
+	static int cntFrame = 0;
+	if (cntFrame == 0)
+	{
+		manager->Generate(1, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+		manager->Generate(2, D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	}
+	cntFrame = Math::WrapAround(0, 20, cntFrame + 1);
+
 	manager->Update();
 }
 
@@ -52,6 +70,7 @@ TestParticleManager::TestParticleManager()
 {
 	controllers.push_back(new BaseParticleController(Particle(), ParticleJsonParser("test2")));
 	controllers.push_back(new BaseParticleController(Asset::ExplosionFire(), ParticleJsonParser("ExplosionEffect")));
+	controllers.push_back(new BaseParticleController(Asset::ExplosionFlare(), ParticleJsonParser("ExplosionFlare")));
 }
 
 /**************************************

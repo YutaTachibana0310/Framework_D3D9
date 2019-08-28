@@ -92,6 +92,7 @@ void SceneParticleManager::Draw()
 	pDevice->SetRenderState(D3DRS_LIGHTING, true);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, true);
 	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 }
 
 /**************************************
@@ -126,7 +127,7 @@ void SceneParticleManager::CreateRenderTarget()
 		SCREEN_HEIGHT,
 		1,
 		D3DUSAGE_RENDERTARGET,
-		D3DFMT_X8R8G8B8,
+		D3DFMT_A8R8G8B8,
 		D3DPOOL_DEFAULT,
 		&renderTexture,
 		0);
@@ -158,6 +159,9 @@ void SceneParticleManager::ChangeRenderParameter()
 	pDevice->SetRenderTarget(0, renderSurface);
 	pDevice->SetViewport(&viewPort);
 	pDevice->Clear(0, 0, D3DCLEAR_TARGET, 0, 0.0f, 0);
+
+	//レンダーステート切り替え
+	pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 }
 
 /**************************************
@@ -169,6 +173,7 @@ void SceneParticleManager::RestoreRenderParameter()
 
 	pDevice->SetRenderTarget(0, oldSuf);
 	pDevice->SetTexture(0, renderTexture);
+	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_INVDESTCOLOR);
 	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 	pDevice->SetViewport(&oldViewport);
 	SAFE_RELEASE(oldSuf);

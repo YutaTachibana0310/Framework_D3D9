@@ -26,7 +26,7 @@ Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 	sceneManager->Add("Particle", new ParticleTest());
 	sceneManager->Add("Tween", new TweenTest());
 
-	sceneManager->ChangeScene("Easing");
+	sceneManager->ChangeScene("Particle");
 }
 
 /**************************************
