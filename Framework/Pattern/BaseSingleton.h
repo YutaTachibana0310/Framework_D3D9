@@ -1,6 +1,6 @@
 //=====================================
 //
-//テンプレートヘッダ[BaseSingleton.h]
+//ベースシングルトンヘッダ[BaseSingleton.h]
 //Author:GP12B332 21 立花雄太
 //
 //=====================================
@@ -24,11 +24,6 @@ public:
 
 		return &mInstance;
 	}
-
-	//static void Destroy()
-	//{
-	//	delete mInstance;
-	//}
 
 protected:
 	BaseSingleton() {}
