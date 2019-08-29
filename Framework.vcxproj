@@ -66,6 +66,10 @@
     <ClCompile Include="Framework\Renderer3D\MeshContainer.cpp" />
     <ClCompile Include="Framework\Animation\MyAllocateHierarchy.cpp" />
     <ClCompile Include="Framework\Renderer3D\TransformObject.cpp" />
+    <ClCompile Include="Framework\Task\DelayedTask.cpp" />
+    <ClCompile Include="Framework\Task\PeriodicTask.cpp" />
+    <ClCompile Include="Framework\Task\Task.cpp" />
+    <ClCompile Include="Framework\Task\TaskManager.cpp" />
     <ClCompile Include="Framework\Tool\DebugWindow.cpp" />
     <ClCompile Include="Framework\Tool\ProfilerCPU.cpp" />
     <ClCompile Include="Framework\Transition\BaseTransitionMask.cpp" />
@@ -145,6 +149,10 @@
     <ClInclude Include="Framework\Renderer3D\MeshContainer.h" />
     <ClInclude Include="Framework\Animation\MyAllocateHierarchy.h" />
     <ClInclude Include="Framework\Renderer3D\TransformObject.h" />
+    <ClInclude Include="Framework\Task\DelayedTask.h" />
+    <ClInclude Include="Framework\Task\PeriodicTask.h" />
+    <ClInclude Include="Framework\Task\Task.h" />
+    <ClInclude Include="Framework\Task\TaskManager.h" />
     <ClInclude Include="Framework\Tool\DebugWindow.h" />
     <ClInclude Include="Framework\Tool\ProfilerCPU.h" />
     <ClInclude Include="Framework\Transition\BaseTransitionMask.h" />
