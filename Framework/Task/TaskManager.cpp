@@ -8,6 +8,7 @@
 #include "DelayedTask.h"
 #include "PeriodicTask.h"
 #include "Task.h"
+#include "../Tool/DebugWindow.h"
 
 /**************************************
 マクロ定義
@@ -16,23 +17,23 @@
 /**************************************
 遅延タスク作成処理
 ***************************************/
-TaskInterface TaskManager::CreateDelayedTask(int delay, std::function<void(void)>& task)
+std::unique_ptr<TaskInterface> TaskManager::CreateDelayedTask(int delay, const std::function<void(void)>& task)
 {
 	std::shared_ptr<DelayedTask> ptr = std::make_shared<DelayedTask>(delay, task);
 	taskList.push_back(ptr);
 
-	return TaskInterface(ptr);
+	return std::unique_ptr<TaskInterface>(new TaskInterface(ptr));
 }
 
 /**************************************
-遅延タスク作成処理
+定期タスク作成処理
 ***************************************/
-TaskInterface TaskManager::CreatePeriodicTask(int interval, std::function<void(void)>& task)
+std::unique_ptr<TaskInterface> TaskManager::CreatePeriodicTask(int interval, const std::function<void(void)>& task)
 {
 	std::shared_ptr<PeriodicTask> ptr = std::make_shared<PeriodicTask>(interval, task);
 	taskList.push_back(ptr);
 
-	return TaskInterface(ptr);
+	return std::unique_ptr<TaskInterface>(new TaskInterface(ptr));
 }
 
 /**************************************
@@ -51,6 +52,10 @@ void TaskManager::Update()
 	{
 		task->Run();
 	}
+
+	Debug::Begin("TaskManager");
+	Debug::Text("task count : %d", taskList.size());
+	Debug::End();
 }
 
 /**************************************

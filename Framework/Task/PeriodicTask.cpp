@@ -14,7 +14,7 @@
 /**************************************
 コンストラクタ
 ***************************************/
-PeriodicTask::PeriodicTask(int interval, std::function<void(void)>& task) :
+PeriodicTask::PeriodicTask(int interval, const std::function<void(void)>& task) :
 	Task(task),
 	cntFrame(0),
 	Interval(interval)

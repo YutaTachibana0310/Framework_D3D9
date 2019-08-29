@@ -89,6 +89,7 @@
     <ClCompile Include="Test\EasginTest.cpp" />
     <ClCompile Include="Test\Framework.cpp" />
     <ClCompile Include="Test\ParticleTest.cpp" />
+    <ClCompile Include="Test\TaskTest.cpp" />
     <ClCompile Include="Test\TransformTest.cpp" />
     <ClCompile Include="Test\TransitionTest.cpp" />
     <ClCompile Include="Test\TweenTest.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Test\EasingTest.h" />
     <ClInclude Include="Test\Framework.h" />
     <ClInclude Include="Test\ParticleTest.h" />
+    <ClInclude Include="Test\TaskTest.h" />
     <ClInclude Include="Test\TestObject.h" />
     <ClInclude Include="Test\TestTransition.h" />
     <ClInclude Include="Test\TransformTest.h" />

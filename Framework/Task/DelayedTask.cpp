@@ -13,7 +13,7 @@
 /**************************************
 コンストラクタ
 ***************************************/
-DelayedTask::DelayedTask(int delay, std::function<void(void)>& task) :
+DelayedTask::DelayedTask(int delay, const std::function<void(void)>& task) :
 	cntFrame(0),
 	Delay(delay),
 	Task(task)

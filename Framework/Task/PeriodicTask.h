@@ -23,7 +23,7 @@ PeriodicTaskクラス
 class PeriodicTask : public Task
 {
 public:
-	PeriodicTask(int interval, std::function<void(void)>& task);	//コンストラクタ
+	PeriodicTask(int interval, const std::function<void(void)>& task);	//コンストラクタ
 
 private:	
 	void Run();			//実行処理

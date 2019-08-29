@@ -75,6 +75,7 @@
     <ClCompile Include="Framework\Task\Task.cpp" />
     <ClCompile Include="Framework\Task\DelayedTask.cpp" />
     <ClCompile Include="Framework\Task\PeriodicTask.cpp" />
+    <ClCompile Include="Test\TaskTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Framework\Task\Task.h" />
     <ClInclude Include="Framework\Task\DelayedTask.h" />
     <ClInclude Include="Framework\Task\PeriodicTask.h" />
+    <ClInclude Include="Test\TaskTest.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />

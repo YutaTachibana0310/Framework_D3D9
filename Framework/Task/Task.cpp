@@ -13,7 +13,7 @@
 /**************************************
 Taskコンストラクタ
 ***************************************/
-Task::Task(std::function<void(void)>& func) :
+Task::Task(const std::function<void(void)>& func) :
 	func(func),
 	state(State::Idle)
 {
@@ -25,7 +25,7 @@ Taskデストラクタ
 ***************************************/
 Task::~Task()
 {
-
+	int a = 1 + 1;
 }
 
 /**************************************

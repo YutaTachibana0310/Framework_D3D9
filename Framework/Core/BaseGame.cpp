@@ -11,6 +11,7 @@
 #include "..\PostEffect\PostEffectManager.h"
 #include "..\Tween\Tween.h"
 #include "../Tool/ProfilerCPU.h"
+#include "../Task/TaskManager.h"
 
 /**************************************
 ƒ}ƒNƒ’è‹`
@@ -84,6 +85,7 @@ void BaseGame::Update()
 	PostEffectManager::Instance()->Update();
 	Tween::mInstance->Update();
 	ProfilerCPU::Instance()->Update();
+	TaskManager::Instance()->Update();
 }
 
 /**************************************

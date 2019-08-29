@@ -23,7 +23,7 @@ DelayedTaskクラス
 class DelayedTask : public Task
 {
 public:
-	DelayedTask(int delay, std::function<void(void)>& task);	//コンストラクタ
+	DelayedTask(int delay, const std::function<void(void)>& task);	//コンストラクタ
 
 private:
 	void Run();			//実行処理

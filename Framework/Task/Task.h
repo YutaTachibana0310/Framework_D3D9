@@ -23,7 +23,7 @@ TaskƒNƒ‰ƒX
 class Task
 {
 public:
-	Task(std::function<void(void)>&);
+	Task(const std::function<void(void)>&);
 	~Task();
 
 	virtual void Run() = 0;		//Àsˆ—
