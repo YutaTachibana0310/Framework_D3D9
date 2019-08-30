@@ -77,6 +77,7 @@
     <ClCompile Include="Framework\Task\PeriodicTask.cpp" />
     <ClCompile Include="Test\TaskTest.cpp" />
     <ClCompile Include="Framework\Collider\BaseCollider.cpp" />
+    <ClCompile Include="Framework\Collider\ColliderManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Test\TaskTest.h" />
     <ClInclude Include="Framework\Collider\BaseCollider.h" />
     <ClInclude Include="Framework\Collider\ColliderObserver.h" />
+    <ClInclude Include="Framework\Collider\ColliderManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />
