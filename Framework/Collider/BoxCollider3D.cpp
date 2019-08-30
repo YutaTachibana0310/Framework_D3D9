@@ -6,8 +6,6 @@
 //=====================================
 #include "BoxCollider3D.h"
 
-#include <list>
-
 using namespace std;
 
 /**************************************
@@ -24,80 +22,46 @@ static変数
 UINT BoxCollider3D::instanceCount;
 D3DMATERIAL9 BoxCollider3D::material;
 LPD3DXMESH BoxCollider3D::mesh;
-map<BoxCollider3DTag, list<BoxCollider3D*>> BoxCollider3D::checkDictionary;
 
 /**************************************
 コンストラクタ
 ***************************************/
-BoxCollider3D::BoxCollider3D(BoxCollider3DTag tag, D3DXVECTOR3 *pPos)
+BoxCollider3D::BoxCollider3D(const std::string & tag, const Transform & transform, ColliderObserver & observer) :
+	BaseCollider(observer, transform),
+	tag(tag)
 {
-	this->tag = tag;
-	this->pPos = pPos;
-	RegisterToCheckList();
+	//サイズを適当な大きさに初期化
+	const float InitSize = 10.0;
+	size = D3DXVECTOR3(InitSize, InitSize, InitSize);
+
+	//オフセットを初期化
+	ZeroMemory(&offset, sizeof(offset));
 
 #ifdef BOXCOLLIDER3D_USE_DEBUG
+	//インスタンス数を数えてデバッグ表示用のメッシュを作成
+	if (instanceCount == 0)
+		CreateRenderTool();
+
 	instanceCount++;
-	if (mesh == NULL)
-	{
-		LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-		//キューブメッシュ作成
-		D3DXCreateBox(pDevice,
-			1.0f,
-			1.0f,
-			1.0f,
-			&mesh,
-			0);
-
-		//マテリアル作成
-		ZeroMemory(&material, sizeof(material));
-		material.Diffuse.r = 1.0f;
-		material.Diffuse.a = 1.0f;
-		material.Ambient.r = 1.0f;
-		material.Ambient.a = 1.0f;
-		material.Specular.r = 1.0f;
-		material.Specular.a = 1.0f;
-		material.Emissive.r = 1.0f;
-		material.Emissive.a = 1.0f;
-	}
 #endif
 }
 
 /**************************************
 コンストラクタ
 ***************************************/
-BoxCollider3D::BoxCollider3D(BoxCollider3DTag tag, D3DXVECTOR3 *pPos, D3DXVECTOR3 size)
+BoxCollider3D::BoxCollider3D(const std::string & tag, const Transform & transform, ColliderObserver & observer, const D3DXVECTOR3 & size) :
+	BaseCollider(observer, transform),
+	size(size),
+	tag(tag)
 {
-	this->tag = tag;
-	this->size = size;
-	this->pPos = pPos;
-	RegisterToCheckList();
+	//オフセットを初期化
+	ZeroMemory(&offset, sizeof(offset));
 
 #ifdef BOXCOLLIDER3D_USE_DEBUG
+	if (instanceCount == 0)
+		CreateRenderTool();
+
 	instanceCount++;
-	if (mesh == NULL)
-	{
-		LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-		//キューブメッシュ作成
-		D3DXCreateBox(pDevice,
-			1.0f,
-			1.0f,
-			1.0f,
-			&mesh,
-			0);
-
-		//マテリアル作成
-		ZeroMemory(&material, sizeof(material));
-		material.Diffuse.r = 1.0f;
-		material.Diffuse.a = 1.0f;
-		material.Ambient.r = 1.0f;
-		material.Ambient.a = 1.0f;
-		material.Specular.r = 1.0f;
-		material.Specular.a = 1.0f;
-		material.Emissive.r = 1.0f;
-		material.Emissive.a = 1.0f;
-	}
 #endif
 }
 
@@ -106,7 +70,7 @@ BoxCollider3D::BoxCollider3D(BoxCollider3DTag tag, D3DXVECTOR3 *pPos, D3DXVECTOR
 ***************************************/
 BoxCollider3D::~BoxCollider3D()
 {
-	RemoveFromCheckList();
+	//TODO : ColliderManagerに離脱を通知
 
 #ifdef BOXCOLLIDER3D_USE_DEBUG
 	instanceCount--;
@@ -120,26 +84,29 @@ BoxCollider3D::~BoxCollider3D()
 /**************************************
 衝突判定
 ***************************************/
-bool BoxCollider3D::CheckCollision(BoxCollider3D *other)
+bool BoxCollider3D::CheckCollision(BoxCollider3D& other)
 {
-	D3DXVECTOR3 thisPos = *(this->pPos) + this->offset;
-	D3DXVECTOR3 otherPos = *(other->pPos) + other->offset;
+	D3DXVECTOR3 thisPos = this->refTransform.GetPosition() + this->offset;
+	D3DXVECTOR3 otherPos = other.refTransform.GetPosition() + other.offset;
+	
+	D3DXVECTOR3 thisSize = Vector3::Multiply(this->size, this->refTransform.GetScale());
+	D3DXVECTOR3 otherSize = Vector3::Multiply(other.size, other.refTransform.GetScale());
 
 	//X方向の判定
-	if (thisPos.x + this->size.x < otherPos.x - other->size.x || thisPos.x - this->size.x > otherPos.x + other->size.x)
+	if (thisPos.x + thisSize.x < otherPos.x - otherSize.x || thisPos.x - thisSize.x > otherPos.x + otherSize.x)
 		return false;
 
 	//Y方向の判定
-	if (thisPos.y + this->size.y < otherPos.y - other->size.y || thisPos.y - this->size.y > otherPos.y + other->size.y)
+	if (thisPos.y + thisSize.y < otherPos.y - otherSize.y || thisPos.y - thisSize.y > otherPos.y + otherSize.y)
 		return false;
 
 	//Z方向の判定
-	if (thisPos.z + this->size.z < otherPos.z - other->size.z || thisPos.z - this->size.z > otherPos.z + other->size.z)
+	if (thisPos.z + thisSize.z < otherPos.z - otherSize.z || thisPos.z - thisSize.z > otherPos.z + otherSize.z)
 		return false;
 
 	//衝突通知
-	this->NotifyObservers();
-	other->NotifyObservers();
+	this->observer.OnColliderHit(other.tag);
+	other.observer.OnColliderHit(this->tag);
 
 	return true;
 }
@@ -153,77 +120,53 @@ void BoxCollider3D::SetSize(D3DXVECTOR3 size)
 }
 
 /**************************************
-座標アドレスセット
+オフセットセット
 ***************************************/
-void BoxCollider3D::SetPosAddress(D3DXVECTOR3 *pPos)
+void BoxCollider3D::SetOffset(const D3DXVECTOR3 offset)
 {
-	this->pPos = pPos;
+	this->offset = offset;
 }
 
 /**************************************
-衝突リストチェック
+描画マテリアル作成処理
 ***************************************/
-void BoxCollider3D::UpdateCollision()
+void BoxCollider3D::CreateRenderTool()
 {
-	//PlayerBomberとEnemyで衝突判定
-	for (auto &bomber : checkDictionary[BoxCollider3DTag::PlayerBomber])
-	{
-		if (!bomber->active)
-			continue;
+#ifdef BOXCOLLIDER3D_USE_DEBUG
+	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-		for (auto &enemy : checkDictionary[BoxCollider3DTag::Enemy])
-		{
-			if (!enemy->active)
-				continue;
+	//キューブメッシュ作成
+	D3DXCreateBox(pDevice,
+		1.0f,
+		1.0f,
+		1.0f,
+		&mesh,
+		0);
 
-			bomber->CheckCollision(enemy);
-		}
-	}
-}
-
-/**************************************
-衝突リスト登録処理
-***************************************/
-void BoxCollider3D::RegisterToCheckList()
-{
-	list<BoxCollider3D*> *checkList = &checkDictionary[tag];
-
-	//多重登録判定
-	auto itr = find(checkList->begin(), checkList->end(), this);
-	if (itr != checkList->end())
-		return;
-
-	//登録
-	checkList->push_back(this);
-}
-
-/**************************************
-衝突リスト離脱処理
-***************************************/
-void BoxCollider3D::RemoveFromCheckList()
-{
-	list<BoxCollider3D*> *checkList = &checkDictionary[tag];
-
-	//登録確認
-	auto itr = find(checkList->begin(), checkList->end(), this);
-	if (itr == checkList->end())
-		return;
-
-	//離脱
-	checkList->erase(itr);
+	//マテリアル作成
+	ZeroMemory(&material, sizeof(material));
+	material.Diffuse.r = 1.0f;
+	material.Diffuse.a = 1.0f;
+	material.Ambient.r = 1.0f;
+	material.Ambient.a = 1.0f;
+	material.Specular.r = 1.0f;
+	material.Specular.a = 1.0f;
+	material.Emissive.r = 1.0f;
+	material.Emissive.a = 1.0f;
+#endif
 }
 
 /**************************************
 描画処理
 ***************************************/
-#ifdef BOXCOLLIDER3D_USE_DEBUG
-void BoxCollider3D::DrawCollider(BoxCollider3D *collider)
+void BoxCollider3D::Draw()
 {
-	if (!collider->active)
+#ifdef BOXCOLLIDER3D_USE_DEBUG
+	if (!active)
 		return;
 
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-	D3DXMATRIX mtxTranslate, mtxScale, mtxWorld;
+	D3DXMATRIX mtxWorld;
 	D3DMATERIAL9 matDef;
 
 	//デフォルトマテリアル取得
@@ -235,12 +178,16 @@ void BoxCollider3D::DrawCollider(BoxCollider3D *collider)
 	pDevice->SetTexture(0, NULL);
 
 	//行列計算
-	D3DXVECTOR3 pos = *(collider->pPos) + collider->offset;
+	D3DXVECTOR3 pos = refTransform.GetPosition() + offset;
+	D3DXVECTOR3 scale = Vector3::Multiply(refTransform.GetScale(), size) * 2.0f;
+
 	D3DXMatrixIdentity(&mtxWorld);
-	D3DXMatrixScaling(&mtxScale, collider->size.x * 2, collider->size.y * 2, collider->size.z * 2);
-	D3DXMatrixTranslation(&mtxTranslate, pos.x, pos.y, pos.z);
-	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxScale);
-	D3DXMatrixMultiply(&mtxWorld, &mtxWorld, &mtxTranslate);
+	mtxWorld._11 = scale.x;
+	mtxWorld._22 = scale.y;
+	mtxWorld._33 = scale.z;
+	mtxWorld._41 = pos.x;
+	mtxWorld._42 = pos.y;
+	mtxWorld._43 = pos.z;
 
 	//ワールド情報セット
 	pDevice->SetTransform(D3DTS_WORLD, &mtxWorld);
@@ -251,6 +198,5 @@ void BoxCollider3D::DrawCollider(BoxCollider3D *collider)
 	//レンダーステートとマテリアル復元
 	pDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 	pDevice->SetMaterial(&matDef);
-
-}
 #endif
+}

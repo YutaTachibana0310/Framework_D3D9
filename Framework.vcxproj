@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Framework\Camera\CameraShakePlugin.cpp" />
+    <ClCompile Include="Framework\Collider\BaseCollider.cpp" />
     <ClCompile Include="Framework\Collider\BoxCollider3D.cpp" />
     <ClCompile Include="Framework\Core\BaseGame.cpp" />
     <ClCompile Include="Framework\Core\GameObject.cpp" />
@@ -98,7 +99,9 @@
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
     <ClInclude Include="Framework\Camera\CameraShakePlugin.h" />
+    <ClInclude Include="Framework\Collider\BaseCollider.h" />
     <ClInclude Include="Framework\Collider\BoxCollider3D.h" />
+    <ClInclude Include="Framework\Collider\ColliderObserver.h" />
     <ClInclude Include="Framework\Core\BaseGame.h" />
     <ClInclude Include="Framework\Core\BaseScene.h" />
     <ClInclude Include="Framework\Core\GameObject.h" />

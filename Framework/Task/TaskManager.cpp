@@ -17,23 +17,23 @@
 /**************************************
 遅延タスク作成処理
 ***************************************/
-std::unique_ptr<TaskInterface> TaskManager::CreateDelayedTask(int delay, const std::function<void(void)>& task)
+std::unique_ptr<TaskHandle> TaskManager::CreateDelayedTask(int delay, const std::function<void(void)>& task)
 {
 	std::shared_ptr<DelayedTask> ptr = std::make_shared<DelayedTask>(delay, task);
 	taskList.push_back(ptr);
 
-	return std::unique_ptr<TaskInterface>(new TaskInterface(ptr));
+	return std::unique_ptr<TaskHandle>(new TaskHandle(ptr));
 }
 
 /**************************************
 定期タスク作成処理
 ***************************************/
-std::unique_ptr<TaskInterface> TaskManager::CreatePeriodicTask(int interval, const std::function<void(void)>& task)
+std::unique_ptr<TaskHandle> TaskManager::CreatePeriodicTask(int interval, const std::function<void(void)>& task)
 {
 	std::shared_ptr<PeriodicTask> ptr = std::make_shared<PeriodicTask>(interval, task);
 	taskList.push_back(ptr);
 
-	return std::unique_ptr<TaskInterface>(new TaskInterface(ptr));
+	return std::unique_ptr<TaskHandle>(new TaskHandle(ptr));
 }
 
 /**************************************
@@ -52,32 +52,28 @@ void TaskManager::Update()
 	{
 		task->Run();
 	}
-
-	Debug::Begin("TaskManager");
-	Debug::Text("task count : %d", taskList.size());
-	Debug::End();
 }
 
 /**************************************
-TaskInterfaceコンストラクタ
+TaskHandleコンストラクタ
 ***************************************/
-TaskInterface::TaskInterface()
+TaskHandle::TaskHandle()
 {
 
 }
 
 /**************************************
-TaskInterfaceコンストラクタ
+TaskHandleコンストラクタ
 ***************************************/
-TaskInterface::TaskInterface(std::shared_ptr<Task> task) :
+TaskHandle::TaskHandle(std::shared_ptr<Task> task) :
 	task(task)
 {
 }
 
 /**************************************
-TaskInterfaceデストラクタ
+TaskHandleデストラクタ
 ***************************************/
-TaskInterface::~TaskInterface()
+TaskHandle::~TaskHandle()
 {
 	std::shared_ptr<Task> ptr = task.lock();
 	if (ptr)
@@ -87,9 +83,9 @@ TaskInterface::~TaskInterface()
 }
 
 /**************************************
-TaskInterface代入演算子
+TaskHandle代入演算子
 ***************************************/
-TaskInterface & TaskInterface::operator=(const TaskInterface & src)
+TaskHandle & TaskHandle::operator=(const TaskHandle & src)
 {
 	task.reset();
 	task = src.task;
@@ -98,9 +94,9 @@ TaskInterface & TaskInterface::operator=(const TaskInterface & src)
 }
 
 /**************************************
-TaskInterface停止処理
+TaskHandle停止処理
 ***************************************/
-void TaskInterface::Stop()
+void TaskHandle::Stop()
 {
 	std::shared_ptr<Task> ptr = task.lock();
 	if (ptr)
@@ -110,9 +106,9 @@ void TaskInterface::Stop()
 }
 
 /**************************************
-TaskInterface再開処理
+TaskHandle再開処理
 ***************************************/
-void TaskInterface::Resume()
+void TaskHandle::Resume()
 {
 	std::shared_ptr<Task> ptr = task.lock();
 	if (ptr)
@@ -122,9 +118,9 @@ void TaskInterface::Resume()
 }
 
 /**************************************
-TaskInterface中断処理
+TaskHandle中断処理
 ***************************************/
-void TaskInterface::Pause()
+void TaskHandle::Pause()
 {
 	std::shared_ptr<Task> ptr = task.lock();
 	if (ptr)

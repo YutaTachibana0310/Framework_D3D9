@@ -14,7 +14,7 @@
 /**************************************
 クラス定義
 ***************************************/
-void BillboardTransform::SetWorld(const D3DXMATRIX * parent)
+void BillboardTransform::SetWorld(const D3DXMATRIX * parent) const
 {
 	D3DXMATRIX world, rotation, view, invView;
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
@@ -57,7 +57,7 @@ void BillboardTransform::SetWorld(const D3DXMATRIX * parent)
 /**************************************
 グローバル変数
 ***************************************/
-D3DXMATRIX BillboardTransform::GetMatrix()
+D3DXMATRIX BillboardTransform::GetMatrix() const
 {
 	/*************************************
 	NOTE:正直に行列計算するより、要素を直接計算した方が早かったので

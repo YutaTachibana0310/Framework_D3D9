@@ -67,6 +67,10 @@ public:
 	***************************************/
 	static bool Equal(const D3DXVECTOR3& v1, const D3DXVECTOR3& v2);
 
+	/**************************************
+	//ƒxƒNƒgƒ‹‚Ì¬•ª“¯m‚ğ‚»‚ê‚¼‚êæZ
+	***************************************/
+	static D3DXVECTOR3 Multiply(const D3DXVECTOR3& v1, const D3DXVECTOR3& v2);
 private:
 	Vector3();
 };

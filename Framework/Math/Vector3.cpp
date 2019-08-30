@@ -116,3 +116,14 @@ bool Vector3::Equal(const D3DXVECTOR3 & v1, const D3DXVECTOR3 & v2)
 
 	return true;
 }
+
+D3DXVECTOR3 Vector3::Multiply(const D3DXVECTOR3 & v1, const D3DXVECTOR3 & v2)
+{
+	D3DXVECTOR3 out;
+
+	out.x = v1.x * v2.x;
+	out.y = v1.y * v2.y;
+	out.z = v1.z * v2.z;
+
+	return out;
+}

@@ -70,7 +70,7 @@ void Transform::SetPosition(const D3DXVECTOR3 & position)
 /**************************************
 移動処理
 ***************************************/
-D3DXVECTOR3 Transform::GetPosition()
+D3DXVECTOR3 Transform::GetPosition() const
 {
 	return position;
 }
@@ -114,7 +114,7 @@ void Transform::SetRotation(const D3DXQUATERNION & rotation)
 /***************************************
 オイラー角取得処理
 ***************************************/
-D3DXVECTOR3 Transform::GetEulerAngle()
+D3DXVECTOR3 Transform::GetEulerAngle() const
 {
 	return Quaternion::ToEuler(rotation);
 }
@@ -122,7 +122,7 @@ D3DXVECTOR3 Transform::GetEulerAngle()
 /**************************************
 移動処理
 ***************************************/
-D3DXQUATERNION Transform::GetRotation()
+D3DXQUATERNION Transform::GetRotation() const
 {
 	return rotation;
 }
@@ -148,7 +148,7 @@ void Transform::SetScale(const D3DXVECTOR3 & scale)
 /**************************************
 移動処理
 ***************************************/
-D3DXVECTOR3 Transform::GetScale()
+D3DXVECTOR3 Transform::GetScale() const
 {
 	return scale;
 }
@@ -156,7 +156,7 @@ D3DXVECTOR3 Transform::GetScale()
 /**************************************
 ワールド変換処理
 ***************************************/
-void Transform::SetWorld(const D3DXMATRIX* parent)
+void Transform::SetWorld(const D3DXMATRIX* parent) const
 {
 	D3DXMATRIX world = GetMatrix();
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
@@ -173,7 +173,7 @@ void Transform::SetWorld(const D3DXMATRIX* parent)
 /**************************************
 前方計算処理
 ***************************************/
-D3DXVECTOR3 Transform::Forward()
+D3DXVECTOR3 Transform::Forward() const
 {
 	D3DXVECTOR3 forward = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
 	D3DXMATRIX rotation;
@@ -187,7 +187,7 @@ D3DXVECTOR3 Transform::Forward()
 /**************************************
 右方計算処理
 ***************************************/
-D3DXVECTOR3 Transform::Right()
+D3DXVECTOR3 Transform::Right() const
 {
 	D3DXVECTOR3 right = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
 	D3DXMATRIX rotation;
@@ -201,7 +201,7 @@ D3DXVECTOR3 Transform::Right()
 /**************************************
 上方計算処理
 ***************************************/
-D3DXVECTOR3 Transform::Up()
+D3DXVECTOR3 Transform::Up() const
 {
 	D3DXVECTOR3 up = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	D3DXMATRIX rotation;
@@ -215,7 +215,7 @@ D3DXVECTOR3 Transform::Up()
 /**************************************
 ワールド行列取得処理
 ***************************************/
-D3DXMATRIX Transform::GetMatrix()
+D3DXMATRIX Transform::GetMatrix() const
 {
 	/*************************************
 	NOTE:正直に行列計算するより、要素を直接計算した方が早かったので
