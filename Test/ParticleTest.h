@@ -44,16 +44,7 @@ public:
 
 	void Init();
 	void Set();
-};
-
-class ParticleController : public BaseParticleController
-{
-public:
-	ParticleController();
-
-private:
-	void MakeParticleContainer();
-	void MakeEmitterContainer();
+	void Update();
 };
 
 class Particle : public BaseParticle

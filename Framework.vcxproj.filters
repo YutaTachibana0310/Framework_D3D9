@@ -71,6 +71,8 @@
     <ClCompile Include="Framework\Renderer3D\BillboardTransform.cpp" />
     <ClCompile Include="Framework\Particle\ParticleJsonParser.cpp" />
     <ClCompile Include="json11\json11.cpp" />
+    <ClCompile Include="Asset\Particle\ExplosionFire.cpp" />
+    <ClCompile Include="Asset\Particle\ExplosionFlare.cpp" />
     <ClCompile Include="Framework\Task\TaskManager.cpp" />
     <ClCompile Include="Framework\Task\Task.cpp" />
     <ClCompile Include="Framework\Task\DelayedTask.cpp" />
@@ -157,6 +159,8 @@
     <ClInclude Include="Framework\Renderer3D\BillboardTransform.h" />
     <ClInclude Include="Framework\Particle\ParticleJsonParser.h" />
     <ClInclude Include="json11\json11.hpp" />
+    <ClInclude Include="Asset\Particle\ExplosionFire.h" />
+    <ClInclude Include="Asset\Particle\ExplosionFlare.h" />
     <ClInclude Include="Framework\Core\Utility.h" />
     <ClInclude Include="Framework\Task\TaskManager.h" />
     <ClInclude Include="Framework\Task\Task.h" />
