@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/Particle/SceneParticleManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_scene_particle_manager_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SceneParticleManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_scene_particle_manager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//シーンパーティクルマネージャヘッダ[SceneParticleManager.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _SCENEPARTICLEMANAGER_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _SCENEPARTICLEMANAGER_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../PostEffect/ScreenObject.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_base_particle_controller_8h.html">BaseParticleController.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">マクロ定義</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html">   20</a></span>&#160;<span class="comment">クラス定義</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">class </span><a class="code" href="class_scene_particle_manager.html">SceneParticleManager</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">//初期化、終了、更新、描画処理</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene_particle_manager.html#ae6d242cf6b3940c15130a3d7965b59ff">Init</a>() = 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene_particle_manager.html#a07793f1a2127554f735fa31010f8dadd">Uninit</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene_particle_manager.html#ae77601e7087bb6b85d06a50d8061c728">Update</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene_particle_manager.html#a60b5cb2f0c4076d56e2d83e75b870af2">Draw</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">//パーティクル発生処理</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_base_emitter.html">BaseEmitter</a>* <a class="code" href="class_scene_particle_manager.html#aabf5cc114043ceaae533512bdcf42815">Generate</a>(UINT <span class="keywordtype">id</span>, <span class="keyword">const</span> D3DXVECTOR3&amp; pos);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_base_emitter.html">BaseEmitter</a>* <a class="code" href="class_scene_particle_manager.html#aabf5cc114043ceaae533512bdcf42815">Generate</a>(UINT <span class="keywordtype">id</span>, <span class="keyword">const</span> <a class="code" href="class_transform.html">Transform</a>&amp; transform);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//レンダーターゲット関連</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#a99a869c825bb675ad0c4d6686ac146f2">   37</a></span>&#160;    LPDIRECT3DTEXTURE9 <a class="code" href="class_scene_particle_manager.html#a99a869c825bb675ad0c4d6686ac146f2">renderTexture</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#a207b502696b297f9b81c731fd83ed41d">   38</a></span>&#160;    LPDIRECT3DSURFACE9 <a class="code" href="class_scene_particle_manager.html#a207b502696b297f9b81c731fd83ed41d">renderSurface</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#a0ea9a367075ce7d5662faefeb1ca8261">   39</a></span>&#160;    D3DVIEWPORT9 <a class="code" href="class_scene_particle_manager.html#a0ea9a367075ce7d5662faefeb1ca8261">viewPort</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#a6a0a9ccb524e8f1ec4cf836aca54477f">   40</a></span>&#160;    <a class="code" href="class_screen_object.html">ScreenObject</a> *<a class="code" href="class_scene_particle_manager.html#a6a0a9ccb524e8f1ec4cf836aca54477f">screenObj</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">//キャッシュ用</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#ac2c9f7d82ff526bd4048e41aee86c81d">   43</a></span>&#160;    LPDIRECT3DSURFACE9 <a class="code" href="class_scene_particle_manager.html#ac2c9f7d82ff526bd4048e41aee86c81d">oldSuf</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#a040a5c24ad713ad14b87ad865efcaf5c">   44</a></span>&#160;    D3DVIEWPORT9 <a class="code" href="class_scene_particle_manager.html#a040a5c24ad713ad14b87ad865efcaf5c">oldViewport</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">//パーティクルコントローラコンテナ</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#a5d680ed550e2bf98c428eed968db4cc7">   47</a></span>&#160;    std::vector&lt;BaseParticleController*&gt; <a class="code" href="class_scene_particle_manager.html#a5d680ed550e2bf98c428eed968db4cc7">controllers</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">//描画準備</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_scene_particle_manager.html#a955e76d4dcc2ab950f6c14013d773d8b">CreateRenderTarget</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_scene_particle_manager.html#abd8ad8be54b01910f481505626c114f3">ChangeRenderParameter</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_scene_particle_manager.html#aa811e7fc4b1b354a1eaf0ba27697c6a2">RestoreRenderParameter</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_scene_particle_manager.html#a17af95de1a4024a1bf51855eab3f7239">   55</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_scene_particle_manager.html#a17af95de1a4024a1bf51855eab3f7239">initialized</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_scene_particle_manager_html_a955e76d4dcc2ab950f6c14013d773d8b"><div class="ttname"><a href="class_scene_particle_manager.html#a955e76d4dcc2ab950f6c14013d773d8b">SceneParticleManager::CreateRenderTarget</a></div><div class="ttdeci">void CreateRenderTarget(void)</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:113</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a040a5c24ad713ad14b87ad865efcaf5c"><div class="ttname"><a href="class_scene_particle_manager.html#a040a5c24ad713ad14b87ad865efcaf5c">SceneParticleManager::oldViewport</a></div><div class="ttdeci">D3DVIEWPORT9 oldViewport</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:44</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_aabf5cc114043ceaae533512bdcf42815"><div class="ttname"><a href="class_scene_particle_manager.html#aabf5cc114043ceaae533512bdcf42815">SceneParticleManager::Generate</a></div><div class="ttdeci">virtual BaseEmitter * Generate(UINT id, const D3DXVECTOR3 &amp;pos)</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:95</div></div>
+<div class="ttc" id="aclass_base_emitter_html"><div class="ttname"><a href="class_base_emitter.html">BaseEmitter</a></div><div class="ttdef"><b>Definition:</b> BaseEmitter.h:18</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a6a0a9ccb524e8f1ec4cf836aca54477f"><div class="ttname"><a href="class_scene_particle_manager.html#a6a0a9ccb524e8f1ec4cf836aca54477f">SceneParticleManager::screenObj</a></div><div class="ttdeci">ScreenObject * screenObj</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:40</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a0ea9a367075ce7d5662faefeb1ca8261"><div class="ttname"><a href="class_scene_particle_manager.html#a0ea9a367075ce7d5662faefeb1ca8261">SceneParticleManager::viewPort</a></div><div class="ttdeci">D3DVIEWPORT9 viewPort</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:39</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a17af95de1a4024a1bf51855eab3f7239"><div class="ttname"><a href="class_scene_particle_manager.html#a17af95de1a4024a1bf51855eab3f7239">SceneParticleManager::initialized</a></div><div class="ttdeci">bool initialized</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:55</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_abd8ad8be54b01910f481505626c114f3"><div class="ttname"><a href="class_scene_particle_manager.html#abd8ad8be54b01910f481505626c114f3">SceneParticleManager::ChangeRenderParameter</a></div><div class="ttdeci">void ChangeRenderParameter(void)</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:141</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a207b502696b297f9b81c731fd83ed41d"><div class="ttname"><a href="class_scene_particle_manager.html#a207b502696b297f9b81c731fd83ed41d">SceneParticleManager::renderSurface</a></div><div class="ttdeci">LPDIRECT3DSURFACE9 renderSurface</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:38</div></div>
+<div class="ttc" id="a_base_particle_controller_8h_html"><div class="ttname"><a href="_base_particle_controller_8h.html">BaseParticleController.h</a></div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a5d680ed550e2bf98c428eed968db4cc7"><div class="ttname"><a href="class_scene_particle_manager.html#a5d680ed550e2bf98c428eed968db4cc7">SceneParticleManager::controllers</a></div><div class="ttdeci">std::vector&lt; BaseParticleController * &gt; controllers</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:47</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_ae6d242cf6b3940c15130a3d7965b59ff"><div class="ttname"><a href="class_scene_particle_manager.html#ae6d242cf6b3940c15130a3d7965b59ff">SceneParticleManager::Init</a></div><div class="ttdeci">virtual void Init()=0</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:16</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_aa811e7fc4b1b354a1eaf0ba27697c6a2"><div class="ttname"><a href="class_scene_particle_manager.html#aa811e7fc4b1b354a1eaf0ba27697c6a2">SceneParticleManager::RestoreRenderParameter</a></div><div class="ttdeci">void RestoreRenderParameter(void)</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:160</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a60b5cb2f0c4076d56e2d83e75b870af2"><div class="ttname"><a href="class_scene_particle_manager.html#a60b5cb2f0c4076d56e2d83e75b870af2">SceneParticleManager::Draw</a></div><div class="ttdeci">virtual void Draw()</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:57</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_ac2c9f7d82ff526bd4048e41aee86c81d"><div class="ttname"><a href="class_scene_particle_manager.html#ac2c9f7d82ff526bd4048e41aee86c81d">SceneParticleManager::oldSuf</a></div><div class="ttdeci">LPDIRECT3DSURFACE9 oldSuf</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:43</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a99a869c825bb675ad0c4d6686ac146f2"><div class="ttname"><a href="class_scene_particle_manager.html#a99a869c825bb675ad0c4d6686ac146f2">SceneParticleManager::renderTexture</a></div><div class="ttdeci">LPDIRECT3DTEXTURE9 renderTexture</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:37</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_ae77601e7087bb6b85d06a50d8061c728"><div class="ttname"><a href="class_scene_particle_manager.html#ae77601e7087bb6b85d06a50d8061c728">SceneParticleManager::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:47</div></div>
+<div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdef"><b>Definition:</b> Transform.h:18</div></div>
+<div class="ttc" id="aclass_screen_object_html"><div class="ttname"><a href="class_screen_object.html">ScreenObject</a></div><div class="ttdef"><b>Definition:</b> ScreenObject.h:17</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html_a07793f1a2127554f735fa31010f8dadd"><div class="ttname"><a href="class_scene_particle_manager.html#a07793f1a2127554f735fa31010f8dadd">SceneParticleManager::Uninit</a></div><div class="ttdeci">virtual void Uninit()</div><div class="ttdef"><b>Definition:</b> SceneParticleManager.cpp:28</div></div>
+<div class="ttc" id="aclass_scene_particle_manager_html"><div class="ttname"><a href="class_scene_particle_manager.html">SceneParticleManager</a></div><div class="ttdef"><b>Definition:</b> SceneParticleManager.h:20</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_ed35c40e30947630af88f4a67fb682f5.html">Particle</a></li><li class="navelem"><a class="el" href="_scene_particle_manager_8h.html">SceneParticleManager.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

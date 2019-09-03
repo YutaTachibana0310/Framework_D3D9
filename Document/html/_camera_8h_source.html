@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/Camera/Camera.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_camera_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Camera.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_camera_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//カメラヘッダ[Camera.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _CAMERA_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _CAMERA_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_camera_plugin.html">BaseCameraPlugin</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">Cameraクラス</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_camera.html">   17</a></span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span><a class="code" href="class_camera.html">Camera</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_camera.html#ac1217f37f9e2b12334b00e44c67a643d">   20</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_base_game.html">BaseGame</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a1543c3415858fa4773f8a69ef903366c">Init</a>();        <span class="comment">//初期化</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a4a596a3ea1fdc7d244ba4268031a360b">Update</a>();      <span class="comment">//更新</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a55115582e02202f3698d624837086a08">Set</a>();         <span class="comment">//カメラ情報反映処理</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">//与えたワールド座標をスクリーン座標に変換する関数</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a5ff4ba39135810fab67ddd1464d1b117">Projection</a>(D3DXVECTOR3&amp; out, <span class="keyword">const</span> D3DXVECTOR3&amp; pos);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">//与えたスクリーン座標をワールド座標に変換する関数</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a1a8883f1e3c157c61846667d55b858d4">UnProjection</a>(D3DXVECTOR3&amp; out, <span class="keyword">const</span> D3DXVECTOR3&amp; pos, <span class="keywordtype">float</span> z);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">//ビュー行列取得処理</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">static</span> D3DXMATRIX <a class="code" href="class_camera.html#a91ffde5ee231773ac0c76e401b25b396">GetViewMtx</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">//ビュー逆行列取得処理</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">static</span> D3DXMATRIX <a class="code" href="class_camera.html#a623f5c5fe7a756932e27d686605b07f0">GetInverseViewMtx</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">//プロジェクション行列取得処理</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">static</span> D3DXMATRIX <a class="code" href="class_camera.html#a6446a3d5cd2ed44ae28084e1b0476d93">GetProjectionMtx</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">//SRT情報</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_camera.html#ad5cea63239e1519c1fe7d414f5e047a8">   43</a></span>&#160;    <a class="code" href="class_transform.html">Transform</a> <a class="code" href="class_camera.html#ad5cea63239e1519c1fe7d414f5e047a8">transform</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">//注視点</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_camera.html#a14416fb24864f02d1f5f92d57b11c7dc">   46</a></span>&#160;    D3DXVECTOR3 <a class="code" href="class_camera.html#a14416fb24864f02d1f5f92d57b11c7dc">target</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">//視点、注視点、上方向（作業用領域）</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_camera.html#a9e8604ccb3ca7d0d757728591a7947ab">   49</a></span>&#160;    D3DXVECTOR3 <a class="code" href="class_camera.html#a9e8604ccb3ca7d0d757728591a7947ab">eyeWork</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_camera.html#aa972fbccd2a6674d850699a95089f06c">   50</a></span>&#160;    D3DXVECTOR3 <a class="code" href="class_camera.html#aa972fbccd2a6674d850699a95089f06c">targetWork</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_camera.html#ad2c567fec5eb4fc5e9af212f979b152e">   51</a></span>&#160;    D3DXVECTOR3 <a class="code" href="class_camera.html#ad2c567fec5eb4fc5e9af212f979b152e">upWork</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//視野角、アスペクト比、ニア値、ファー値</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_camera.html#aed20deda52cb9cf14d2941aec97683c7">   54</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_camera.html#aed20deda52cb9cf14d2941aec97683c7">viewAngle</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_camera.html#a635ca55292413fac7f3203cf781873f3">   55</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_camera.html#a635ca55292413fac7f3203cf781873f3">viewAspect</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_camera.html#ac6b5f3e99bd073f0c1f6812e00952690">   56</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_camera.html#ac6b5f3e99bd073f0c1f6812e00952690">viewNear</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_camera.html#a7a3036cb5ecda5d64b6e2b5109d1c18e">   57</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_camera.html#a7a3036cb5ecda5d64b6e2b5109d1c18e">viewFar</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">//ビュー、プロジェクション行列、ビューポート行列</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_camera.html#a825bb3f6cb253dd9215d986d911ebf11">   60</a></span>&#160;    D3DXMATRIX <a class="code" href="class_camera.html#aa12e6fa77fe4df9e0de9ee0cf27e9f42">view</a>, <a class="code" href="class_camera.html#ab2d0a9e5fb680c5c4d41a52a75ce54d0">projection</a>, <a class="code" href="class_camera.html#a825bb3f6cb253dd9215d986d911ebf11">viewport</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_camera.html#afb55d0324a46e122623f532312e585bc">   61</a></span>&#160;    D3DXMATRIX <a class="code" href="class_camera.html#afb55d0324a46e122623f532312e585bc">VPV</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">//ビュー、プロジェクション、ビューポート逆行列</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_camera.html#a571fee3cb23de003d8bc2ab3664644b6">   64</a></span>&#160;    D3DXMATRIX <a class="code" href="class_camera.html#a571fee3cb23de003d8bc2ab3664644b6">invView</a>, <a class="code" href="class_camera.html#a8a0006c38a80c45e92bbb16c7099a5fc">invProjection</a>, <a class="code" href="class_camera.html#a9a1c12ba503bc87682ab3f77ff358e4e">intViewport</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_camera.html#a43fc47ce0351db5a1b00ea144af0abf4">   65</a></span>&#160;    D3DXMATRIX <a class="code" href="class_camera.html#a43fc47ce0351db5a1b00ea144af0abf4">invVPV</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">//プラグインリスト</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="class_camera.html#ab618a63ab271a2bfdb939e3a696e7bd5">   68</a></span>&#160;    std::vector&lt;BaseCameraPlugin*&gt; <a class="code" href="class_camera.html#ab618a63ab271a2bfdb939e3a696e7bd5">pluginList</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_camera.html#adb68275d328be53993db8cb9df11636c">   71</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="class_camera.html">Camera</a>* <a class="code" href="class_camera.html#adb68275d328be53993db8cb9df11636c">mInstance</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_camera.html#a86d1f32065d79e35714c3b48d551949e">   74</a></span>&#160;    <a class="code" href="class_camera.html#a86d1f32065d79e35714c3b48d551949e">Camera</a>(<span class="keyword">const</span> <a class="code" href="class_camera.html">Camera</a>&amp;) {}</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="class_camera.html#ad1897942d0ccf91052386388a497349f">   75</a></span>&#160;    <a class="code" href="class_camera.html#ad1897942d0ccf91052386388a497349f">~Camera</a>() {}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">//カメラを揺らすプラグイン</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">class </span>ShakePlugin;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="class_base_camera_plugin.html">   84</a></span>&#160;<span class="comment">カメラプラグイン基底クラス</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">class </span><a class="code" href="class_base_camera_plugin.html">BaseCameraPlugin</a></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_base_camera_plugin.html#a879cd7503cd49911609fa1b6f4c88245">Update</a>() = 0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_base_camera_plugin.html#a597a467a4f64090c2880e61136a5a5a6">Apply</a>(<a class="code" href="class_camera.html">Camera</a>&amp; camera) = 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_camera_html_a4a596a3ea1fdc7d244ba4268031a360b"><div class="ttname"><a href="class_camera.html#a4a596a3ea1fdc7d244ba4268031a360b">Camera::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> Camera.cpp:98</div></div>
+<div class="ttc" id="aclass_camera_html_ad1897942d0ccf91052386388a497349f"><div class="ttname"><a href="class_camera.html#ad1897942d0ccf91052386388a497349f">Camera::~Camera</a></div><div class="ttdeci">~Camera()</div><div class="ttdef"><b>Definition:</b> Camera.h:75</div></div>
+<div class="ttc" id="aclass_camera_html_a6446a3d5cd2ed44ae28084e1b0476d93"><div class="ttname"><a href="class_camera.html#a6446a3d5cd2ed44ae28084e1b0476d93">Camera::GetProjectionMtx</a></div><div class="ttdeci">static D3DXMATRIX GetProjectionMtx()</div><div class="ttdef"><b>Definition:</b> Camera.cpp:137</div></div>
+<div class="ttc" id="aclass_camera_html_aed20deda52cb9cf14d2941aec97683c7"><div class="ttname"><a href="class_camera.html#aed20deda52cb9cf14d2941aec97683c7">Camera::viewAngle</a></div><div class="ttdeci">float viewAngle</div><div class="ttdef"><b>Definition:</b> Camera.h:54</div></div>
+<div class="ttc" id="aclass_camera_html_adb68275d328be53993db8cb9df11636c"><div class="ttname"><a href="class_camera.html#adb68275d328be53993db8cb9df11636c">Camera::mInstance</a></div><div class="ttdeci">static Camera * mInstance</div><div class="ttdef"><b>Definition:</b> Camera.h:71</div></div>
+<div class="ttc" id="aclass_camera_html_a86d1f32065d79e35714c3b48d551949e"><div class="ttname"><a href="class_camera.html#a86d1f32065d79e35714c3b48d551949e">Camera::Camera</a></div><div class="ttdeci">Camera(const Camera &amp;)</div><div class="ttdef"><b>Definition:</b> Camera.h:74</div></div>
+<div class="ttc" id="aclass_camera_html_a635ca55292413fac7f3203cf781873f3"><div class="ttname"><a href="class_camera.html#a635ca55292413fac7f3203cf781873f3">Camera::viewAspect</a></div><div class="ttdeci">float viewAspect</div><div class="ttdef"><b>Definition:</b> Camera.h:55</div></div>
+<div class="ttc" id="aclass_camera_html_ac6b5f3e99bd073f0c1f6812e00952690"><div class="ttname"><a href="class_camera.html#ac6b5f3e99bd073f0c1f6812e00952690">Camera::viewNear</a></div><div class="ttdeci">float viewNear</div><div class="ttdef"><b>Definition:</b> Camera.h:56</div></div>
+<div class="ttc" id="aclass_camera_html_a623f5c5fe7a756932e27d686605b07f0"><div class="ttname"><a href="class_camera.html#a623f5c5fe7a756932e27d686605b07f0">Camera::GetInverseViewMtx</a></div><div class="ttdeci">static D3DXMATRIX GetInverseViewMtx()</div><div class="ttdef"><b>Definition:</b> Camera.cpp:130</div></div>
+<div class="ttc" id="aclass_camera_html_ab618a63ab271a2bfdb939e3a696e7bd5"><div class="ttname"><a href="class_camera.html#ab618a63ab271a2bfdb939e3a696e7bd5">Camera::pluginList</a></div><div class="ttdeci">std::vector&lt; BaseCameraPlugin * &gt; pluginList</div><div class="ttdef"><b>Definition:</b> Camera.h:68</div></div>
+<div class="ttc" id="aclass_camera_html_a571fee3cb23de003d8bc2ab3664644b6"><div class="ttname"><a href="class_camera.html#a571fee3cb23de003d8bc2ab3664644b6">Camera::invView</a></div><div class="ttdeci">D3DXMATRIX invView</div><div class="ttdef"><b>Definition:</b> Camera.h:64</div></div>
+<div class="ttc" id="aclass_camera_html_a825bb3f6cb253dd9215d986d911ebf11"><div class="ttname"><a href="class_camera.html#a825bb3f6cb253dd9215d986d911ebf11">Camera::viewport</a></div><div class="ttdeci">D3DXMATRIX viewport</div><div class="ttdef"><b>Definition:</b> Camera.h:60</div></div>
+<div class="ttc" id="aclass_camera_html_afb55d0324a46e122623f532312e585bc"><div class="ttname"><a href="class_camera.html#afb55d0324a46e122623f532312e585bc">Camera::VPV</a></div><div class="ttdeci">D3DXMATRIX VPV</div><div class="ttdef"><b>Definition:</b> Camera.h:61</div></div>
+<div class="ttc" id="aclass_camera_html_a7a3036cb5ecda5d64b6e2b5109d1c18e"><div class="ttname"><a href="class_camera.html#a7a3036cb5ecda5d64b6e2b5109d1c18e">Camera::viewFar</a></div><div class="ttdeci">float viewFar</div><div class="ttdef"><b>Definition:</b> Camera.h:57</div></div>
+<div class="ttc" id="aclass_camera_html_a01f94c3543f56ede7af49dc778f19331"><div class="ttname"><a href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera::Camera</a></div><div class="ttdeci">Camera()</div><div class="ttdef"><b>Definition:</b> Camera.cpp:15</div></div>
+<div class="ttc" id="aclass_camera_html_a1a8883f1e3c157c61846667d55b858d4"><div class="ttname"><a href="class_camera.html#a1a8883f1e3c157c61846667d55b858d4">Camera::UnProjection</a></div><div class="ttdeci">static void UnProjection(D3DXVECTOR3 &amp;out, const D3DXVECTOR3 &amp;pos, float z)</div><div class="ttdef"><b>Definition:</b> Camera.cpp:116</div></div>
+<div class="ttc" id="aclass_camera_html_a14416fb24864f02d1f5f92d57b11c7dc"><div class="ttname"><a href="class_camera.html#a14416fb24864f02d1f5f92d57b11c7dc">Camera::target</a></div><div class="ttdeci">D3DXVECTOR3 target</div><div class="ttdef"><b>Definition:</b> Camera.h:46</div></div>
+<div class="ttc" id="aclass_camera_html_a9e8604ccb3ca7d0d757728591a7947ab"><div class="ttname"><a href="class_camera.html#a9e8604ccb3ca7d0d757728591a7947ab">Camera::eyeWork</a></div><div class="ttdeci">D3DXVECTOR3 eyeWork</div><div class="ttdef"><b>Definition:</b> Camera.h:49</div></div>
+<div class="ttc" id="aclass_camera_html_a5ff4ba39135810fab67ddd1464d1b117"><div class="ttname"><a href="class_camera.html#a5ff4ba39135810fab67ddd1464d1b117">Camera::Projection</a></div><div class="ttdeci">static void Projection(D3DXVECTOR3 &amp;out, const D3DXVECTOR3 &amp;pos)</div><div class="ttdef"><b>Definition:</b> Camera.cpp:109</div></div>
+<div class="ttc" id="aclass_camera_html_aa972fbccd2a6674d850699a95089f06c"><div class="ttname"><a href="class_camera.html#aa972fbccd2a6674d850699a95089f06c">Camera::targetWork</a></div><div class="ttdeci">D3DXVECTOR3 targetWork</div><div class="ttdef"><b>Definition:</b> Camera.h:50</div></div>
+<div class="ttc" id="aclass_base_camera_plugin_html_a879cd7503cd49911609fa1b6f4c88245"><div class="ttname"><a href="class_base_camera_plugin.html#a879cd7503cd49911609fa1b6f4c88245">BaseCameraPlugin::Update</a></div><div class="ttdeci">virtual void Update()=0</div></div>
+<div class="ttc" id="aclass_camera_html_a8a0006c38a80c45e92bbb16c7099a5fc"><div class="ttname"><a href="class_camera.html#a8a0006c38a80c45e92bbb16c7099a5fc">Camera::invProjection</a></div><div class="ttdeci">D3DXMATRIX invProjection</div><div class="ttdef"><b>Definition:</b> Camera.h:64</div></div>
+<div class="ttc" id="aclass_camera_html_a91ffde5ee231773ac0c76e401b25b396"><div class="ttname"><a href="class_camera.html#a91ffde5ee231773ac0c76e401b25b396">Camera::GetViewMtx</a></div><div class="ttdeci">static D3DXMATRIX GetViewMtx()</div><div class="ttdef"><b>Definition:</b> Camera.cpp:123</div></div>
+<div class="ttc" id="aclass_base_camera_plugin_html_a597a467a4f64090c2880e61136a5a5a6"><div class="ttname"><a href="class_base_camera_plugin.html#a597a467a4f64090c2880e61136a5a5a6">BaseCameraPlugin::Apply</a></div><div class="ttdeci">virtual void Apply(Camera &amp;camera)=0</div></div>
+<div class="ttc" id="aclass_camera_html_a55115582e02202f3698d624837086a08"><div class="ttname"><a href="class_camera.html#a55115582e02202f3698d624837086a08">Camera::Set</a></div><div class="ttdeci">void Set()</div><div class="ttdef"><b>Definition:</b> Camera.cpp:51</div></div>
+<div class="ttc" id="aclass_camera_html_ad5cea63239e1519c1fe7d414f5e047a8"><div class="ttname"><a href="class_camera.html#ad5cea63239e1519c1fe7d414f5e047a8">Camera::transform</a></div><div class="ttdeci">Transform transform</div><div class="ttdef"><b>Definition:</b> Camera.h:43</div></div>
+<div class="ttc" id="aclass_base_game_html"><div class="ttname"><a href="class_base_game.html">BaseGame</a></div><div class="ttdoc">ゲームのコアとなる部分のクラス</div><div class="ttdef"><b>Definition:</b> BaseGame.h:20</div></div>
+<div class="ttc" id="aclass_camera_html"><div class="ttname"><a href="class_camera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> Camera.h:17</div></div>
+<div class="ttc" id="aclass_camera_html_a1543c3415858fa4773f8a69ef903366c"><div class="ttname"><a href="class_camera.html#a1543c3415858fa4773f8a69ef903366c">Camera::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> Camera.cpp:22</div></div>
+<div class="ttc" id="aclass_camera_html_ad2c567fec5eb4fc5e9af212f979b152e"><div class="ttname"><a href="class_camera.html#ad2c567fec5eb4fc5e9af212f979b152e">Camera::upWork</a></div><div class="ttdeci">D3DXVECTOR3 upWork</div><div class="ttdef"><b>Definition:</b> Camera.h:51</div></div>
+<div class="ttc" id="aclass_transform_html"><div class="ttname"><a href="class_transform.html">Transform</a></div><div class="ttdef"><b>Definition:</b> Transform.h:18</div></div>
+<div class="ttc" id="aclass_camera_html_a9a1c12ba503bc87682ab3f77ff358e4e"><div class="ttname"><a href="class_camera.html#a9a1c12ba503bc87682ab3f77ff358e4e">Camera::intViewport</a></div><div class="ttdeci">D3DXMATRIX intViewport</div><div class="ttdef"><b>Definition:</b> Camera.h:64</div></div>
+<div class="ttc" id="aclass_camera_html_ab2d0a9e5fb680c5c4d41a52a75ce54d0"><div class="ttname"><a href="class_camera.html#ab2d0a9e5fb680c5c4d41a52a75ce54d0">Camera::projection</a></div><div class="ttdeci">D3DXMATRIX projection</div><div class="ttdef"><b>Definition:</b> Camera.h:60</div></div>
+<div class="ttc" id="aclass_camera_html_aa12e6fa77fe4df9e0de9ee0cf27e9f42"><div class="ttname"><a href="class_camera.html#aa12e6fa77fe4df9e0de9ee0cf27e9f42">Camera::view</a></div><div class="ttdeci">D3DXMATRIX view</div><div class="ttdef"><b>Definition:</b> Camera.h:60</div></div>
+<div class="ttc" id="aclass_camera_html_a43fc47ce0351db5a1b00ea144af0abf4"><div class="ttname"><a href="class_camera.html#a43fc47ce0351db5a1b00ea144af0abf4">Camera::invVPV</a></div><div class="ttdeci">D3DXMATRIX invVPV</div><div class="ttdef"><b>Definition:</b> Camera.h:65</div></div>
+<div class="ttc" id="aclass_base_camera_plugin_html"><div class="ttname"><a href="class_base_camera_plugin.html">BaseCameraPlugin</a></div><div class="ttdef"><b>Definition:</b> Camera.h:84</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_1931cab3a3510c02ccf1b63aa3ec7049.html">Camera</a></li><li class="navelem"><a class="el" href="_camera_8h.html">Camera.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

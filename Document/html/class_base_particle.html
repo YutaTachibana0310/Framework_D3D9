@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: BaseParticle クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_base_particle.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-attribs">公開変数類</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="class_base_particle-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">BaseParticle クラス<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_base_particle_8h_source.html">BaseParticle.h</a>&gt;</code></p>
+<div class="dynheader">
+BaseParticle の継承関係図</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_base_particle.png" usemap="#BaseParticle_map" alt=""/>
+  <map id="BaseParticle_map" name="BaseParticle_map">
+<area href="class_billboard_object.html" alt="BillboardObject" shape="rect" coords="143,56,276,80"/>
+<area href="class_game_object.html" alt="GameObject" shape="rect" coords="143,0,276,24"/>
+<area href="class_animation_particle.html" alt="AnimationParticle" shape="rect" coords="0,168,133,192"/>
+<area href="class_asset_1_1_explosion_flare.html" alt="Asset::ExplosionFlare" shape="rect" coords="143,168,276,192"/>
+<area href="class_particle.html" alt="Particle" shape="rect" coords="286,168,419,192"/>
+<area href="class_asset_1_1_explosion_fire.html" alt="Asset::ExplosionFire" shape="rect" coords="0,224,133,248"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ae92da33ba2d9033be79af17eacab7870"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#ae92da33ba2d9033be79af17eacab7870">BaseParticle</a> ()</td></tr>
+<tr class="separator:ae92da33ba2d9033be79af17eacab7870"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa596fd842c2381f9b61630f36756774f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#aa596fd842c2381f9b61630f36756774f">BaseParticle</a> (int life)</td></tr>
+<tr class="separator:aa596fd842c2381f9b61630f36756774f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18ec4963745be616f6510d8f41b135a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#a18ec4963745be616f6510d8f41b135a0">BaseParticle</a> (int lifeMin, int lifeMax)</td></tr>
+<tr class="separator:a18ec4963745be616f6510d8f41b135a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cadd2cfc977b21cde344deaa46318ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#a6cadd2cfc977b21cde344deaa46318ed">BaseParticle</a> (float u, float v, int lifeMin, int lifeMax)</td></tr>
+<tr class="separator:a6cadd2cfc977b21cde344deaa46318ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9842efe183273ce0514846547e42fff"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#ae9842efe183273ce0514846547e42fff">~BaseParticle</a> ()</td></tr>
+<tr class="separator:ae9842efe183273ce0514846547e42fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac32f999afb3da66e211d3af3ef5d859"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#aac32f999afb3da66e211d3af3ef5d859">Init</a> ()=0</td></tr>
+<tr class="separator:aac32f999afb3da66e211d3af3ef5d859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec5c3ccc0efb38510e1abd4cd07fff45"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#aec5c3ccc0efb38510e1abd4cd07fff45">Update</a> ()=0</td></tr>
+<tr class="separator:aec5c3ccc0efb38510e1abd4cd07fff45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a646f6bd3bf6a1511893b701be55092f3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#a646f6bd3bf6a1511893b701be55092f3">IsActive</a> () const override</td></tr>
+<tr class="separator:a646f6bd3bf6a1511893b701be55092f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a5f50bc536da79e2f6ce48e67783634"><td class="memItemLeft" align="right" valign="top">virtual D3DXMATRIX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#a7a5f50bc536da79e2f6ce48e67783634">GetWorldMtx</a> ()</td></tr>
+<tr class="separator:a7a5f50bc536da79e2f6ce48e67783634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_billboard_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_billboard_object')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_billboard_object.html">BillboardObject</a> に属する継承公開メンバ関数</td></tr>
+<tr class="memitem:a498062638a016de97f35831fb1b75850 inherit pub_methods_class_billboard_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_billboard_object.html#a498062638a016de97f35831fb1b75850">BillboardObject</a> ()</td></tr>
+<tr class="separator:a498062638a016de97f35831fb1b75850 inherit pub_methods_class_billboard_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48202df171ffa32872ec5d26595d7b73 inherit pub_methods_class_billboard_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_billboard_object.html#a48202df171ffa32872ec5d26595d7b73">BillboardObject</a> (const <a class="el" href="class_billboard_object.html">BillboardObject</a> &amp;gameObject)</td></tr>
+<tr class="separator:a48202df171ffa32872ec5d26595d7b73 inherit pub_methods_class_billboard_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3aa3a92dfc1a734e29ef5fadfbc319c inherit pub_methods_class_billboard_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_billboard_object.html#ab3aa3a92dfc1a734e29ef5fadfbc319c">BillboardObject</a> (const <a class="el" href="class_billboard_transform.html">BillboardTransform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>)</td></tr>
+<tr class="separator:ab3aa3a92dfc1a734e29ef5fadfbc319c inherit pub_methods_class_billboard_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acddfd3365a9e7562346473398f229b72 inherit pub_methods_class_billboard_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_billboard_object.html#acddfd3365a9e7562346473398f229b72">BillboardObject</a> (const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:acddfd3365a9e7562346473398f229b72 inherit pub_methods_class_billboard_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7b7e2af0569eb4b3b047a1b857965a2 inherit pub_methods_class_billboard_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_billboard_object.html#aa7b7e2af0569eb4b3b047a1b857965a2">BillboardObject</a> (const <a class="el" href="class_billboard_transform.html">BillboardTransform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>, const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:aa7b7e2af0569eb4b3b047a1b857965a2 inherit pub_methods_class_billboard_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d29fcc180ab47ed0f9b5e1640808894 inherit pub_methods_class_billboard_object"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_billboard_object.html#a9d29fcc180ab47ed0f9b5e1640808894">~BillboardObject</a> ()</td></tr>
+<tr class="separator:a9d29fcc180ab47ed0f9b5e1640808894 inherit pub_methods_class_billboard_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_game_object"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_game_object')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_game_object.html">GameObject</a> に属する継承公開メンバ関数</td></tr>
+<tr class="memitem:a0348e3ee2e83d56eafca7a3547f432c4 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a0348e3ee2e83d56eafca7a3547f432c4">GameObject</a> ()</td></tr>
+<tr class="separator:a0348e3ee2e83d56eafca7a3547f432c4 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac36cbe945fb4c3fb4bea5f03bc5822d7 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ac36cbe945fb4c3fb4bea5f03bc5822d7">GameObject</a> (const <a class="el" href="class_game_object.html">GameObject</a> &amp;gameObject)</td></tr>
+<tr class="separator:ac36cbe945fb4c3fb4bea5f03bc5822d7 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14495b7b877d60c79c7223052902d468 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a14495b7b877d60c79c7223052902d468">GameObject</a> (const <a class="el" href="class_transform.html">Transform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>)</td></tr>
+<tr class="separator:a14495b7b877d60c79c7223052902d468 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd317550f0c8358c27da7a358b33a89 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a2bd317550f0c8358c27da7a358b33a89">GameObject</a> (const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:a2bd317550f0c8358c27da7a358b33a89 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e64b8d9ebea6ce23e2c8f5ea514a62 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#aa6e64b8d9ebea6ce23e2c8f5ea514a62">GameObject</a> (const <a class="el" href="class_transform.html">Transform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>, const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:aa6e64b8d9ebea6ce23e2c8f5ea514a62 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4af1c776194503e71c574b256e5e2b9 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab4af1c776194503e71c574b256e5e2b9">GameObject</a> (<a class="el" href="class_transform.html">Transform</a> *<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>)</td></tr>
+<tr class="separator:ab4af1c776194503e71c574b256e5e2b9 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab082f0d17279423ef558777c73405bbc inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab082f0d17279423ef558777c73405bbc">GameObject</a> (<a class="el" href="class_transform.html">Transform</a> *tranfsorm, const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:ab082f0d17279423ef558777c73405bbc inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab82dfdb656f9051c0587e6593b2dda97 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab82dfdb656f9051c0587e6593b2dda97">~GameObject</a> ()</td></tr>
+<tr class="separator:ab82dfdb656f9051c0587e6593b2dda97 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e1dc922ef5e0dff89e148d35ac6b002 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a2e1dc922ef5e0dff89e148d35ac6b002">operator=</a> (const <a class="el" href="class_game_object.html">GameObject</a> &amp;)</td></tr>
+<tr class="separator:a2e1dc922ef5e0dff89e148d35ac6b002 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab404a95de157896426dbe0a419d0a40d inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab404a95de157896426dbe0a419d0a40d">SetActive</a> (bool <a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:ab404a95de157896426dbe0a419d0a40d inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e1692ba1bf334faf2c22aea93cbac2 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual D3DXVECTOR3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ae2e1692ba1bf334faf2c22aea93cbac2">GetPosition</a> () const</td></tr>
+<tr class="separator:ae2e1692ba1bf334faf2c22aea93cbac2 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6422e8f92c28400dfbd988ab124228fb inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual D3DXVECTOR3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a6422e8f92c28400dfbd988ab124228fb">GetRotation</a> () const</td></tr>
+<tr class="separator:a6422e8f92c28400dfbd988ab124228fb inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd5684671b6c813b4ad69426cbbefe2b inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual D3DXVECTOR3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#afd5684671b6c813b4ad69426cbbefe2b">GetScale</a> () const</td></tr>
+<tr class="separator:afd5684671b6c813b4ad69426cbbefe2b inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a844f20c44a7ee83d33cd1e52cf38e418 inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_transform.html">Transform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a844f20c44a7ee83d33cd1e52cf38e418">GetTransform</a> () const</td></tr>
+<tr class="separator:a844f20c44a7ee83d33cd1e52cf38e418 inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdabeabb5e362d959fb09801f5f232fd inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#afdabeabb5e362d959fb09801f5f232fd">SetPosition</a> (const D3DXVECTOR3 &amp;position)</td></tr>
+<tr class="separator:afdabeabb5e362d959fb09801f5f232fd inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac51f2bc534bfb49e5d0f5ad3c389bb inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a1ac51f2bc534bfb49e5d0f5ad3c389bb">SetRotatition</a> (const D3DXVECTOR3 &amp;rotation)</td></tr>
+<tr class="separator:a1ac51f2bc534bfb49e5d0f5ad3c389bb inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4322b8deb5add999e460bb708e5c02c inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ac4322b8deb5add999e460bb708e5c02c">SetScale</a> (const D3DXVECTOR3 &amp;scale)</td></tr>
+<tr class="separator:ac4322b8deb5add999e460bb708e5c02c inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa1842e6bcd14add28cb71347d6ca5d inherit pub_methods_class_game_object"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a0aa1842e6bcd14add28cb71347d6ca5d">SetTransform</a> (const <a class="el" href="class_transform.html">Transform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>)</td></tr>
+<tr class="separator:a0aa1842e6bcd14add28cb71347d6ca5d inherit pub_methods_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:a5583e355ef649f1b3a22f6eafa4d94bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_particle_u_v.html">ParticleUV</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#a5583e355ef649f1b3a22f6eafa4d94bf">uv</a></td></tr>
+<tr class="separator:a5583e355ef649f1b3a22f6eafa4d94bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:a367415f051b1ad07ffb11fbb1b6c92d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#a367415f051b1ad07ffb11fbb1b6c92d1">cntFrame</a></td></tr>
+<tr class="separator:a367415f051b1ad07ffb11fbb1b6c92d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a8581c614edbe7e2dda91b526476a7a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_particle.html#a9a8581c614edbe7e2dda91b526476a7a">lifeFrame</a></td></tr>
+<tr class="separator:a9a8581c614edbe7e2dda91b526476a7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_game_object"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_game_object')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_game_object.html">GameObject</a> に属する継承限定公開変数類</td></tr>
+<tr class="memitem:afa3bf48882a927f94a6d922045a435e0 inherit pro_attribs_class_game_object"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a></td></tr>
+<tr class="separator:afa3bf48882a927f94a6d922045a435e0 inherit pro_attribs_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a7c9950456393d9860c1ba04279ea3 inherit pro_attribs_class_game_object"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a></td></tr>
+<tr class="separator:af9a7c9950456393d9860c1ba04279ea3 inherit pro_attribs_class_game_object"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="ae92da33ba2d9033be79af17eacab7870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae92da33ba2d9033be79af17eacab7870">&#9670;&nbsp;</a></span>BaseParticle() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseParticle::BaseParticle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa596fd842c2381f9b61630f36756774f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa596fd842c2381f9b61630f36756774f">&#9670;&nbsp;</a></span>BaseParticle() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseParticle::BaseParticle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>life</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18ec4963745be616f6510d8f41b135a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18ec4963745be616f6510d8f41b135a0">&#9670;&nbsp;</a></span>BaseParticle() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseParticle::BaseParticle </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lifeMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lifeMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6cadd2cfc977b21cde344deaa46318ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cadd2cfc977b21cde344deaa46318ed">&#9670;&nbsp;</a></span>BaseParticle() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseParticle::BaseParticle </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>u</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lifeMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lifeMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae9842efe183273ce0514846547e42fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9842efe183273ce0514846547e42fff">&#9670;&nbsp;</a></span>~BaseParticle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseParticle::~BaseParticle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a7a5f50bc536da79e2f6ce48e67783634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a5f50bc536da79e2f6ce48e67783634">&#9670;&nbsp;</a></span>GetWorldMtx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3DXMATRIX BaseParticle::GetWorldMtx </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aac32f999afb3da66e211d3af3ef5d859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac32f999afb3da66e211d3af3ef5d859">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseParticle::Init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_particle.html#ad4131133df499c87e0a4e75ffdaae4a3">Particle</a>, <a class="el" href="class_asset_1_1_explosion_fire.html#aa699f4a947bf9bbcf7ed76951b109abf">Asset::ExplosionFire</a>, <a class="el" href="class_asset_1_1_explosion_flare.html#a3026590223aa01365c77102c7ffcbbff">Asset::ExplosionFlare</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a646f6bd3bf6a1511893b701be55092f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a646f6bd3bf6a1511893b701be55092f3">&#9670;&nbsp;</a></span>IsActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool BaseParticle::IsActive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_game_object.html#a9ba5344daef13d4146bcf5fe82689f5e">GameObject</a>を再実装しています。</p>
+
+</div>
+</div>
+<a id="aec5c3ccc0efb38510e1abd4cd07fff45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec5c3ccc0efb38510e1abd4cd07fff45">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseParticle::Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_particle.html#a9ff98679ed52065d043d29a5af7a8980">Particle</a>, <a class="el" href="class_asset_1_1_explosion_fire.html#a8e3245b34156e7479c9b79e48986143e">Asset::ExplosionFire</a>, <a class="el" href="class_asset_1_1_explosion_flare.html#aaf34d4e1bee5617e8b57b9b02abf98b7">Asset::ExplosionFlare</a>で実装されています。</p>
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a367415f051b1ad07ffb11fbb1b6c92d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a367415f051b1ad07ffb11fbb1b6c92d1">&#9670;&nbsp;</a></span>cntFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BaseParticle::cntFrame</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a8581c614edbe7e2dda91b526476a7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a8581c614edbe7e2dda91b526476a7a">&#9670;&nbsp;</a></span>lifeFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BaseParticle::lifeFrame</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5583e355ef649f1b3a22f6eafa4d94bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5583e355ef649f1b3a22f6eafa4d94bf">&#9670;&nbsp;</a></span>uv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_particle_u_v.html">ParticleUV</a> BaseParticle::uv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Particle/<a class="el" href="_base_particle_8h_source.html">BaseParticle.h</a></li>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Particle/<a class="el" href="_base_particle_8cpp.html">BaseParticle.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_base_particle.html">BaseParticle</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

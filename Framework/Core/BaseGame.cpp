@@ -1,9 +1,8 @@
-//=====================================
-//
-//ƒQ[ƒ€ˆ—[Game.cpp]
-//Author:GP12A332 21 —§‰Ô—Y‘¾
-//
-//=====================================
+/******************************************************************
+* @file Game.cpp
+* @brief ƒQ[ƒ€‚ÌƒRƒAˆ—
+* @author —§‰Ô—Y‘¾
+******************************************************************/
 #include "BaseGame.h"
 #include "..\Input\input.h"
 #include "..\Camera\Camera.h"
@@ -12,11 +11,6 @@
 #include "..\Tween\Tween.h"
 #include "../Tool/ProfilerCPU.h"
 #include "../Task/TaskManager.h"
-
-/**************************************
-ƒ}ƒNƒ’è‹`
-***************************************/
-#define BACKCOLOR	(D3DCOLOR_RGBA(0, 0, 50, 255))
 
 Camera* Camera::mInstance = NULL;
 Input* Input::mInstance = NULL;
@@ -97,9 +91,10 @@ void BaseGame::Draw()
 
 	//ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgØ‚è‘Ö‚¦
 	LPDIRECT3DSURFACE9 oldSuf;
+	const D3DXCOLOR BackColor = D3DXCOLOR(0.0f, 0.0f, 0.05f, 1.0f);
 	pDevice->GetRenderTarget(0, &oldSuf);
 	pDevice->SetRenderTarget(0, renderSurface);
-	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, BACKCOLOR, 1.0f, 0);
+	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, BackColor, 1.0f, 0);
 
 	//ƒJƒƒ‰İ’è
 	Camera::mInstance->Set();
