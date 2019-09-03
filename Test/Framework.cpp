@@ -11,6 +11,7 @@
 #include "VectorTest.h"
 #include "ParticleTest.h"
 #include "TweenTest.h"
+#include "TaskTest.h"
 
 #include "../Framework\Tool\DebugWindow.h"
 
@@ -25,6 +26,7 @@ Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 	sceneManager->Add("Vector", new VectorTest());
 	sceneManager->Add("Particle", new ParticleTest());
 	sceneManager->Add("Tween", new TweenTest());
+	sceneManager->Add("Task", new TaskTest());
 
 	sceneManager->ChangeScene("Particle");
 }
@@ -53,6 +55,9 @@ void Framework::Update()
 
 	if (Debug::Button("Tween"))
 		SceneManager::ChangeScene("Tween");
+
+	if (Debug::Button("Task"))
+		SceneManager::ChangeScene("Task");
 }
 
 /**************************************
