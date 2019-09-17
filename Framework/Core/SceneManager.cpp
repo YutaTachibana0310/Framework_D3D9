@@ -106,9 +106,31 @@ void SceneManager::Draw()
 }
 
 /**************************************
+シーン終了処理
+***************************************/
+void SceneManager::Uninit()
+{
+	//現在のシーンを終了
+	if (current != NULL)
+	{
+		current->Uninit();
+		ResourceManager::Instance()->AllRelease();
+		ProfilerCPU::Instance()->Clear();
+	}
+}
+
+/**************************************
 シーンの存在確認
 ***************************************/
 bool SceneManager::ExistsScene(const char* sceneName)
 {
 	return sceneContainer.count(string(sceneName)) != 0;
+}
+
+/**************************************
+クリア処理
+***************************************/
+void SceneManager::Clear()
+{
+	Utility::DeleteMap(sceneContainer);
 }

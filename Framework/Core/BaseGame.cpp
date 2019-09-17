@@ -55,12 +55,17 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 ***************************************/
 BaseGame::~BaseGame()
 {
+	sceneManager->Uninit();
+	sceneManager->Clear();
+
 	SAFE_RELEASE(renderTexture);
 	SAFE_RELEASE(renderSurface);
 	SAFE_RELEASE(screenVtx);
 
+	SAFE_DELETE(sceneManager);
 	SAFE_DELETE(Camera::mInstance);
 	SAFE_DELETE(Input::mInstance);
+	SAFE_DELETE(Tween::mInstance);
 
 	Debug::Uninit();
 }

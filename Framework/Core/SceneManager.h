@@ -31,12 +31,16 @@ public:
 	//シーン追加処理
 	void Add(const char* sceneName, BaseScene* scene);
 
-	//更新処理、描画処理
+	//更新処理、描画処理、終了処理
 	void Update();
 	void Draw();
+	void Uninit();
 
 	//シーン確認処理
 	bool ExistsScene(const char* sceneName);
+
+	//クリア処理
+	void Clear();
 
 private:
 	//シーンコンテナ

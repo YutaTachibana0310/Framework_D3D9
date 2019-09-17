@@ -33,6 +33,8 @@ Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 	sceneManager->ChangeScene("Particle");
 }
 
+#include "../Framework/Input/input.h"
+
 /**************************************
 ƒNƒ‰ƒX’è‹`
 ***************************************/
@@ -62,6 +64,30 @@ void Framework::Update()
 		SceneManager::ChangeScene("Task");
 
 	if (Debug::Button("Collider"))
+		SceneManager::ChangeScene("Collider");
+
+	if(Keyboard::GetTrigger(DIK_1))
+		SceneManager::ChangeScene("Easing");
+
+	if (Keyboard::GetTrigger(DIK_2))
+		SceneManager::ChangeScene("Transform");
+
+	if (Keyboard::GetTrigger(DIK_3))
+		SceneManager::ChangeScene("Transition");
+
+	if (Keyboard::GetTrigger(DIK_4))
+		SceneManager::ChangeScene("Vector");
+
+	if (Keyboard::GetTrigger(DIK_5))
+		SceneManager::ChangeScene("Particle");
+
+	if (Keyboard::GetTrigger(DIK_6))
+		SceneManager::ChangeScene("Tween");
+
+	if (Keyboard::GetTrigger(DIK_7))
+		SceneManager::ChangeScene("Task");
+
+	if (Keyboard::GetTrigger(DIK_8))
 		SceneManager::ChangeScene("Collider");
 }
 

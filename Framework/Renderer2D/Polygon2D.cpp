@@ -14,7 +14,8 @@
 /**************************************
 コンストラクタ
 ***************************************/
-Polygon2D::Polygon2D()
+Polygon2D::Polygon2D() :
+	texture(NULL)
 {
 	vtxPos[0] = D3DXVECTOR3(-POLYGON2D_DEFAULT_SIZE, -POLYGON2D_DEFAULT_SIZE, 0.0f);
 	vtxPos[1] = D3DXVECTOR3( POLYGON2D_DEFAULT_SIZE, -POLYGON2D_DEFAULT_SIZE, 0.0f);
