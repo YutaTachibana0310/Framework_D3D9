@@ -29,6 +29,7 @@
     <ClCompile Include="Framework\Core\BaseGame.cpp" />
     <ClCompile Include="Framework\Core\GameObject.cpp" />
     <ClCompile Include="Framework\Particle\ParticleJsonParser.cpp" />
+    <ClCompile Include="Framework\Pattern\Delegate.cpp" />
     <ClCompile Include="Framework\Renderer3D\BillboardObject.cpp" />
     <ClCompile Include="Framework\Renderer3D\BillboardTransform.cpp" />
     <ClCompile Include="Framework\Resource\ResourceManager.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Framework\Core\GameObject.h" />
     <ClInclude Include="Framework\Core\Utility.h" />
     <ClInclude Include="Framework\Particle\ParticleJsonParser.h" />
+    <ClInclude Include="Framework\Pattern\Delegate.h" />
     <ClInclude Include="Framework\Renderer3D\BillboardObject.h" />
     <ClInclude Include="Framework\Renderer3D\BillboardTransform.h" />
     <ClInclude Include="Framework\Resource\ResourceManager.h" />
