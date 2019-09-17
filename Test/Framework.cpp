@@ -13,6 +13,7 @@
 #include "TweenTest.h"
 #include "TaskTest.h"
 #include "ColliderTest.h"
+#include "DelegateTest.h"
 
 #include "../Framework\Tool\DebugWindow.h"
 
@@ -29,6 +30,7 @@ Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 	sceneManager->Add("Tween", new TweenTest());
 	sceneManager->Add("Task", new TaskTest());
 	sceneManager->Add("Collider", new ColliderTest());
+	sceneManager->Add("Delegate", new DelegateTest());
 
 	sceneManager->ChangeScene("Particle");
 }
@@ -65,6 +67,9 @@ void Framework::Update()
 
 	if (Debug::Button("Collider"))
 		SceneManager::ChangeScene("Collider");
+
+	if (Debug::Button("Delegate"))
+		SceneManager::ChangeScene("Delegate");
 
 	if(Keyboard::GetTrigger(DIK_1))
 		SceneManager::ChangeScene("Easing");
