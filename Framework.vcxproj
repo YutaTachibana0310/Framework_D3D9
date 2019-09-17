@@ -29,7 +29,6 @@
     <ClCompile Include="Framework\Core\BaseGame.cpp" />
     <ClCompile Include="Framework\Core\GameObject.cpp" />
     <ClCompile Include="Framework\Particle\ParticleJsonParser.cpp" />
-    <ClCompile Include="Framework\Pattern\Delegate.cpp" />
     <ClCompile Include="Framework\Renderer3D\BillboardObject.cpp" />
     <ClCompile Include="Framework\Renderer3D\BillboardTransform.cpp" />
     <ClCompile Include="Framework\Resource\ResourceManager.cpp" />
@@ -92,6 +91,7 @@
     <ClCompile Include="json11\json11.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Test\ColliderTest.cpp" />
+    <ClCompile Include="Test\DelegateTest.cpp" />
     <ClCompile Include="Test\EasginTest.cpp" />
     <ClCompile Include="Test\Framework.cpp" />
     <ClCompile Include="Test\ParticleTest.cpp" />
@@ -185,6 +185,7 @@
     <ClInclude Include="json11\json11.hpp" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Test\ColliderTest.h" />
+    <ClInclude Include="Test\DelegateTest.h" />
     <ClInclude Include="Test\EasingTest.h" />
     <ClInclude Include="Test\Framework.h" />
     <ClInclude Include="Test\ParticleTest.h" />

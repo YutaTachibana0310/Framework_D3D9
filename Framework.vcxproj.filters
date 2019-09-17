@@ -81,7 +81,7 @@
     <ClCompile Include="Framework\Collider\BaseCollider.cpp" />
     <ClCompile Include="Framework\Collider\ColliderManager.cpp" />
     <ClCompile Include="Test\ColliderTest.cpp" />
-    <ClCompile Include="Framework\Pattern\Delegate.cpp" />
+    <ClCompile Include="Test\DelegateTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -176,6 +176,7 @@
     <ClInclude Include="Framework\Collider\ColliderManager.h" />
     <ClInclude Include="Test\ColliderTest.h" />
     <ClInclude Include="Framework\Pattern\Delegate.h" />
+    <ClInclude Include="Test\DelegateTest.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />

@@ -8,6 +8,8 @@
 #ifndef _DELEGATE_H_
 #define _DELEGATE_H_
 
+#include <memory>
+
 /**************************************
 前方宣言
 ***************************************/
@@ -39,7 +41,7 @@ public:
 	virtual ~Delegate() {}
 
 	//引数なし戻り値なしの関数実行のオペレータ
-	virtual void oprator(int arg)
+	virtual void operator()(int arg)
 	{
 		//if (object != NULL && func != NULL)
 			(object->*func)(arg);
@@ -50,6 +52,14 @@ public:
 	{
 		this->object = object;
 		this->func = func;
+	}
+
+	//デリゲータ作成処理
+	static DelegateBase* Create(T* object, void (T::*func)(int))
+	{
+		Delegate<T>* delegate = new Delegate<T>;
+		delegate->Set(object, func);
+		return  delegate;
 	}
 
 protected:
