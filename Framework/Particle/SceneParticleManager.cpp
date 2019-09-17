@@ -13,6 +13,18 @@
 #define SCENEMPARTICLEMANAGER_LABEL		"ParticleManager"
 
 /**************************************
+コンストラクタ
+***************************************/
+SceneParticleManager::SceneParticleManager() :
+	renderTexture(NULL),
+	renderSurface(NULL),
+	screenObj(NULL),
+	oldSuf(NULL),
+	initialized(false)
+{
+}
+
+/**************************************
 初期化処理
 ***************************************/
 void SceneParticleManager::Init()

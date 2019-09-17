@@ -18,7 +18,9 @@ SceneManager* SceneManager::mInstance = NULL;
 /**************************************
 コンストラクタ
 ***************************************/
-SceneManager::SceneManager()
+SceneManager::SceneManager() :
+	current(NULL),
+	prev(NULL)
 {
 	if (mInstance == NULL)
 	{

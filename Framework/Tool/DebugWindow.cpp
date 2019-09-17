@@ -232,7 +232,7 @@ bool Debug::Input(const char* label, int& out)
 /*************************************
 “ü—Íˆ—
 ***************************************/
-bool Debug::Debug::Input(const char* label, char* out, size_t sizeBuff)
+bool Debug::Input(const char* label, char* out, size_t sizeBuff)
 {
 #ifdef USE_DEBUGFUNC
 	return ImGui::InputText(label, out, sizeBuff);

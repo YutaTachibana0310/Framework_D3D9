@@ -22,6 +22,8 @@
 class SceneParticleManager
 {
 public:
+	SceneParticleManager();
+
 	//初期化、終了、更新、描画処理
 	virtual void Init() = 0;
 	virtual void Uninit();

@@ -14,7 +14,9 @@
 /**************************************
 コンストラクタ
 ***************************************/
-ParticleRenderer::ParticleRenderer()
+ParticleRenderer::ParticleRenderer() :
+	declare(NULL), effect(NULL),indexBuff(NULL), transformBuff(NULL), uvBuff(NULL),
+	hMtxInvView(NULL), hMtxProjection(NULL), hMtxView(NULL)
 {
 	MakeDeclaration();
 	MakeTransformBuffer();

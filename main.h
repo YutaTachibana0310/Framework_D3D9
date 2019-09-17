@@ -88,6 +88,12 @@ typedef struct
 	D3DXVECTOR2 tex;		// テクスチャ座標
 } VERTEX_BILLBOARD;
 
+#ifdef _DEBUG
+#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#else
+#define new new;
+#endif
+
 //*****************************************************************************
 // プロトタイプ宣言
 //*****************************************************************************

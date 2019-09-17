@@ -39,7 +39,8 @@ public:
 	virtual ~BaseParticleController();
 
 	template<class T>
-	BaseParticleController(const T& src, const ParticleJsonParser& data)
+	BaseParticleController(const T& src, const ParticleJsonParser& data) :
+		unitBuff(NULL), texture(NULL)
 	{
 		if (!mRenderer)
 		{

@@ -30,7 +30,8 @@ shared_ptr<ParticleRenderer> BaseParticleController::mRenderer = NULL;
 /**************************************
 コンストラクタ
 ***************************************/
-BaseParticleController::BaseParticleController()
+BaseParticleController::BaseParticleController() :
+	unitBuff(NULL), texture(NULL)
 {
 	if (!mRenderer)
 	{
