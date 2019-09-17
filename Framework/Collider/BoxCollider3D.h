@@ -20,8 +20,8 @@ class BoxCollider3D : public BaseCollider
 {
 public:
 	//コンストラクタ、デストラクタ
-	BoxCollider3D(const std::string& tag, const Transform& transform, ColliderObserver& observer);
-	BoxCollider3D(const std::string& tag, const Transform& transform, ColliderObserver& observer, const D3DXVECTOR3& size);
+	BoxCollider3D(const std::string& tag, const std::shared_ptr<Transform>& transform);
+	BoxCollider3D(const std::string& tag, const std::shared_ptr<Transform>& transform, const D3DXVECTOR3& size);
 	~BoxCollider3D();
 
 	//衝突判定、サイズセット、座標アドレスセット

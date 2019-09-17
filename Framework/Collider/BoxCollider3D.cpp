@@ -19,15 +19,17 @@ using namespace std;
 /**************************************
 static変数
 ***************************************/
+#ifdef BOXCOLLIDER3D_USE_DEBUG
 UINT BoxCollider3D::instanceCount;
 D3DMATERIAL9 BoxCollider3D::material;
 LPD3DXMESH BoxCollider3D::mesh;
+#endif
 
 /**************************************
 コンストラクタ
 ***************************************/
-BoxCollider3D::BoxCollider3D(const std::string & tag, const Transform & transform, ColliderObserver & observer) :
-	BaseCollider(observer, transform),
+BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Transform> & transform) :
+	BaseCollider(transform),
 	tag(tag)
 {
 	//サイズを適当な大きさに初期化
@@ -49,8 +51,8 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const Transform & transfor
 /**************************************
 コンストラクタ
 ***************************************/
-BoxCollider3D::BoxCollider3D(const std::string & tag, const Transform & transform, ColliderObserver & observer, const D3DXVECTOR3 & size) :
-	BaseCollider(observer, transform),
+BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Transform> & transform, const D3DXVECTOR3 & size) :
+	BaseCollider(transform),
 	size(size),
 	tag(tag)
 {
@@ -86,11 +88,11 @@ BoxCollider3D::~BoxCollider3D()
 ***************************************/
 bool BoxCollider3D::CheckCollision(BoxCollider3D& other)
 {
-	D3DXVECTOR3 thisPos = this->refTransform.GetPosition() + this->offset;
-	D3DXVECTOR3 otherPos = other.refTransform.GetPosition() + other.offset;
+	D3DXVECTOR3 thisPos = this->refTransform->GetPosition() + this->offset;
+	D3DXVECTOR3 otherPos = other.refTransform->GetPosition() + other.offset;
 	
-	D3DXVECTOR3 thisSize = Vector3::Multiply(this->size, this->refTransform.GetScale());
-	D3DXVECTOR3 otherSize = Vector3::Multiply(other.size, other.refTransform.GetScale());
+	D3DXVECTOR3 thisSize = Vector3::Multiply(this->size, this->refTransform->GetScale());
+	D3DXVECTOR3 otherSize = Vector3::Multiply(other.size, other.refTransform->GetScale());
 
 	//X方向の判定
 	if (thisPos.x + thisSize.x < otherPos.x - otherSize.x || thisPos.x - thisSize.x > otherPos.x + otherSize.x)
@@ -178,8 +180,8 @@ void BoxCollider3D::Draw()
 	pDevice->SetTexture(0, NULL);
 
 	//行列計算
-	D3DXVECTOR3 pos = refTransform.GetPosition() + offset;
-	D3DXVECTOR3 scale = Vector3::Multiply(refTransform.GetScale(), size) * 2.0f;
+	D3DXVECTOR3 pos = refTransform->GetPosition() + offset;
+	D3DXVECTOR3 scale = Vector3::Multiply(refTransform->GetScale(), size) * 2.0f;
 
 	D3DXMatrixIdentity(&mtxWorld);
 	mtxWorld._11 = scale.x;

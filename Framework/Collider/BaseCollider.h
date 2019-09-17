@@ -21,7 +21,7 @@
 class BaseCollider
 {
 public:
-	BaseCollider(ColliderObserver& observer, const Transform& transform);
+	BaseCollider(const std::shared_ptr<Transform> transform);
 	virtual ~BaseCollider();
 
 	void SetActive(bool state);
@@ -29,8 +29,7 @@ public:
 
 protected:
 	bool active;
-	ColliderObserver& observer;
-	const Transform& refTransform;
+	std::shared_ptr<Transform> refTransform;
 };
 
 #endif

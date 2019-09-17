@@ -10,12 +10,10 @@
 /**************************************
 コンストラクタ
 ***************************************/
-BaseCollider::BaseCollider(ColliderObserver & observer, const Transform& transform) :
-	observer(observer),
-	refTransform(transform),
+BaseCollider::BaseCollider(const std::shared_ptr<Transform> transform) :
 	active(true)
 {
-
+	refTransform = transform;
 }
 
 /**************************************
@@ -23,6 +21,7 @@ BaseCollider::BaseCollider(ColliderObserver & observer, const Transform& transfo
 ***************************************/
 BaseCollider::~BaseCollider()
 {
+	refTransform.reset();
 }
 
 /**************************************
