@@ -25,8 +25,8 @@ class BillboardTransform : public Transform
 	using Transform::Transform;
 public:
 	//ƒ[ƒ‹ƒh•ÏŠ·İ’èˆ—
-	virtual void SetWorld(const D3DXMATRIX* parent = NULL) override;
-	virtual D3DXMATRIX GetMatrix() override;
+	virtual void SetWorld(const D3DXMATRIX* parent = NULL) const override;
+	virtual D3DXMATRIX GetMatrix() const override;
 };
 
 #endif

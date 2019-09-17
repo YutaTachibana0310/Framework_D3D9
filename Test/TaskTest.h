@@ -15,7 +15,7 @@
 /**************************************
 前方宣言
 ***************************************/
-class TaskInterface;
+class TaskHandle;
 /**************************************
 マクロ・列挙子定義
 ***************************************/
@@ -34,8 +34,8 @@ public:
 private:
 	class TestUnit {
 	public:
-		std::unique_ptr<TaskInterface> periodicTask;
-		std::unique_ptr<TaskInterface> delayedTask;
+		std::unique_ptr<TaskHandle> periodicTask;
+		std::unique_ptr<TaskHandle> delayedTask;
 
 		int numDelay;
 		int numPeriodic;

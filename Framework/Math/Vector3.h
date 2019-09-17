@@ -68,7 +68,12 @@ public:
 	static bool Equal(const D3DXVECTOR3& v1, const D3DXVECTOR3& v2);
 
 	/**************************************
-	//ランダムベクトル生成関数
+	//ベクトルの成分同士をそれぞれ乗算
+	***************************************/
+	static D3DXVECTOR3 Multiply(const D3DXVECTOR3& v1, const D3DXVECTOR3& v2);
+
+	/**************************************
+	//ランダムベクトル生成処理
 	***************************************/
 	static D3DXVECTOR3 Random();
 

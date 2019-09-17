@@ -32,29 +32,29 @@ public:
 	//移動処理
 	virtual void Move(const D3DXVECTOR3& velocity);
 	virtual void SetPosition(const D3DXVECTOR3& position);
-	virtual D3DXVECTOR3 GetPosition();
+	virtual D3DXVECTOR3 GetPosition() const;
 
 	//回転処理
 	virtual void Rotate(float degreeX, float degreeY, float degreeZ);
 	virtual void Rotate(float degree, const D3DXVECTOR3& axis);
 	virtual void SetRotation(const D3DXVECTOR3& rotation);
 	virtual void SetRotation(const D3DXQUATERNION& rotation);
-	virtual D3DXVECTOR3 GetEulerAngle();
-	virtual D3DXQUATERNION GetRotation();
+	virtual D3DXVECTOR3 GetEulerAngle() const;
+	virtual D3DXQUATERNION GetRotation() const;
 
 	//スケール処理
 	virtual void Scale(const D3DXVECTOR3& delta);
 	virtual void SetScale(const D3DXVECTOR3& scale);
-	virtual D3DXVECTOR3 GetScale();
+	virtual D3DXVECTOR3 GetScale() const;
 
 	//向き
-	virtual D3DXVECTOR3 Forward();
-	virtual D3DXVECTOR3 Right();
-	virtual D3DXVECTOR3 Up();
+	virtual D3DXVECTOR3 Forward() const;
+	virtual D3DXVECTOR3 Right() const;
+	virtual D3DXVECTOR3 Up() const;
 
 	//ワールド変換設定処理
-	virtual void SetWorld(const D3DXMATRIX* parent = NULL);
-	virtual D3DXMATRIX GetMatrix();
+	virtual void SetWorld(const D3DXMATRIX* parent = NULL) const;
+	virtual D3DXMATRIX GetMatrix() const;
 	
 protected:
 	D3DXVECTOR3 position;	//座標
