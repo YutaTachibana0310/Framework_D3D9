@@ -49,7 +49,8 @@ void MeshContainer::AddRef()
 /**************************************
 コンストラクタ
 ***************************************/
-MeshContainer::MeshContainer()
+MeshContainer::MeshContainer() :
+	cntReference(0)
 {
 	cntReference++;
 }
