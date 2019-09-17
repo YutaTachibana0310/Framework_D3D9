@@ -27,8 +27,8 @@ class ColliderManager : public BaseSingleton<ColliderManager>
 {
 public:
 	//ボックスコライダー作成処理
-	std::shared_ptr<BoxCollider3D> CreateBoxCollider(const std::string& tag, const Transform* transform);
-	std::shared_ptr<BoxCollider3D> CreateBoxCollider(const std::string& tag, const Transform* transform, const D3DXVECTOR3& size);
+	std::shared_ptr<BoxCollider3D> CreateBoxCollider(const std::string& tag, const std::shared_ptr<Transform> transform);
+	std::shared_ptr<BoxCollider3D> CreateBoxCollider(const std::string& tag, const std::shared_ptr<Transform> transform, const D3DXVECTOR3& size);
 
 	//更新処理
 	void CheckCollision();

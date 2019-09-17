@@ -27,9 +27,13 @@ public:
 	void SetActive(bool state);
 	bool IsActive();
 
+	void AddObserver(ColliderObserver* observer);
+	void RemoveObserver(ColliderObserver* observer);
+
 protected:
 	bool active;
 	std::shared_ptr<Transform> refTransform;
+	std::vector<ColliderObserver*> observers;
 };
 
 #endif

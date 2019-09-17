@@ -13,7 +13,7 @@
 /**************************************
 ボックスコライダー作成処理
 ***************************************/
-std::shared_ptr<BoxCollider3D> ColliderManager::CreateBoxCollider(const std::string & tag, const Transform* transform)
+std::shared_ptr<BoxCollider3D> ColliderManager::CreateBoxCollider(const std::string & tag, const std::shared_ptr<Transform> transform)
 {	
 	//コライダーのインスタンス作成
 	std::shared_ptr<BoxCollider3D> ptr = std::make_shared<BoxCollider3D>(tag, transform);
@@ -27,7 +27,7 @@ std::shared_ptr<BoxCollider3D> ColliderManager::CreateBoxCollider(const std::str
 /**************************************
 ボックスコライダー作成処理
 ***************************************/
-std::shared_ptr<BoxCollider3D> ColliderManager::CreateBoxCollider(const std::string & tag, const Transform* transform, const D3DXVECTOR3 & size)
+std::shared_ptr<BoxCollider3D> ColliderManager::CreateBoxCollider(const std::string & tag, const std::shared_ptr<Transform> transform, const D3DXVECTOR3 & size)
 {
 	//コライダーのインスタンス作成
 	std::shared_ptr<BoxCollider3D> ptr = std::make_shared<BoxCollider3D>(tag, transform, size);

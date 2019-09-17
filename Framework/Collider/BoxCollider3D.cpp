@@ -107,8 +107,14 @@ bool BoxCollider3D::CheckCollision(BoxCollider3D& other)
 		return false;
 
 	//�Փ˒ʒm
-	this->observer.OnColliderHit(other.tag);
-	other.observer.OnColliderHit(this->tag);
+	for (auto&& observer : this->observers)
+	{
+		observer->OnColliderHit(other.tag);
+	}
+	for (auto&& observer : other.observers)
+	{
+		observer->OnColliderHit(this->tag);
+	}
 
 	return true;
 }

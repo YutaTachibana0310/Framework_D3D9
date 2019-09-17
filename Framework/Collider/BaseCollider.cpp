@@ -7,6 +7,8 @@
 #include "ColliderObserver.h"
 #include "BaseCollider.h"
 
+#include <algorithm>
+
 /**************************************
 コンストラクタ
 ***************************************/
@@ -38,4 +40,33 @@ void BaseCollider::SetActive(bool state)
 bool BaseCollider::IsActive()
 {
 	return active;
+}
+
+/**************************************
+オブザーバー追加処理
+***************************************/
+void BaseCollider::AddObserver(ColliderObserver * observer)
+{
+	//重複確認
+	auto itr = std::find(observers.begin(), observers.end(), observer);
+
+	if (itr != observers.end())
+		return;
+
+	observers.push_back(observer);
+}
+
+/**************************************
+オブザーバー削除処理
+***************************************/
+void BaseCollider::RemoveObserver(ColliderObserver * observer)
+{
+	//登録確認
+	auto itr = std::find(observers.begin(), observers.end(), observer);
+
+	if (itr == observers.end())
+		return;
+
+	auto newEnd = std::remove(observers.begin(), observers.end(), observer);
+	observers.erase(newEnd, observers.end());
 }
