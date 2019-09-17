@@ -18,7 +18,6 @@ CreateŠÖ”
 MeshContainer* MeshContainer::Create()
 {
 	MeshContainer* ptr = new MeshContainer();
-	ptr->AddRef();
 	return ptr;
 }
 
