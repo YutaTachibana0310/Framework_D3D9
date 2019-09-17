@@ -31,16 +31,18 @@ public:
 	std::shared_ptr<BoxCollider3D> CreateBoxCollider(const std::string& tag, const std::shared_ptr<Transform> transform, const D3DXVECTOR3& size);
 
 	//更新処理
-	void CheckCollision();
+	void Update();
 
 	//クリア処理
 	void Clear();
+
+	//衝突判定
+	void CheckRoundRobin(const std::string& tag1, const std::string& tag2);
 
 private:
 	//ボックスコライダーコンテナ
 	std::unordered_map <std::string, std::list<std::weak_ptr<BoxCollider3D>>> boxColliderMap;
 	
-	void CheckRoundRobin(const std::string& tag1, const std::string& tag2);
 };
 
 #endif

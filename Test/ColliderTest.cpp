@@ -45,7 +45,8 @@ void ColliderTest::Update()
 
 	objectList[0]->Move(D3DXVECTOR3(x, y, z));
 
-	ColliderManager::Instance()->CheckCollision();
+	ColliderManager::Instance()->Update();
+	ColliderManager::Instance()->CheckRoundRobin("Test", "Test");
 }
 
 /**************************************

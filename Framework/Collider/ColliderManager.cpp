@@ -41,7 +41,7 @@ std::shared_ptr<BoxCollider3D> ColliderManager::CreateBoxCollider(const std::str
 /**************************************
 衝突判定処理
 ***************************************/
-void ColliderManager::CheckCollision()
+void ColliderManager::Update()
 {
 	//参照不能なポインタを削除
 	for (auto&& pair : boxColliderMap)
@@ -51,11 +51,6 @@ void ColliderManager::CheckCollision()
 			return ptr.expired();
 		});
 	}
-
-	//NOTE : 以下に各コライダー同士の衝突判定を記述する
-	//例（PlayerコライダーとEnemyコライダーの判定を行う場合）
-	//CheckRoundRobin("Player", "Enemy);
-	CheckRoundRobin("Test", "Test");
 }
 
 /**************************************
@@ -76,6 +71,10 @@ void ColliderManager::Clear()
 void ColliderManager::CheckRoundRobin(const std::string & tag1, const std::string & tag2)
 {
 	//NOTE : この関数の前で参照不能なポインタは削除しているので、寿命・リンク切れは気にしない
+
+	//存在しないタグの場合は早期リターン
+	if (boxColliderMap.count(tag1) == 0 || boxColliderMap.count(tag2) == 0)
+		return;
 
 	for (auto&& ptr1 : boxColliderMap[tag1])
 	{
