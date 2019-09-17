@@ -30,7 +30,8 @@ LPD3DXMESH BoxCollider3D::mesh;
 ***************************************/
 BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Transform> & transform) :
 	BaseCollider(transform),
-	tag(tag)
+	tag(tag),
+	uniqueID(instanceCount)
 {
 	//サイズを適当な大きさに初期化
 	const float InitSize = 10.0;
@@ -39,12 +40,13 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Tran
 	//オフセットを初期化
 	ZeroMemory(&offset, sizeof(offset));
 
+	instanceCount++;
+
 #ifdef BOXCOLLIDER3D_USE_DEBUG
 	//インスタンス数を数えてデバッグ表示用のメッシュを作成
 	if (instanceCount == 0)
 		CreateRenderTool();
 
-	instanceCount++;
 #endif
 }
 
@@ -54,16 +56,17 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Tran
 BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Transform> & transform, const D3DXVECTOR3 & size) :
 	BaseCollider(transform),
 	size(size),
-	tag(tag)
+	tag(tag),
+	uniqueID(instanceCount)
 {
 	//オフセットを初期化
 	ZeroMemory(&offset, sizeof(offset));
 
+	instanceCount++;
 #ifdef BOXCOLLIDER3D_USE_DEBUG
 	if (instanceCount == 0)
 		CreateRenderTool();
 
-	instanceCount++;
 #endif
 }
 
@@ -136,11 +139,19 @@ void BoxCollider3D::SetOffset(const D3DXVECTOR3 offset)
 }
 
 /**************************************
+ユニークID取得
+***************************************/
+unsigned BoxCollider3D::GetUniqueID() const
+{
+	return uniqueID;
+}
+
+#ifdef BOXCOLLIDER3D_USE_DEBUG
+/**************************************
 描画マテリアル作成処理
 ***************************************/
 void BoxCollider3D::CreateRenderTool()
 {
-#ifdef BOXCOLLIDER3D_USE_DEBUG
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
 	//キューブメッシュ作成
@@ -161,8 +172,8 @@ void BoxCollider3D::CreateRenderTool()
 	material.Specular.a = 1.0f;
 	material.Emissive.r = 1.0f;
 	material.Emissive.a = 1.0f;
-#endif
 }
+#endif
 
 /**************************************
 描画処理

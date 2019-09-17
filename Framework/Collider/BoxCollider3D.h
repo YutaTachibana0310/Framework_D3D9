@@ -29,6 +29,9 @@ public:
 	void SetSize(const D3DXVECTOR3 size);
 	void SetOffset(const D3DXVECTOR3 offset);
 
+	//ID取得
+	unsigned GetUniqueID() const;
+
 	//デバッグ表示
 	void Draw();
 
@@ -36,6 +39,7 @@ private:
 	std::string tag;
 	D3DXVECTOR3 size;		//サイズ
 	D3DXVECTOR3 offset;		//オフセット
+	unsigned uniqueID;		//ユニークID
 
 	static UINT instanceCount;		//インスタンスカウント
 #ifdef BOXCOLLIDER3D_USE_DEBUG
