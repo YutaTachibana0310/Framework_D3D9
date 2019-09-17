@@ -1,0 +1,711 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: GameObject クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_game_object.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="#friends">フレンド</a> &#124;
+<a href="class_game_object-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">GameObject クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_game_object_8h_source.html">GameObject.h</a>&gt;</code></p>
+<div class="dynheader">
+GameObject の継承関係図</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_game_object.png" usemap="#GameObject_map" alt=""/>
+  <map id="GameObject_map" name="GameObject_map">
+<area href="class_base_emitter.html" alt="BaseEmitter" shape="rect" coords="0,56,133,80"/>
+<area href="class_billboard_object.html" alt="BillboardObject" shape="rect" coords="143,56,276,80"/>
+<area href="class_polygon2_d.html" alt="Polygon2D" shape="rect" coords="286,56,419,80"/>
+<area href="class_transform_object.html" alt="TransformObject" shape="rect" coords="429,56,562,80"/>
+<area href="class_base_particle.html" alt="BaseParticle" shape="rect" coords="143,112,276,136"/>
+<area href="class_rotation_hexa.html" alt="RotationHexa" shape="rect" coords="286,112,419,136"/>
+<area href="class_tween_object.html" alt="TweenObject" shape="rect" coords="429,112,562,136"/>
+<area href="class_animation_particle.html" alt="AnimationParticle" shape="rect" coords="0,168,133,192"/>
+<area href="class_asset_1_1_explosion_flare.html" alt="Asset::ExplosionFlare" shape="rect" coords="143,168,276,192"/>
+<area href="class_particle.html" alt="Particle" shape="rect" coords="286,168,419,192"/>
+<area href="class_asset_1_1_explosion_fire.html" alt="Asset::ExplosionFire" shape="rect" coords="0,224,133,248"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a0348e3ee2e83d56eafca7a3547f432c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a0348e3ee2e83d56eafca7a3547f432c4">GameObject</a> ()</td></tr>
+<tr class="separator:a0348e3ee2e83d56eafca7a3547f432c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac36cbe945fb4c3fb4bea5f03bc5822d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ac36cbe945fb4c3fb4bea5f03bc5822d7">GameObject</a> (const <a class="el" href="class_game_object.html">GameObject</a> &amp;gameObject)</td></tr>
+<tr class="separator:ac36cbe945fb4c3fb4bea5f03bc5822d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14495b7b877d60c79c7223052902d468"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a14495b7b877d60c79c7223052902d468">GameObject</a> (const <a class="el" href="class_transform.html">Transform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>)</td></tr>
+<tr class="separator:a14495b7b877d60c79c7223052902d468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd317550f0c8358c27da7a358b33a89"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a2bd317550f0c8358c27da7a358b33a89">GameObject</a> (const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:a2bd317550f0c8358c27da7a358b33a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e64b8d9ebea6ce23e2c8f5ea514a62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#aa6e64b8d9ebea6ce23e2c8f5ea514a62">GameObject</a> (const <a class="el" href="class_transform.html">Transform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>, const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:aa6e64b8d9ebea6ce23e2c8f5ea514a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4af1c776194503e71c574b256e5e2b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab4af1c776194503e71c574b256e5e2b9">GameObject</a> (<a class="el" href="class_transform.html">Transform</a> *<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>)</td></tr>
+<tr class="separator:ab4af1c776194503e71c574b256e5e2b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab082f0d17279423ef558777c73405bbc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab082f0d17279423ef558777c73405bbc">GameObject</a> (<a class="el" href="class_transform.html">Transform</a> *tranfsorm, const bool &amp;<a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:ab082f0d17279423ef558777c73405bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab82dfdb656f9051c0587e6593b2dda97"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab82dfdb656f9051c0587e6593b2dda97">~GameObject</a> ()</td></tr>
+<tr class="separator:ab82dfdb656f9051c0587e6593b2dda97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e1dc922ef5e0dff89e148d35ac6b002"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a2e1dc922ef5e0dff89e148d35ac6b002">operator=</a> (const <a class="el" href="class_game_object.html">GameObject</a> &amp;)</td></tr>
+<tr class="separator:a2e1dc922ef5e0dff89e148d35ac6b002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ba5344daef13d4146bcf5fe82689f5e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a9ba5344daef13d4146bcf5fe82689f5e">IsActive</a> () const</td></tr>
+<tr class="separator:a9ba5344daef13d4146bcf5fe82689f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab404a95de157896426dbe0a419d0a40d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ab404a95de157896426dbe0a419d0a40d">SetActive</a> (bool <a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a>)</td></tr>
+<tr class="separator:ab404a95de157896426dbe0a419d0a40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2e1692ba1bf334faf2c22aea93cbac2"><td class="memItemLeft" align="right" valign="top">virtual D3DXVECTOR3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ae2e1692ba1bf334faf2c22aea93cbac2">GetPosition</a> () const</td></tr>
+<tr class="separator:ae2e1692ba1bf334faf2c22aea93cbac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6422e8f92c28400dfbd988ab124228fb"><td class="memItemLeft" align="right" valign="top">virtual D3DXVECTOR3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a6422e8f92c28400dfbd988ab124228fb">GetRotation</a> () const</td></tr>
+<tr class="separator:a6422e8f92c28400dfbd988ab124228fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd5684671b6c813b4ad69426cbbefe2b"><td class="memItemLeft" align="right" valign="top">virtual D3DXVECTOR3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#afd5684671b6c813b4ad69426cbbefe2b">GetScale</a> () const</td></tr>
+<tr class="separator:afd5684671b6c813b4ad69426cbbefe2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a844f20c44a7ee83d33cd1e52cf38e418"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_transform.html">Transform</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a844f20c44a7ee83d33cd1e52cf38e418">GetTransform</a> () const</td></tr>
+<tr class="separator:a844f20c44a7ee83d33cd1e52cf38e418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdabeabb5e362d959fb09801f5f232fd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#afdabeabb5e362d959fb09801f5f232fd">SetPosition</a> (const D3DXVECTOR3 &amp;position)</td></tr>
+<tr class="separator:afdabeabb5e362d959fb09801f5f232fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac51f2bc534bfb49e5d0f5ad3c389bb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a1ac51f2bc534bfb49e5d0f5ad3c389bb">SetRotatition</a> (const D3DXVECTOR3 &amp;rotation)</td></tr>
+<tr class="separator:a1ac51f2bc534bfb49e5d0f5ad3c389bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4322b8deb5add999e460bb708e5c02c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#ac4322b8deb5add999e460bb708e5c02c">SetScale</a> (const D3DXVECTOR3 &amp;scale)</td></tr>
+<tr class="separator:ac4322b8deb5add999e460bb708e5c02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa1842e6bcd14add28cb71347d6ca5d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a0aa1842e6bcd14add28cb71347d6ca5d">SetTransform</a> (const <a class="el" href="class_transform.html">Transform</a> &amp;<a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a>)</td></tr>
+<tr class="separator:a0aa1842e6bcd14add28cb71347d6ca5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:afa3bf48882a927f94a6d922045a435e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#afa3bf48882a927f94a6d922045a435e0">active</a></td></tr>
+<tr class="separator:afa3bf48882a927f94a6d922045a435e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a7c9950456393d9860c1ba04279ea3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_transform.html">Transform</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#af9a7c9950456393d9860c1ba04279ea3">transform</a></td></tr>
+<tr class="separator:af9a7c9950456393d9860c1ba04279ea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:a5fdead15b2fb649732e6010da12df65a"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_object.html#a5fdead15b2fb649732e6010da12df65a">Tween</a></td></tr>
+<tr class="separator:a5fdead15b2fb649732e6010da12df65a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="a0348e3ee2e83d56eafca7a3547f432c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0348e3ee2e83d56eafca7a3547f432c4">&#9670;&nbsp;</a></span>GameObject() <span class="overload">[1/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::GameObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac36cbe945fb4c3fb4bea5f03bc5822d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac36cbe945fb4c3fb4bea5f03bc5822d7">&#9670;&nbsp;</a></span>GameObject() <span class="overload">[2/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::GameObject </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a14495b7b877d60c79c7223052902d468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14495b7b877d60c79c7223052902d468">&#9670;&nbsp;</a></span>GameObject() <span class="overload">[3/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::GameObject </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td>
+          <td class="paramname"><em>transform</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2bd317550f0c8358c27da7a358b33a89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd317550f0c8358c27da7a358b33a89">&#9670;&nbsp;</a></span>GameObject() <span class="overload">[4/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::GameObject </td>
+          <td>(</td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>active</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6e64b8d9ebea6ce23e2c8f5ea514a62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e64b8d9ebea6ce23e2c8f5ea514a62">&#9670;&nbsp;</a></span>GameObject() <span class="overload">[5/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::GameObject </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td>
+          <td class="paramname"><em>transform</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>active</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab4af1c776194503e71c574b256e5e2b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4af1c776194503e71c574b256e5e2b9">&#9670;&nbsp;</a></span>GameObject() <span class="overload">[6/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::GameObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_transform.html">Transform</a> *&#160;</td>
+          <td class="paramname"><em>transform</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab082f0d17279423ef558777c73405bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab082f0d17279423ef558777c73405bbc">&#9670;&nbsp;</a></span>GameObject() <span class="overload">[7/7]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::GameObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_transform.html">Transform</a> *&#160;</td>
+          <td class="paramname"><em>tranfsorm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool &amp;&#160;</td>
+          <td class="paramname"><em>active</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab82dfdb656f9051c0587e6593b2dda97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab82dfdb656f9051c0587e6593b2dda97">&#9670;&nbsp;</a></span>~GameObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject::~GameObject </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ae2e1692ba1bf334faf2c22aea93cbac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2e1692ba1bf334faf2c22aea93cbac2">&#9670;&nbsp;</a></span>GetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3DXVECTOR3 GameObject::GetPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6422e8f92c28400dfbd988ab124228fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6422e8f92c28400dfbd988ab124228fb">&#9670;&nbsp;</a></span>GetRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3DXVECTOR3 GameObject::GetRotation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afd5684671b6c813b4ad69426cbbefe2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd5684671b6c813b4ad69426cbbefe2b">&#9670;&nbsp;</a></span>GetScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">D3DXVECTOR3 GameObject::GetScale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a844f20c44a7ee83d33cd1e52cf38e418"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a844f20c44a7ee83d33cd1e52cf38e418">&#9670;&nbsp;</a></span>GetTransform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_transform.html">Transform</a> GameObject::GetTransform </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9ba5344daef13d4146bcf5fe82689f5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ba5344daef13d4146bcf5fe82689f5e">&#9670;&nbsp;</a></span>IsActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameObject::IsActive </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_base_particle.html#a646f6bd3bf6a1511893b701be55092f3">BaseParticle</a>, <a class="el" href="class_base_emitter.html#afd6104f413f6353faaa4e799b0916eb9">BaseEmitter</a>で再実装されています。</p>
+
+</div>
+</div>
+<a id="a2e1dc922ef5e0dff89e148d35ac6b002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e1dc922ef5e0dff89e148d35ac6b002">&#9670;&nbsp;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_game_object.html">GameObject</a> &amp; GameObject::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab404a95de157896426dbe0a419d0a40d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab404a95de157896426dbe0a419d0a40d">&#9670;&nbsp;</a></span>SetActive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject::SetActive </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>active</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdabeabb5e362d959fb09801f5f232fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdabeabb5e362d959fb09801f5f232fd">&#9670;&nbsp;</a></span>SetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ac51f2bc534bfb49e5d0f5ad3c389bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac51f2bc534bfb49e5d0f5ad3c389bb">&#9670;&nbsp;</a></span>SetRotatition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject::SetRotatition </td>
+          <td>(</td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>rotation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac4322b8deb5add999e460bb708e5c02c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4322b8deb5add999e460bb708e5c02c">&#9670;&nbsp;</a></span>SetScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject::SetScale </td>
+          <td>(</td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0aa1842e6bcd14add28cb71347d6ca5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aa1842e6bcd14add28cb71347d6ca5d">&#9670;&nbsp;</a></span>SetTransform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameObject::SetTransform </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_transform.html">Transform</a> &amp;&#160;</td>
+          <td class="paramname"><em>transform</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">フレンドと関連関数の詳解</h2>
+<a id="a5fdead15b2fb649732e6010da12df65a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fdead15b2fb649732e6010da12df65a">&#9670;&nbsp;</a></span>Tween</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_tween.html">Tween</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="afa3bf48882a927f94a6d922045a435e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa3bf48882a927f94a6d922045a435e0">&#9670;&nbsp;</a></span>active</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool GameObject::active</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9a7c9950456393d9860c1ba04279ea3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a7c9950456393d9860c1ba04279ea3">&#9670;&nbsp;</a></span>transform</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_transform.html">Transform</a>&gt; GameObject::transform</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Core/<a class="el" href="_game_object_8h_source.html">GameObject.h</a></li>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Core/<a class="el" href="_game_object_8cpp.html">GameObject.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_game_object.html">GameObject</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

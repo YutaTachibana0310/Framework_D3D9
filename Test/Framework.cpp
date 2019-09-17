@@ -30,7 +30,7 @@ Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 	sceneManager->Add("Task", new TaskTest());
 	sceneManager->Add("Collider", new ColliderTest());
 
-	sceneManager->ChangeScene("Easing");
+	sceneManager->ChangeScene("Particle");
 }
 
 /**************************************

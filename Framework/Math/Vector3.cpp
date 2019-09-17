@@ -117,6 +117,9 @@ bool Vector3::Equal(const D3DXVECTOR3 & v1, const D3DXVECTOR3 & v2)
 	return true;
 }
 
+/**************************************
+ランダムベクトル生成処理
+***************************************/
 D3DXVECTOR3 Vector3::Multiply(const D3DXVECTOR3 & v1, const D3DXVECTOR3 & v2)
 {
 	D3DXVECTOR3 out;
@@ -125,5 +128,20 @@ D3DXVECTOR3 Vector3::Multiply(const D3DXVECTOR3 & v1, const D3DXVECTOR3 & v2)
 	out.y = v1.y * v2.y;
 	out.z = v1.z * v2.z;
 
+	return out;
+}
+
+/**************************************
+ランダムベクトル生成処理
+***************************************/
+D3DXVECTOR3 Vector3::Random()
+{
+	D3DXVECTOR3 out;
+	out.x = Math::RandomRange(-1.0f, 1.0f);
+	out.y = Math::RandomRange(-1.0f, 1.0f);
+	out.z = Math::RandomRange(-1.0f, 1.0f);
+	
+	D3DXVec3Normalize(&out, &out);
+	
 	return out;
 }

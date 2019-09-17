@@ -51,6 +51,16 @@ BaseParticle::BaseParticle(int lifeMin, int lifeMax) :
 }
 
 /**************************************
+コンストラクタ
+***************************************/
+BaseParticle::BaseParticle(float u, float v, int lifeMin, int lifeMax) :
+	BillboardObject(false),
+	uv(ParticleUV(u, v)),
+	lifeFrame(Math::RandomRange(lifeMin, lifeMax))
+{
+}
+
+/**************************************
 デストラクタ
 ***************************************/
 BaseParticle::~BaseParticle()

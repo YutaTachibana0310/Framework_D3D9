@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/PostEffect/CrossFilterController.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_cross_filter_controller_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CrossFilterController.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_cross_filter_controller_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//クロスフィルタコントローラヘッダ[CrossFilterController.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _CROSSFILTERCONTROLLER_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _CROSSFILTERCONTROLLER_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../Pattern/BaseSingleton.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_base_effect_controller_8h.html">BaseEffectController.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_bloom_filter_8h.html">Effect/BloomFilter.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_cross_blur_filter_8h.html">Effect/CrossBlurFilter.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">マクロ定義</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html">   21</a></span>&#160;<span class="comment">クラス定義</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">class </span><a class="code" href="class_cross_filter_controller.html">CrossFilterController</a> : <span class="keyword">public</span> <a class="code" href="class_base_singleton.html">BaseSingleton</a>&lt;CrossFilterController&gt;, <span class="keyword">public</span> <a class="code" href="class_base_effect_controller.html">BaseEffectController</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#ac663197a7f3122f27e4d000e39f02b02">   26</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_base_singleton.html">BaseSingleton</a>&lt;<a class="code" href="class_cross_filter_controller.html">CrossFilterController</a>&gt;;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cross_filter_controller.html#ad1e0400a3cc8f0d1df62d08f2cd64f25">Update</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cross_filter_controller.html#adc1856b6277001fd8bbd70cd9403ee3a">Draw</a>(LPDIRECT3DTEXTURE9 targetTexture = NULL);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="class_cross_filter_controller.html#a7f1b112c62e54014cb32e753c33c8389">CrossFilterController</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="class_cross_filter_controller.html#aaa802f20c583e78ffae47623cd24373f">~CrossFilterController</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cross_filter_controller.html#ad149a31e2eb5ea904e25898eb81e4731">SampleBrightness</a>(LPDIRECT3DTEXTURE9 targetTexture);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cross_filter_controller.html#aba4e31a1d5b6fd6648eccee5b03fd39e">ProcessBlur</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_cross_filter_controller.html#aeaada9338f6274f3f010563ec98ffb14">Blend</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#a2fcba7f3f1e30d18c40b54b78ffc9d29">   39</a></span>&#160;    <a class="code" href="class_bloom_filter.html">BloomFilter</a> *<a class="code" href="class_cross_filter_controller.html#a2fcba7f3f1e30d18c40b54b78ffc9d29">bloomFilter</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#ab822b3d6999617a2b7c043fc4ca67f4f">   40</a></span>&#160;    <a class="code" href="class_cross_blur_filter.html">CrossBlurFilter</a> *<a class="code" href="class_cross_filter_controller.html#ab822b3d6999617a2b7c043fc4ca67f4f">blurFilter</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#a0fbc3ce177fa8d1fc15e02671b505bce">   42</a></span>&#160;    LPDIRECT3DTEXTURE9 <a class="code" href="class_cross_filter_controller.html#a0fbc3ce177fa8d1fc15e02671b505bce">blurTexture</a>[3][2];</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#ae42c4d584f031379d0914b44b0aedabb">   43</a></span>&#160;    LPDIRECT3DSURFACE9 <a class="code" href="class_cross_filter_controller.html#ae42c4d584f031379d0914b44b0aedabb">blurSurface</a>[3][2];</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#ab7689ac7cde0dfc1e2045077834e01aa">   45</a></span>&#160;    LPDIRECT3DTEXTURE9 <a class="code" href="class_cross_filter_controller.html#ab7689ac7cde0dfc1e2045077834e01aa">sampleTexture</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#af3142524497d9a4f8626e4ea30931c4c">   46</a></span>&#160;    LPDIRECT3DSURFACE9 <a class="code" href="class_cross_filter_controller.html#af3142524497d9a4f8626e4ea30931c4c">sampleSurface</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#a39c87bdd7045cd4f548ae1aceb41a6d3">   48</a></span>&#160;    D3DVIEWPORT9 <a class="code" href="class_cross_filter_controller.html#a39c87bdd7045cd4f548ae1aceb41a6d3">blurViewPort</a>[3];</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#a71f89f09d2a1473d6a627eda52bbf6f7">   49</a></span>&#160;    D3DVIEWPORT9 <a class="code" href="class_cross_filter_controller.html#a71f89f09d2a1473d6a627eda52bbf6f7">oldViewPort</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_cross_filter_controller.html#a7d2b76b07a259246de68e4a615d52566">   51</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_cross_filter_controller.html#a7d2b76b07a259246de68e4a615d52566">cntBlur</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_cross_filter_controller_html_ab822b3d6999617a2b7c043fc4ca67f4f"><div class="ttname"><a href="class_cross_filter_controller.html#ab822b3d6999617a2b7c043fc4ca67f4f">CrossFilterController::blurFilter</a></div><div class="ttdeci">CrossBlurFilter * blurFilter</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:40</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_adc1856b6277001fd8bbd70cd9403ee3a"><div class="ttname"><a href="class_cross_filter_controller.html#adc1856b6277001fd8bbd70cd9403ee3a">CrossFilterController::Draw</a></div><div class="ttdeci">void Draw(LPDIRECT3DTEXTURE9 targetTexture=NULL)</div><div class="ttdef"><b>Definition:</b> CrossFilterController.cpp:28</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_aeaada9338f6274f3f010563ec98ffb14"><div class="ttname"><a href="class_cross_filter_controller.html#aeaada9338f6274f3f010563ec98ffb14">CrossFilterController::Blend</a></div><div class="ttdeci">void Blend()</div><div class="ttdef"><b>Definition:</b> CrossFilterController.cpp:216</div></div>
+<div class="ttc" id="aclass_base_singleton_html"><div class="ttname"><a href="class_base_singleton.html">BaseSingleton</a></div><div class="ttdef"><b>Definition:</b> BaseSingleton.h:16</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_a7f1b112c62e54014cb32e753c33c8389"><div class="ttname"><a href="class_cross_filter_controller.html#a7f1b112c62e54014cb32e753c33c8389">CrossFilterController::CrossFilterController</a></div><div class="ttdeci">CrossFilterController()</div><div class="ttdef"><b>Definition:</b> CrossFilterController.cpp:71</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_aaa802f20c583e78ffae47623cd24373f"><div class="ttname"><a href="class_cross_filter_controller.html#aaa802f20c583e78ffae47623cd24373f">CrossFilterController::~CrossFilterController</a></div><div class="ttdeci">~CrossFilterController()</div><div class="ttdef"><b>Definition:</b> CrossFilterController.cpp:126</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_af3142524497d9a4f8626e4ea30931c4c"><div class="ttname"><a href="class_cross_filter_controller.html#af3142524497d9a4f8626e4ea30931c4c">CrossFilterController::sampleSurface</a></div><div class="ttdeci">LPDIRECT3DSURFACE9 sampleSurface</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:46</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_a7d2b76b07a259246de68e4a615d52566"><div class="ttname"><a href="class_cross_filter_controller.html#a7d2b76b07a259246de68e4a615d52566">CrossFilterController::cntBlur</a></div><div class="ttdeci">int cntBlur</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:51</div></div>
+<div class="ttc" id="aclass_base_effect_controller_html"><div class="ttname"><a href="class_base_effect_controller.html">BaseEffectController</a></div><div class="ttdef"><b>Definition:</b> BaseEffectController.h:17</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_aba4e31a1d5b6fd6648eccee5b03fd39e"><div class="ttname"><a href="class_cross_filter_controller.html#aba4e31a1d5b6fd6648eccee5b03fd39e">CrossFilterController::ProcessBlur</a></div><div class="ttdeci">void ProcessBlur()</div><div class="ttdef"><b>Definition:</b> CrossFilterController.cpp:179</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_ae42c4d584f031379d0914b44b0aedabb"><div class="ttname"><a href="class_cross_filter_controller.html#ae42c4d584f031379d0914b44b0aedabb">CrossFilterController::blurSurface</a></div><div class="ttdeci">LPDIRECT3DSURFACE9 blurSurface[3][2]</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:43</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_a71f89f09d2a1473d6a627eda52bbf6f7"><div class="ttname"><a href="class_cross_filter_controller.html#a71f89f09d2a1473d6a627eda52bbf6f7">CrossFilterController::oldViewPort</a></div><div class="ttdeci">D3DVIEWPORT9 oldViewPort</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:49</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_ab7689ac7cde0dfc1e2045077834e01aa"><div class="ttname"><a href="class_cross_filter_controller.html#ab7689ac7cde0dfc1e2045077834e01aa">CrossFilterController::sampleTexture</a></div><div class="ttdeci">LPDIRECT3DTEXTURE9 sampleTexture</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:45</div></div>
+<div class="ttc" id="aclass_bloom_filter_html"><div class="ttname"><a href="class_bloom_filter.html">BloomFilter</a></div><div class="ttdef"><b>Definition:</b> BloomFilter.h:18</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html"><div class="ttname"><a href="class_cross_filter_controller.html">CrossFilterController</a></div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:21</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_ad1e0400a3cc8f0d1df62d08f2cd64f25"><div class="ttname"><a href="class_cross_filter_controller.html#ad1e0400a3cc8f0d1df62d08f2cd64f25">CrossFilterController::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> CrossFilterController.cpp:21</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_ad149a31e2eb5ea904e25898eb81e4731"><div class="ttname"><a href="class_cross_filter_controller.html#ad149a31e2eb5ea904e25898eb81e4731">CrossFilterController::SampleBrightness</a></div><div class="ttdeci">void SampleBrightness(LPDIRECT3DTEXTURE9 targetTexture)</div><div class="ttdef"><b>Definition:</b> CrossFilterController.cpp:146</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_a0fbc3ce177fa8d1fc15e02671b505bce"><div class="ttname"><a href="class_cross_filter_controller.html#a0fbc3ce177fa8d1fc15e02671b505bce">CrossFilterController::blurTexture</a></div><div class="ttdeci">LPDIRECT3DTEXTURE9 blurTexture[3][2]</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:42</div></div>
+<div class="ttc" id="aclass_cross_blur_filter_html"><div class="ttname"><a href="class_cross_blur_filter.html">CrossBlurFilter</a></div><div class="ttdef"><b>Definition:</b> CrossBlurFilter.h:18</div></div>
+<div class="ttc" id="a_cross_blur_filter_8h_html"><div class="ttname"><a href="_cross_blur_filter_8h.html">CrossBlurFilter.h</a></div></div>
+<div class="ttc" id="a_bloom_filter_8h_html"><div class="ttname"><a href="_bloom_filter_8h.html">BloomFilter.h</a></div></div>
+<div class="ttc" id="a_base_effect_controller_8h_html"><div class="ttname"><a href="_base_effect_controller_8h.html">BaseEffectController.h</a></div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_a2fcba7f3f1e30d18c40b54b78ffc9d29"><div class="ttname"><a href="class_cross_filter_controller.html#a2fcba7f3f1e30d18c40b54b78ffc9d29">CrossFilterController::bloomFilter</a></div><div class="ttdeci">BloomFilter * bloomFilter</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:39</div></div>
+<div class="ttc" id="aclass_cross_filter_controller_html_a39c87bdd7045cd4f548ae1aceb41a6d3"><div class="ttname"><a href="class_cross_filter_controller.html#a39c87bdd7045cd4f548ae1aceb41a6d3">CrossFilterController::blurViewPort</a></div><div class="ttdeci">D3DVIEWPORT9 blurViewPort[3]</div><div class="ttdef"><b>Definition:</b> CrossFilterController.h:48</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_ca677be376d6d5fd5b6ec528acdfc0bd.html">PostEffect</a></li><li class="navelem"><a class="el" href="_cross_filter_controller_8h.html">CrossFilterController.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

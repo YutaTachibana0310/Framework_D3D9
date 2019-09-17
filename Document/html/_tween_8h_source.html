@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/Tween/Tween.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_tween_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Tween.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_tween_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//トゥイーンヘッダ[Transformween.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _TWEEN_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _TWEEN_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../Math/Easing.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../Core/Transform.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">前方宣言</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">マクロ・列挙子定義</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_tween.html">   27</a></span>&#160;<span class="comment">クラス定義</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">class </span><a class="code" href="class_tween.html">Tween</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_tween.html#ac1217f37f9e2b12334b00e44c67a643d">   32</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_base_game.html">BaseGame</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_tween.html#a8567720f5b86865ae95465d2e4b21058">Move</a>(<a class="code" href="class_game_object.html">GameObject</a>&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; start, <span class="keyword">const</span> D3DXVECTOR3&amp; end, <span class="keywordtype">int</span> duration, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_tween.html#a8567720f5b86865ae95465d2e4b21058">Move</a>(<a class="code" href="class_game_object.html">GameObject</a>&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; end, <span class="keywordtype">int</span> duratino, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_tween.html#ad2cc4492e3861973c442e7cba6a75169">Scale</a>(<a class="code" href="class_game_object.html">GameObject</a>&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; start, <span class="keyword">const</span> D3DXVECTOR3&amp; end, <span class="keywordtype">int</span> duration, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_tween.html#ad2cc4492e3861973c442e7cba6a75169">Scale</a>(<a class="code" href="class_game_object.html">GameObject</a>&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; end, <span class="keywordtype">int</span> duration, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_tween.html#a4a7e0207afc6025231ab543f1b67f7de">Rotate</a>(<a class="code" href="class_game_object.html">GameObject</a>&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; start, <span class="keyword">const</span> D3DXVECTOR3&amp; end, <span class="keywordtype">int</span> duration, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_tween.html#a4a7e0207afc6025231ab543f1b67f7de">Rotate</a>(<a class="code" href="class_game_object.html">GameObject</a>&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; end, <span class="keywordtype">int</span> duration, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_tween.html#ac0d65be5e8e26c3bf2a9b25b630efc4a">Update</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_tween.html#a15caa99746276101a3ab620f307b0fc2">ClearContainer</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_tween.html#ab4ea8abf9499d280b4e30491586f9baa">   47</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_tween_1_1_tweener.html">Tweener</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    std::list&lt;Tween::Tweener*&gt; <a class="code" href="class_tween.html#ab4ea8abf9499d280b4e30491586f9baa">tweenerContainer</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_tween.html#aa9d9c9674324f3728808b4e38062729e">   50</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="class_tween.html">Tween</a>* <a class="code" href="class_tween.html#aa9d9c9674324f3728808b4e38062729e">mInstance</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_tween.html#a480c72d8d10827a2e21dfe177372dac8">Tween</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="class_tween.html#ac561b7c2d24fb5d6045ebd62290f0cba">~Tween</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_tween_1_1_tweener.html">   54</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_tween_1_1_tweener.html">Tweener</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="class_tween_1_1_tweener.html#a80761ed9ad6a2c9f71a60bb5235d43d2">Tweener</a>(std::shared_ptr&lt;Transform&gt;&amp; ref, <span class="keywordtype">int</span> <a class="code" href="class_tween_1_1_tweener.html#a45d90e5f0a4b919eaa778e341d0ec09b">duration</a>, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> <a class="code" href="class_tween_1_1_tweener.html#afcf42221d469ad481b233638a5799d45">type</a>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_tween_1_1_tweener.html#afda3fab938b17295201db91a7c3f9124">~Tweener</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="class_tween_1_1_tweener.html#a8e0c84b5977b83e026b358dfd94809f9">IsFinished</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tween_1_1_tweener.html#aea6fb264889b12cb2a3628bf598c724e">Update</a>() = 0;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_tween_1_1_tweener.html#aaac4c5ebab8774cbd1d9a5efa525f70f">   63</a></span>&#160;        std::weak_ptr&lt;Transform&gt; <a class="code" href="class_tween_1_1_tweener.html#aaac4c5ebab8774cbd1d9a5efa525f70f">reference</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_tween_1_1_tweener.html#a3604dbfc4c65c15556e1383609714df4">   64</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_tween_1_1_tweener.html#a3604dbfc4c65c15556e1383609714df4">cntFrame</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_tween_1_1_tweener.html#a45d90e5f0a4b919eaa778e341d0ec09b">   65</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_tween_1_1_tweener.html#a45d90e5f0a4b919eaa778e341d0ec09b">duration</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_tween_1_1_tweener.html#afcf42221d469ad481b233638a5799d45">   66</a></span>&#160;        <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> <a class="code" href="class_tween_1_1_tweener.html#afcf42221d469ad481b233638a5799d45">type</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    };</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="class_tween_1_1_move_tweener.html">   69</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_tween_1_1_move_tweener.html">MoveTweener</a> : <span class="keyword">public</span> <a class="code" href="class_tween_1_1_tweener.html">Tweener</a></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="class_tween_1_1_move_tweener.html#ab109f624984ddbd168e91905746f45d3">MoveTweener</a>(std::shared_ptr&lt;Transform&gt;&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; <a class="code" href="class_tween_1_1_move_tweener.html#a9ce2fa38e02c08085e8771daa6667e0e">start</a>, <span class="keyword">const</span> D3DXVECTOR3&amp; <a class="code" href="class_tween_1_1_move_tweener.html#a1ee18d3e869ea4fce18074ebbcab979a">end</a>, <span class="keywordtype">int</span> <a class="code" href="class_tween_1_1_tweener.html#a45d90e5f0a4b919eaa778e341d0ec09b">duration</a>, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> <a class="code" href="class_tween_1_1_tweener.html#afcf42221d469ad481b233638a5799d45">type</a>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_tween_1_1_move_tweener.html#a29e8517860f756690614caead5b591a0">Update</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_tween_1_1_move_tweener.html#a9ce2fa38e02c08085e8771daa6667e0e">   76</a></span>&#160;        D3DXVECTOR3 <a class="code" href="class_tween_1_1_move_tweener.html#a9ce2fa38e02c08085e8771daa6667e0e">start</a>, <a class="code" href="class_tween_1_1_move_tweener.html#a1ee18d3e869ea4fce18074ebbcab979a">end</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    };</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_tween_1_1_scale_tweener.html">   79</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_tween_1_1_scale_tweener.html">ScaleTweener</a> : <span class="keyword">public</span> <a class="code" href="class_tween_1_1_tweener.html">Tweener</a></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="class_tween_1_1_scale_tweener.html#ab80c5fa257004ac9ae20ec73e9b8ccb4">ScaleTweener</a>(std::shared_ptr&lt;Transform&gt;&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; <a class="code" href="class_tween_1_1_scale_tweener.html#a8c44c0bba001e221d6128a17d442bed7">start</a>, <span class="keyword">const</span> D3DXVECTOR3&amp; <a class="code" href="class_tween_1_1_scale_tweener.html#a5d89266f69ccc31b71d9098a4392292c">end</a>, <span class="keywordtype">int</span> <a class="code" href="class_tween_1_1_tweener.html#a45d90e5f0a4b919eaa778e341d0ec09b">duration</a>, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> <a class="code" href="class_tween_1_1_tweener.html#afcf42221d469ad481b233638a5799d45">type</a>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_tween_1_1_scale_tweener.html#a32a699d98e46f20f4c1dfe865a4b7bae">Update</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="class_tween_1_1_scale_tweener.html#a8c44c0bba001e221d6128a17d442bed7">   86</a></span>&#160;        D3DXVECTOR3 <a class="code" href="class_tween_1_1_scale_tweener.html#a8c44c0bba001e221d6128a17d442bed7">start</a>, <a class="code" href="class_tween_1_1_scale_tweener.html#a5d89266f69ccc31b71d9098a4392292c">end</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    };</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_tween_1_1_rotate_tweener.html">   89</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_tween_1_1_rotate_tweener.html">RotateTweener</a> : <span class="keyword">public</span> <a class="code" href="class_tween_1_1_tweener.html">Tweener</a></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="class_tween_1_1_rotate_tweener.html#a6b485eb1c97f4d4cbeace409bd1060e4">RotateTweener</a>(std::shared_ptr&lt;Transform&gt;&amp; ref, <span class="keyword">const</span> D3DXVECTOR3&amp; <a class="code" href="class_tween_1_1_rotate_tweener.html#a94109cd3d93c405c63d3068bbb663205">start</a>, <span class="keyword">const</span> D3DXVECTOR3&amp; <a class="code" href="class_tween_1_1_rotate_tweener.html#a5d445d13b61a552adcf6379ff35cc47d">end</a>, <span class="keywordtype">int</span> <a class="code" href="class_tween_1_1_tweener.html#a45d90e5f0a4b919eaa778e341d0ec09b">duration</a>, <a class="code" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> <a class="code" href="class_tween_1_1_tweener.html#afcf42221d469ad481b233638a5799d45">type</a>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_tween_1_1_rotate_tweener.html#a72172b60120dfc0fd68df9616c72a153">Update</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_tween_1_1_rotate_tweener.html#a94109cd3d93c405c63d3068bbb663205">   96</a></span>&#160;        D3DXQUATERNION <a class="code" href="class_tween_1_1_rotate_tweener.html#a94109cd3d93c405c63d3068bbb663205">start</a>, <a class="code" href="class_tween_1_1_rotate_tweener.html#a5d445d13b61a552adcf6379ff35cc47d">end</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    };</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_tween_1_1_rotate_tweener_html_a5d445d13b61a552adcf6379ff35cc47d"><div class="ttname"><a href="class_tween_1_1_rotate_tweener.html#a5d445d13b61a552adcf6379ff35cc47d">Tween::RotateTweener::end</a></div><div class="ttdeci">D3DXQUATERNION end</div><div class="ttdef"><b>Definition:</b> Tween.h:96</div></div>
+<div class="ttc" id="aclass_tween_1_1_move_tweener_html_a9ce2fa38e02c08085e8771daa6667e0e"><div class="ttname"><a href="class_tween_1_1_move_tweener.html#a9ce2fa38e02c08085e8771daa6667e0e">Tween::MoveTweener::start</a></div><div class="ttdeci">D3DXVECTOR3 start</div><div class="ttdef"><b>Definition:</b> Tween.h:76</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_a80761ed9ad6a2c9f71a60bb5235d43d2"><div class="ttname"><a href="class_tween_1_1_tweener.html#a80761ed9ad6a2c9f71a60bb5235d43d2">Tween::Tweener::Tweener</a></div><div class="ttdeci">Tweener(std::shared_ptr&lt; Transform &gt; &amp;ref, int duration, EaseType type)</div><div class="ttdef"><b>Definition:</b> Tween.cpp:121</div></div>
+<div class="ttc" id="aclass_tween_html_ab4ea8abf9499d280b4e30491586f9baa"><div class="ttname"><a href="class_tween.html#ab4ea8abf9499d280b4e30491586f9baa">Tween::tweenerContainer</a></div><div class="ttdeci">std::list&lt; Tween::Tweener * &gt; tweenerContainer</div><div class="ttdef"><b>Definition:</b> Tween.h:47</div></div>
+<div class="ttc" id="aclass_tween_html_a4a7e0207afc6025231ab543f1b67f7de"><div class="ttname"><a href="class_tween.html#a4a7e0207afc6025231ab543f1b67f7de">Tween::Rotate</a></div><div class="ttdeci">static void Rotate(GameObject &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, EaseType type)</div><div class="ttdef"><b>Definition:</b> Tween.cpp:105</div></div>
+<div class="ttc" id="aclass_tween_1_1_scale_tweener_html_a32a699d98e46f20f4c1dfe865a4b7bae"><div class="ttname"><a href="class_tween_1_1_scale_tweener.html#a32a699d98e46f20f4c1dfe865a4b7bae">Tween::ScaleTweener::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:180</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html"><div class="ttname"><a href="class_tween_1_1_tweener.html">Tween::Tweener</a></div><div class="ttdef"><b>Definition:</b> Tween.h:54</div></div>
+<div class="ttc" id="aclass_tween_html_ac0d65be5e8e26c3bf2a9b25b630efc4a"><div class="ttname"><a href="class_tween.html#ac0d65be5e8e26c3bf2a9b25b630efc4a">Tween::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:43</div></div>
+<div class="ttc" id="aclass_tween_html_ad2cc4492e3861973c442e7cba6a75169"><div class="ttname"><a href="class_tween.html#ad2cc4492e3861973c442e7cba6a75169">Tween::Scale</a></div><div class="ttdeci">static void Scale(GameObject &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, EaseType type)</div><div class="ttdef"><b>Definition:</b> Tween.cpp:89</div></div>
+<div class="ttc" id="aclass_tween_1_1_move_tweener_html_a29e8517860f756690614caead5b591a0"><div class="ttname"><a href="class_tween_1_1_move_tweener.html#a29e8517860f756690614caead5b591a0">Tween::MoveTweener::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:157</div></div>
+<div class="ttc" id="aclass_tween_1_1_rotate_tweener_html_a72172b60120dfc0fd68df9616c72a153"><div class="ttname"><a href="class_tween_1_1_rotate_tweener.html#a72172b60120dfc0fd68df9616c72a153">Tween::RotateTweener::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:203</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_a45d90e5f0a4b919eaa778e341d0ec09b"><div class="ttname"><a href="class_tween_1_1_tweener.html#a45d90e5f0a4b919eaa778e341d0ec09b">Tween::Tweener::duration</a></div><div class="ttdeci">int duration</div><div class="ttdef"><b>Definition:</b> Tween.h:65</div></div>
+<div class="ttc" id="a_easing_8h_html_ab8f6c428f087160deca07d7d402c4934"><div class="ttname"><a href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a></div><div class="ttdeci">EaseType</div><div class="ttdef"><b>Definition:</b> Easing.h:12</div></div>
+<div class="ttc" id="aclass_tween_html"><div class="ttname"><a href="class_tween.html">Tween</a></div><div class="ttdef"><b>Definition:</b> Tween.h:27</div></div>
+<div class="ttc" id="aclass_tween_1_1_rotate_tweener_html"><div class="ttname"><a href="class_tween_1_1_rotate_tweener.html">Tween::RotateTweener</a></div><div class="ttdef"><b>Definition:</b> Tween.h:89</div></div>
+<div class="ttc" id="aclass_tween_1_1_rotate_tweener_html_a6b485eb1c97f4d4cbeace409bd1060e4"><div class="ttname"><a href="class_tween_1_1_rotate_tweener.html#a6b485eb1c97f4d4cbeace409bd1060e4">Tween::RotateTweener::RotateTweener</a></div><div class="ttdeci">RotateTweener(std::shared_ptr&lt; Transform &gt; &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, EaseType type)</div><div class="ttdef"><b>Definition:</b> Tween.cpp:194</div></div>
+<div class="ttc" id="aclass_tween_1_1_scale_tweener_html"><div class="ttname"><a href="class_tween_1_1_scale_tweener.html">Tween::ScaleTweener</a></div><div class="ttdef"><b>Definition:</b> Tween.h:79</div></div>
+<div class="ttc" id="aclass_tween_1_1_scale_tweener_html_a8c44c0bba001e221d6128a17d442bed7"><div class="ttname"><a href="class_tween_1_1_scale_tweener.html#a8c44c0bba001e221d6128a17d442bed7">Tween::ScaleTweener::start</a></div><div class="ttdeci">D3DXVECTOR3 start</div><div class="ttdef"><b>Definition:</b> Tween.h:86</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_aea6fb264889b12cb2a3628bf598c724e"><div class="ttname"><a href="class_tween_1_1_tweener.html#aea6fb264889b12cb2a3628bf598c724e">Tween::Tweener::Update</a></div><div class="ttdeci">virtual void Update()=0</div></div>
+<div class="ttc" id="aclass_tween_html_ac561b7c2d24fb5d6045ebd62290f0cba"><div class="ttname"><a href="class_tween.html#ac561b7c2d24fb5d6045ebd62290f0cba">Tween::~Tween</a></div><div class="ttdeci">~Tween()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:27</div></div>
+<div class="ttc" id="aclass_tween_html_a480c72d8d10827a2e21dfe177372dac8"><div class="ttname"><a href="class_tween.html#a480c72d8d10827a2e21dfe177372dac8">Tween::Tween</a></div><div class="ttdeci">Tween()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:17</div></div>
+<div class="ttc" id="aclass_tween_1_1_move_tweener_html_a1ee18d3e869ea4fce18074ebbcab979a"><div class="ttname"><a href="class_tween_1_1_move_tweener.html#a1ee18d3e869ea4fce18074ebbcab979a">Tween::MoveTweener::end</a></div><div class="ttdeci">D3DXVECTOR3 end</div><div class="ttdef"><b>Definition:</b> Tween.h:76</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_a3604dbfc4c65c15556e1383609714df4"><div class="ttname"><a href="class_tween_1_1_tweener.html#a3604dbfc4c65c15556e1383609714df4">Tween::Tweener::cntFrame</a></div><div class="ttdeci">int cntFrame</div><div class="ttdef"><b>Definition:</b> Tween.h:64</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_a8e0c84b5977b83e026b358dfd94809f9"><div class="ttname"><a href="class_tween_1_1_tweener.html#a8e0c84b5977b83e026b358dfd94809f9">Tween::Tweener::IsFinished</a></div><div class="ttdeci">bool IsFinished()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:138</div></div>
+<div class="ttc" id="aclass_tween_1_1_move_tweener_html"><div class="ttname"><a href="class_tween_1_1_move_tweener.html">Tween::MoveTweener</a></div><div class="ttdef"><b>Definition:</b> Tween.h:69</div></div>
+<div class="ttc" id="aclass_tween_1_1_scale_tweener_html_a5d89266f69ccc31b71d9098a4392292c"><div class="ttname"><a href="class_tween_1_1_scale_tweener.html#a5d89266f69ccc31b71d9098a4392292c">Tween::ScaleTweener::end</a></div><div class="ttdeci">D3DXVECTOR3 end</div><div class="ttdef"><b>Definition:</b> Tween.h:86</div></div>
+<div class="ttc" id="aclass_tween_1_1_move_tweener_html_ab109f624984ddbd168e91905746f45d3"><div class="ttname"><a href="class_tween_1_1_move_tweener.html#ab109f624984ddbd168e91905746f45d3">Tween::MoveTweener::MoveTweener</a></div><div class="ttdeci">MoveTweener(std::shared_ptr&lt; Transform &gt; &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, EaseType type)</div><div class="ttdef"><b>Definition:</b> Tween.cpp:148</div></div>
+<div class="ttc" id="aclass_tween_html_a15caa99746276101a3ab620f307b0fc2"><div class="ttname"><a href="class_tween.html#a15caa99746276101a3ab620f307b0fc2">Tween::ClearContainer</a></div><div class="ttdeci">void ClearContainer()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:55</div></div>
+<div class="ttc" id="aclass_base_game_html"><div class="ttname"><a href="class_base_game.html">BaseGame</a></div><div class="ttdoc">ゲームのコアとなる部分のクラス</div><div class="ttdef"><b>Definition:</b> BaseGame.h:20</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_aaac4c5ebab8774cbd1d9a5efa525f70f"><div class="ttname"><a href="class_tween_1_1_tweener.html#aaac4c5ebab8774cbd1d9a5efa525f70f">Tween::Tweener::reference</a></div><div class="ttdeci">std::weak_ptr&lt; Transform &gt; reference</div><div class="ttdef"><b>Definition:</b> Tween.h:63</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_afda3fab938b17295201db91a7c3f9124"><div class="ttname"><a href="class_tween_1_1_tweener.html#afda3fab938b17295201db91a7c3f9124">Tween::Tweener::~Tweener</a></div><div class="ttdeci">virtual ~Tweener()</div><div class="ttdef"><b>Definition:</b> Tween.cpp:131</div></div>
+<div class="ttc" id="aclass_tween_html_aa9d9c9674324f3728808b4e38062729e"><div class="ttname"><a href="class_tween.html#aa9d9c9674324f3728808b4e38062729e">Tween::mInstance</a></div><div class="ttdeci">static Tween * mInstance</div><div class="ttdef"><b>Definition:</b> Tween.h:50</div></div>
+<div class="ttc" id="aclass_tween_1_1_tweener_html_afcf42221d469ad481b233638a5799d45"><div class="ttname"><a href="class_tween_1_1_tweener.html#afcf42221d469ad481b233638a5799d45">Tween::Tweener::type</a></div><div class="ttdeci">EaseType type</div><div class="ttdef"><b>Definition:</b> Tween.h:66</div></div>
+<div class="ttc" id="aclass_tween_1_1_scale_tweener_html_ab80c5fa257004ac9ae20ec73e9b8ccb4"><div class="ttname"><a href="class_tween_1_1_scale_tweener.html#ab80c5fa257004ac9ae20ec73e9b8ccb4">Tween::ScaleTweener::ScaleTweener</a></div><div class="ttdeci">ScaleTweener(std::shared_ptr&lt; Transform &gt; &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, EaseType type)</div><div class="ttdef"><b>Definition:</b> Tween.cpp:171</div></div>
+<div class="ttc" id="aclass_tween_html_a8567720f5b86865ae95465d2e4b21058"><div class="ttname"><a href="class_tween.html#a8567720f5b86865ae95465d2e4b21058">Tween::Move</a></div><div class="ttdeci">static void Move(GameObject &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, EaseType type)</div><div class="ttdef"><b>Definition:</b> Tween.cpp:73</div></div>
+<div class="ttc" id="aclass_game_object_html"><div class="ttname"><a href="class_game_object.html">GameObject</a></div><div class="ttdef"><b>Definition:</b> GameObject.h:19</div></div>
+<div class="ttc" id="aclass_tween_1_1_rotate_tweener_html_a94109cd3d93c405c63d3068bbb663205"><div class="ttname"><a href="class_tween_1_1_rotate_tweener.html#a94109cd3d93c405c63d3068bbb663205">Tween::RotateTweener::start</a></div><div class="ttdeci">D3DXQUATERNION start</div><div class="ttdef"><b>Definition:</b> Tween.h:96</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_2cd1d197c18942098d7e5dbfc220d31c.html">Tween</a></li><li class="navelem"><a class="el" href="_tween_8h.html">Tween.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: BaseScene クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_base_scene.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="class_base_scene-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">BaseScene クラス<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_base_scene_8h_source.html">BaseScene.h</a>&gt;</code></p>
+<div class="dynheader">
+BaseScene の継承関係図</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_base_scene.png" usemap="#BaseScene_map" alt=""/>
+  <map id="BaseScene_map" name="BaseScene_map">
+<area href="class_easing_test.html" alt="EasingTest" shape="rect" coords="0,56,92,80"/>
+<area href="class_particle_test.html" alt="ParticleTest" shape="rect" coords="102,56,194,80"/>
+<area href="class_task_test.html" alt="TaskTest" shape="rect" coords="204,56,296,80"/>
+<area href="class_test_transition.html" alt="TestTransition" shape="rect" coords="306,56,398,80"/>
+<area href="class_transform_test.html" alt="TransformTest" shape="rect" coords="408,56,500,80"/>
+<area href="class_tween_test.html" alt="TweenTest" shape="rect" coords="510,56,602,80"/>
+<area href="class_vector_test.html" alt="VectorTest" shape="rect" coords="612,56,704,80"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a054c55c9beb30eec4ee5b7c4768ae950"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_scene.html#a054c55c9beb30eec4ee5b7c4768ae950">Init</a> ()=0</td></tr>
+<tr class="separator:a054c55c9beb30eec4ee5b7c4768ae950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6335bd3342d7817c5966deb2d2cafd2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_scene.html#af6335bd3342d7817c5966deb2d2cafd2">Uninit</a> ()=0</td></tr>
+<tr class="separator:af6335bd3342d7817c5966deb2d2cafd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66633386a5f6b60ab239012c28b05db2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_scene.html#a66633386a5f6b60ab239012c28b05db2">Update</a> ()=0</td></tr>
+<tr class="separator:a66633386a5f6b60ab239012c28b05db2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb5b1472d96d9bb5eb99cdc2f19fde29"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_scene.html#abb5b1472d96d9bb5eb99cdc2f19fde29">Draw</a> ()=0</td></tr>
+<tr class="separator:abb5b1472d96d9bb5eb99cdc2f19fde29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">関数詳解</h2>
+<a id="abb5b1472d96d9bb5eb99cdc2f19fde29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb5b1472d96d9bb5eb99cdc2f19fde29">&#9670;&nbsp;</a></span>Draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseScene::Draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_tween_test.html#ab472ad409ed88e91da3c6df0df0f5134">TweenTest</a>, <a class="el" href="class_particle_test.html#ab8895623b0267ad22f4b11f13f8ee3b8">ParticleTest</a>, <a class="el" href="class_task_test.html#a8ddedb087553bc59d22dc7df221f3fd9">TaskTest</a>, <a class="el" href="class_easing_test.html#a78346b9befa3d72223f7c0a618dfa710">EasingTest</a>, <a class="el" href="class_vector_test.html#aebf4c8696ab983a1494ef8dbd20f2799">VectorTest</a>, <a class="el" href="class_test_transition.html#ac5db10f9317c9fdeb6c655d15e685030">TestTransition</a>, <a class="el" href="class_transform_test.html#a0075032366c7ead31c42e7d73ec1cc5a">TransformTest</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a054c55c9beb30eec4ee5b7c4768ae950"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a054c55c9beb30eec4ee5b7c4768ae950">&#9670;&nbsp;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseScene::Init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_tween_test.html#af1728794f3c797fa757a059aa38cc242">TweenTest</a>, <a class="el" href="class_particle_test.html#a0a78c7f9055238f76b3d53a2a0b063c2">ParticleTest</a>, <a class="el" href="class_task_test.html#a12130ac49a90580c6e115e0c5f4098fa">TaskTest</a>, <a class="el" href="class_easing_test.html#ac919c8b35f757733f565446c4ddfa984">EasingTest</a>, <a class="el" href="class_vector_test.html#a7def369b176ebfd4d5d084958a922e9c">VectorTest</a>, <a class="el" href="class_test_transition.html#ada0a7d68f733f98f2fb55d709d4da875">TestTransition</a>, <a class="el" href="class_transform_test.html#af047a0758d6d5e2aaa872b5e7c02661d">TransformTest</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="af6335bd3342d7817c5966deb2d2cafd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6335bd3342d7817c5966deb2d2cafd2">&#9670;&nbsp;</a></span>Uninit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseScene::Uninit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_tween_test.html#a67d5beeea210df0f34a3e28dbdc38ea4">TweenTest</a>, <a class="el" href="class_particle_test.html#a349ff26e3bdaf9a40f4ad366e03693ea">ParticleTest</a>, <a class="el" href="class_task_test.html#a301c93bf2baba0e84538259d1fd86f5d">TaskTest</a>, <a class="el" href="class_easing_test.html#ae50fa19bfd9b1ea1812b5423e390cea0">EasingTest</a>, <a class="el" href="class_vector_test.html#af2e5b8cbe427b4273944a69a3af77cbe">VectorTest</a>, <a class="el" href="class_test_transition.html#a80777ed713ace2bedf4501c82dc9443d">TestTransition</a>, <a class="el" href="class_transform_test.html#a6bd6de34bb0d4e65c49bac74d823d402">TransformTest</a>で実装されています。</p>
+
+</div>
+</div>
+<a id="a66633386a5f6b60ab239012c28b05db2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66633386a5f6b60ab239012c28b05db2">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseScene::Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_tween_test.html#a18140bfbf672c70603d077c7222ef2bf">TweenTest</a>, <a class="el" href="class_particle_test.html#ab74ce4f0e69b6b9c669f7321601e5ba5">ParticleTest</a>, <a class="el" href="class_task_test.html#af4c0d0c8df335cf34d4d929ce6c8c1c2">TaskTest</a>, <a class="el" href="class_easing_test.html#ac73bcc0356f214673293034010cff7e3">EasingTest</a>, <a class="el" href="class_vector_test.html#a63ddc7581eeeb5225109791e8b941055">VectorTest</a>, <a class="el" href="class_test_transition.html#a3d1a1e51b3027e8e33192853ff652311">TestTransition</a>, <a class="el" href="class_transform_test.html#accd3eba6a5a66a060c8bad67e0360a08">TransformTest</a>で実装されています。</p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Core/<a class="el" href="_base_scene_8h_source.html">BaseScene.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_base_scene.html">BaseScene</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

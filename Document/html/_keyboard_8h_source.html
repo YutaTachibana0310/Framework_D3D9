@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/Input/Keyboard.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_keyboard_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Keyboard.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_keyboard_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//キーボードヘッダ[Keyboard.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _KEYBOARD_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _KEYBOARD_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">マクロ定義</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="_keyboard_8h.html#afd005bb5824026329ad3445123d0c712">   14</a></span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define NUM_KEY_MAX     (256)           // キー最大数</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_keyboard.html">   18</a></span>&#160;<span class="comment">クラス定義</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">class </span><a class="code" href="class_keyboard.html">Keyboard</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_keyboard.html#ad6b0bb849d6bb7cdf63091e40b5f5f7f">Keyboard</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="class_keyboard.html#af6a99ec66c8c722a45b967bf79167038">~Keyboard</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    HRESULT <a class="code" href="class_keyboard.html#ac120fe77867de29405f457595e52228a">Init</a>(HINSTANCE hInst, HWND hWnd, LPDIRECTINPUT8 pInput);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_keyboard.html#a071313d0ae6538e9307ff6a059aa9197">Update</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_keyboard.html#a5393fa58b27db0949cc132145615e673">GetPress</a>(<span class="keywordtype">int</span> nKey);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_keyboard.html#ab782bde9f7a594eae22b7812589f3d1c">GetTrigger</a>(<span class="keywordtype">int</span> nKey);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_keyboard.html#ae34be68963d5fa753262cd051c07ebc0">GetRepeat</a>(<span class="keywordtype">int</span> nKey);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_keyboard.html#aeb4c6623a6a042132861fe81511d9f7a">GetRelease</a>(<span class="keywordtype">int</span> nKey);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_keyboard.html#afb43b51839d374d645154b073c5dca02">   34</a></span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_keyboard.html#a72637d6143e0cc3bd5cf03d2dac7af60">   35</a></span>&#160;    LPDIRECTINPUTDEVICE8 <a class="code" href="class_keyboard.html#afb43b51839d374d645154b073c5dca02">m_pDIDevKeyboard</a> = NULL;           <span class="comment">// IDirectInputDevice8インターフェースへのポインタ(キーボード)</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_keyboard.html#aa194983e899f3160af2a3eca57078c7c">   36</a></span>&#160;    BYTE    <a class="code" href="class_keyboard.html#a72637d6143e0cc3bd5cf03d2dac7af60">m_aKeyState</a>[<a class="code" href="_keyboard_8h.html#afd005bb5824026329ad3445123d0c712">NUM_KEY_MAX</a>];           <span class="comment">// キーボードの押下状態を保持するワーク</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_keyboard.html#a59168d829ebe4399cf02b1526feaf237">   37</a></span>&#160;    BYTE    <a class="code" href="class_keyboard.html#aa194983e899f3160af2a3eca57078c7c">m_aKeyStateTrigger</a>[<a class="code" href="_keyboard_8h.html#afd005bb5824026329ad3445123d0c712">NUM_KEY_MAX</a>];    <span class="comment">// キーボードのトリガー状態を保持するワーク</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_keyboard.html#a619cd03377094a44449fe010ba0b0bcc">   38</a></span>&#160;    BYTE    <a class="code" href="class_keyboard.html#a59168d829ebe4399cf02b1526feaf237">m_aKeyStateRelease</a>[<a class="code" href="_keyboard_8h.html#afd005bb5824026329ad3445123d0c712">NUM_KEY_MAX</a>];    <span class="comment">// キーボードのリリース状態を保持するワーク</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_keyboard.html#ad120fdf58e0d607bb641e34864188d5b">   39</a></span>&#160;    BYTE    <a class="code" href="class_keyboard.html#a619cd03377094a44449fe010ba0b0bcc">m_aKeyStateRepeat</a>[<a class="code" href="_keyboard_8h.html#afd005bb5824026329ad3445123d0c712">NUM_KEY_MAX</a>];     <span class="comment">// キーボードのリピート状態を保持するワーク</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span>     <a class="code" href="class_keyboard.html#ad120fdf58e0d607bb641e34864188d5b">m_aKeyStateRepeatCnt</a>[<a class="code" href="_keyboard_8h.html#afd005bb5824026329ad3445123d0c712">NUM_KEY_MAX</a>];  <span class="comment">// キーボードのリピートカウンタ</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_keyboard.html#a9e2eb5556a3e3f470fd79695bed92d66">   41</a></span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_keyboard.html">Keyboard</a>* <a class="code" href="class_keyboard.html#a9e2eb5556a3e3f470fd79695bed92d66">mInstance</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif  </span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_keyboard_html_a071313d0ae6538e9307ff6a059aa9197"><div class="ttname"><a href="class_keyboard.html#a071313d0ae6538e9307ff6a059aa9197">Keyboard::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:82</div></div>
+<div class="ttc" id="aclass_keyboard_html_ab782bde9f7a594eae22b7812589f3d1c"><div class="ttname"><a href="class_keyboard.html#ab782bde9f7a594eae22b7812589f3d1c">Keyboard::GetTrigger</a></div><div class="ttdeci">static bool GetTrigger(int nKey)</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:138</div></div>
+<div class="ttc" id="aclass_keyboard_html_ad120fdf58e0d607bb641e34864188d5b"><div class="ttname"><a href="class_keyboard.html#ad120fdf58e0d607bb641e34864188d5b">Keyboard::m_aKeyStateRepeatCnt</a></div><div class="ttdeci">int m_aKeyStateRepeatCnt[NUM_KEY_MAX]</div><div class="ttdef"><b>Definition:</b> Keyboard.h:39</div></div>
+<div class="ttc" id="aclass_keyboard_html_aa194983e899f3160af2a3eca57078c7c"><div class="ttname"><a href="class_keyboard.html#aa194983e899f3160af2a3eca57078c7c">Keyboard::m_aKeyStateTrigger</a></div><div class="ttdeci">BYTE m_aKeyStateTrigger[NUM_KEY_MAX]</div><div class="ttdef"><b>Definition:</b> Keyboard.h:36</div></div>
+<div class="ttc" id="aclass_keyboard_html_ae34be68963d5fa753262cd051c07ebc0"><div class="ttname"><a href="class_keyboard.html#ae34be68963d5fa753262cd051c07ebc0">Keyboard::GetRepeat</a></div><div class="ttdeci">static bool GetRepeat(int nKey)</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:146</div></div>
+<div class="ttc" id="aclass_keyboard_html_a72637d6143e0cc3bd5cf03d2dac7af60"><div class="ttname"><a href="class_keyboard.html#a72637d6143e0cc3bd5cf03d2dac7af60">Keyboard::m_aKeyState</a></div><div class="ttdeci">BYTE m_aKeyState[NUM_KEY_MAX]</div><div class="ttdef"><b>Definition:</b> Keyboard.h:35</div></div>
+<div class="ttc" id="aclass_keyboard_html_ac120fe77867de29405f457595e52228a"><div class="ttname"><a href="class_keyboard.html#ac120fe77867de29405f457595e52228a">Keyboard::Init</a></div><div class="ttdeci">HRESULT Init(HINSTANCE hInst, HWND hWnd, LPDIRECTINPUT8 pInput)</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:28</div></div>
+<div class="ttc" id="aclass_keyboard_html_af6a99ec66c8c722a45b967bf79167038"><div class="ttname"><a href="class_keyboard.html#af6a99ec66c8c722a45b967bf79167038">Keyboard::~Keyboard</a></div><div class="ttdeci">~Keyboard()</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:65</div></div>
+<div class="ttc" id="aclass_keyboard_html_a619cd03377094a44449fe010ba0b0bcc"><div class="ttname"><a href="class_keyboard.html#a619cd03377094a44449fe010ba0b0bcc">Keyboard::m_aKeyStateRepeat</a></div><div class="ttdeci">BYTE m_aKeyStateRepeat[NUM_KEY_MAX]</div><div class="ttdef"><b>Definition:</b> Keyboard.h:38</div></div>
+<div class="ttc" id="aclass_keyboard_html_a5393fa58b27db0949cc132145615e673"><div class="ttname"><a href="class_keyboard.html#a5393fa58b27db0949cc132145615e673">Keyboard::GetPress</a></div><div class="ttdeci">static bool GetPress(int nKey)</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:130</div></div>
+<div class="ttc" id="aclass_keyboard_html_ad6b0bb849d6bb7cdf63091e40b5f5f7f"><div class="ttname"><a href="class_keyboard.html#ad6b0bb849d6bb7cdf63091e40b5f5f7f">Keyboard::Keyboard</a></div><div class="ttdeci">Keyboard()</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:17</div></div>
+<div class="ttc" id="aclass_keyboard_html_a9e2eb5556a3e3f470fd79695bed92d66"><div class="ttname"><a href="class_keyboard.html#a9e2eb5556a3e3f470fd79695bed92d66">Keyboard::mInstance</a></div><div class="ttdeci">static Keyboard * mInstance</div><div class="ttdef"><b>Definition:</b> Keyboard.h:41</div></div>
+<div class="ttc" id="aclass_keyboard_html_afb43b51839d374d645154b073c5dca02"><div class="ttname"><a href="class_keyboard.html#afb43b51839d374d645154b073c5dca02">Keyboard::m_pDIDevKeyboard</a></div><div class="ttdeci">LPDIRECTINPUTDEVICE8 m_pDIDevKeyboard</div><div class="ttdef"><b>Definition:</b> Keyboard.h:34</div></div>
+<div class="ttc" id="aclass_keyboard_html_a59168d829ebe4399cf02b1526feaf237"><div class="ttname"><a href="class_keyboard.html#a59168d829ebe4399cf02b1526feaf237">Keyboard::m_aKeyStateRelease</a></div><div class="ttdeci">BYTE m_aKeyStateRelease[NUM_KEY_MAX]</div><div class="ttdef"><b>Definition:</b> Keyboard.h:37</div></div>
+<div class="ttc" id="a_keyboard_8h_html_afd005bb5824026329ad3445123d0c712"><div class="ttname"><a href="_keyboard_8h.html#afd005bb5824026329ad3445123d0c712">NUM_KEY_MAX</a></div><div class="ttdeci">#define NUM_KEY_MAX</div><div class="ttdef"><b>Definition:</b> Keyboard.h:14</div></div>
+<div class="ttc" id="aclass_keyboard_html_aeb4c6623a6a042132861fe81511d9f7a"><div class="ttname"><a href="class_keyboard.html#aeb4c6623a6a042132861fe81511d9f7a">Keyboard::GetRelease</a></div><div class="ttdeci">static bool GetRelease(int nKey)</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:154</div></div>
+<div class="ttc" id="aclass_keyboard_html"><div class="ttname"><a href="class_keyboard.html">Keyboard</a></div><div class="ttdef"><b>Definition:</b> Keyboard.h:18</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_530c9abb591ebff05a3cf5a53cc27b48.html">Input</a></li><li class="navelem"><a class="el" href="_keyboard_8h.html">Keyboard.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

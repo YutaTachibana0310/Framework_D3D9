@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Test/EasingTest.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_easing_test_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">EasingTest.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_easing_test_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//イージングテストヘッダ[EasingTest.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _EASINGTEST_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _EASINGTEST_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../Framework\Renderer2D\Polygon2D.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../Framework\Math\Easing.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;../Framework\Core\BaseScene.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">マクロ定義</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_easing_test.html">   20</a></span>&#160;<span class="comment">クラス定義</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">class </span><a class="code" href="class_easing_test.html">EasingTest</a> : <span class="keyword">public</span> <a class="code" href="class_base_scene.html">BaseScene</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_easing_test.html#ac919c8b35f757733f565446c4ddfa984">Init</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_easing_test.html#ae50fa19bfd9b1ea1812b5423e390cea0">Uninit</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_easing_test.html#ac73bcc0356f214673293034010cff7e3">Update</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_easing_test.html#a78346b9befa3d72223f7c0a618dfa710">Draw</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_easing_test.html#ae385092e1b6a8dbc00bf0aa69fe892f4">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_easing_test.html#ae385092e1b6a8dbc00bf0aa69fe892f4">cntFrame</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_easing_test.html#af3f1f0756a5bedf9220408a8935b9f93">   32</a></span>&#160;    <a class="code" href="class_polygon2_d.html">Polygon2D</a>* <a class="code" href="class_easing_test.html#af3f1f0756a5bedf9220408a8935b9f93">polygon</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_easing_test.html#a724a77fa7633096b74404cf14e3a1168">   33</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_easing_test.html#a724a77fa7633096b74404cf14e3a1168">type</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_easing_test_html_ae385092e1b6a8dbc00bf0aa69fe892f4"><div class="ttname"><a href="class_easing_test.html#ae385092e1b6a8dbc00bf0aa69fe892f4">EasingTest::cntFrame</a></div><div class="ttdeci">int cntFrame</div><div class="ttdef"><b>Definition:</b> EasingTest.h:31</div></div>
+<div class="ttc" id="aclass_easing_test_html_a78346b9befa3d72223f7c0a618dfa710"><div class="ttname"><a href="class_easing_test.html#a78346b9befa3d72223f7c0a618dfa710">EasingTest::Draw</a></div><div class="ttdeci">void Draw()</div><div class="ttdef"><b>Definition:</b> EasginTest.cpp:90</div></div>
+<div class="ttc" id="aclass_base_scene_html"><div class="ttname"><a href="class_base_scene.html">BaseScene</a></div><div class="ttdef"><b>Definition:</b> BaseScene.h:21</div></div>
+<div class="ttc" id="aclass_polygon2_d_html"><div class="ttname"><a href="class_polygon2_d.html">Polygon2D</a></div><div class="ttdef"><b>Definition:</b> Polygon2D.h:17</div></div>
+<div class="ttc" id="aclass_easing_test_html_a724a77fa7633096b74404cf14e3a1168"><div class="ttname"><a href="class_easing_test.html#a724a77fa7633096b74404cf14e3a1168">EasingTest::type</a></div><div class="ttdeci">int type</div><div class="ttdef"><b>Definition:</b> EasingTest.h:33</div></div>
+<div class="ttc" id="aclass_easing_test_html_ac73bcc0356f214673293034010cff7e3"><div class="ttname"><a href="class_easing_test.html#ac73bcc0356f214673293034010cff7e3">EasingTest::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> EasginTest.cpp:35</div></div>
+<div class="ttc" id="aclass_easing_test_html_af3f1f0756a5bedf9220408a8935b9f93"><div class="ttname"><a href="class_easing_test.html#af3f1f0756a5bedf9220408a8935b9f93">EasingTest::polygon</a></div><div class="ttdeci">Polygon2D * polygon</div><div class="ttdef"><b>Definition:</b> EasingTest.h:32</div></div>
+<div class="ttc" id="aclass_easing_test_html_ac919c8b35f757733f565446c4ddfa984"><div class="ttname"><a href="class_easing_test.html#ac919c8b35f757733f565446c4ddfa984">EasingTest::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> EasginTest.cpp:17</div></div>
+<div class="ttc" id="aclass_easing_test_html_ae50fa19bfd9b1ea1812b5423e390cea0"><div class="ttname"><a href="class_easing_test.html#ae50fa19bfd9b1ea1812b5423e390cea0">EasingTest::Uninit</a></div><div class="ttdeci">void Uninit()</div><div class="ttdef"><b>Definition:</b> EasginTest.cpp:28</div></div>
+<div class="ttc" id="aclass_easing_test_html"><div class="ttname"><a href="class_easing_test.html">EasingTest</a></div><div class="ttdef"><b>Definition:</b> EasingTest.h:20</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_37618a71d99bdfed5979e976980d5eec.html">Test</a></li><li class="navelem"><a class="el" href="_easing_test_8h.html">EasingTest.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

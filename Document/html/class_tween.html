@@ -1,0 +1,649 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: Tween クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_tween.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pri-methods">非公開メンバ関数</a> &#124;
+<a href="#pri-attribs">非公開変数類</a> &#124;
+<a href="#pri-static-attribs">静的非公開変数類</a> &#124;
+<a href="#friends">フレンド</a> &#124;
+<a href="class_tween-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">Tween クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_tween_8h_source.html">Tween.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween_1_1_move_tweener.html">MoveTweener</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween_1_1_rotate_tweener.html">RotateTweener</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween_1_1_scale_tweener.html">ScaleTweener</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween_1_1_tweener.html">Tweener</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:a8567720f5b86865ae95465d2e4b21058"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#a8567720f5b86865ae95465d2e4b21058">Move</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, <a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type)</td></tr>
+<tr class="separator:a8567720f5b86865ae95465d2e4b21058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7525577f94e31511d7094649fbd2839"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#ab7525577f94e31511d7094649fbd2839">Move</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;ref, const D3DXVECTOR3 &amp;end, int duratino, <a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type)</td></tr>
+<tr class="separator:ab7525577f94e31511d7094649fbd2839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2cc4492e3861973c442e7cba6a75169"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#ad2cc4492e3861973c442e7cba6a75169">Scale</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, <a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type)</td></tr>
+<tr class="separator:ad2cc4492e3861973c442e7cba6a75169"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec46751fee1396d09d92bed223399eb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#a8ec46751fee1396d09d92bed223399eb">Scale</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;ref, const D3DXVECTOR3 &amp;end, int duration, <a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type)</td></tr>
+<tr class="separator:a8ec46751fee1396d09d92bed223399eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a7e0207afc6025231ab543f1b67f7de"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#a4a7e0207afc6025231ab543f1b67f7de">Rotate</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;ref, const D3DXVECTOR3 &amp;start, const D3DXVECTOR3 &amp;end, int duration, <a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type)</td></tr>
+<tr class="separator:a4a7e0207afc6025231ab543f1b67f7de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67acff58d3da684fe88c7daac0dd0153"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#a67acff58d3da684fe88c7daac0dd0153">Rotate</a> (<a class="el" href="class_game_object.html">GameObject</a> &amp;ref, const D3DXVECTOR3 &amp;end, int duration, <a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a> type)</td></tr>
+<tr class="separator:a67acff58d3da684fe88c7daac0dd0153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+非公開メンバ関数</h2></td></tr>
+<tr class="memitem:ac0d65be5e8e26c3bf2a9b25b630efc4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#ac0d65be5e8e26c3bf2a9b25b630efc4a">Update</a> ()</td></tr>
+<tr class="separator:ac0d65be5e8e26c3bf2a9b25b630efc4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15caa99746276101a3ab620f307b0fc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#a15caa99746276101a3ab620f307b0fc2">ClearContainer</a> ()</td></tr>
+<tr class="separator:a15caa99746276101a3ab620f307b0fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a480c72d8d10827a2e21dfe177372dac8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#a480c72d8d10827a2e21dfe177372dac8">Tween</a> ()</td></tr>
+<tr class="separator:a480c72d8d10827a2e21dfe177372dac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac561b7c2d24fb5d6045ebd62290f0cba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#ac561b7c2d24fb5d6045ebd62290f0cba">~Tween</a> ()</td></tr>
+<tr class="separator:ac561b7c2d24fb5d6045ebd62290f0cba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:ab4ea8abf9499d280b4e30491586f9baa"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="class_tween_1_1_tweener.html">Tween::Tweener</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#ab4ea8abf9499d280b4e30491586f9baa">tweenerContainer</a></td></tr>
+<tr class="separator:ab4ea8abf9499d280b4e30491586f9baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+静的非公開変数類</h2></td></tr>
+<tr class="memitem:aa9d9c9674324f3728808b4e38062729e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_tween.html">Tween</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#aa9d9c9674324f3728808b4e38062729e">mInstance</a> = NULL</td></tr>
+<tr class="separator:aa9d9c9674324f3728808b4e38062729e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:ac1217f37f9e2b12334b00e44c67a643d"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tween.html#ac1217f37f9e2b12334b00e44c67a643d">BaseGame</a></td></tr>
+<tr class="separator:ac1217f37f9e2b12334b00e44c67a643d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="a480c72d8d10827a2e21dfe177372dac8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a480c72d8d10827a2e21dfe177372dac8">&#9670;&nbsp;</a></span>Tween()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tween::Tween </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac561b7c2d24fb5d6045ebd62290f0cba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac561b7c2d24fb5d6045ebd62290f0cba">&#9670;&nbsp;</a></span>~Tween()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tween::~Tween </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a15caa99746276101a3ab620f307b0fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15caa99746276101a3ab620f307b0fc2">&#9670;&nbsp;</a></span>ClearContainer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::ClearContainer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7525577f94e31511d7094649fbd2839"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7525577f94e31511d7094649fbd2839">&#9670;&nbsp;</a></span>Move() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::Move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duratino</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8567720f5b86865ae95465d2e4b21058"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8567720f5b86865ae95465d2e4b21058">&#9670;&nbsp;</a></span>Move() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::Move </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a67acff58d3da684fe88c7daac0dd0153"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67acff58d3da684fe88c7daac0dd0153">&#9670;&nbsp;</a></span>Rotate() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::Rotate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a7e0207afc6025231ab543f1b67f7de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a7e0207afc6025231ab543f1b67f7de">&#9670;&nbsp;</a></span>Rotate() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::Rotate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ec46751fee1396d09d92bed223399eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec46751fee1396d09d92bed223399eb">&#9670;&nbsp;</a></span>Scale() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::Scale </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2cc4492e3861973c442e7cba6a75169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2cc4492e3861973c442e7cba6a75169">&#9670;&nbsp;</a></span>Scale() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::Scale </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_game_object.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const D3DXVECTOR3 &amp;&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>duration</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_easing_8h.html#ab8f6c428f087160deca07d7d402c4934">EaseType</a>&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0d65be5e8e26c3bf2a9b25b630efc4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d65be5e8e26c3bf2a9b25b630efc4a">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tween::Update </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">フレンドと関連関数の詳解</h2>
+<a id="ac1217f37f9e2b12334b00e44c67a643d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1217f37f9e2b12334b00e44c67a643d">&#9670;&nbsp;</a></span>BaseGame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_base_game.html">BaseGame</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="aa9d9c9674324f3728808b4e38062729e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d9c9674324f3728808b4e38062729e">&#9670;&nbsp;</a></span>mInstance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_tween.html">Tween</a> * Tween::mInstance = NULL</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab4ea8abf9499d280b4e30491586f9baa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4ea8abf9499d280b4e30491586f9baa">&#9670;&nbsp;</a></span>tweenerContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::list&lt;<a class="el" href="class_tween_1_1_tweener.html">Tween::Tweener</a>*&gt; Tween::tweenerContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Tween/<a class="el" href="_tween_8h_source.html">Tween.h</a></li>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Core/<a class="el" href="_base_game_8cpp.html">BaseGame.cpp</a></li>
+<li>C:/Users/sf318/source/repos/Framework/Framework/Tween/<a class="el" href="_tween_8cpp.html">Tween.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_tween.html">Tween</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

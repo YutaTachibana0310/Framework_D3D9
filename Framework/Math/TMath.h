@@ -22,6 +22,9 @@ public:
 	***************************************/
 	static int RandomRange(int min, int max)
 	{
+		if (min == max)
+			return min;
+
 		return rand() % (max - min) + min;
 	}
 

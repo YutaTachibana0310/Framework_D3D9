@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Asset\Particle\ExplosionFire.cpp" />
+    <ClCompile Include="Asset\Particle\ExplosionFlare.cpp" />
     <ClCompile Include="Framework\Camera\Camera.cpp" />
     <ClCompile Include="Framework\Camera\CameraShakePlugin.cpp" />
     <ClCompile Include="Framework\Collider\BaseCollider.cpp" />
@@ -99,6 +101,8 @@
     <ClCompile Include="Test\VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asset\Particle\ExplosionFire.h" />
+    <ClInclude Include="Asset\Particle\ExplosionFlare.h" />
     <ClInclude Include="Framework\Camera\Camera.h" />
     <ClInclude Include="Framework\Camera\CameraShakePlugin.h" />
     <ClInclude Include="Framework\Collider\BaseCollider.h" />
