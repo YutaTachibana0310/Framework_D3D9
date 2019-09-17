@@ -16,6 +16,7 @@
 #define INPUT_SHORTWAIT (6)
 
 GamePad* GamePad::mInstance = NULL;
+static LPDIRECTINPUT8 pInput = NULL;
 LPDIRECTINPUTDEVICE8	pGamePad[GAMEPADMAX] = { NULL,NULL,NULL,NULL };// パッドデバイス
 int		padCount;			// 検出したパッドの数
 
@@ -33,11 +34,11 @@ GamePad::GamePad()
 /**************************************
 パッド検査コールバック
 ***************************************/
-BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID, LPDIRECTINPUT8 inputInterface)
+BOOL CALLBACK SearchPadCallback(LPDIDEVICEINSTANCE lpddi, LPVOID)
 {
 	HRESULT result;
 
-	result = inputInterface->CreateDevice(lpddi->guidInstance, &pGamePad[padCount++], NULL);
+	result = pInput->CreateDevice(lpddi->guidInstance, &pGamePad[padCount++], NULL);
 	return DIENUM_CONTINUE;	// 次のデバイスを列挙
 
 }
@@ -60,6 +61,7 @@ HRESULT GamePad::Init(LPDIRECTINPUT8 inputInterface)			// パッド初期化
 	}
 
 	// ジョイパッドを探す
+	pInput = inputInterface;
 	inputInterface->EnumDevices(DI8DEVCLASS_GAMECTRL, (LPDIENUMDEVICESCALLBACK)SearchPadCallback, NULL, DIEDFL_ATTACHEDONLY);
 	// セットしたコールバック関数が、パッドを発見した数だけ呼ばれる。
 

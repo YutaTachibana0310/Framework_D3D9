@@ -70,7 +70,7 @@ HRESULT MyAllocateHierarchy::CreateMeshContainer(THIS_
 	LPD3DXSKININFO pSkinInfo,
 	LPD3DXMESHCONTAINER *ppNewMeshContainer)
 {
-	HRESULT hr;
+	HRESULT hr = D3D_OK;
 	D3DXMESHCONTAINER_DERIVED* meshContainer = NULL;
 	UINT numFaces;
 	UINT iMaterial;
@@ -229,7 +229,6 @@ HRESULT MyAllocateHierarchy::CreateMeshContainer(THIS_
 	meshContainer = NULL;
 
 	SAFE_RELEASE(pDevice);
-	DestroyMeshContainer(meshContainer);
 	return hr;
 }
 
@@ -239,7 +238,17 @@ HRESULT MyAllocateHierarchy::CreateMeshContainer(THIS_
 HRESULT MyAllocateHierarchy::DestroyFrame(THIS_
 	LPD3DXFRAME pFrameToFree)
 {
+	if (!pFrameToFree)
+		return D3D_OK;
+
 	SAFE_DELETE_ARRAY(pFrameToFree->Name);
+	DestroyFrame(pFrameToFree->pFrameSibling);
+	DestroyFrame(pFrameToFree->pFrameFirstChild);
+	DestroyMeshContainer(pFrameToFree->pMeshContainer);
+	pFrameToFree->pMeshContainer = NULL;
+
+	delete pFrameToFree;
+	pFrameToFree = NULL;
 
 	return D3D_OK;
 }
@@ -258,6 +267,11 @@ HRESULT MyAllocateHierarchy::DestroyMeshContainer(THIS_
 
 	SAFE_DELETE_ARRAY(meshContainer->Name);
 	SAFE_DELETE_ARRAY(meshContainer->pAdjacency);
+
+	for (unsigned i = 0; i < meshContainer->NumMaterials; i++)
+	{
+		SAFE_DELETE_ARRAY(meshContainer->pMaterials[i].pTextureFilename);
+	}
 	SAFE_DELETE_ARRAY(meshContainer->pMaterials);
 
 	if (meshContainer->textures != NULL)
@@ -267,29 +281,34 @@ HRESULT MyAllocateHierarchy::DestroyMeshContainer(THIS_
 			SAFE_RELEASE(meshContainer->textures[iMaterial]);
 		}
 	}
-
 	SAFE_DELETE_ARRAY(meshContainer->textures);
+
+	if (meshContainer->pEffects != NULL)
+	{
+		for (unsigned iEffects = 0; iEffects < meshContainer->pEffects->NumDefaults; iEffects++)
+		{
+			delete[] meshContainer->pEffects->pDefaults[iEffects].pParamName;
+			delete[] meshContainer->pEffects->pDefaults[iEffects].pValue;
+		}
+	}
+	SAFE_DELETE_ARRAY(meshContainer->pEffects);
+	SAFE_DELETE_ARRAY(meshContainer->pEffects);
+
 	SAFE_RELEASE(meshContainer->pSkinInfo);
 	SAFE_RELEASE(meshContainer->boneCombinationBuf);
-	SAFE_DELETE_ARRAY(meshContainer->boneMatrices);
 	SAFE_DELETE_ARRAY(meshContainer->boneOffsetMatrices);
+	SAFE_DELETE_ARRAY(meshContainer->boneMatrices);
 	SAFE_RELEASE(meshContainer->MeshData.pMesh);
 	SAFE_RELEASE(meshContainer->originMesh);
+
+	if (meshContainer->pNextMeshContainer != NULL)
+	{
+		DestroyMeshContainer(meshContainer->pNextMeshContainer);
+	}
+
 	SAFE_DELETE(meshContainer);
 
 	return D3D_OK;
-}
-
-/**************************************
-•¶š—ñƒRƒs[ˆ—
-***************************************/
-LPSTR MyAllocateHierarchy::CopyStr(LPCSTR name)
-{
-	if (!name) return NULL;
-
-	LPSTR str = new char[strlen(name) + 1];
-	strcpy_s(str, strlen(name) + 1, name);
-	return str;
 }
 
 /**************************************
