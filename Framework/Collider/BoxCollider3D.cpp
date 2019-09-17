@@ -19,6 +19,8 @@ using namespace std;
 /**************************************
 static変数
 ***************************************/
+unsigned BoxCollider3D::incrementID = 0;
+
 #ifdef BOXCOLLIDER3D_USE_DEBUG
 UINT BoxCollider3D::instanceCount;
 D3DMATERIAL9 BoxCollider3D::material;
@@ -31,7 +33,7 @@ LPD3DXMESH BoxCollider3D::mesh;
 BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Transform> & transform) :
 	BaseCollider(transform),
 	tag(tag),
-	uniqueID(instanceCount)
+	uniqueID(incrementID++)
 {
 	//サイズを適当な大きさに初期化
 	const float InitSize = 10.0;
@@ -45,9 +47,9 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Tran
 	//インスタンス数を数えてデバッグ表示用のメッシュを作成
 	if (instanceCount == 0)
 		CreateRenderTool();
+	instanceCount++;
 #endif
 
-	instanceCount++;
 }
 
 /**************************************
@@ -57,7 +59,7 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Tran
 	BaseCollider(transform),
 	size(size),
 	tag(tag),
-	uniqueID(instanceCount)
+	uniqueID(incrementID++)
 {
 	//オフセットを初期化
 	ZeroMemory(&offset, sizeof(offset));
@@ -65,8 +67,8 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Tran
 #ifdef BOXCOLLIDER3D_USE_DEBUG
 	if (instanceCount == 0)
 		CreateRenderTool();
-#endif
 	instanceCount++;
+#endif
 }
 
 /**************************************

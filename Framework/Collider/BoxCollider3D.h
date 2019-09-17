@@ -36,13 +36,16 @@ public:
 	void Draw();
 
 private:
-	std::string tag;
+	std::string tag;		//タグ
 	D3DXVECTOR3 size;		//サイズ
 	D3DXVECTOR3 offset;		//オフセット
-	unsigned uniqueID;		//ユニークID
+	
+	unsigned uniqueID;				//ユニークID
+	static unsigned incrementID;	//インクリメントID
 
-	static UINT instanceCount;		//インスタンスカウント
+
 #ifdef BOXCOLLIDER3D_USE_DEBUG
+	static UINT instanceCount;		//インスタンスカウント
 	static void CreateRenderTool();
 	static D3DMATERIAL9 material;	//描画用マテリアル
 	static LPD3DXMESH mesh;			//描画用メッシュ
