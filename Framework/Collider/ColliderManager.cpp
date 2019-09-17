@@ -55,6 +55,7 @@ void ColliderManager::CheckCollision()
 	//NOTE : 以下に各コライダー同士の衝突判定を記述する
 	//例（PlayerコライダーとEnemyコライダーの判定を行う場合）
 	//CheckRoundRobin("Player", "Enemy);
+	CheckRoundRobin("Test", "Test");
 }
 
 /**************************************

@@ -40,14 +40,14 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Tran
 	//オフセットを初期化
 	ZeroMemory(&offset, sizeof(offset));
 
-	instanceCount++;
 
 #ifdef BOXCOLLIDER3D_USE_DEBUG
 	//インスタンス数を数えてデバッグ表示用のメッシュを作成
 	if (instanceCount == 0)
 		CreateRenderTool();
-
 #endif
+
+	instanceCount++;
 }
 
 /**************************************
@@ -62,12 +62,11 @@ BoxCollider3D::BoxCollider3D(const std::string & tag, const std::shared_ptr<Tran
 	//オフセットを初期化
 	ZeroMemory(&offset, sizeof(offset));
 
-	instanceCount++;
 #ifdef BOXCOLLIDER3D_USE_DEBUG
 	if (instanceCount == 0)
 		CreateRenderTool();
-
 #endif
+	instanceCount++;
 }
 
 /**************************************
