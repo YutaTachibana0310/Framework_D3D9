@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: PostEffectManager クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_post_effect_manager.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pri-methods">非公開メンバ関数</a> &#124;
+<a href="#pri-attribs">非公開変数類</a> &#124;
+<a href="#friends">フレンド</a> &#124;
+<a href="class_post_effect_manager-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">PostEffectManager クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_post_effect_manager_8h_source.html">PostEffectManager.h</a>&gt;</code></p>
+<div class="dynheader">
+PostEffectManager の継承関係図</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_post_effect_manager.png" usemap="#PostEffectManager_map" alt=""/>
+  <map id="PostEffectManager_map" name="PostEffectManager_map">
+<area href="class_base_singleton.html" alt="BaseSingleton&lt; PostEffectManager &gt;" shape="rect" coords="0,0,224,24"/>
+  </map>
+</div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:ac0b5e8802fcdf865138d40bb34e759ba"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759ba">PostEffect</a> { <br />
+&#160;&#160;<a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759baa972f69ec02ef2d83afb3e507a9c1dd61">Bloom</a>, 
+<a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759baac03852e0c22432ea10f73c59f50d454a">CrossFilter</a>, 
+<a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759baa3db85e6f43376971e3f8885abe09430a">ShockBlur</a>, 
+<a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759baa24ed93382b7c5041991b9b3a190a209f">SpeedBlur</a>, 
+<br />
+&#160;&#160;<a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759baac5d773f332a8880c649b2441d45fb8cf">SpikeNoiset</a>, 
+<a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759baa08838f141e9c0e24ed89c709ccb53f7a">Max</a>
+<br />
+ }</td></tr>
+<tr class="separator:ac0b5e8802fcdf865138d40bb34e759ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:acf9c194688a94f58a82694630a77658a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#acf9c194688a94f58a82694630a77658a">Update</a> ()</td></tr>
+<tr class="separator:acf9c194688a94f58a82694630a77658a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bbaa89f4449d77e8999cc70c4256c1b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#a7bbaa89f4449d77e8999cc70c4256c1b">Draw</a> ()</td></tr>
+<tr class="separator:a7bbaa89f4449d77e8999cc70c4256c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae062e36bf177cbcc37bce71b476b538b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#ae062e36bf177cbcc37bce71b476b538b">SetUse</a> (unsigned <a class="el" href="class_post_effect_manager.html#a0fbc265c112d64f9d882e8f948504031">flgUse</a>)</td></tr>
+<tr class="separator:ae062e36bf177cbcc37bce71b476b538b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e1a59cff6db23e32245ee57001bc451"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#a9e1a59cff6db23e32245ee57001bc451">PassDefaultTarget</a> (LPDIRECT3DTEXTURE9 target)</td></tr>
+<tr class="separator:a9e1a59cff6db23e32245ee57001bc451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+非公開メンバ関数</h2></td></tr>
+<tr class="memitem:aa451a33e243173681a4af0850463b41f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#aa451a33e243173681a4af0850463b41f">IsUse</a> (unsigned flg)</td></tr>
+<tr class="separator:aa451a33e243173681a4af0850463b41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f725aaa2fe130bed1a4f73b0ec89bc2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#a5f725aaa2fe130bed1a4f73b0ec89bc2">IsBrightEffect</a> (UINT id)</td></tr>
+<tr class="separator:a5f725aaa2fe130bed1a4f73b0ec89bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bb60dfea43baa1ce6a527f5fe3863ee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#a7bb60dfea43baa1ce6a527f5fe3863ee">PostEffectManager</a> ()</td></tr>
+<tr class="separator:a7bb60dfea43baa1ce6a527f5fe3863ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b9530fe739a0ecdd269c8d095468bb1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#a3b9530fe739a0ecdd269c8d095468bb1">PostEffectManager</a> (const <a class="el" href="class_post_effect_manager.html">PostEffectManager</a> &amp;)</td></tr>
+<tr class="separator:a3b9530fe739a0ecdd269c8d095468bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc721fccca18dac4b2943388f298a251"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#acc721fccca18dac4b2943388f298a251">~PostEffectManager</a> ()</td></tr>
+<tr class="separator:acc721fccca18dac4b2943388f298a251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+非公開変数類</h2></td></tr>
+<tr class="memitem:a0fbc265c112d64f9d882e8f948504031"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#a0fbc265c112d64f9d882e8f948504031">flgUse</a></td></tr>
+<tr class="separator:a0fbc265c112d64f9d882e8f948504031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afea91d56e410766bc1eb54da0b203081"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_base_effect_controller.html">BaseEffectController</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#afea91d56e410766bc1eb54da0b203081">effectContainer</a></td></tr>
+<tr class="separator:afea91d56e410766bc1eb54da0b203081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:af0cc694792fa336c5417a6d9353f28ab"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_post_effect_manager.html#af0cc694792fa336c5417a6d9353f28ab">BaseSingleton&lt; PostEffectManager &gt;</a></td></tr>
+<tr class="separator:af0cc694792fa336c5417a6d9353f28ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+その他の継承メンバ</h2></td></tr>
+<tr class="inherit_header pub_static_methods_class_base_singleton"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_base_singleton')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_base_singleton.html">BaseSingleton&lt; PostEffectManager &gt;</a> に属する継承静的公開メンバ関数</td></tr>
+<tr class="memitem:a8b4045291c0e19c5a34cbcac63137c88 inherit pub_static_methods_class_base_singleton"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_post_effect_manager.html">PostEffectManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_singleton.html#a8b4045291c0e19c5a34cbcac63137c88">Instance</a> ()</td></tr>
+<tr class="separator:a8b4045291c0e19c5a34cbcac63137c88 inherit pub_static_methods_class_base_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_base_singleton"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_base_singleton')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="class_base_singleton.html">BaseSingleton&lt; PostEffectManager &gt;</a> に属する継承限定公開メンバ関数</td></tr>
+<tr class="memitem:aebc539466cc5e359cc3780dcede2000d inherit pro_methods_class_base_singleton"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_singleton.html#aebc539466cc5e359cc3780dcede2000d">BaseSingleton</a> ()</td></tr>
+<tr class="separator:aebc539466cc5e359cc3780dcede2000d inherit pro_methods_class_base_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ee26710c47661a07b2c6b550aba90cd inherit pro_methods_class_base_singleton"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_singleton.html#a1ee26710c47661a07b2c6b550aba90cd">BaseSingleton</a> (const <a class="el" href="class_base_singleton.html">BaseSingleton</a> &amp;)=delete</td></tr>
+<tr class="separator:a1ee26710c47661a07b2c6b550aba90cd inherit pro_methods_class_base_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7839262694a7139ebc361cb125fa4701 inherit pro_methods_class_base_singleton"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_singleton.html#a7839262694a7139ebc361cb125fa4701">BaseSingleton</a> (<a class="el" href="class_base_singleton.html">BaseSingleton</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a7839262694a7139ebc361cb125fa4701 inherit pro_methods_class_base_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1f7d12c55bef1ef84ff97c6f351d0d inherit pro_methods_class_base_singleton"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_singleton.html#a7c1f7d12c55bef1ef84ff97c6f351d0d">~BaseSingleton</a> ()</td></tr>
+<tr class="separator:a7c1f7d12c55bef1ef84ff97c6f351d0d inherit pro_methods_class_base_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd35b11fae293d6dc822447c1ea8ddc inherit pro_methods_class_base_singleton"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_base_singleton.html">BaseSingleton</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_singleton.html#adfd35b11fae293d6dc822447c1ea8ddc">operator=</a> (const <a class="el" href="class_base_singleton.html">BaseSingleton</a> &amp;)=delete</td></tr>
+<tr class="separator:adfd35b11fae293d6dc822447c1ea8ddc inherit pro_methods_class_base_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a882cc77c1679f8bf16ae2c78b986e5e4 inherit pro_methods_class_base_singleton"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_base_singleton.html">BaseSingleton</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_base_singleton.html#a882cc77c1679f8bf16ae2c78b986e5e4">operator=</a> (<a class="el" href="class_base_singleton.html">BaseSingleton</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a882cc77c1679f8bf16ae2c78b986e5e4 inherit pro_methods_class_base_singleton"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">列挙型メンバ詳解</h2>
+<a id="ac0b5e8802fcdf865138d40bb34e759ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b5e8802fcdf865138d40bb34e759ba">&#9670;&nbsp;</a></span>PostEffect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_post_effect_manager.html#ac0b5e8802fcdf865138d40bb34e759ba">PostEffectManager::PostEffect</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ac0b5e8802fcdf865138d40bb34e759baa972f69ec02ef2d83afb3e507a9c1dd61"></a>Bloom&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0b5e8802fcdf865138d40bb34e759baac03852e0c22432ea10f73c59f50d454a"></a>CrossFilter&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0b5e8802fcdf865138d40bb34e759baa3db85e6f43376971e3f8885abe09430a"></a>ShockBlur&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0b5e8802fcdf865138d40bb34e759baa24ed93382b7c5041991b9b3a190a209f"></a>SpeedBlur&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0b5e8802fcdf865138d40bb34e759baac5d773f332a8880c649b2441d45fb8cf"></a>SpikeNoiset&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0b5e8802fcdf865138d40bb34e759baa08838f141e9c0e24ed89c709ccb53f7a"></a>Max&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="a7bb60dfea43baa1ce6a527f5fe3863ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bb60dfea43baa1ce6a527f5fe3863ee">&#9670;&nbsp;</a></span>PostEffectManager() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PostEffectManager::PostEffectManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b9530fe739a0ecdd269c8d095468bb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b9530fe739a0ecdd269c8d095468bb1">&#9670;&nbsp;</a></span>PostEffectManager() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PostEffectManager::PostEffectManager </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_post_effect_manager.html">PostEffectManager</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc721fccca18dac4b2943388f298a251"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc721fccca18dac4b2943388f298a251">&#9670;&nbsp;</a></span>~PostEffectManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PostEffectManager::~PostEffectManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a7bbaa89f4449d77e8999cc70c4256c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bbaa89f4449d77e8999cc70c4256c1b">&#9670;&nbsp;</a></span>Draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PostEffectManager::Draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f725aaa2fe130bed1a4f73b0ec89bc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f725aaa2fe130bed1a4f73b0ec89bc2">&#9670;&nbsp;</a></span>IsBrightEffect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PostEffectManager::IsBrightEffect </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa451a33e243173681a4af0850463b41f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa451a33e243173681a4af0850463b41f">&#9670;&nbsp;</a></span>IsUse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PostEffectManager::IsUse </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>flg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e1a59cff6db23e32245ee57001bc451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e1a59cff6db23e32245ee57001bc451">&#9670;&nbsp;</a></span>PassDefaultTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PostEffectManager::PassDefaultTarget </td>
+          <td>(</td>
+          <td class="paramtype">LPDIRECT3DTEXTURE9&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae062e36bf177cbcc37bce71b476b538b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae062e36bf177cbcc37bce71b476b538b">&#9670;&nbsp;</a></span>SetUse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PostEffectManager::SetUse </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>flgUse</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf9c194688a94f58a82694630a77658a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf9c194688a94f58a82694630a77658a">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PostEffectManager::Update </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">フレンドと関連関数の詳解</h2>
+<a id="af0cc694792fa336c5417a6d9353f28ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0cc694792fa336c5417a6d9353f28ab">&#9670;&nbsp;</a></span>BaseSingleton&lt; PostEffectManager &gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_base_singleton.html">BaseSingleton</a>&lt; <a class="el" href="class_post_effect_manager.html">PostEffectManager</a> &gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="afea91d56e410766bc1eb54da0b203081"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afea91d56e410766bc1eb54da0b203081">&#9670;&nbsp;</a></span>effectContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_base_effect_controller.html">BaseEffectController</a>*&gt; PostEffectManager::effectContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fbc265c112d64f9d882e8f948504031"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fbc265c112d64f9d882e8f948504031">&#9670;&nbsp;</a></span>flgUse</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned PostEffectManager::flgUse</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/sf318/source/repos/Framework/Framework/PostEffect/<a class="el" href="_post_effect_manager_8h_source.html">PostEffectManager.h</a></li>
+<li>C:/Users/sf318/source/repos/Framework/Framework/PostEffect/<a class="el" href="_post_effect_manager_8cpp.html">PostEffectManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_post_effect_manager.html">PostEffectManager</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

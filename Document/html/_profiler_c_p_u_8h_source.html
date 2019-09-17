@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/Tool/ProfilerCPU.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_profiler_c_p_u_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProfilerCPU.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_profiler_c_p_u_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//テンプレートヘッダ[ProfilerCPU.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _PROFILERCPU_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _PROFILERCPU_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;..\..\main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;..\Pattern\BaseSingleton.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">class </span><a class="code" href="class_profiler_node.html">ProfilerNode</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">マクロ定義</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="_profiler_c_p_u_8h.html#ad88c265ca8b101880fda93a275865f60">   18</a></span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define USE_PROFILER_CPU</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_profiler_c_p_u.html">   22</a></span>&#160;<span class="comment">プロファイラクラス</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">class </span><a class="code" href="class_profiler_c_p_u.html">ProfilerCPU</a> : <span class="keyword">public</span> <a class="code" href="class_base_singleton.html">BaseSingleton</a>&lt;ProfilerCPU&gt;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_profiler_c_p_u.html#a51a8c211e9ed55a514f698be5ad94445">   25</a></span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_base_singleton.html">BaseSingleton</a>&lt;<a class="code" href="class_profiler_c_p_u.html">ProfilerCPU</a>&gt;;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#a140f92d694fd7570c9b8e09cdaf7c2b5">Update</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#aaedebac738a838de912bb5e34f9a6797">Draw</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#a967044793511a28d3a13f50b8fd35a88">Clear</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#a9d3f3da8f1c27679eda5e7ff40b6de4f">BeginLabel</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* labe);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#a8df59ba93e9c4d3d3f1628ebf1001115">EndLabel</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#ad406146842cd338b2381128ddd30863c">Begin</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* tag);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#a8076ccf4fbe4951863816b20f0d3865a">End</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* tag);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_profiler_c_p_u.html#a9dfbe7fbe2bbfb2cc9fcb41612096a17">   38</a></span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_profiler_c_p_u.html#a51bcaed60c84346da3512c07f7182c32">   39</a></span>&#160;    std::unordered_map&lt;std::string, std::unordered_map&lt;std::string, ProfilerNode&gt;&gt; <a class="code" href="class_profiler_c_p_u.html#a9dfbe7fbe2bbfb2cc9fcb41612096a17">profilerMap</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_profiler_c_p_u.html#a912fbe2aee2f9011d1b10d3bbfd4ddec">   40</a></span>&#160;    DWORD <a class="code" href="class_profiler_c_p_u.html#a51bcaed60c84346da3512c07f7182c32">cntFrame</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::string <a class="code" href="class_profiler_c_p_u.html#aa519d7299a1db0e028d985adaf6e0f6a">currentLabel</a>, <a class="code" href="class_profiler_c_p_u.html#a912fbe2aee2f9011d1b10d3bbfd4ddec">prevLabel</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_c_p_u.html#af1abcb7c3af59f9326c0990941c61efd">CalcElapsed</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_profiler_c_p_u.html#a2a1a50bb3fa1d298873839b0d4c3deb4">   45</a></span>&#160;    <a class="code" href="class_profiler_c_p_u.html#a2a1a50bb3fa1d298873839b0d4c3deb4">ProfilerCPU</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_profiler_c_p_u.html#ad1660a48241fcdc8351e21ce64d93fa5">   46</a></span>&#160;    <a class="code" href="class_profiler_c_p_u.html#a909ab2b5194f555f318d3051d404a9ad">ProfilerCPU</a>(<span class="keyword">const</span> <a class="code" href="class_profiler_c_p_u.html">ProfilerCPU</a>&amp;) {}</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="class_profiler_c_p_u.html#ad1660a48241fcdc8351e21ce64d93fa5">~ProfilerCPU</a>() {}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_profiler_node.html">   50</a></span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">プロファイラノードクラス</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">class </span><a class="code" href="class_profiler_node.html">ProfilerNode</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_profiler_node.html#a0b217f96de5c62193c575d2c9bc89867">ProfilerNode</a>();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_node.html#a745fd6fa11997563227c2bf210675daa">Count</a>(<span class="keywordtype">bool</span> isStart);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_profiler_node.html#a82049c15e359eeb2be84e692a36c8a61">CalcElapsed</a>(<span class="keyword">const</span> LARGE_INTEGER&amp; frequency);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_profiler_node.html#a227f898b048a5ef7047e358511b9eb6c">GetElapsed</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_profiler_node.html#a7e4eed34c923626bcedfd4e2a7d0d4b8">   61</a></span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_profiler_node.html#a2ce667fd853a47a7a368ccc9e8a3c831">   62</a></span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    LARGE_INTEGER <a class="code" href="class_profiler_node.html#a7e4eed34c923626bcedfd4e2a7d0d4b8">start</a>, <a class="code" href="class_profiler_node.html#aeb4a0a24db5deb9671c5d756c082d37b">end</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="class_profiler_node.html#a2ce667fd853a47a7a368ccc9e8a3c831">elapsedTime</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_profiler_node_html_aeb4a0a24db5deb9671c5d756c082d37b"><div class="ttname"><a href="class_profiler_node.html#aeb4a0a24db5deb9671c5d756c082d37b">ProfilerNode::end</a></div><div class="ttdeci">LARGE_INTEGER end</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:61</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a2a1a50bb3fa1d298873839b0d4c3deb4"><div class="ttname"><a href="class_profiler_c_p_u.html#a2a1a50bb3fa1d298873839b0d4c3deb4">ProfilerCPU::ProfilerCPU</a></div><div class="ttdeci">ProfilerCPU(const ProfilerCPU &amp;)</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:45</div></div>
+<div class="ttc" id="aclass_profiler_node_html_a227f898b048a5ef7047e358511b9eb6c"><div class="ttname"><a href="class_profiler_node.html#a227f898b048a5ef7047e358511b9eb6c">ProfilerNode::GetElapsed</a></div><div class="ttdeci">double GetElapsed()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:177</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_aaedebac738a838de912bb5e34f9a6797"><div class="ttname"><a href="class_profiler_c_p_u.html#aaedebac738a838de912bb5e34f9a6797">ProfilerCPU::Draw</a></div><div class="ttdeci">void Draw()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:38</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a909ab2b5194f555f318d3051d404a9ad"><div class="ttname"><a href="class_profiler_c_p_u.html#a909ab2b5194f555f318d3051d404a9ad">ProfilerCPU::ProfilerCPU</a></div><div class="ttdeci">ProfilerCPU()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:22</div></div>
+<div class="ttc" id="aclass_profiler_node_html_a82049c15e359eeb2be84e692a36c8a61"><div class="ttname"><a href="class_profiler_node.html#a82049c15e359eeb2be84e692a36c8a61">ProfilerNode::CalcElapsed</a></div><div class="ttdeci">void CalcElapsed(const LARGE_INTEGER &amp;frequency)</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:170</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_ad406146842cd338b2381128ddd30863c"><div class="ttname"><a href="class_profiler_c_p_u.html#ad406146842cd338b2381128ddd30863c">ProfilerCPU::Begin</a></div><div class="ttdeci">void Begin(const char *tag)</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:105</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_aa519d7299a1db0e028d985adaf6e0f6a"><div class="ttname"><a href="class_profiler_c_p_u.html#aa519d7299a1db0e028d985adaf6e0f6a">ProfilerCPU::currentLabel</a></div><div class="ttdeci">std::string currentLabel</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:40</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a967044793511a28d3a13f50b8fd35a88"><div class="ttname"><a href="class_profiler_c_p_u.html#a967044793511a28d3a13f50b8fd35a88">ProfilerCPU::Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:73</div></div>
+<div class="ttc" id="aclass_base_singleton_html"><div class="ttname"><a href="class_base_singleton.html">BaseSingleton</a></div><div class="ttdef"><b>Definition:</b> BaseSingleton.h:16</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a140f92d694fd7570c9b8e09cdaf7c2b5"><div class="ttname"><a href="class_profiler_c_p_u.html#a140f92d694fd7570c9b8e09cdaf7c2b5">ProfilerCPU::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:29</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a8076ccf4fbe4951863816b20f0d3865a"><div class="ttname"><a href="class_profiler_c_p_u.html#a8076ccf4fbe4951863816b20f0d3865a">ProfilerCPU::End</a></div><div class="ttdeci">void End(const char *tag)</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:117</div></div>
+<div class="ttc" id="aclass_profiler_node_html"><div class="ttname"><a href="class_profiler_node.html">ProfilerNode</a></div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:50</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_ad1660a48241fcdc8351e21ce64d93fa5"><div class="ttname"><a href="class_profiler_c_p_u.html#ad1660a48241fcdc8351e21ce64d93fa5">ProfilerCPU::~ProfilerCPU</a></div><div class="ttdeci">~ProfilerCPU()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:46</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a9d3f3da8f1c27679eda5e7ff40b6de4f"><div class="ttname"><a href="class_profiler_c_p_u.html#a9d3f3da8f1c27679eda5e7ff40b6de4f">ProfilerCPU::BeginLabel</a></div><div class="ttdeci">void BeginLabel(const char *labe)</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:86</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_af1abcb7c3af59f9326c0990941c61efd"><div class="ttname"><a href="class_profiler_c_p_u.html#af1abcb7c3af59f9326c0990941c61efd">ProfilerCPU::CalcElapsed</a></div><div class="ttdeci">void CalcElapsed()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:129</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html"><div class="ttname"><a href="class_profiler_c_p_u.html">ProfilerCPU</a></div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:22</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a912fbe2aee2f9011d1b10d3bbfd4ddec"><div class="ttname"><a href="class_profiler_c_p_u.html#a912fbe2aee2f9011d1b10d3bbfd4ddec">ProfilerCPU::prevLabel</a></div><div class="ttdeci">std::string prevLabel</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:40</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a8df59ba93e9c4d3d3f1628ebf1001115"><div class="ttname"><a href="class_profiler_c_p_u.html#a8df59ba93e9c4d3d3f1628ebf1001115">ProfilerCPU::EndLabel</a></div><div class="ttdeci">void EndLabel()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:96</div></div>
+<div class="ttc" id="aclass_profiler_node_html_a2ce667fd853a47a7a368ccc9e8a3c831"><div class="ttname"><a href="class_profiler_node.html#a2ce667fd853a47a7a368ccc9e8a3c831">ProfilerNode::elapsedTime</a></div><div class="ttdeci">double elapsedTime</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:62</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a51bcaed60c84346da3512c07f7182c32"><div class="ttname"><a href="class_profiler_c_p_u.html#a51bcaed60c84346da3512c07f7182c32">ProfilerCPU::cntFrame</a></div><div class="ttdeci">DWORD cntFrame</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:39</div></div>
+<div class="ttc" id="aclass_profiler_c_p_u_html_a9dfbe7fbe2bbfb2cc9fcb41612096a17"><div class="ttname"><a href="class_profiler_c_p_u.html#a9dfbe7fbe2bbfb2cc9fcb41612096a17">ProfilerCPU::profilerMap</a></div><div class="ttdeci">std::unordered_map&lt; std::string, std::unordered_map&lt; std::string, ProfilerNode &gt; &gt; profilerMap</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:38</div></div>
+<div class="ttc" id="aclass_profiler_node_html_a7e4eed34c923626bcedfd4e2a7d0d4b8"><div class="ttname"><a href="class_profiler_node.html#a7e4eed34c923626bcedfd4e2a7d0d4b8">ProfilerNode::start</a></div><div class="ttdeci">LARGE_INTEGER start</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.h:61</div></div>
+<div class="ttc" id="aclass_profiler_node_html_a745fd6fa11997563227c2bf210675daa"><div class="ttname"><a href="class_profiler_node.html#a745fd6fa11997563227c2bf210675daa">ProfilerNode::Count</a></div><div class="ttdeci">void Count(bool isStart)</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:156</div></div>
+<div class="ttc" id="aclass_profiler_node_html_a0b217f96de5c62193c575d2c9bc89867"><div class="ttname"><a href="class_profiler_node.html#a0b217f96de5c62193c575d2c9bc89867">ProfilerNode::ProfilerNode</a></div><div class="ttdeci">ProfilerNode()</div><div class="ttdef"><b>Definition:</b> ProfilerCPU.cpp:147</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_0ad6fad9d3353b2f255e70d111fab73b.html">Tool</a></li><li class="navelem"><a class="el" href="_profiler_c_p_u_8h.html">ProfilerCPU.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/Animation/AnimationManager.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_animation_manager_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AnimationManager.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_animation_manager_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//アニメーションマネージャヘッダ[AnimationManager.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _ANIMATIONMANAGER_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _ANIMATIONMANAGER_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span><a class="code" href="class_anim_container.html">AnimContainer</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">マクロ定義</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_animation_manager.html">   20</a></span>&#160;<span class="comment">クラス定義</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">class </span><a class="code" href="class_animation_manager.html">AnimationManager</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="class_animation_manager.html#a1a07273c87def56cab82a1795f29f2e4">AnimationManager</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="class_animation_manager.html#a3a8c725f2aa41692ed7ec4ef0957c365">~AnimationManager</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_animation_manager.html#ad7a885d7f22f5e85d449ea4aeec6cc40">Update</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_animation_manager.html#a2c7971a9fef2098be3b6b98e90f1f46e">Draw</a>(LPD3DXMATRIX mtxWorld);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    HRESULT <a class="code" href="class_animation_manager.html#a227ae5048a7cda4d8b295f86bc37d6e8">LoadXFile</a>(LPCSTR fileName, <span class="keyword">const</span> <span class="keywordtype">char</span>* errorSrc);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    HRESULT <a class="code" href="class_animation_manager.html#aa15fcc2b66fcb6a53e5d39a930c2b870">LoadAnimation</a>(LPCSTR setName, <span class="keywordtype">int</span> setNo, <span class="keywordtype">float</span> shiftTime = 0.2f);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_animation_manager.html#aed69c727f9213a1262177eac9e4e1c7c">SetPlaySpeed</a>(UINT animID, <span class="keywordtype">float</span> speed);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_animation_manager.html#a8c2467a06bac1a1e093a65986778d68c">SetDeltaTime</a>(UINT animID, <span class="keywordtype">float</span> deltaTimePerFrame);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_animation_manager.html#a99ca8f0491c847760b05fbab6c18e61d">ChangeAnim</a>(UINT next, <span class="keywordtype">bool</span> forceChange = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_animation_manager.html#a9a980920152df45905657410785aeee2">SetFinishTransition</a>(UINT srcID, UINT destID);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_animation_manager.html#af3190ac570068cfda6f90140d96d1d22">   41</a></span>&#160;    <a class="code" href="class_anim_container.html">AnimContainer</a> *<a class="code" href="class_animation_manager.html#af3190ac570068cfda6f90140d96d1d22">container</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_animation_manager.html#a539ce41c0322717e24332f308f599257">   42</a></span>&#160;    UINT <a class="code" href="class_animation_manager.html#a539ce41c0322717e24332f308f599257">currentAnimID</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_animation_manager.html#a9501e025e9a809dd75cca127f1091094">   44</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_animation_manager.html#a9501e025e9a809dd75cca127f1091094">elapsedTime</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_animation_manager.html#acea76c79999a12831ae507e76797b2e1">   45</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="class_animation_manager.html#acea76c79999a12831ae507e76797b2e1">animationPeriod</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_animation_manager.html#a457e5bb405536bdf7d0478d966956243">   47</a></span>&#160;    std::vector &lt;float&gt; <a class="code" href="class_animation_manager.html#a457e5bb405536bdf7d0478d966956243">playSpeedList</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_animation_manager.html#ae01b03aa9b75350dd4184539b84bc271">   48</a></span>&#160;    std::vector&lt;float&gt; <a class="code" href="class_animation_manager.html#ae01b03aa9b75350dd4184539b84bc271">deltaTimeList</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_animation_manager.html#ab746e095c6df1dcc090cbbbad26e4d5d">   49</a></span>&#160;    std::unordered_map&lt;UINT, UINT&gt; <a class="code" href="class_animation_manager.html#ab746e095c6df1dcc090cbbbad26e4d5d">transitionMap</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_animation_manager.html#a7f78e9272bb8cef25e50064f2d083f93">ShouldTransition</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_animation_manager_html_acea76c79999a12831ae507e76797b2e1"><div class="ttname"><a href="class_animation_manager.html#acea76c79999a12831ae507e76797b2e1">AnimationManager::animationPeriod</a></div><div class="ttdeci">float animationPeriod</div><div class="ttdef"><b>Definition:</b> AnimationManager.h:45</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a7f78e9272bb8cef25e50064f2d083f93"><div class="ttname"><a href="class_animation_manager.html#a7f78e9272bb8cef25e50064f2d083f93">AnimationManager::ShouldTransition</a></div><div class="ttdeci">bool ShouldTransition()</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:135</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a99ca8f0491c847760b05fbab6c18e61d"><div class="ttname"><a href="class_animation_manager.html#a99ca8f0491c847760b05fbab6c18e61d">AnimationManager::ChangeAnim</a></div><div class="ttdeci">void ChangeAnim(UINT next, bool forceChange=false)</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:117</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a2c7971a9fef2098be3b6b98e90f1f46e"><div class="ttname"><a href="class_animation_manager.html#a2c7971a9fef2098be3b6b98e90f1f46e">AnimationManager::Draw</a></div><div class="ttdeci">void Draw(LPD3DXMATRIX mtxWorld)</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:48</div></div>
+<div class="ttc" id="aclass_animation_manager_html_ae01b03aa9b75350dd4184539b84bc271"><div class="ttname"><a href="class_animation_manager.html#ae01b03aa9b75350dd4184539b84bc271">AnimationManager::deltaTimeList</a></div><div class="ttdeci">std::vector&lt; float &gt; deltaTimeList</div><div class="ttdef"><b>Definition:</b> AnimationManager.h:48</div></div>
+<div class="ttc" id="aclass_animation_manager_html_aa15fcc2b66fcb6a53e5d39a930c2b870"><div class="ttname"><a href="class_animation_manager.html#aa15fcc2b66fcb6a53e5d39a930c2b870">AnimationManager::LoadAnimation</a></div><div class="ttdeci">HRESULT LoadAnimation(LPCSTR setName, int setNo, float shiftTime=0.2f)</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:80</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a539ce41c0322717e24332f308f599257"><div class="ttname"><a href="class_animation_manager.html#a539ce41c0322717e24332f308f599257">AnimationManager::currentAnimID</a></div><div class="ttdeci">UINT currentAnimID</div><div class="ttdef"><b>Definition:</b> AnimationManager.h:42</div></div>
+<div class="ttc" id="aclass_anim_container_html"><div class="ttname"><a href="class_anim_container.html">AnimContainer</a></div><div class="ttdef"><b>Definition:</b> AnimContainer.h:26</div></div>
+<div class="ttc" id="aclass_animation_manager_html"><div class="ttname"><a href="class_animation_manager.html">AnimationManager</a></div><div class="ttdef"><b>Definition:</b> AnimationManager.h:20</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a457e5bb405536bdf7d0478d966956243"><div class="ttname"><a href="class_animation_manager.html#a457e5bb405536bdf7d0478d966956243">AnimationManager::playSpeedList</a></div><div class="ttdeci">std::vector&lt; float &gt; playSpeedList</div><div class="ttdef"><b>Definition:</b> AnimationManager.h:47</div></div>
+<div class="ttc" id="aclass_animation_manager_html_aed69c727f9213a1262177eac9e4e1c7c"><div class="ttname"><a href="class_animation_manager.html#aed69c727f9213a1262177eac9e4e1c7c">AnimationManager::SetPlaySpeed</a></div><div class="ttdeci">void SetPlaySpeed(UINT animID, float speed)</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:97</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a3a8c725f2aa41692ed7ec4ef0957c365"><div class="ttname"><a href="class_animation_manager.html#a3a8c725f2aa41692ed7ec4ef0957c365">AnimationManager::~AnimationManager</a></div><div class="ttdeci">~AnimationManager()</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:24</div></div>
+<div class="ttc" id="aclass_animation_manager_html_ad7a885d7f22f5e85d449ea4aeec6cc40"><div class="ttname"><a href="class_animation_manager.html#ad7a885d7f22f5e85d449ea4aeec6cc40">AnimationManager::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:31</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a9a980920152df45905657410785aeee2"><div class="ttname"><a href="class_animation_manager.html#a9a980920152df45905657410785aeee2">AnimationManager::SetFinishTransition</a></div><div class="ttdeci">void SetFinishTransition(UINT srcID, UINT destID)</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:128</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a1a07273c87def56cab82a1795f29f2e4"><div class="ttname"><a href="class_animation_manager.html#a1a07273c87def56cab82a1795f29f2e4">AnimationManager::AnimationManager</a></div><div class="ttdeci">AnimationManager()</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:17</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a8c2467a06bac1a1e093a65986778d68c"><div class="ttname"><a href="class_animation_manager.html#a8c2467a06bac1a1e093a65986778d68c">AnimationManager::SetDeltaTime</a></div><div class="ttdeci">void SetDeltaTime(UINT animID, float deltaTimePerFrame)</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:107</div></div>
+<div class="ttc" id="aclass_animation_manager_html_af3190ac570068cfda6f90140d96d1d22"><div class="ttname"><a href="class_animation_manager.html#af3190ac570068cfda6f90140d96d1d22">AnimationManager::container</a></div><div class="ttdeci">AnimContainer * container</div><div class="ttdef"><b>Definition:</b> AnimationManager.h:41</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a227ae5048a7cda4d8b295f86bc37d6e8"><div class="ttname"><a href="class_animation_manager.html#a227ae5048a7cda4d8b295f86bc37d6e8">AnimationManager::LoadXFile</a></div><div class="ttdeci">HRESULT LoadXFile(LPCSTR fileName, const char *errorSrc)</div><div class="ttdef"><b>Definition:</b> AnimationManager.cpp:55</div></div>
+<div class="ttc" id="aclass_animation_manager_html_ab746e095c6df1dcc090cbbbad26e4d5d"><div class="ttname"><a href="class_animation_manager.html#ab746e095c6df1dcc090cbbbad26e4d5d">AnimationManager::transitionMap</a></div><div class="ttdeci">std::unordered_map&lt; UINT, UINT &gt; transitionMap</div><div class="ttdef"><b>Definition:</b> AnimationManager.h:49</div></div>
+<div class="ttc" id="aclass_animation_manager_html_a9501e025e9a809dd75cca127f1091094"><div class="ttname"><a href="class_animation_manager.html#a9501e025e9a809dd75cca127f1091094">AnimationManager::elapsedTime</a></div><div class="ttdeci">float elapsedTime</div><div class="ttdef"><b>Definition:</b> AnimationManager.h:44</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_5e1f7e61828fd4a6f437f8311c6d2d03.html">Animation</a></li><li class="navelem"><a class="el" href="_animation_manager_8h.html">AnimationManager.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>

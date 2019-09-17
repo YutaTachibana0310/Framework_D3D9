@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Framework_D3D9: C:/Users/sf318/source/repos/Framework/Framework/Collider/BoxCollider3D.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Framework_D3D9
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_box_collider3_d_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BoxCollider3D.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_box_collider3_d_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//ボックスコライダー3Dヘッダ[BoxCollider3D.h]</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//Author:GP12B332 21 立花雄太</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//=====================================</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _BOXCOLLIDER3D_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _BOXCOLLIDER3D_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;../../main.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;../Pattern/ObserveSubject.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="_box_collider3_d_8h.html#af6e02de7f52620810e6cb664d95e4550">   16</a></span>&#160;<span class="preprocessor">#define BOXCOLLIDER3D_USE_DEBUG</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">BoxCollider3DTag列挙子</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84">   20</a></span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">enum class</span> <a class="code" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84">BoxCollider3DTag</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84a0e742bc61e965d123d9fe490d3d21c1f">PlayerBomber</a>,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84a8c6d21187fb58b7a079d70030686b33e">Enemy</a>,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84a6a061313d22e51e0f25b7cd4dc065233">Max</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/**************************************</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html">   29</a></span>&#160;<span class="comment">BoxCollider3Dクラス</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">***************************************/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">class </span><a class="code" href="class_box_collider3_d.html">BoxCollider3D</a> : <span class="keyword">public</span> <a class="code" href="class_observe_subject.html">ObserveSubject</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#a29e13090183624652967d91564e4acdf">   33</a></span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_box_collider3_d.html">BoxCollider3D</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">//コンストラクタ、デストラクタ</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_box_collider3_d.html#acaac3f2c92709c5599aebc92d4da5fd3">BoxCollider3D</a>(<a class="code" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84">BoxCollider3DTag</a> <a class="code" href="class_box_collider3_d.html#abcc32a5a9abf7c31c12e164e15c5ad64">tag</a>, D3DXVECTOR3 *<a class="code" href="class_box_collider3_d.html#af47103f41746d476c0badc14093bc9a2">pPos</a>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_box_collider3_d.html#acaac3f2c92709c5599aebc92d4da5fd3">BoxCollider3D</a>(<a class="code" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84">BoxCollider3DTag</a> <a class="code" href="class_box_collider3_d.html#abcc32a5a9abf7c31c12e164e15c5ad64">tag</a>, D3DXVECTOR3 *<a class="code" href="class_box_collider3_d.html#af47103f41746d476c0badc14093bc9a2">pPos</a>, D3DXVECTOR3 <a class="code" href="class_box_collider3_d.html#a0e46c7007449d077112b850db8b5bc8d">size</a>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="class_box_collider3_d.html#a575b814ae1b3b988130d87e12fc7a612">~BoxCollider3D</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">//衝突判定、サイズセット、座標アドレスセット</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_box_collider3_d.html#aa51d62087c16590f0e7a4e51ea328f5e">CheckCollision</a>(<a class="code" href="class_box_collider3_d.html">BoxCollider3D</a> *other);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_box_collider3_d.html#a0a4b1050a0a71f948a1fdc13f09dc68e">SetSize</a>(D3DXVECTOR3 <a class="code" href="class_box_collider3_d.html#a0e46c7007449d077112b850db8b5bc8d">size</a>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_box_collider3_d.html#a89507311a5481f151ab41ab8b6a4c6cb">SetPosAddress</a>(D3DXVECTOR3 *<a class="code" href="class_box_collider3_d.html#af47103f41746d476c0badc14093bc9a2">pPos</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">//衝突判定</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_box_collider3_d.html#ad7ff054fa24b6e138f2343dcf3342734">UpdateCollision</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_box_collider3_d.html#a87852a6df60713a834e1eae67db671b4">RegisterToCheckList</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_box_collider3_d.html#a6674a081e552969bce7afa917cd10e20">RemoveFromCheckList</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#af3717190e5f5f00fb3761555d58f6d1d">   51</a></span>&#160;    <span class="comment">//アクティブ判定</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_box_collider3_d.html#af3717190e5f5f00fb3761555d58f6d1d">active</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#ifdef BOXCOLLIDER3D_USE_DEBUG</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">//デバッグ用描画処理</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_box_collider3_d.html#a064fc0c87ac9b8069666c43c6163e119">DrawCollider</a>(<a class="code" href="class_box_collider3_d.html">BoxCollider3D</a> *collider);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#acaac3f2c92709c5599aebc92d4da5fd3">   59</a></span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="class_box_collider3_d.html#acaac3f2c92709c5599aebc92d4da5fd3">BoxCollider3D</a>() {}</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#abcc32a5a9abf7c31c12e164e15c5ad64">   61</a></span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#af47103f41746d476c0badc14093bc9a2">   62</a></span>&#160;    <a class="code" href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84">BoxCollider3DTag</a> <a class="code" href="class_box_collider3_d.html#abcc32a5a9abf7c31c12e164e15c5ad64">tag</a>;   <span class="comment">//タグ</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#a0e46c7007449d077112b850db8b5bc8d">   63</a></span>&#160;    D3DXVECTOR3 *<a class="code" href="class_box_collider3_d.html#af47103f41746d476c0badc14093bc9a2">pPos</a>;      <span class="comment">//親の座標アドレス</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#a6a53244a83b1ff4285a81067ad488a07">   64</a></span>&#160;    D3DXVECTOR3 <a class="code" href="class_box_collider3_d.html#a0e46c7007449d077112b850db8b5bc8d">size</a>;       <span class="comment">//サイズ</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    D3DXVECTOR3 <a class="code" href="class_box_collider3_d.html#a6a53244a83b1ff4285a81067ad488a07">offset</a>;     <span class="comment">//オフセット</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#ab00f984d869ce370fd4ac4226b727de0">   66</a></span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> std::map&lt;BoxCollider3DTag, std::list&lt;BoxCollider3D*&gt;&gt; <a class="code" href="class_box_collider3_d.html#ab00f984d869ce370fd4ac4226b727de0">checkDictionary</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#a1e05dfb7ada18458669f0a11b069be51">   70</a></span>&#160;<span class="preprocessor">#ifdef BOXCOLLIDER3D_USE_DEBUG</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#af8aed6d57571ca200b5a9a42f266be10">   71</a></span>&#160;    <span class="keyword">static</span> UINT <a class="code" href="class_box_collider3_d.html#a1e05dfb7ada18458669f0a11b069be51">instanceCount</a>;      <span class="comment">//インスタンスカウント</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_box_collider3_d.html#ae5a674e98d342a857350e5293aa19f56">   72</a></span>&#160;    <span class="keyword">static</span> D3DMATERIAL9 <a class="code" href="class_box_collider3_d.html#af8aed6d57571ca200b5a9a42f266be10">material</a>;   <span class="comment">//描画用マテリアル</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">static</span> LPD3DXMESH <a class="code" href="class_box_collider3_d.html#ae5a674e98d342a857350e5293aa19f56">mesh</a>;         <span class="comment">//描画用メッシュ</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="a_box_collider3_d_8h_html_ad8d40ec7d58a884e65053d3f3f3c8e84a6a061313d22e51e0f25b7cd4dc065233"><div class="ttname"><a href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84a6a061313d22e51e0f25b7cd4dc065233">BoxCollider3DTag::Max</a></div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_af3717190e5f5f00fb3761555d58f6d1d"><div class="ttname"><a href="class_box_collider3_d.html#af3717190e5f5f00fb3761555d58f6d1d">BoxCollider3D::active</a></div><div class="ttdeci">bool active</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:51</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_ae5a674e98d342a857350e5293aa19f56"><div class="ttname"><a href="class_box_collider3_d.html#ae5a674e98d342a857350e5293aa19f56">BoxCollider3D::mesh</a></div><div class="ttdeci">static LPD3DXMESH mesh</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:72</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a87852a6df60713a834e1eae67db671b4"><div class="ttname"><a href="class_box_collider3_d.html#a87852a6df60713a834e1eae67db671b4">BoxCollider3D::RegisterToCheckList</a></div><div class="ttdeci">void RegisterToCheckList()</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:176</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a6a53244a83b1ff4285a81067ad488a07"><div class="ttname"><a href="class_box_collider3_d.html#a6a53244a83b1ff4285a81067ad488a07">BoxCollider3D::offset</a></div><div class="ttdeci">D3DXVECTOR3 offset</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:64</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a0a4b1050a0a71f948a1fdc13f09dc68e"><div class="ttname"><a href="class_box_collider3_d.html#a0a4b1050a0a71f948a1fdc13f09dc68e">BoxCollider3D::SetSize</a></div><div class="ttdeci">void SetSize(D3DXVECTOR3 size)</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:142</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_abcc32a5a9abf7c31c12e164e15c5ad64"><div class="ttname"><a href="class_box_collider3_d.html#abcc32a5a9abf7c31c12e164e15c5ad64">BoxCollider3D::tag</a></div><div class="ttdeci">BoxCollider3DTag tag</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:61</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_aa51d62087c16590f0e7a4e51ea328f5e"><div class="ttname"><a href="class_box_collider3_d.html#aa51d62087c16590f0e7a4e51ea328f5e">BoxCollider3D::CheckCollision</a></div><div class="ttdeci">bool CheckCollision(BoxCollider3D *other)</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:116</div></div>
+<div class="ttc" id="a_box_collider3_d_8h_html_ad8d40ec7d58a884e65053d3f3f3c8e84"><div class="ttname"><a href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84">BoxCollider3DTag</a></div><div class="ttdeci">BoxCollider3DTag</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:20</div></div>
+<div class="ttc" id="a_box_collider3_d_8h_html_ad8d40ec7d58a884e65053d3f3f3c8e84a8c6d21187fb58b7a079d70030686b33e"><div class="ttname"><a href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84a8c6d21187fb58b7a079d70030686b33e">BoxCollider3DTag::Enemy</a></div></div>
+<div class="ttc" id="aclass_box_collider3_d_html"><div class="ttname"><a href="class_box_collider3_d.html">BoxCollider3D</a></div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:29</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a1e05dfb7ada18458669f0a11b069be51"><div class="ttname"><a href="class_box_collider3_d.html#a1e05dfb7ada18458669f0a11b069be51">BoxCollider3D::instanceCount</a></div><div class="ttdeci">static UINT instanceCount</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:70</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_af47103f41746d476c0badc14093bc9a2"><div class="ttname"><a href="class_box_collider3_d.html#af47103f41746d476c0badc14093bc9a2">BoxCollider3D::pPos</a></div><div class="ttdeci">D3DXVECTOR3 * pPos</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:62</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_ab00f984d869ce370fd4ac4226b727de0"><div class="ttname"><a href="class_box_collider3_d.html#ab00f984d869ce370fd4ac4226b727de0">BoxCollider3D::checkDictionary</a></div><div class="ttdeci">static std::map&lt; BoxCollider3DTag, std::list&lt; BoxCollider3D * &gt; &gt; checkDictionary</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:66</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_ad7ff054fa24b6e138f2343dcf3342734"><div class="ttname"><a href="class_box_collider3_d.html#ad7ff054fa24b6e138f2343dcf3342734">BoxCollider3D::UpdateCollision</a></div><div class="ttdeci">static void UpdateCollision()</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:156</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_acaac3f2c92709c5599aebc92d4da5fd3"><div class="ttname"><a href="class_box_collider3_d.html#acaac3f2c92709c5599aebc92d4da5fd3">BoxCollider3D::BoxCollider3D</a></div><div class="ttdeci">BoxCollider3D()</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:59</div></div>
+<div class="ttc" id="a_box_collider3_d_8h_html_ad8d40ec7d58a884e65053d3f3f3c8e84a0e742bc61e965d123d9fe490d3d21c1f"><div class="ttname"><a href="_box_collider3_d_8h.html#ad8d40ec7d58a884e65053d3f3f3c8e84a0e742bc61e965d123d9fe490d3d21c1f">BoxCollider3DTag::PlayerBomber</a></div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a064fc0c87ac9b8069666c43c6163e119"><div class="ttname"><a href="class_box_collider3_d.html#a064fc0c87ac9b8069666c43c6163e119">BoxCollider3D::DrawCollider</a></div><div class="ttdeci">static void DrawCollider(BoxCollider3D *collider)</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:207</div></div>
+<div class="ttc" id="aclass_observe_subject_html"><div class="ttname"><a href="class_observe_subject.html">ObserveSubject</a></div><div class="ttdef"><b>Definition:</b> ObserveSubject.h:18</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_af8aed6d57571ca200b5a9a42f266be10"><div class="ttname"><a href="class_box_collider3_d.html#af8aed6d57571ca200b5a9a42f266be10">BoxCollider3D::material</a></div><div class="ttdeci">static D3DMATERIAL9 material</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:71</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a575b814ae1b3b988130d87e12fc7a612"><div class="ttname"><a href="class_box_collider3_d.html#a575b814ae1b3b988130d87e12fc7a612">BoxCollider3D::~BoxCollider3D</a></div><div class="ttdeci">~BoxCollider3D()</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:101</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a89507311a5481f151ab41ab8b6a4c6cb"><div class="ttname"><a href="class_box_collider3_d.html#a89507311a5481f151ab41ab8b6a4c6cb">BoxCollider3D::SetPosAddress</a></div><div class="ttdeci">void SetPosAddress(D3DXVECTOR3 *pPos)</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:149</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a6674a081e552969bce7afa917cd10e20"><div class="ttname"><a href="class_box_collider3_d.html#a6674a081e552969bce7afa917cd10e20">BoxCollider3D::RemoveFromCheckList</a></div><div class="ttdeci">void RemoveFromCheckList()</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.cpp:191</div></div>
+<div class="ttc" id="aclass_box_collider3_d_html_a0e46c7007449d077112b850db8b5bc8d"><div class="ttname"><a href="class_box_collider3_d.html#a0e46c7007449d077112b850db8b5bc8d">BoxCollider3D::size</a></div><div class="ttdeci">D3DXVECTOR3 size</div><div class="ttdef"><b>Definition:</b> BoxCollider3D.h:63</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_bcbb2cf9a3d3d83e5515c82071a07177.html">Framework</a></li><li class="navelem"><a class="el" href="dir_a5ce6780160c90e3c10ea6757d27a981.html">Collider</a></li><li class="navelem"><a class="el" href="_box_collider3_d_8h.html">BoxCollider3D.h</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
+  </ul>
+</div>
+</body>
+</html>
