@@ -32,7 +32,7 @@ Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 	sceneManager->Add("Collider", new ColliderTest());
 	sceneManager->Add("Delegate", new DelegateTest());
 
-	sceneManager->ChangeScene("Particle");
+	sceneManager->ChangeScene("Easing");
 }
 
 #include "../Framework/Input/input.h"

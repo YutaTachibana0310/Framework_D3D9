@@ -11,6 +11,7 @@
 #include "../Framework\Renderer2D\Polygon2D.h"
 #include "../Framework\Math\Easing.h"
 #include "../Framework\Core\BaseScene.h"
+#include "../Framework/Renderer2D/CircleGauge.h"
 
 /**************************************
 É}ÉNÉçíËã`
@@ -32,6 +33,7 @@ private:
 	Polygon2D* polygon;
 	int type;
 
+	CircleGauge* gauge;
 };
 
 #endif

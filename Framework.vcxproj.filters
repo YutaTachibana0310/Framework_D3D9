@@ -82,6 +82,7 @@
     <ClCompile Include="Framework\Collider\ColliderManager.cpp" />
     <ClCompile Include="Test\ColliderTest.cpp" />
     <ClCompile Include="Test\DelegateTest.cpp" />
+    <ClCompile Include="Framework\Renderer2D\CircleGauge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Camera\Camera.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Test\ColliderTest.h" />
     <ClInclude Include="Framework\Pattern\Delegate.h" />
     <ClInclude Include="Test\DelegateTest.h" />
+    <ClInclude Include="Framework\Renderer2D\CircleGauge.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />
@@ -190,5 +192,6 @@
     <FxCompile Include="Shaders\SpeedBlur.fx" />
     <FxCompile Include="Shaders\SpikeNoise.fx" />
     <FxCompile Include="Shaders\StrongBlurFilter.fx" />
+    <FxCompile Include="Shaders\CircleGauge.fx" />
   </ItemGroup>
 </Project>

@@ -22,6 +22,10 @@ void EasingTest::Init()
 	polygon->LoadTexture("data/TEXTURE/pointer.png");
 	polygon->SetSize(50.0f, 50.0f);
 
+	gauge = new CircleGauge(D3DXVECTOR2(200.0f, 200.0f));
+	gauge->SetPosition(D3DXVECTOR3(SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.0f));
+	gauge->LoadTexture("data/TEXTURE/circle.png");
+
 	cntFrame = 0;
 }
 
@@ -95,4 +99,6 @@ void EasingTest::Update()
 void EasingTest::Draw()
 {
 	polygon->Draw();
+
+	gauge->Draw();
 }
