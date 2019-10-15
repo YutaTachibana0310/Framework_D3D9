@@ -101,6 +101,24 @@ void TweenTest::Update()
 	if (Debug::Button("Create") && object == NULL)
 		object = new TweenObject();
 
+	if (Debug::Button("CallBack"))
+	{
+		targetRot.x = Math::RandomRange(0.0f, 360.0f);
+		targetRot.y = Math::RandomRange(0.0f, 360.0f);
+		targetRot.z = Math::RandomRange(0.0f, 360.0f);
+
+		if (object != NULL)
+		{
+			object->Callback(targetRot, (EaseType)type, [&]()
+			{
+				targetScale = Vector3::One * Math::RandomRange(0.5f, 5.0f);
+
+				if (object != NULL)
+					object->Scale(targetScale, (EaseType)type);
+			});
+		}
+	}
+
 	Debug::Text(targetPos, "TargetPos");
 	Debug::Text(targetRot, "TargetRot");
 	Debug::Text(targetScale, "TargetScale");
@@ -145,4 +163,12 @@ void TweenObject::Rotate(const D3DXVECTOR3& target, EaseType type)
 void TweenObject::Scale(const D3DXVECTOR3& target, EaseType type)
 {
 	Tween::Scale(*this, target, 30, type);
+}
+
+/**************************************
+コールバック
+***************************************/
+void TweenObject::Callback(const D3DXVECTOR3 & rotTarget, EaseType type, const std::function<void(void)>& callback)
+{
+	Tween::Rotate(*this, rotTarget, 30, type, callback);
 }

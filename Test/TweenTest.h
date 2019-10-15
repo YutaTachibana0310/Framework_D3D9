@@ -11,6 +11,7 @@
 #include "../Framework\Core\BaseScene.h"
 #include "../Framework/Renderer3D/TransformObject.h"
 #include "../Framework/Math/Easing.h"
+#include <functional>
 
 /**************************************
 ëOï˚êÈåæ
@@ -30,6 +31,7 @@ public:
 	void Move(const D3DXVECTOR3& target, EaseType type);
 	void Rotate(const D3DXVECTOR3& target, EaseType type);
 	void Scale(const D3DXVECTOR3& target, EaseType type);
+	void Callback(const D3DXVECTOR3& rotTarget, EaseType type, const std::function<void(void)>& callback);
 };
 
 class TweenTest : public BaseScene
