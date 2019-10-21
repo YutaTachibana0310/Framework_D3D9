@@ -18,7 +18,7 @@
 void DelegateTest::Init()
 {
 	object = new DelegateObject();
-	delegate = Delegate<DelegateObject>::Create(object, &DelegateObject::OnClick);
+	delegate = Delegate<DelegateObject, int(void)>::Create(object, &DelegateObject::OnClick);
 }
 
 void DelegateTest::Uninit()
@@ -30,10 +30,12 @@ void DelegateTest::Uninit()
 void DelegateTest::Update()
 {
 	Debug::Begin("Delegate");
+	static int res = 0;
 	if (Debug::Button("Clock"))
 	{
-		(*delegate)(0);
+		res = (*delegate)();
 	}
+	Debug::Text("cnt : %d", res);
 	Debug::End();
 
 	object->Update();
@@ -61,12 +63,12 @@ void DelegateObject::Update()
 
 void DelegateObject::Draw()
 {
-	Debug::Begin("Delegate");
-	Debug::Text("cnt : %d", cnt);
-	Debug::End();
+	//Debug::Begin("Delegate");
+	//Debug::Text("cnt : %d", cnt);
+	//Debug::End();
 }
 
-void DelegateObject::OnClick(int value)
+int DelegateObject::OnClick()
 {
-	cnt++;
+	return ++cnt;
 }

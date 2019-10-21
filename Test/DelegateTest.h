@@ -10,12 +10,12 @@
 
 #include "../main.h"
 #include "../Framework/Core/BaseScene.h"
+#include "../Framework/Pattern/Delegate.h"
 
 /**************************************
 前方宣言
 ***************************************/
 class DelegateObject;
-class DelegateBase;
 
 /**************************************
 クラス定義
@@ -30,7 +30,7 @@ public:
 
 private:
 	DelegateObject *object;
-	DelegateBase* delegate;
+	DelegateBase<int(void)> *delegate;
 };
 
 class DelegateObject
@@ -42,7 +42,7 @@ public:
 	void Update();
 	void Draw();
 
-	void OnClick(int value);
+	int OnClick();
 
 private:
 	int cnt;
