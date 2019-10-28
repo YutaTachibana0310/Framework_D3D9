@@ -84,6 +84,8 @@ public:
 	***************************************/
 	static void Rotate(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type, std::function<void(void)> callback = nullptr);
 
+	static void Turn(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseType type, const D3DXVECTOR3& dummyAxis, std::function<void()> callback = nullptr);
+
 private:
 	void Update();
 	void ClearContainer();
@@ -139,11 +141,11 @@ private:
 	{
 	public:
 		RotateTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback);
+		RotateTweener(std::shared_ptr<Transform>& ref, const D3DXQUATERNION& start, const D3DXQUATERNION& end, int duration, EaseType type, Callback callback);
 		void Update();
 
 	private:
 		D3DXQUATERNION start, end;
 	};
 };
-
 #endif

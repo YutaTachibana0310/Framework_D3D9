@@ -118,6 +118,18 @@ void TweenTest::Update()
 			});
 		}
 	}
+	
+	Debug::NewLine();
+	{
+		static D3DXVECTOR3 direction = Vector3::Forward;
+		Debug::Input("direction", direction);
+
+		if (Debug::Button("Turn"))
+		{
+			object->SetRotatition(Vector3::Zero);
+			Tween::Turn(*object, direction, 120, (EaseType)type);
+		}
+	}
 
 	Debug::Text(targetPos, "TargetPos");
 	Debug::Text(targetRot, "TargetRot");
