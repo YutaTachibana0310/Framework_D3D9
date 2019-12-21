@@ -7,6 +7,9 @@
 #ifndef _UTILITY_H_
 #define _UTILITY_H_
 
+#include <algorithm>
+#include "../../Library/nameof/nameof.hpp"
+
 /**************************************
 前方宣言
 ***************************************/
@@ -18,9 +21,8 @@
 /**************************************
 クラス定義
 ***************************************/
-class Utility
+namespace Utility
 {
-public:
 	/**************************************
 	クラス定義
 	***************************************/
@@ -49,8 +51,25 @@ public:
 		map.clear();
 	}
 
-private:
-	Utility();
+	/**************************************
+	コンテナ内検索処理
+	***************************************/
+	template<class T, class OBJ>
+	static inline bool IsContain(T& container, const OBJ& target)
+	{
+		auto itr = std::find(container.begin(), container.end(), target);
+
+		return itr != container.end();
+	}
+
+	/**************************************
+	enumの文字列化
+	***************************************/
+	template <class Enum>
+	std::string ToString(const Enum& val)
+	{
+		return std::string(NAMEOF_ENUM(val));
+	}
 };
 
 #endif

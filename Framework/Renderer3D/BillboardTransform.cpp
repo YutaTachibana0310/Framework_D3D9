@@ -25,6 +25,7 @@ void BillboardTransform::SetWorld(const D3DXMATRIX * parent) const
 	//ビルボード処理
 	pDevice->GetTransform(D3DTS_VIEW, &view);
 	D3DXMatrixInverse(&invView, NULL, &view);
+	invView._41 = invView._42 = invView._43 = 0.0f;
 	D3DXMatrixMultiply(&world, &world, &invView);
 
 	//スケール
@@ -69,7 +70,7 @@ D3DXMATRIX BillboardTransform::GetMatrix() const
 	D3DXMatrixRotationQuaternion(&world, &this->rotation);
 
 	////ビルボード処理
-	D3DXMATRIX invView = Camera::GetInverseViewMtx();
+	D3DXMATRIX invView = Camera::MainCamera()->GetInverseViewMtx();
 	invView._41 = invView._42 = invView._43 = 0.0f;
 	D3DXMatrixMultiply(&world, &world, &invView);
 

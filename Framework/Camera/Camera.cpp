@@ -6,33 +6,27 @@
 //=====================================
 #include "Camera.h"
 #include "CameraShakePlugin.h"
+#include <algorithm>
 
 /**************************************
 staticメンバ
 ***************************************/
+Camera* Camera::mainCamera = NULL;
 
 /**************************************
 コンストラクタ
 ***************************************/
 Camera::Camera()
 {
-	pluginList.push_back(ShakePlugin::Instance());
-}
-
-/**************************************
-初期化処理
-***************************************/
-void Camera::Init()
-{
-	const D3DXVECTOR3 InitPos = D3DXVECTOR3(0.0f, 0.0f, -150.0f);
+	const D3DXVECTOR3 InitPos = D3DXVECTOR3(0.0f, 0.0f, -33.0f);
 	const D3DXVECTOR3 InitTarget = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	const float InitViewAngle = D3DXToRadian(60.0f);
 	const float InitViewAspect = (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT;
 	const float InitViewNear = 10.0f;
 	const float InitViewFar = 50000.0f;
 
-	transform.SetPosition(InitPos);
-	target = InitTarget;
+	transform->SetPosition(InitPos);
+	transform->LookAt(InitTarget);
 	viewAngle = InitViewAngle;
 	viewAspect = InitViewAspect;
 	viewNear = InitViewNear;
@@ -50,51 +44,11 @@ void Camera::Init()
 }
 
 /**************************************
-セット処理
+デストラクタ
 ***************************************/
-void Camera::Set()
+Camera::~Camera()
 {
-	//作業領域に現在のパラメータを設定
-	eyeWork = transform.GetPosition();
-	targetWork = target;
-	upWork = transform.Up();
-
-	//プラグイン反映
-	for (auto& plugin : pluginList)
-	{
-		plugin->Apply(*this);
-	}
-
-	LPDIRECT3DDEVICE9 pDevice = GetDevice();
-
-	//ビュー行列作成
-	D3DXMatrixIdentity(&view);
-	D3DXMatrixLookAtLH(&view,
-		&eyeWork,
-		&targetWork,
-		&upWork);
-
-	//ビュー行列設定
-	pDevice->SetTransform(D3DTS_VIEW, &view);
-
-	//プロジェクション行列作成
-	D3DXMatrixIdentity(&projection);
-	D3DXMatrixPerspectiveFovLH(&projection,
-		viewAngle,
-		viewAspect,
-		viewNear,
-		viewFar);
-
-	//プロジェクション行列設定
-	pDevice->SetTransform(D3DTS_PROJECTION, &projection);
-
-	//変換行列を計算
-	VPV = view * projection * viewport;
-
-	//逆行列を計算
-	D3DXMatrixInverse(&invView, NULL, &view);
-	D3DXMatrixInverse(&invProjection, NULL, &projection);
-	D3DXMatrixInverse(&invVPV, NULL, &VPV);
+	
 }
 
 /**************************************
@@ -107,45 +61,179 @@ void Camera::Update()
 	{
 		plugin->Update();
 	}
+	
+	Transform workTransform = *transform;
+
+	//プラグイン反映
+	for (auto& plugin : pluginList)
+	{
+		if(plugin->IsActive())
+			plugin->Apply(workTransform);
+	}
+
+	D3DXVECTOR3 eyePosition = workTransform.GetPosition();
+	D3DXVECTOR3 targetPosition = eyePosition + workTransform.Forward();
+	D3DXVECTOR3 upVector = workTransform.Up();
+
+	//ビュー行列作成
+	D3DXMatrixIdentity(&view);
+	D3DXMatrixLookAtLH(&view,
+		&eyePosition,
+		&targetPosition,
+		&upVector);
+
+	//プロジェクション行列作成
+	D3DXMatrixIdentity(&projection);
+	D3DXMatrixPerspectiveFovLH(&projection,
+		viewAngle,
+		viewAspect,
+		viewNear,
+		viewFar);
+
+	//変換行列を計算
+	VPV = view * projection * viewport;
+
+	//逆行列を計算
+	D3DXMatrixInverse(&invView, NULL, &view);
+	D3DXMatrixInverse(&invProjection, NULL, &projection);
+	D3DXMatrixInverse(&invVPV, NULL, &VPV);
+
+	//視錐台計算
+	CalculateFrustrum();
+}
+
+/**************************************
+セット処理
+***************************************/
+void Camera::Set() const
+{
+	LPDIRECT3DDEVICE9 pDevice = GetDevice();
+
+	//ビュー行列設定
+	pDevice->SetTransform(D3DTS_VIEW, &view);
+
+	//プロジェクション行列設定
+	pDevice->SetTransform(D3DTS_PROJECTION, &projection);
+}
+
+/**************************************
+プラグイン追加処理
+***************************************/
+void Camera::AddPlugin(BaseCameraPlugin * plugin)
+{
+	pluginList.push_back(plugin);
+}
+
+/**************************************
+プラグイン削除処理
+***************************************/
+void Camera::RemovePlugin(BaseCameraPlugin *plugin)
+{
+	pluginList.erase(std::remove(pluginList.begin(), pluginList.end(), plugin), pluginList.end());	
+}
+
+/**************************************
+メインカメラ設定処理
+***************************************/
+void Camera::SetMainCamera(Camera * camera)
+{
+	mainCamera = camera;
+}
+
+/**************************************
+メインカメラ取得処理
+***************************************/
+const Camera * Camera::MainCamera()
+{
+	return mainCamera;
 }
 
 /**************************************
 スクリーン投影処理
 ***************************************/
-void Camera::Projection(D3DXVECTOR3& out, const D3DXVECTOR3& pos)
+D3DXVECTOR3 Camera::Projection(const D3DXVECTOR3& pos) const
 {
-	D3DXVec3TransformCoord(&out, &pos, &mInstance->VPV);
+	D3DXVECTOR3 out;
+	D3DXVec3TransformCoord(&out, &pos, &mainCamera->VPV);
+	return out;
 }
 
 /**************************************
 スクリーン逆投影処理
 ***************************************/
-void Camera::UnProjection(D3DXVECTOR3& out, const D3DXVECTOR3& pos, float z)
+D3DXVECTOR3 Camera::UnProjection(const D3DXVECTOR3& pos, float z) const
 {
-	D3DXVec3TransformCoord(&out, &D3DXVECTOR3(pos.x, pos.y, z), &mInstance->invVPV);
+	D3DXVECTOR3 out;
+	D3DXVec3TransformCoord(&out, &D3DXVECTOR3(pos.x, pos.y, z), &mainCamera->invVPV);
+	return out;
 }
 
 /**************************************
 スクリーン逆投影処理
 ***************************************/
-D3DXMATRIX Camera::GetViewMtx()
+D3DXMATRIX Camera::GetViewMtx() const
 {
-	return mInstance->view;
+	return mainCamera->view;
 }
 
 /**************************************
 スクリーン逆投影処理
 ***************************************/
-D3DXMATRIX Camera::GetInverseViewMtx()
+D3DXMATRIX Camera::GetInverseViewMtx() const
 {
-	return mInstance->invView;
+	return mainCamera->invView;
 }
 
 /**************************************
 スクリーン逆投影処理
 ***************************************/
-D3DXMATRIX Camera::GetProjectionMtx()
+D3DXMATRIX Camera::GetProjectionMtx() const
 {
-	return mInstance->projection;
+	return mainCamera->projection;
 }
 
+/**************************************
+視錐台取得処理
+***************************************/
+const ViewFrustum* Camera::GetViewFrustrum() const
+{
+	return &viewFrustrum;
+}
+
+/**************************************
+代入演算子
+***************************************/
+Camera & Camera::operator=(const Camera & rhs)
+{
+	*(this->transform) = *(rhs.transform);
+	this->viewAngle = rhs.viewAngle;
+	this->viewAspect = rhs.viewAspect;
+	this->viewNear = rhs.viewNear;
+	this->viewFar = rhs.viewFar;
+	this->view = rhs.view;
+	this->projection = rhs.projection;
+
+	return *this;
+}
+
+/**************************************
+視錐台算出処理
+***************************************/
+void Camera::CalculateFrustrum()
+{
+	const D3DXVECTOR3 LeftTop = { 0.0f, 0.0f, 0.0f };
+	const D3DXVECTOR3 RightTop = { (float)SCREEN_WIDTH, 0.0f, 0.0f };
+	const D3DXVECTOR3 LeftBottom = { 0.0f, (float)SCREEN_HEIGHT, 0.0f };
+	const D3DXVECTOR3 RightBottom = { (float)SCREEN_WIDTH, (float)SCREEN_HEIGHT, 0.0f };
+
+	viewFrustrum.SetVertex(
+		UnProjection(LeftTop, 0.0f),
+		UnProjection(RightTop, 0.0f),
+		UnProjection(LeftBottom, 0.0f),
+		UnProjection(RightBottom, 0.0f),
+		UnProjection(LeftTop, 1.0f),
+		UnProjection(RightTop, 1.0f),
+		UnProjection(LeftBottom, 1.0f),
+		UnProjection(RightBottom, 1.0f)
+	);
+}

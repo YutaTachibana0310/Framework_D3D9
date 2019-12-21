@@ -17,23 +17,31 @@
 /**************************************
 遅延タスク作成処理
 ***************************************/
-std::unique_ptr<TaskHandle> TaskManager::CreateDelayedTask(int delay, const std::function<void(void)>& task)
+TaskHandle TaskManager::CreateDelayedTask(int delay, const std::function<void(void)>& task)
 {
 	std::shared_ptr<DelayedTask> ptr = std::make_shared<DelayedTask>(delay, task);
 	taskList.push_back(ptr);
 
-	return std::unique_ptr<TaskHandle>(new TaskHandle(ptr));
+	return TaskHandle(ptr);
 }
 
 /**************************************
 定期タスク作成処理
 ***************************************/
-std::unique_ptr<TaskHandle> TaskManager::CreatePeriodicTask(int interval, const std::function<void(void)>& task)
+TaskHandle TaskManager::CreatePeriodicTask(int interval, const std::function<void(void)>& task)
 {
 	std::shared_ptr<PeriodicTask> ptr = std::make_shared<PeriodicTask>(interval, task);
 	taskList.push_back(ptr);
 
-	return std::unique_ptr<TaskHandle>(new TaskHandle(ptr));
+	return TaskHandle(ptr);
+}
+
+/**************************************
+クリア処理
+***************************************/
+void TaskManager::ClearAll()
+{
+	taskList.clear();
 }
 
 /**************************************
@@ -75,11 +83,7 @@ TaskHandleデストラクタ
 ***************************************/
 TaskHandle::~TaskHandle()
 {
-	std::shared_ptr<Task> ptr = task.lock();
-	if (ptr)
-	{
-		ptr->Stop();
-	}
+
 }
 
 /**************************************

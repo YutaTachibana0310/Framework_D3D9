@@ -28,6 +28,11 @@ public:
 	static const D3DXVECTOR3 One, Zero;
 
 	/**************************************
+	//正規化ベクトル返す
+	***************************************/
+	static D3DXVECTOR3 Normalize(const D3DXVECTOR3& vec);
+
+	/**************************************
 	//2つのうち大きいベクトルを返す
 	***************************************/
 	static D3DXVECTOR3 Max(const D3DXVECTOR3& arg1, const D3DXVECTOR3& arg2);
@@ -76,6 +81,11 @@ public:
 	//ランダムベクトル生成処理
 	***************************************/
 	static D3DXVECTOR3 Random();
+
+	/**************************************
+	//球面線形補間
+	***************************************/
+	static D3DXVECTOR3 Slerp(float t, const D3DXVECTOR3& start, const D3DXVECTOR3& end);
 
 private:
 	Vector3();

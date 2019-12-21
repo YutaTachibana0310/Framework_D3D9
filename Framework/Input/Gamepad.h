@@ -1,7 +1,7 @@
-//=====================================
+ï»¿//=====================================
 //
-//ƒQ[ƒ€ƒpƒbƒhƒwƒbƒ_[Gamepad.h]
-//Author:GP12B332 21 —§‰Ô—Y‘¾
+//ã‚²ãƒ¼ãƒ ãƒ‘ãƒƒãƒ‰ãƒ˜ãƒƒãƒ€[Gamepad.h]
+//Author:GP12B332 21 ç«‹èŠ±é›„å¤ª
 //
 //=====================================
 #ifndef _GAMEPAD_H_
@@ -10,69 +10,77 @@
 #include "../../main.h"
 
 /**************************************
-ƒ}ƒNƒ’è‹`
+ãƒã‚¯ãƒ­å®šç¾©
 ***************************************/
-#define BUTTON_UP		0x00000001l	// •ûŒüƒL[ã(.IY<0)
-#define BUTTON_DOWN		0x00000002l	// •ûŒüƒL[‰º(.IY>0)
-#define BUTTON_LEFT		0x00000004l	// •ûŒüƒL[¶(.IX<0)
-#define BUTTON_RIGHT	0x00000008l	// •ûŒüƒL[‰E(.IX>0)
-#define BUTTON_A		0x00000010l	// ‚`ƒ{ƒ^ƒ“(.rgbButtons[0]&0x80)
-#define BUTTON_B		0x00000020l	// ‚aƒ{ƒ^ƒ“(.rgbButtons[1]&0x80)
-#define BUTTON_C		0x00000040l	// ‚bƒ{ƒ^ƒ“(.rgbButtons[2]&0x80)
-#define BUTTON_X		0x00000080l	// ‚wƒ{ƒ^ƒ“(.rgbButtons[3]&0x80)
-#define BUTTON_Y		0x00000100l	// ‚xƒ{ƒ^ƒ“(.rgbButtons[4]&0x80)
-#define BUTTON_Z		0x00000200l	// ‚yƒ{ƒ^ƒ“(.rgbButtons[5]&0x80)
-#define BUTTON_L		0x00000400l	// ‚kƒ{ƒ^ƒ“(.rgbButtons[6]&0x80)
-#define BUTTON_R		0x00000800l	// ‚qƒ{ƒ^ƒ“(.rgbButtons[7]&0x80)
-#define BUTTON_START	0x00001000l	// ‚r‚s‚`‚q‚sƒ{ƒ^ƒ“(.rgbButtons[8]&0x80)
-#define BUTTON_M		0x00002000l	// ‚lƒ{ƒ^ƒ“(.rgbButtons[9]&0x80)
-#define GAMEPADMAX		4			// “¯‚ÉÚ‘±‚·‚éƒWƒ‡ƒCƒpƒbƒh‚ÌÅ‘å”‚ğƒZƒbƒg
-#define PADBUTTON_MAX	14			// “ü—Í‚Ég‚¦‚éƒ{ƒ^ƒ“‚ÌÅ‘å”
+#define BUTTON_UP		0x00000001l	// æ–¹å‘ã‚­ãƒ¼ä¸Š(.IY<0)
+#define BUTTON_DOWN		0x00000002l	// æ–¹å‘ã‚­ãƒ¼ä¸‹(.IY>0)
+#define BUTTON_LEFT		0x00000004l	// æ–¹å‘ã‚­ãƒ¼å·¦(.IX<0)
+#define BUTTON_RIGHT	0x00000008l	// æ–¹å‘ã‚­ãƒ¼å³(.IX>0)
+#define BUTTON_A		0x00000010l	// ï¼¡ãƒœã‚¿ãƒ³(.rgbButtons[0]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®â˜ãƒœã‚¿ãƒ³
+#define BUTTON_B		0x00000020l	// ï¼¢ãƒœã‚¿ãƒ³(.rgbButtons[1]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®âœ–ãƒœã‚¿ãƒ³
+#define BUTTON_C		0x00000040l	// ï¼£ãƒœã‚¿ãƒ³(.rgbButtons[2]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®ã€‡ãƒœã‚¿ãƒ³
+#define BUTTON_X		0x00000080l	// ï¼¸ãƒœã‚¿ãƒ³(.rgbButtons[3]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®â–³ãƒœã‚¿ãƒ³
+#define BUTTON_Y		0x00000100l	// ï¼¹ãƒœã‚¿ãƒ³(.rgbButtons[4]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®L1ãƒœã‚¿ãƒ³
+#define BUTTON_Z		0x00000200l	// ï¼ºãƒœã‚¿ãƒ³(.rgbButtons[5]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®R1ãƒœã‚¿ãƒ³
+#define BUTTON_L		0x00000400l	// ï¼¬ãƒœã‚¿ãƒ³(.rgbButtons[6]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®Shareãƒœã‚¿ãƒ³
+#define BUTTON_R		0x00000800l	// ï¼²ãƒœã‚¿ãƒ³(.rgbButtons[7]&0x80)ã€ã‚¢ã‚±ã‚³ãƒ³ã®Optionsãƒœã‚¿ãƒ³
+#define BUTTON_START	0x00001000l	// ï¼³ï¼´ï¼¡ï¼²ï¼´ãƒœã‚¿ãƒ³(.rgbButtons[8]&0x80)
+#define BUTTON_M		0x00002000l	// ï¼­ãƒœã‚¿ãƒ³(.rgbButtons[9]&0x80)
+#define GAMEPADMAX		4			// åŒæ™‚ã«æ¥ç¶šã™ã‚‹ã‚¸ãƒ§ã‚¤ãƒ‘ãƒƒãƒ‰ã®æœ€å¤§æ•°ã‚’ã‚»ãƒƒãƒˆ
+#define PADBUTTON_MAX	14			// å…¥åŠ›ã«ä½¿ãˆã‚‹ãƒœã‚¿ãƒ³ã®æœ€å¤§æ•°
+
+#define POV_UP			(0x0001)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®ä¸Š
+#define POV_RIGHTUP		(0x0002)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®å³ä¸Š
+#define POV_RIGHT		(0x0004)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®å³
+#define POV_RIGHTDOWN	(0x0008)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®å³ä¸‹
+#define POV_DOWN		(0x0010)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®ä¸‹
+#define POV_LEFTDOWN	(0x0020)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®å·¦ä¸‹
+#define POV_LEFT		(0x0040)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®å·¦
+#define POV_LEFTUP		(0x0080)			//ãƒãƒƒãƒˆã‚¹ã‚¤ãƒƒãƒã®å·¦ä¸Š
+#define POV_MAX			(8)
 
 /**************************************
-ƒNƒ‰ƒX’è‹`
+ã‚¯ãƒ©ã‚¹å®šç¾©
 ***************************************/
-class GamePad
+namespace GamePad
 {
-public:
-	GamePad();
-	~GamePad(); 
 	HRESULT Init(LPDIRECTINPUT8 pInput);
-
+	void Uninit();
 	void Update();
 
-	static BOOL GetPress(int padNo, DWORD button);
-	static BOOL GetTrigger(int padNo, DWORD button);
-	static BOOL GetRelease(int padNo, DWORD button);
+	BOOL GetPress(int padNo, DWORD button);
+	BOOL GetRepeat(int padNo, DWORD button);
+	BOOL GetTrigger(int padNo, DWORD button);
+	BOOL GetRelease(int padNo, DWORD button);
 
-	static float GetRightStickX(int padNo);
-	static float GetRightStickY(int padNo);
+	BOOL GetPressPOV(int padNo, DWORD button);
+	BOOL GetRepeatPOV(int padNo, DWORD button);
+	BOOL GetTriggerPOV(int padNo, DWORD button);
+	BOOL GetReleasePOV(int padNo, DWORD button);
 
-	static int GetTriggerX(int padNo);
-	static int GetTriggerY(int padNo);
+	BOOL GetPressLeft(int padNo);
+	BOOL GetPressRight(int padNo);
+	BOOL GetRepeatLeft(int padNo);
+	BOOL GetRepeatRight(int padNo);
+	BOOL GetTriggerLeft(int padNo);
+	BOOL GetTriggerRight(int padNo);
 
-	static int GetPadCount();
+	BOOL GetPressDown(int padNo);
+	BOOL GetPressUp(int padNo);
+	BOOL GetRepeatDown(int padNo);
+	BOOL GetRepeatUp(int padNo);
+	BOOL GetTriggerDown(int padNo);
+	BOOL GetTriggerUp(int padNo);
 
-private:
-	//ƒXƒeƒBƒbƒN‚ÌRepeató‘ÔŒŸo—p
-	int		padAxisXRepeat[GAMEPADMAX];
-	int		padAxisYRepeat[GAMEPADMAX];
-	int		lastAxisX[GAMEPADMAX];
-	int		lastAxisY[GAMEPADMAX];
-	int		axisXRepeatCnt[GAMEPADMAX];
-	int		axisYRepeatCnt[GAMEPADMAX];
+	float GetRightStickX(int padNo);
+	float GetRightStickY(int padNo);
 
-	float	padAxislRx[GAMEPADMAX];
-	float	padAxislRy[GAMEPADMAX];
+	int GetTriggerX(int padNo);
+	int GetTriggerY(int padNo);
 
-	LPDIRECTINPUTDEVICE8	pGamePad[GAMEPADMAX] = { NULL,NULL,NULL,NULL };// ƒpƒbƒhƒfƒoƒCƒX
+	int GetPadCount();
 
-	DWORD	padState[GAMEPADMAX];	// ƒpƒbƒhî•ñi•¡”‘Î‰j
-	DWORD	padTrigger[GAMEPADMAX];
-	DWORD	padRelease[GAMEPADMAX];
-	int		padCount;			// ŒŸo‚µ‚½ƒpƒbƒh‚Ì”
-
-	static GamePad* mInstance;
+	int GetButtonID(DWORD button);
 };
 
 #endif

@@ -6,14 +6,18 @@
 #include "BaseGame.h"
 #include "..\Input\input.h"
 #include "..\Camera\Camera.h"
+#include "../Light/Light.h"
 #include "..\Tool\DebugWindow.h"
-#include "..\PostEffect\PostEffectManager.h"
 #include "..\Tween\Tween.h"
 #include "../Tool/ProfilerCPU.h"
 #include "../Task/TaskManager.h"
+#include "../Transition/TransitionController.h"
+#include "../Effect/RendererEffect.h"
 
-Camera* Camera::mInstance = NULL;
-Input* Input::mInstance = NULL;
+#include "../Sound/sound.h"
+#include "../Sound/BackgroundMusic.h"
+#include "../Sound/SoundEffect.h"
+
 Tween* Tween::mInstance = NULL;
 /**************************************
 コンストラクタ
@@ -24,30 +28,18 @@ BaseGame::BaseGame(HINSTANCE hInstance, HWND hWnd)
 
 	//インスタンス作成
 	sceneManager = new SceneManager();
-	Camera::mInstance = new Camera();
-	Input::mInstance = new Input();
 	Tween::mInstance = new Tween();
 
 	//描画領域作成
 	MakeScreen();
 	MakeRenderTarget();
 
-	//ポストエフェクトにレンダーテクスチャへの参照を渡す
-	PostEffectManager::Instance()->PassDefaultTarget(renderTexture);
-
-	//ポストエフェクト有効化
-	unsigned flgEffect = 0;
-	for (int i = 0; i < PostEffectManager::PostEffect::Max; i++)
-	{
-		flgEffect |= 0x01;
-		flgEffect = flgEffect << 1;
-	}
-	PostEffectManager::Instance()->SetUse(flgEffect);
-
 	//各種初期化
-	Input::mInstance->Init(hInstance, hWnd);
-	Camera::mInstance->Init();
+	Input::Init(hInstance, hWnd);
+	Light::Init();
+	Sound::Init(hWnd);
 	Debug::Init(hWnd, pDevice);
+	BGM::Init();
 }
 
 /**************************************
@@ -58,16 +50,19 @@ BaseGame::~BaseGame()
 	sceneManager->Uninit();
 	sceneManager->Clear();
 
+	SE::Clear();
+
 	SAFE_RELEASE(renderTexture);
 	SAFE_RELEASE(renderSurface);
 	SAFE_RELEASE(screenVtx);
 
 	SAFE_DELETE(sceneManager);
-	SAFE_DELETE(Camera::mInstance);
-	SAFE_DELETE(Input::mInstance);
 	SAFE_DELETE(Tween::mInstance);
 
 	Debug::Uninit();
+	BGM::Uninit();
+	Sound::Uninit();
+	Input::Uninit();
 }
 
 /**************************************
@@ -76,15 +71,23 @@ BaseGame::~BaseGame()
 void BaseGame::Update()
 {
 	Debug::Update();
-	Input::mInstance->Update();
-	Camera::mInstance->Update();
+	Input::Update();
 
-	sceneManager->Update();
+	static bool pause = false;
+	if (Keyboard::GetTrigger(DIK_P))
+		pause = !pause;
 
-	PostEffectManager::Instance()->Update();
-	Tween::mInstance->Update();
-	ProfilerCPU::Instance()->Update();
-	TaskManager::Instance()->Update();
+	if (!pause)
+	{
+		ProfilerCPU::Instance()->Update();
+
+		sceneManager->Update();
+
+		BGM::Update();
+		Tween::mInstance->Update();
+		TaskManager::Instance()->Update();
+		TransitionController::Instance()->Update();
+	}
 }
 
 /**************************************
@@ -101,11 +104,24 @@ void BaseGame::Draw()
 	pDevice->SetRenderTarget(0, renderSurface);
 	pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, BackColor, 1.0f, 0);
 
-	//カメラ設定
-	Camera::mInstance->Set();
+	//描画用エフェクトへパラメータを設定
+	RendererEffect::SetView(Camera::MainCamera()->GetViewMtx());
+	RendererEffect::SetProjection(Camera::MainCamera()->GetProjectionMtx());
+
+	unsigned numLight = Light::LightMax();
+	for (unsigned i = 0; i < numLight; i++)
+	{
+		RendererEffect::SetLight(i, Light::GetData(i));
+	}
 
 	//シーンを描画
 	sceneManager->Draw();
+
+	//トランジションマスクを描画
+	TransitionController::Instance()->DrawMask();
+
+	//トランジション背景を描画
+	TransitionController::Instance()->DrawTransition();
 
 	//レンダーターゲット復元
 	pDevice->SetRenderTarget(0, oldSuf);

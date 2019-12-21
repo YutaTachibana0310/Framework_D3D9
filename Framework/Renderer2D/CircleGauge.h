@@ -44,7 +44,7 @@ public:
 	void SetRotation(const D3DXVECTOR3& rot);	//ラジアンではなく角度をそのまま渡す
 	void SetScale(const D3DXVECTOR3& scale);
 
-	//パーセント設定処理(0% ~ 100%)
+	//パーセント設定処理(0.0 ~ 1.0)
 	void SetPercent(float per);
 
 	//始点設定処理

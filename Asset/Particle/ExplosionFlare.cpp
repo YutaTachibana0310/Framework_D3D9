@@ -33,7 +33,7 @@ const float Asset::ExplosionFlare::RotateAngle = 12.0f;
 コンストラクタ
 ***************************************/
 Asset::ExplosionFlare::ExplosionFlare() :
-	BaseParticle(1.0f * Math::RandomRange(0, TexDivX) / TexDivX, 1.0f * Math::RandomRange(0, TexDivY) / TexDivY, LifeMin, LifeMax),
+	Particle3D(1.0f * Math::RandomRange(0, TexDivX) / TexDivX, 1.0f * Math::RandomRange(0, TexDivY) / TexDivY, LifeMin, LifeMax),
 	moveDir(Vector3::Random()),
 	speed(Math::RandomRange(SpeedMin, SpeedMax))
 {

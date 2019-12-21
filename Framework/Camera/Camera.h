@@ -8,53 +8,67 @@
 #define _CAMERA_H_
 
 #include "../../main.h"
+#include "ViewFrustum.h"
 
 #include <vector>
 
+/**************************************
+前方宣言
+***************************************/
 class BaseCameraPlugin;
+class SpriteEffect;
+
 /**************************************
 Cameraクラス
 ***************************************/
-class Camera
+class Camera : public GameObject
 {
 	friend class BaseGame;
 public:
-	void Init();		//初期化
-	void Update();		//更新
-	void Set();			//カメラ情報反映処理
+	Camera();					//コンストラクタ
+	virtual ~Camera();			//デストラクタ
+
+	virtual void Update();		//更新
+	virtual void Set() const;	//カメラ情報反映処理
+
+	//プラグイン追加処理
+	virtual void AddPlugin(BaseCameraPlugin* plugin);
+	virtual void RemovePlugin(BaseCameraPlugin* plugin);
+
+	//メインカメラセット、ゲット処理
+	static void SetMainCamera(Camera* camera);
+	static const Camera* MainCamera();
 
 	//与えたワールド座標をスクリーン座標に変換する関数
-	static void Projection(D3DXVECTOR3& out, const D3DXVECTOR3& pos);
+	D3DXVECTOR3 Projection(const D3DXVECTOR3& pos) const;
 
 	//与えたスクリーン座標をワールド座標に変換する関数
-	static void UnProjection(D3DXVECTOR3& out, const D3DXVECTOR3& pos, float z);
+	virtual D3DXVECTOR3 UnProjection(const D3DXVECTOR3& pos, float z) const;
 
 	//ビュー行列取得処理
-	static D3DXMATRIX GetViewMtx();
+	D3DXMATRIX GetViewMtx() const;
 
 	//ビュー逆行列取得処理
-	static D3DXMATRIX GetInverseViewMtx();
+	D3DXMATRIX GetInverseViewMtx() const;
 
 	//プロジェクション行列取得処理
-	static D3DXMATRIX GetProjectionMtx();
+	D3DXMATRIX GetProjectionMtx() const;
+
+	//視錐台取得処理
+	const ViewFrustum* GetViewFrustrum() const;
+
+	//代入演算子
+	Camera& operator=(const Camera& rhs);
 
 protected:
-	//SRT情報
-	Transform transform;
-
-	//注視点
-	D3DXVECTOR3 target;
-
-	//視点、注視点、上方向（作業用領域）
-	D3DXVECTOR3 eyeWork;
-	D3DXVECTOR3 targetWork;
-	D3DXVECTOR3 upWork;
-
 	//視野角、アスペクト比、ニア値、ファー値
 	float viewAngle;
 	float viewAspect;
 	float viewNear;
 	float viewFar;
+
+	//視錐台
+	ViewFrustum viewFrustrum;
 
 	//ビュー、プロジェクション行列、ビューポート行列
 	D3DXMATRIX view, projection, viewport;
@@ -66,18 +80,12 @@ protected:
 
 	//プラグインリスト
 	std::vector<BaseCameraPlugin*> pluginList;
-
-private:
-	static Camera* mInstance;
-
-	Camera();
-	Camera(const Camera&) {}
-	~Camera() {}
-
-public:
-	//カメラを揺らすプラグイン
-	class ShakePlugin;
 	
+	//ゲームにセットされるカメラのインスタンス
+	static Camera* mainCamera;
+
+	//視錐台計算処理
+	void CalculateFrustrum();	
 };
 
 /**************************************
@@ -86,8 +94,24 @@ public:
 class BaseCameraPlugin
 {
 public:
+	BaseCameraPlugin() : active(true) {};
+	virtual ~BaseCameraPlugin() {};
+
 	virtual void Update() = 0;
-	virtual void Apply(Camera& camera) = 0;
+	virtual void Apply(Transform& transformWork) = 0;
+
+	virtual bool IsActive() const
+	{
+		return active;
+	}
+
+	virtual void SetEnable(bool state)
+	{
+		active = state;
+	}
+
+protected:
+	bool active;
 };
 
 #endif

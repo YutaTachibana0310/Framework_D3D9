@@ -8,7 +8,11 @@
 #include "../Renderer3D/MeshContainer.h"
 #include "../Renderer3D/BoardPolygon.h"
 
-using namespace std;
+#include "MeshResource.h"
+#include "PolygonResource.h"
+#include "AnimationResource.h"
+
+#include "FontManager.h"
 
 /**************************************
 マクロ定義
@@ -19,15 +23,14 @@ using namespace std;
 ***************************************/
 void ResourceManager::LoadMesh(const char* tag, const char* path)
 {
-	string tagStr = string(tag);
+	std::string tagStr = tag;
 
 	//タグの重複確認
 	if (meshPool.count(tagStr) != 0)
-		SAFE_DELETE(meshPool[tagStr]);
+		return;
 
-	//メッシュコンテナを生成してロード
-	meshPool[tagStr] = new MeshContainer();
-	meshPool[tagStr]->Load(path);
+	//メッシュリソースを生成
+	meshPool[tagStr] = new MeshResource(path);
 }
 
 /**************************************
@@ -35,7 +38,7 @@ void ResourceManager::LoadMesh(const char* tag, const char* path)
 ***************************************/
 void ResourceManager::ReleaseMesh(const char* tag)
 {
-	string tagStr = string(tag);
+	std::string tagStr = tag;
 
 	//タグの登録確認
 	if (meshPool.count(tagStr) == 0)
@@ -49,17 +52,16 @@ void ResourceManager::ReleaseMesh(const char* tag)
 /**************************************
 メッシュ取得処理
 ***************************************/
-bool ResourceManager::GetMesh(const char* tag, MeshContainer*& pOut)
+bool ResourceManager::GetMesh(const char* tag, MeshContainer* pOut)
 {
-	string tagStr = string(tag);
+	std::string tagStr = std::string(tag);
 
 	//登録確認
 	if (meshPool.count(tagStr) == 0)
 		return false;
 
 	//メッシュへの参照を格納
-	pOut = meshPool[tagStr];
-	pOut->AddRef();
+	meshPool[tagStr]->Clone(pOut);
 	return true;
 }
 
@@ -68,11 +70,11 @@ bool ResourceManager::GetMesh(const char* tag, MeshContainer*& pOut)
 ***************************************/
 void ResourceManager::LoadTexture(const char* path)
 {
-	string tagStr = string(path);
+	std::string tagStr = path;
 
 	//重複確認
 	if (texturePool.count(tagStr) != 0)
-		SAFE_RELEASE(texturePool[tagStr]);
+		return;
 
 	//読み込み
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
@@ -84,7 +86,7 @@ void ResourceManager::LoadTexture(const char* path)
 ***************************************/
 void ResourceManager::ReleaseTexture(const char* tag)
 {
-	string tagStr = string(tag);
+	std::string tagStr = tag;
 
 	//登録確認
 	if (texturePool.count(tagStr) == 0)
@@ -98,7 +100,7 @@ void ResourceManager::ReleaseTexture(const char* tag)
 ***************************************/
 bool ResourceManager::GetTexture(const char* path, LPDIRECT3DTEXTURE9& pOut)
 {
-	string tagStr = string(path);
+	std::string tagStr = path;
 
 	//登録確認
 	if (texturePool.count(tagStr) == 0)
@@ -107,7 +109,10 @@ bool ResourceManager::GetTexture(const char* path, LPDIRECT3DTEXTURE9& pOut)
 	}
 
 	pOut = texturePool[tagStr];
-	pOut->AddRef();
+
+	if(pOut != NULL)
+		pOut->AddRef();
+
 	return true;
 }
 
@@ -116,17 +121,15 @@ bool ResourceManager::GetTexture(const char* path, LPDIRECT3DTEXTURE9& pOut)
 ***************************************/
 void ResourceManager::MakePolygon(const char* tag, const char* path, const D3DXVECTOR2& size, const D3DXVECTOR2& uv)
 {
-	string tagStr = string(tag);
+	std::string tagStr = std::string(tag);
 
 	//登録確認
-	if (polygonPool.count(tagStr) == 0)
-		SAFE_DELETE(polygonPool[tagStr]);
+	if (polygonPool.count(tagStr) != 0)
+		return;
 
 	//BoardPolygonクラスを生成して登録
-	polygonPool[tagStr] = new BoardPolygon();;
-	polygonPool[tagStr]->SetSize(size);
-	polygonPool[tagStr]->SetTexDiv(uv);
-	polygonPool[tagStr]->LoadTexture(path);
+	PolygonResource *ptr = new PolygonResource(size, uv, path);
+	polygonPool[tagStr] = ptr;
 }
 
 /**************************************
@@ -134,7 +137,7 @@ void ResourceManager::MakePolygon(const char* tag, const char* path, const D3DXV
 ***************************************/
 void ResourceManager::ReleasePolygon(const char* tag)
 {
-	string tagStr = string(tag);
+	std::string tagStr = std::string(tag);
 
 	//登録確認
 	if (polygonPool.count(tagStr) == 0)
@@ -144,18 +147,92 @@ void ResourceManager::ReleasePolygon(const char* tag)
 }
 
 /**************************************
+エフェクト読み込み処理
+***************************************/
+void ResourceManager::LoadEffect(const char * path)
+{
+	std::string tagStr = std::string(path);
+
+	//重複確認
+	if (effectPool.count(tagStr) != 0)
+		return;
+
+	LPDIRECT3DDEVICE9 pDevice = GetDevice();
+	D3DXCreateEffectFromFile(pDevice, path, 0, 0, D3DXSHADER_SKIPVALIDATION, 0, &effectPool[tagStr], 0);
+}
+
+/**************************************
+エフェクト解放処理
+***************************************/
+void ResourceManager::ReleaseEffect(const char * path)
+{
+	std::string tagStr = std::string(path);
+
+	//登録確認
+	if (effectPool.count(tagStr) == 0)
+		return;
+
+	SAFE_RELEASE(effectPool[tagStr]);
+}
+
+/**************************************
+スキンメッシュ読み込み処理
+***************************************/
+void ResourceManager::LoadSkinMesh(const char * path)
+{
+	std::string key = std::string(path);
+
+	//登録確認
+	if (skinMeshPool.count(key) != 0)
+		return;
+
+	AnimationResource *ptr = new AnimationResource();
+	ptr->Load(path, path);
+	skinMeshPool[key] = ptr;
+}
+
+/**************************************
 板ポリゴン参照処理
 ***************************************/
-bool ResourceManager::GetPolygon(const char* tag, BoardPolygon*& pOut)
+bool ResourceManager::GetPolygon(const char* tag, BoardPolygon* pOut)
 {
-	string tagStr = string(tag);
+	std::string tagStr = std::string(tag);
 
 	//登録確認
 	if (polygonPool.count(tagStr) == 0)
 		return false;
 
-	pOut = polygonPool[tagStr];
+	polygonPool[tagStr]->Clone(pOut);
+	return true;
+}
+
+/**************************************
+エフェクト取得処理
+***************************************/
+bool ResourceManager::GetEffect(const char * path, LPD3DXEFFECT & pOut)
+{
+	std::string tagStr = std::string(path);
+
+	//登録確認
+	if (effectPool.count(tagStr) == 0)
+		LoadEffect(path);
+
+	pOut = effectPool[tagStr];
 	pOut->AddRef();
+	return true;
+}
+
+/**************************************
+スキンメッシュ取得処理
+***************************************/
+bool ResourceManager::GetSkinMesh(const char * path, AnimContainer* pOut)
+{
+	std::string key = std::string(path);
+
+	if (skinMeshPool.count(key) == 0)
+		LoadSkinMesh(path);
+
+	skinMeshPool[key]->Clone(pOut);
 	return true;
 }
 
@@ -181,4 +258,18 @@ void ResourceManager::AllRelease()
 		SAFE_DELETE(pair.second);
 	}
 	polygonPool.clear();
+
+	for (auto&& pair : effectPool)
+	{
+		SAFE_RELEASE(pair.second);
+	}
+	effectPool.clear();
+
+	for (auto&& pair : skinMeshPool)
+	{
+		SAFE_DELETE(pair.second);
+	}
+	skinMeshPool.clear();
+
+	FontManager::Instance()->ClearAll();
 }

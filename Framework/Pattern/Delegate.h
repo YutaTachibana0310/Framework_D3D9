@@ -14,49 +14,36 @@
 Delegater基底クラス宣言
 ***************************************/
 template<class TFunc>
-class DelegateBase;
+class Delegate;
 
 /**************************************
 Delegater基底クラス定義
 ***************************************/
 template<class TResult, class ...TArgs>
-class DelegateBase<TResult(TArgs...)>
+class Delegate<TResult(TArgs...)>
 {
 public:
-	DelegateBase() {}
-	virtual ~DelegateBase() {}
+	Delegate() {}
+	virtual ~Delegate() {}
 
 	virtual TResult operator()(TArgs... args) = 0;
 };
-
-///**************************************
-//Delegater基底クラス定義（引数voidの特殊化）
-//***************************************/
-//template<class TResult>
-//class DelegateBase<TResult(void)>
-//{
-//public:
-//	DelegateBase() {}
-//	virtual ~DelegateBase() {}
-//
-//	virtual TResult operator()() = 0;
-//};
 
 /**************************************
 Delegaterクラス
 ***************************************/
 template<class TObject, class TFunc>
-class Delegate;
+class DelegateObject;
 
 template <class TObject, class TResult, class ...TArgs>
-class Delegate<TObject, TResult(TArgs...)> : public DelegateBase<TResult(TArgs...)>
+class DelegateObject<TObject, TResult(TArgs...)> : public Delegate<TResult(TArgs...)>
 {
 	typedef TResult(TObject::*EventFunc)(TArgs...);
 public:
-	Delegate() :
+	DelegateObject() :
 		object(NULL), func(NULL) {}
 
-	virtual ~Delegate() {}
+	virtual ~DelegateObject() {}
 
 	//関数実行のオペレータ
 	virtual TResult operator()(TArgs... args)
@@ -72,9 +59,9 @@ public:
 	}
 
 	//デリゲータ作成処理
-	static DelegateBase<TResult(TArgs...)>* Create(TObject* object, TResult (TObject::*func)(TArgs...))
+	static Delegate<TResult(TArgs...)>* Create(TObject* object, TResult(TObject::*func)(TArgs...))
 	{
-		Delegate<TObject, TResult(TArgs...)>* delegate = new Delegate<TObject, TResult(TArgs...)>;
+		DelegateObject<TObject, TResult(TArgs...)>* delegate = new DelegateObject<TObject, TResult(TArgs...)>;
 		delegate->Set(object, func);
 		return  delegate;
 	}

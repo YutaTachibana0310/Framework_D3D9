@@ -140,6 +140,9 @@ void Tween::Rotate(GameObject& ref, const D3DXVECTOR3& end, int duration, EaseTy
 	Rotate(ref, start, end, duration, type, callback);
 }
 
+/**************************************
+方向処理
+***************************************/
 void Tween::Turn(GameObject & ref, const D3DXVECTOR3 & end, int duration, EaseType type, const D3DXVECTOR3& dummyAxis, std::function<void()> callback)
 {
 	//始点となるクォータニオンを求める
@@ -157,7 +160,7 @@ void Tween::Turn(GameObject & ref, const D3DXVECTOR3 & end, int duration, EaseTy
 
 	D3DXQUATERNION rotQ;
 	D3DXQuaternionRotationAxis(&rotQ, &axis, D3DXToRadian(angle));
-	
+
 	D3DXQUATERNION endQuaternion = start * rotQ;
 
 	//回転Tweener作成

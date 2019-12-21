@@ -6,6 +6,8 @@
 //=====================================
 #include "AnimationManager.h"
 #include "AnimContainer.h"
+#include "../Resource/ResourceManager.h"
+
 #include <assert.h>
 
 using namespace std;
@@ -16,7 +18,8 @@ using namespace std;
 /**************************************
 コンストラクタ
 ***************************************/
-AnimationManager::AnimationManager()
+AnimationManager::AnimationManager() :
+	currentAnimID(0)
 {
 	container = new AnimContainer();
 }
@@ -42,9 +45,6 @@ void AnimationManager::Update()
 	{
 		ChangeAnim(transitionMap[currentAnimID], true);
 	}
-
-	//アニメーションの更新
-	container->Update(deltaTimeList[currentAnimID]);
 }
 
 /**************************************
@@ -52,6 +52,9 @@ void AnimationManager::Update()
 ***************************************/
 void AnimationManager::Draw(LPD3DXMATRIX mtxWorld)
 {
+	//アニメーションの更新
+	container->Update(deltaTimeList[currentAnimID]);
+
 	container->Draw(mtxWorld);
 }
 
@@ -61,7 +64,7 @@ Xファイル読み込み処理
 HRESULT AnimationManager::LoadXFile(LPCSTR fileName, const char* errorSrc)
 {
 	bool res = S_OK;
-	res = container->LoadXFile(fileName, errorSrc);
+	ResourceManager::Instance()->GetSkinMesh(fileName, container);
 
 	if (res != S_OK)
 		return res;
@@ -75,7 +78,7 @@ HRESULT AnimationManager::LoadXFile(LPCSTR fileName, const char* errorSrc)
 	deltaTimeList.resize(container->GetNumAnimationSets());
 	for (auto&& deltaTime : deltaTimeList)
 	{
-		deltaTime = 1.0f / 60.0f;
+		deltaTime = 1.0f / 30.0f;
 	}
 
 	return S_OK;
@@ -104,8 +107,8 @@ HRESULT AnimationManager::LoadAnimation(LPCSTR setName, int setNo, float shiftTi
 ***************************************/
 void AnimationManager::SetPlaySpeed(UINT animID, float speed)
 {
-	assert(animID < 0);
-	assert(animID >= playSpeedList.size());
+	assert(animID >= 0);
+	assert(animID < playSpeedList.size());
 
 	playSpeedList[animID] = speed;
 }
@@ -115,8 +118,8 @@ void AnimationManager::SetPlaySpeed(UINT animID, float speed)
 ***************************************/
 void AnimationManager::SetDeltaTime(UINT animID, float delta)
 {
-	assert(animID < 0);
-	assert(animID >= deltaTimeList.size());
+	assert(animID >= 0);
+	assert(animID < deltaTimeList.size());
 
 	deltaTimeList[animID] = delta;
 }

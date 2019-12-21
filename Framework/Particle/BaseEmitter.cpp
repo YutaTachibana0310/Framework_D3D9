@@ -6,6 +6,7 @@
 //=====================================
 #include "BaseEmitter.h"
 #include "BaseParticle.h"
+#include "../Camera/Camera.h"
 
 /**************************************
 マクロ定義
@@ -25,7 +26,8 @@
 BaseEmitter::BaseEmitter() :
 	GameObject(false),
 	emitNum(1),
-	duration(1)
+	duration(1),
+	useCull(false)
 {
 
 }
@@ -36,7 +38,8 @@ BaseEmitter::BaseEmitter() :
 BaseEmitter::BaseEmitter(int emitNum) :
 	GameObject(false),
 	emitNum(emitNum),
-	duration(2)
+	duration(2),
+	useCull(false)
 {
 
 }
@@ -47,7 +50,8 @@ BaseEmitter::BaseEmitter(int emitNum) :
 BaseEmitter::BaseEmitter(int emitNum, int duration) :
 	GameObject(false),
 	emitNum(emitNum),
-	duration(duration)
+	duration(duration),
+	useCull(false)
 {
 
 }
@@ -58,7 +62,8 @@ BaseEmitter::BaseEmitter(int emitNum, int duration) :
 BaseEmitter::BaseEmitter(int emitNum, int durationMin, int durationMax) :
 	GameObject(false),
 	emitNum(emitNum),
-	duration(Math::RandomRange(durationMin, durationMax))
+	duration(Math::RandomRange(durationMin, durationMax)),
+	useCull(false)
 {
 
 }
@@ -69,7 +74,8 @@ BaseEmitter::BaseEmitter(int emitNum, int durationMin, int durationMax) :
 BaseEmitter::BaseEmitter(int emitNumMin, int emitNumMax, int durationMin, int durationMax) :
 	GameObject(false),
 	emitNum(Math::RandomRange(emitNumMin, emitNumMax)),
-	duration(Math::RandomRange(durationMin, durationMax))
+	duration(Math::RandomRange(durationMin, durationMax)),
+	useCull(false)
 {
 
 }
@@ -85,10 +91,11 @@ BaseEmitter::~BaseEmitter()
 /**************************************
 初期化処理
 ***************************************/
-void BaseEmitter::Init()
+void BaseEmitter::Init(std::function<void(void)>& callback)
 {
 	cntFrame = 0;
 	active = true;
+	this->callback = callback;
 }
 
 /**************************************
@@ -100,6 +107,11 @@ void BaseEmitter::Update()
 		return;
 
 	cntFrame++;
+
+	if (cntFrame == duration && callback != nullptr)
+	{
+		callback();
+	}
 }
 
 /**************************************
@@ -109,6 +121,14 @@ bool BaseEmitter::Emit(std::vector<BaseParticle*>& container)
 {
 	if (!IsActive())
 		return true;
+
+	D3DXVECTOR3 screenPos = Camera::MainCamera()->Projection(transform->GetPosition());
+
+	if (useCull)
+	{
+		if (screenPos.x < 0.0f || screenPos.x > SCREEN_WIDTH || screenPos.y < 0.0f || screenPos.y > SCREEN_HEIGHT)
+			return true;
+	}
 
 	UINT cntEmit = 0;
 	for (auto& particle : container)
@@ -139,5 +159,16 @@ bool BaseEmitter::IsActive() const
 	if (!active)
 		return false;
 
+	if (duration == 0)
+		return true;
+
 	return cntFrame <= duration;
+}
+
+/**************************************
+カリング使用設定
+***************************************/
+void BaseEmitter::UseCulling(bool value)
+{
+	useCull = value;
 }

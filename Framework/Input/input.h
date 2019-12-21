@@ -15,29 +15,20 @@
 //*****************************************************************************
 // クラス定義
 //*****************************************************************************
-class Input
+namespace Input
 {
-	friend class BaseGame;
-public:
-	Input();
-	~Input();
-
 	HRESULT Init(HINSTANCE hInst, HWND hWnd);
+	void Uninit();
 	void Update();
 
-	static float GetPressHorizontail(int no = 0);
-	static float GetPressVertical(int no = 0);
+	float GetPressHorizontail(int no = 0);
+	float GetPressVertical(int no = 0);
 
-private:
-	LPDIRECTINPUT8 pDInput;					// IDirectInput8インターフェースへのポインタ
-	GamePad *pad;
-	Keyboard *keyboard;
-	Mouse *mouse;
+	float GetTriggerHorizontal(int no = 0);
+	float GetTriggerVertical(int no = 0);
 
-	static Input* mInstance;
+	float GetRepeatHorizontal(int no = 0);
+	float GetRepeatVertical(int no = 0);
 };
-//*****************************************************************************
-// プロトタイプ宣言
-//*****************************************************************************
 
 #endif

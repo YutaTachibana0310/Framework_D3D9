@@ -7,7 +7,7 @@
 #ifndef _EXPLOSIONFLARE_H_
 #define _EXPLOSIONFLARE_H_
 
-#include "../../Framework/Particle/BaseParticle.h"
+#include "../../Framework/Particle/3D/Particle3D.h"
 
 /**************************************
 ëOï˚êÈåæ
@@ -22,9 +22,9 @@
 ***************************************/
 namespace Asset
 {
-	class ExplosionFlare : public BaseParticle
+	class ExplosionFlare : public Particle3D
 	{
-		using BaseParticle::BaseParticle;
+		using Particle3D::Particle3D;
 	public:
 		ExplosionFlare();
 

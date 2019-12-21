@@ -8,13 +8,17 @@
 #define _SCENEPARTICLEMANAGER_H_
 
 #include "../../main.h"
-#include "../PostEffect/ScreenObject.h"
-#include "BaseParticleController.h"
+
 #include <vector>
+#include <functional>
 
 /**************************************
-マクロ定義
+前方宣言
 ***************************************/
+class CrossFilterController;
+class ScreenObject;
+class BaseParticleController;
+class BaseEmitter;
 
 /**************************************
 クラス定義
@@ -25,14 +29,14 @@ public:
 	SceneParticleManager();
 
 	//初期化、終了、更新、描画処理
-	virtual void Init() = 0;
+	virtual void Init();
 	virtual void Uninit();
 	virtual void Update();
 	virtual void Draw();
 
 	//パーティクル発生処理
-	virtual BaseEmitter* Generate(UINT id, const D3DXVECTOR3& pos);
-	virtual BaseEmitter* Generate(UINT id, const Transform& transform);
+	virtual BaseEmitter* Generate(UINT id, const D3DXVECTOR3& pos, std::function<void(void)> callback = nullptr);
+	virtual BaseEmitter* Generate(UINT id, const Transform& transform, std::function<void(void)> callback = nullptr);
 
 protected:
 	//レンダーターゲット関連
@@ -47,6 +51,9 @@ protected:
 
 	//パーティクルコントローラコンテナ
 	std::vector<BaseParticleController*> controllers;
+
+	//クロスフィルタ
+	CrossFilterController *crossFilter;
 
 	//描画準備
 	void CreateRenderTarget(void);
