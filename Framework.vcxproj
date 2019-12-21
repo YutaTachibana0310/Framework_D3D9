@@ -121,7 +121,8 @@
     <ClCompile Include="Library\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Library\json11\json11.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Test\Framework.cpp" />
+    <ClCompile Include="Framework.cpp" />
+    <ClCompile Include="Scene\TweenTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset\Particle\ExplosionFire.h" />
@@ -242,7 +243,8 @@
     <ClInclude Include="Library\nameof\nameof.hpp" />
     <ClInclude Include="Library\picojson\picojson.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="Test\Framework.h" />
+    <ClInclude Include="Framework.h" />
+    <ClInclude Include="Scene\TweenTest.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx">

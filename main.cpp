@@ -8,7 +8,7 @@
 #include <time.h>
 //#include "Framework/Tool/MemoryDetect.h"
 #include "Framework/Tool/DebugWindow.h"
-#include "Test/Framework.h"
+#include "Framework.h"
 
 //*****************************************************************************
 // É}ÉNÉçíËã`

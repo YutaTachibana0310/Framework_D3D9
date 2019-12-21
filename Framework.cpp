@@ -5,15 +5,18 @@
 //
 //=====================================
 #include "Framework.h"
+#include "Framework\Tool\DebugWindow.h"
 
-#include "../Framework\Tool\DebugWindow.h"
+#include "Scene/TweenTest.h"
 
 /**************************************
 ƒ}ƒNƒ’è‹`
 ***************************************/
 Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 {
+	sceneManager->Add(0, new TweenTestScene(renderTexture, renderSurface));
 
+	sceneManager->ChangeScene(0);
 }
 
 /**************************************
