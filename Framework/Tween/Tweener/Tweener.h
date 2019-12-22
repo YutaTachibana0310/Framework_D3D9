@@ -84,7 +84,7 @@ public:
 		if (reference.expired())
 			return true;
 
-		return Tweener::IsFinished();
+		return BaseTweener::IsFinished();
 	}
 
 protected:
