@@ -10,6 +10,7 @@
 #include "../../main.h"
 #include "../Math/Easing.h"
 #include "../Core/Transform.h"
+#include "Tweener/ValueTweener.h"
 
 #include <list>
 #include <memory>
@@ -96,6 +97,38 @@ public:
 	引数 callback : 終了時のコールバック関数
 	***************************************/
 	static void Turn(GameObject& ref, const D3DXVECTOR3& endDirection, int duration, EaseType type, const D3DXVECTOR3& dummyAxis, std::function<void()> callback = nullptr);
+
+	/**************************************
+	値トゥイーン
+	引数 ref：トゥイーン対象の変数へのスマートポインタ
+	引数 start : 開始時の値
+	引数 end : 終了時の値
+	引数 duration : 変化にかける時間
+	引数 type : イージングタイプ
+	引数 callback : 終了時のコールバック関数
+	***************************************/
+	template<class T>
+	static void To(std::shared_ptr<T>& ref, const T& start, const T& end, int duration, EaseType type, std::function<void()> callback = nullptr)
+	{
+		ValueTweener<T> *tweener = new ValueTweener<T>(ref, start, end, duration, type, callback);
+		tweenerContainer.push_back(tweener);
+	}
+
+	/**************************************
+	値トゥイーン
+	引数 ref：トゥイーン対象の変数へのスマートポインタ
+	引数 end : 終了時の値
+	引数 duration : 変化にかける時間
+	引数 type : イージングタイプ
+	引数 callback : 終了時のコールバック関数
+	***************************************/
+	template<class T>
+	static void To(std::shared_ptr<T>& ref, const T& end, int duration, EaseType type, std::function<void()> callback = nullptr)
+	{
+		T start = *ref;
+		ValueTweener<T> *tweener = new ValueTweener<T>(ref, start, end, duration, type, callback);
+		tweenerContainer.push_back(tweener);
+	}
 
 private:
 	void Update();

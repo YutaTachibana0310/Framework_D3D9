@@ -231,6 +231,7 @@
     <ClInclude Include="Framework\Tween\Tweener\ScaleTweener.h" />
     <ClInclude Include="Framework\Tween\Tweener\RotateTweener.h" />
     <ClInclude Include="Framework\Tween\Tweener\Tweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\ValueTweener.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />

@@ -234,6 +234,7 @@
     <ClInclude Include="Framework\Tween\Tweener\RotateTweener.h" />
     <ClInclude Include="Framework\Tween\Tweener\ScaleTweener.h" />
     <ClInclude Include="Framework\Tween\Tweener\Tweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\ValueTweener.h" />
     <ClInclude Include="Library\cppLinq\cpplinq.hpp" />
     <ClInclude Include="Library\imgui\imconfig.h" />
     <ClInclude Include="Library\imgui\imgui.h" />
