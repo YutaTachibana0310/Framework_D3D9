@@ -227,6 +227,10 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Scene\TweenTest.h" />
+    <ClInclude Include="Framework\Tween\Tweener\MoveTweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\ScaleTweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\RotateTweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\Tweener.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />

@@ -230,6 +230,10 @@
     <ClInclude Include="Framework\Transition\MistTransitionMask.h" />
     <ClInclude Include="Framework\Transition\TransitionController.h" />
     <ClInclude Include="Framework\Tween\Tween.h" />
+    <ClInclude Include="Framework\Tween\Tweener\MoveTweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\RotateTweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\ScaleTweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\Tweener.h" />
     <ClInclude Include="Library\cppLinq\cpplinq.hpp" />
     <ClInclude Include="Library\imgui\imconfig.h" />
     <ClInclude Include="Library\imgui\imgui.h" />

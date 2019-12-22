@@ -19,6 +19,7 @@
 /**************************************
 前方宣言
 ***************************************/
+class BaseTweener;
 
 /**************************************
 マクロ・列挙子定義
@@ -101,62 +102,11 @@ private:
 	void ClearContainer();
 	void ClearAll();
 
-	class Tweener;
-	std::list<Tween::Tweener*> tweenerContainer;
+	std::list<BaseTweener*> tweenerContainer;
 
 	static Tween* mInstance;
 	Tween();
 	~Tween();
-
-	using Callback = std::function<void(void)>;
-
-	class Tweener
-	{
-	public:
-		Tweener(std::shared_ptr<Transform>& ref, int duration, EaseType type, Callback callback);
-		virtual ~Tweener();
-		inline bool IsFinished();
-		virtual void Update() = 0;
-		inline void CheckCallback();
-
-	protected:
-		std::weak_ptr<Transform> reference;
-		int cntFrame;
-		int duration;
-		EaseType type;
-		Callback callback;
-	};
-
-	class MoveTweener : public Tweener
-	{
-	public:
-		MoveTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback);
-		void Update();
-
-	private:
-		D3DXVECTOR3 start, end;
-	};
-
-	class ScaleTweener : public Tweener
-	{
-	public:
-		ScaleTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback);
-		void Update();
-
-	private:
-		D3DXVECTOR3 start, end;
-	};
-
-	class RotateTweener : public Tweener
-	{
-	public:
-		RotateTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback);
-		RotateTweener(std::shared_ptr<Transform>& ref, const D3DXQUATERNION& start, const D3DXQUATERNION& end, int duration, EaseType type, Callback callback);
-		void Update();
-
-	private:
-		D3DXQUATERNION start, end;
-	};
 };
 
 #endif

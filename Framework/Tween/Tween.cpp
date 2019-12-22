@@ -5,7 +5,11 @@
 //
 //=====================================
 #include "Tween.h"
-#include "../Math/Quaternion.h"
+
+#include "Tweener/MoveTweener.h"
+#include "Tweener/RotateTweener.h"
+#include "Tweener/ScaleTweener.h"
+
 #include <algorithm>
 
 using namespace std;
@@ -166,144 +170,4 @@ void Tween::Turn(GameObject & ref, const D3DXVECTOR3 & end, int duration, EaseTy
 	//回転Tweener作成
 	RotateTweener *tweener = new RotateTweener(ref.transform, start, endQuaternion, duration, type, callback);
 	mInstance->tweenerContainer.push_back(tweener);
-}
-
-/**************************************
-Tweenerコンストラクタ
-***************************************/
-Tween::Tweener::Tweener(std::shared_ptr<Transform>& ref, int duration, EaseType type, Callback callback) :
-	reference(ref),
-	cntFrame(0),
-	duration(duration),
-	type(type),
-	callback(callback)
-{
-
-}
-
-/**************************************
-Tweenerデストラクタ
-***************************************/
-Tween::Tweener::~Tweener()
-{
-	reference.reset();
-}
-
-/**************************************
-Tweener終了判定
-***************************************/
-inline bool Tween::Tweener::IsFinished()
-{
-	if (reference.expired())
-		return true;
-
-	return cntFrame >= duration;
-}
-
-/**************************************
-コールバックのチェック判定
-***************************************/
-inline void Tween::Tweener::CheckCallback()
-{
-	if (cntFrame < duration)
-		return;
-
-	if (callback == nullptr)
-		return;
-
-	callback();
-}
-
-/**************************************
-MoveTweenerコンストラクタ
-***************************************/
-Tween::MoveTweener::MoveTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback) :
-	Tweener(ref, duration, type, callback),
-	start(start),
-	end(end)
-{
-
-}
-
-/**************************************
-MoveTweener更新処理
-***************************************/
-void Tween::MoveTweener::Update()
-{
-	cntFrame++;
-
-	shared_ptr<Transform> transform = reference.lock();
-	if (transform)
-	{
-		float t = (float)cntFrame / duration;
-		transform->SetPosition(Easing::EaseValue(t, start, end, type));
-		CheckCallback();
-	}
-}
-
-/**************************************
-ScaleTweenerコンストラクタ
-***************************************/
-Tween::ScaleTweener::ScaleTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback) :
-	Tweener(ref, duration, type, callback),
-	start(start),
-	end(end)
-{
-
-}
-
-/**************************************
-ScaleTweener更新処理
-***************************************/
-void Tween::ScaleTweener::Update()
-{
-	cntFrame++;
-
-	shared_ptr<Transform> transform = reference.lock();
-	if (transform)
-	{
-		float t = (float)cntFrame / duration;
-		transform->SetScale(Easing::EaseValue(t, start, end, type));
-		CheckCallback();
-	}
-}
-
-/**************************************
-RotateTweenerコンストラクタ
-***************************************/
-Tween::RotateTweener::RotateTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback) :
-	Tweener(ref, duration, type, callback),
-	start(Quaternion::ToQuaternion(start)),
-	end(Quaternion::ToQuaternion(end))
-{
-
-}
-
-/**************************************
-RotateTweenerコンストラクタ
-***************************************/
-Tween::RotateTweener::RotateTweener(std::shared_ptr<Transform>& ref, const D3DXQUATERNION & start, const D3DXQUATERNION & end, int duration, EaseType type, Callback callback) :
-	Tweener(ref, duration, type, callback),
-	start(start),
-	end(end)
-{
-
-}
-
-/**************************************
-RotateTweener更新処理
-***************************************/
-void Tween::RotateTweener::Update()
-{
-	cntFrame++;
-
-	shared_ptr<Transform> transform = reference.lock();
-	if (transform)
-	{
-		float t = Easing::EaseValue((float)cntFrame / duration, 0.0f, 1.0f, type);
-		D3DXQUATERNION quaternion;
-		D3DXQuaternionSlerp(&quaternion, &start, &end, t);
-		transform->SetRotation(quaternion);
-		CheckCallback();
-	}
 }
