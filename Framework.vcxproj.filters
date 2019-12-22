@@ -105,7 +105,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Framework.cpp" />
     <ClCompile Include="Scene\TweenTest.cpp" />
-    <ClCompile Include="Framework\Tween\Tweener\ViewerTweener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset\Particle\ExplosionFire.h" />

@@ -22,6 +22,9 @@
 class ViewerTweener : public Tweener<Polygon2D>
 {
 public:
+	/**************************************
+	展開タイプ列挙子
+	***************************************/
 	enum class ExpandType : int
 	{
 		None,
@@ -33,6 +36,9 @@ public:
 		ToLeftRight
 	};
 
+	/**************************************
+	圧縮タイプ列挙子
+	***************************************/
 	enum class CloseType : int
 	{
 		None,
@@ -44,6 +50,9 @@ public:
 		FromLeftRight
 	};
 
+	/**************************************
+	コンストラクタ（展開タイプ）
+	***************************************/
 	ViewerTweener(std::shared_ptr<Polygon2D>& ref, ExpandType type, int duration, EaseType easeType, Callback callback) :
 		Tweener(ref, duration, easeType, callback),
 		expandType(type),
@@ -55,6 +64,9 @@ public:
 
 	}
 
+	/**************************************
+	コンストラクタ（圧縮タイプ）
+	***************************************/
 	ViewerTweener(std::shared_ptr<Polygon2D>& ref, CloseType type, int duration, EaseType easeType, Callback callback) :
 		Tweener(ref, duration, easeType, callback),
 		expandType(ExpandType::None),
@@ -66,6 +78,9 @@ public:
 
 	}
 
+	/**************************************
+	コンストラクタ（フェード）
+	***************************************/
 	ViewerTweener(std::shared_ptr<Polygon2D>& ref, float startAlpha, float endAlpha, int duration, EaseType easeType, Callback callback) :
 		Tweener(ref, duration, easeType, callback),
 		expandType(ExpandType::None),
@@ -77,6 +92,9 @@ public:
 
 	}
 
+	/**************************************
+	更新処理
+	***************************************/
 	void Update()
 	{
 		cntFrame++;
@@ -105,6 +123,9 @@ private:
 	bool isFade;
 	float startAlpha, endAlpha;
 
+	/**************************************
+	展開のタイプ分岐処理
+	***************************************/
 	void _Expand(std::shared_ptr<Polygon2D>& polygon)
 	{
 		float t = (float)cntFrame / duration;
@@ -128,6 +149,9 @@ private:
 			_ExpandUpToDown(t, polygon);
 	}
 
+	/**************************************
+	圧縮のタイプ分岐処理
+	***************************************/
 	void _Close(std::shared_ptr<Polygon2D>& polygon)
 	{
 		float t = (float)cntFrame / duration;
@@ -151,6 +175,9 @@ private:
 			_CloseUpToDown(t, polygon);
 	}
 
+	/**************************************
+	フェード処理
+	***************************************/
 	void _Fade(std::shared_ptr<Polygon2D>& polygon)
 	{
 		float t = (float)cntFrame / duration;
@@ -163,6 +190,9 @@ private:
 		}
 	}
 
+	/**************************************
+	展開処理
+	***************************************/
 	void _ExpandLeftToRight(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, -1.0f, 1.0f, easeType);
@@ -180,6 +210,9 @@ private:
 		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x + percentUV, polygon->vtxUV[3].y);
 	}
 
+	/**************************************
+	展開処理
+	***************************************/
 	void _ExpandRightToLeft(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, -1.0f, 1.0f, easeType);
@@ -197,6 +230,9 @@ private:
 		polygon->vtxWk[3].tex = polygon->vtxUV[3];
 	}
 
+	/**************************************
+	展開処理
+	***************************************/
 	void _ExpandUpToDown(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, -1.0f, 1.0f, easeType);
@@ -214,6 +250,9 @@ private:
 		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x, polygon->vtxUV[3].y + percentUV);
 	}
 
+	/**************************************
+	展開処理
+	***************************************/
 	void _ExpandDownToUp(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, -1.0f, 1.0f, easeType);
@@ -231,6 +270,9 @@ private:
 		polygon->vtxWk[3].tex = polygon->vtxUV[3];
 	}
 
+	/**************************************
+	展開処理
+	***************************************/
 	void _ExpandToUpDown(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 0.0f, 1.0f, easeType);
@@ -248,6 +290,9 @@ private:
 		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x, polygon->vtxUV[3].y - percentUV);
 	}
 
+	/**************************************
+	展開処理
+	***************************************/
 	void _ExpandToLeftRight(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 0.0f, 1.0f, easeType);
@@ -265,6 +310,9 @@ private:
 		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x + percentUV, polygon->vtxUV[3].y);
 	}
 
+	/**************************************
+	圧縮処理
+	***************************************/
 	void _CloseLeftToRight(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 1.0f, -1.0f, easeType);
@@ -282,6 +330,9 @@ private:
 		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x + percentUV, polygon->vtxUV[3].y);
 	}
 
+	/**************************************
+	圧縮処理
+	***************************************/
 	void _CloseRightToLeft(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 1.0f, -1.0f, easeType);
@@ -299,6 +350,9 @@ private:
 		polygon->vtxWk[3].tex = polygon->vtxUV[3];
 	}
 
+	/**************************************
+	圧縮処理
+	***************************************/
 	void _CloseUpToDown(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 1.0f, -1.0f, easeType);
@@ -316,6 +370,9 @@ private:
 		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x, polygon->vtxUV[3].y + percentUV);
 	}
 
+	/**************************************
+	圧縮処理
+	***************************************/
 	void _CloseDownToUp(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 1.0f, -1.0f, easeType);
@@ -333,6 +390,9 @@ private:
 		polygon->vtxWk[3].tex = polygon->vtxUV[3];
 	}
 
+	/**************************************
+	圧縮処理
+	***************************************/
 	void _CloseFromUpDown(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 1.0f, 0.0f, easeType);
@@ -350,6 +410,9 @@ private:
 		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x, polygon->vtxUV[3].y - percentUV);
 	}
 
+	/**************************************
+	圧縮処理
+	***************************************/
 	void _CloseFromLeftRight(float t, std::shared_ptr<Polygon2D>& polygon)
 	{
 		float percentVtx = Easing::EaseValue(t, 1.0f, 0.0f, easeType);

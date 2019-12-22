@@ -21,6 +21,9 @@
 class ScaleTweener : public Tweener<Transform>
 {
 public:
+	/**************************************
+	コンストラクタ
+	***************************************/
 	ScaleTweener(std::shared_ptr<Transform>& ref, const D3DXVECTOR3& start, const D3DXVECTOR3& end, int duration, EaseType type, Callback callback) :
 		Tweener<Transform>(ref, duration, type, callback),
 		start(start),
@@ -29,6 +32,9 @@ public:
 
 	}
 
+	/**************************************
+	更新処理
+	***************************************/
 	void Update()
 	{
 		cntFrame++;

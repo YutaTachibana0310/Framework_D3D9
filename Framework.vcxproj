@@ -113,7 +113,6 @@
     <ClCompile Include="Framework\Transition\MistTransitionMask.cpp" />
     <ClCompile Include="Framework\Transition\TransitionController.cpp" />
     <ClCompile Include="Framework\Tween\Tween.cpp" />
-    <ClCompile Include="Framework\Tween\Tweener\ViewerTweener.cpp" />
     <ClCompile Include="Library\imgui\imgui.cpp" />
     <ClCompile Include="Library\imgui\imgui_demo.cpp" />
     <ClCompile Include="Library\imgui\imgui_draw.cpp" />

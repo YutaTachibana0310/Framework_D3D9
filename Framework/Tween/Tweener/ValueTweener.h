@@ -22,6 +22,9 @@ template<class T>
 class ValueTweener : Tweener<T>
 {
 public:
+	/**************************************
+	コンストラクタ
+	***************************************/
 	ValueTweener(std::shared_ptr<T>& ref, const T& start, const T& end, int duration, EaseType type, Callback callback) :
 		Tweener(ref, duration, type, callback),
 		start(start),
@@ -30,6 +33,9 @@ public:
 
 	}
 
+	/**************************************
+	更新処理
+	***************************************/
 	void Update()
 	{
 		cntFrame++;
