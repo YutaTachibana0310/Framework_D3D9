@@ -14,6 +14,10 @@
 /**************************************
 前方宣言
 ***************************************/
+class Polygon2D;
+enum class ExpandType: int;
+enum class CloseType : int;
+enum EaseType : int;
 
 /**************************************
 クラス定義
@@ -26,6 +30,18 @@ public:
 	virtual void Uninit() override;
 	virtual void Update() override;
 	virtual void Draw() override;
+
+private:
+	std::shared_ptr<Polygon2D> polygon;
+
+	bool useExpand;
+	int expand, close;
+	ExpandType expandType;
+	CloseType closeType;
+	EaseType easeType;
+
+	void OnFinish();
 };
+
 
 #endif

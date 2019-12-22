@@ -27,7 +27,7 @@ HexaPopTransitionMask::HexaPopTransitionMask()
 	//ポリゴンの大きさを計算
 	float sizeX = (float)SCREEN_WIDTH / DivineX;
 	float sizeY = (float)SCREEN_HEIGHT / DivineY;
-	polygon->SetSize(sizeX, sizeY);
+	polygon->SetSize({ sizeX, sizeY });
 	polygon->LoadTexture("data/TRANSITION/HexaMask.png");
 
 	//X方向1列で一つのベクターとして
