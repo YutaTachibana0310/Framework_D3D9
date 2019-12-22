@@ -31,7 +31,7 @@ const float Asset::ExplosionFire::ScaleMax = 1.2f;		//最小スケール値
 コンストラクタ
 ***************************************/
 Asset::ExplosionFire::ExplosionFire() :
-	AnimationParticle(TexDiv, TexDiv, LifeMin, LifeMax),
+	AnimationParticle3D(TexDiv, TexDiv, LifeMin, LifeMax),
 	velocity(Vector3::Random() * Math::RandomRange(SpeedMin, SpeedMax))
 {
 

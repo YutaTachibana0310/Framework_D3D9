@@ -5,15 +5,16 @@
 //
 //=====================================
 #include "debugWindow.h"
-#include "../../imgui/imgui.h"
-#include "../../imgui/imgui_impl_win32.h"
-#include "../../imgui/imgui_impl_dx9.h"
+#include "../../Library/imgui/imgui.h"
+#include "../../Library/imgui/imgui_impl_win32.h"
+#include "../../Library/imgui/imgui_impl_dx9.h"
 #include "../Input/input.h"
 
 /**************************************
 マクロ定義
 ***************************************/
 #define INTERBAL_GETTIMER		(20)
+#define USE_DEBUGLOG
 
 /**************************************
 構造体定義
@@ -25,6 +26,8 @@
 LARGE_INTEGER timeCountBegin;
 static unsigned int cntFrame = 0;
 static bool enableDraw = true;
+const unsigned Debug::MaxLog = 50;
+std::deque<std::string> Debug::textLog;
 
 /**************************************
 プロトタイプ宣言
@@ -75,7 +78,7 @@ void Debug::Uninit()
 void Debug::Update(void)
 {
 #ifdef USE_DEBUGFUNC
-	if (Keyboard::GetTrigger(DIK_D) && Keyboard::GetTrigger(DIK_LCONTROL))
+	if (Keyboard::GetTrigger(DIK_D) && Keyboard::GetPress(DIK_LCONTROL))
 	{
 		enableDraw = !enableDraw;
 	}
@@ -99,7 +102,18 @@ void Debug::Draw(void)
 		ImGui::EndFrame();
 		return;
 	}
-	
+
+#ifdef USE_DEBUGLOG
+	Debug::Begin("Log");
+	if (Button("Clear"))
+		textLog.clear();
+	for(auto&& log : textLog)
+	{
+		Text(log.c_str());
+	}
+	Debug::End();
+#endif
+
 	ImGui::Render();
 	ImGui_ImplDX9_RenderDrawData(ImGui::GetDrawData());
 #endif
@@ -135,13 +149,63 @@ void Debug::End()
 void Debug::Log(const char *str, ...)
 {
 #ifdef USE_DEBUGFUNC
-	Begin("Console");
-	va_list ap;
-	va_start(ap, str);
-	ImGui::TextV(str, ap);
-	//ImGui::Text(str, ap);
-	va_end(ap);
-	End();
+	va_list list;			// 可変引数を処理する為に使用する変数
+	char *pCur;
+	char aBuf[256] = { "\0" };
+	char aWk[32];
+
+	// 可変引数にアクセスする前の初期処理
+	va_start(list, str);
+
+	pCur = (char *)str;
+	for (; *pCur; ++pCur)
+	{
+		if (*pCur != '%')
+		{
+			sprintf(aWk, "%c", *pCur);
+		}
+		else
+		{
+			pCur++;
+
+			switch (*pCur)
+			{
+			case 'd':
+				// 可変引数にアクセスしてその変数を取り出す処理
+				sprintf(aWk, "%d", va_arg(list, int));
+				break;
+
+			case 'f':
+				// 可変引数にアクセスしてその変数を取り出す処理
+				sprintf(aWk, "%.2f", va_arg(list, double));		// double型で指定
+				break;
+
+			case 's':
+				// 可変引数にアクセスしてその変数を取り出す処理
+				sprintf(aWk, "%s", va_arg(list, char*));
+				break;
+
+			case 'c':
+				// 可変引数にアクセスしてその変数を取り出す処理
+				sprintf(aWk, "%c", va_arg(list, char));
+				break;
+
+			default:
+				sprintf(aWk, "%c", *pCur);
+				break;
+			}
+		}
+		strcat(aBuf, aWk);
+	}
+
+	// 可変引数にアクセスした後の終了処理
+	va_end(list);
+	
+	//TextLogに格納
+	if (textLog.size() == MaxLog)
+		textLog.pop_front();
+	textLog.push_back(std::string(aBuf));
+
 #endif
 }
 
@@ -317,8 +381,8 @@ bool Debug::Slider(const char* label, D3DXVECTOR3& out, const D3DXVECTOR3& min, 
 #ifdef USE_DEBUGFUNC
 	bool res = false;
 	res |= ImGui::SliderFloat((std::string(label) + std::string(".x")).c_str(), &out.x, min.x, max.x);
-	res |= ImGui::SliderFloat((std::string(label) + std::string(".y")).c_str(), &out.y, min.x, max.y);
-	res |= ImGui::SliderFloat((std::string(label) + std::string(".z")).c_str(), &out.z, min.x, max.z);
+	res |= ImGui::SliderFloat((std::string(label) + std::string(".y")).c_str(), &out.y, min.y, max.y);
+	res |= ImGui::SliderFloat((std::string(label) + std::string(".z")).c_str(), &out.z, min.z, max.z);
 	return res;
 #else
 	return false;

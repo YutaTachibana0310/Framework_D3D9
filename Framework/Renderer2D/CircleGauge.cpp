@@ -18,7 +18,7 @@ CircleGauge::CircleGauge(const D3DXVECTOR2 & Size) :
 	transform(NULL),
 	effect(NULL),
 	percent(0.0f),
-	start(FillStart::Right)
+	start(FillStart::Top)
 {
 	transform = new Transform();
 
@@ -33,7 +33,7 @@ CircleGauge::CircleGauge(const D3DXVECTOR2 & Size) :
 		0);
 
 	//エフェクト読み込み
-	HRESULT res = D3DXCreateEffectFromFile(pDevice, "data/EFFECT/CircleGauge.fx", 0, 0, D3DXSHADER_SKIPVALIDATION, 0, &effect, 0);
+	HRESULT res = D3DXCreateEffectFromFile(pDevice, "data/EFFECT/CircleGauge.cfx", 0, 0, D3DXSHADER_SKIPVALIDATION, 0, &effect, 0);
 	if (res != S_OK)
 	{
 		D3DXCreateEffectFromFile(pDevice, "Shaders/CircleGauge.fx", 0, 0, 0, 0, &effect, 0);
@@ -83,17 +83,13 @@ CircleGauge::~CircleGauge()
 ***************************************/
 void CircleGauge::Draw()
 {
-	Debug::Begin("Circle");
-	Debug::Slider("per", percent, 0.0f, 1.0f);
-	effect->SetFloat(hPercent, percent);
-	Debug::End();
-
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
 	//描画前の下準備
 	pDevice->SetFVF(FVF_VERTEX_3D);
 	pDevice->SetStreamSource(0, vtxBuff, 0, sizeof(VERTEX_3D));
 	pDevice->SetTexture(0, texture);
+	effect->SetFloat(hPercent, percent);
 
 	//頂点変換座標を設定
 	D3DXMATRIX mtxTrans = transform->GetMatrix();
@@ -157,7 +153,7 @@ void CircleGauge::SetScale(const D3DXVECTOR3 & scale)
 ***************************************/
 void CircleGauge::SetPercent(float per)
 {
-	percent = 1.0f - Math::Clamp(0.0f, 1.0f, per / 100.0f);
+	percent = 1.0f - Math::Clamp(0.0f, 1.0f, per);
 }
 
 /**************************************

@@ -30,8 +30,8 @@ shared_ptr<ParticleRenderer> BaseParticleController::mRenderer = NULL;
 /**************************************
 コンストラクタ
 ***************************************/
-BaseParticleController::BaseParticleController() :
-	unitBuff(NULL), texture(NULL)
+BaseParticleController::BaseParticleController(ParticleType type, bool useCorssFilter) :
+	unitBuff(NULL), texture(NULL), particleCount(0), useType(type), useCrossFilter(useCorssFilter)
 {
 	if (!mRenderer)
 	{
@@ -45,8 +45,7 @@ BaseParticleController::BaseParticleController() :
 ***************************************/
 BaseParticleController::~BaseParticleController()
 {
-	//テクスチャはResourceManagerにまかせているので開放しない
-
+	SAFE_RELEASE(texture);
 	SAFE_RELEASE(unitBuff);
 
 	Utility::DeleteContainer(particleContainer);
@@ -109,7 +108,6 @@ bool BaseParticleController::Draw()
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
 	//各パーティクルのパラメータを頂点バッファにセット
-	UINT particleCount = 0;
 	particleCount = renderer->EmbedUV(particleContainer);
 
 	if (particleCount == 0)
@@ -125,7 +123,9 @@ bool BaseParticleController::Draw()
 	pDevice->SetTexture(0, texture);
 
 	//描画
+	renderer->BeginPass(useType);
 	pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 0, NUM_VERTEX, 0, NUM_POLYGON);
+	renderer->EndPass();
 
 	return true;
 }
@@ -186,9 +186,9 @@ void BaseParticleController::MakeEmitterContainer(const ParticleJsonParser & dat
 /**************************************
 エミッタセット処理
 ***************************************/
-BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
+BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos, std::function<void(void)> callback)
 {
-	auto& emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter* emitter)
+	auto emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter* emitter)
 	{
 		return !emitter->IsActive();
 	});
@@ -198,7 +198,7 @@ BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
 
 	BaseEmitter* ptr = (*emitter);
 	ptr->SetPosition(pos);
-	ptr->Init();
+	ptr->Init(callback);
 
 	return ptr;
 
@@ -207,9 +207,9 @@ BaseEmitter* BaseParticleController::SetEmitter(const D3DXVECTOR3& pos)
 /**************************************
 エミッタセット処理
 ***************************************/
-BaseEmitter* BaseParticleController::SetEmitter(const Transform& transform)
+BaseEmitter* BaseParticleController::SetEmitter(const Transform& transform, std::function<void(void)> callback)
 {
-	auto& emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter *emitter)
+	auto emitter = find_if(emitterContainer.begin(), emitterContainer.end(), [](BaseEmitter *emitter)
 	{
 		return !emitter->IsActive();
 	});
@@ -219,7 +219,7 @@ BaseEmitter* BaseParticleController::SetEmitter(const Transform& transform)
 
 	BaseEmitter* ptr = *emitter;
 	ptr->SetTransform(transform);
-	ptr->Init();
+	ptr->Init(callback);
 
 	return ptr;
 }
@@ -238,4 +238,28 @@ void BaseParticleController::BeginDraw()
 void BaseParticleController::EndDraw()
 {
 	mRenderer->EndDraw();
+}
+
+/**************************************
+描画パーティクル数取得処理
+***************************************/
+unsigned BaseParticleController::GetParticleCount() const
+{
+	return particleCount;
+}
+
+/**************************************
+パーティクルタイプ取得処理
+***************************************/
+BaseParticleController::ParticleType BaseParticleController::GetType() const
+{
+	return useType;
+}
+
+/**************************************
+クロスフィルタ適用判定
+***************************************/
+bool BaseParticleController::UseCrossFilter() const
+{
+	return useCrossFilter;
 }

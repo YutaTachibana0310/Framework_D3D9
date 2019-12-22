@@ -5,6 +5,7 @@
 //
 //=====================================
 #include "MyAllocateHierarchy.h"
+#include "../Resource/ResourceManager.h"
 
 /**************************************
 マクロ定義
@@ -172,7 +173,7 @@ HRESULT MyAllocateHierarchy::CreateMeshContainer(THIS_
 				ZeroMemory(textureName, sizeof(textureName));
 				sprintf_s(textureName, "data/MODEL/%s", meshContainer->pMaterials[iMaterial].pTextureFilename);
 
-				if (FAILED(D3DXCreateTextureFromFile(pDevice, textureName, &meshContainer->textures[iMaterial])))
+				if (!ResourceManager::Instance()->GetTexture(textureName, meshContainer->textures[iMaterial]))
 				{
 					meshContainer->textures[iMaterial] = NULL;
 				}
@@ -244,11 +245,15 @@ HRESULT MyAllocateHierarchy::DestroyFrame(THIS_
 	SAFE_DELETE_ARRAY(pFrameToFree->Name);
 	DestroyFrame(pFrameToFree->pFrameSibling);
 	DestroyFrame(pFrameToFree->pFrameFirstChild);
-	DestroyMeshContainer(pFrameToFree->pMeshContainer);
-	pFrameToFree->pMeshContainer = NULL;
+	SAFE_DELETE(pFrameToFree->pMeshContainer);
 
-	delete pFrameToFree;
-	pFrameToFree = NULL;
+	// 不明な原因で、メモリを初期化する時に、使う関数は_aligned_mallocなので
+	// リリースする時に_aligned_freeを使う
+	// MyAllocateHierarchy.hのオーバーロードとは関係ないと思う
+	// オーバーロードをコメントをして、freeを使えばエラーウィンドウが出る
+	_aligned_free(pFrameToFree);
+	pFrameToFree = nullptr;
+	//SAFE_DELETE(pFrameToFree);
 
 	return D3D_OK;
 }
@@ -292,7 +297,6 @@ HRESULT MyAllocateHierarchy::DestroyMeshContainer(THIS_
 		}
 	}
 	SAFE_DELETE_ARRAY(meshContainer->pEffects);
-	SAFE_DELETE_ARRAY(meshContainer->pEffects);
 
 	SAFE_RELEASE(meshContainer->pSkinInfo);
 	SAFE_RELEASE(meshContainer->boneCombinationBuf);
@@ -305,8 +309,6 @@ HRESULT MyAllocateHierarchy::DestroyMeshContainer(THIS_
 	{
 		DestroyMeshContainer(meshContainer->pNextMeshContainer);
 	}
-
-	SAFE_DELETE(meshContainer);
 
 	return D3D_OK;
 }

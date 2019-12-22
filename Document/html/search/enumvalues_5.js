@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['hexapop_5891',['HexaPop',['../_transition_controller_8h.html#a4e38d9519e74e10eccdfda5c5b92b283acd7b9c2f6a2db16c7985c284aea7da8f',1,'TransitionController.h']]],
-  ['hexarotation_5892',['HexaRotation',['../_transition_controller_8h.html#a4e38d9519e74e10eccdfda5c5b92b283a38e51e90518bbfb66641e6bc64dafd62',1,'TransitionController.h']]]
-];

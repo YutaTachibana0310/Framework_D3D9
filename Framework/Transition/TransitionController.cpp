@@ -27,7 +27,7 @@ TransitionController::TransitionController()
 
 	transitionBG = new Polygon2D();
 	transitionBG->LoadTexture("data/TRANSITION/Transition.jpg");
-	transitionBG->SetSize(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f);
+	transitionBG->SetSize({ SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f });
 	transitionBG->SetPosition(D3DXVECTOR3((float)SCREEN_CENTER_X, (float)SCREEN_CENTER_Y, 0.0f));
 
 	maskContainer.resize(TransitionType::TransitionMax);
@@ -59,16 +59,15 @@ void TransitionController::Update()
 
 	if (res != MaskResult::Continuous)
 	{
+		isRunning = false;
+
 		if (callback != NULL)
 		{
 			callback();
-			callback = NULL;
 		}
 
 		if (res == MaskResult::FinishTransitionOut)
 			isDrawBG = false;
-
-		isRunning = false;
 	}
 }
 
@@ -90,8 +89,9 @@ void TransitionController::DrawTransition()
 
 	LPDIRECT3DDEVICE9 pDevice = GetDevice();
 
-	pDevice->SetRenderState(D3DRS_STENCILREF, 0);
-	pDevice->SetRenderState(D3DRS_STENCILFUNC, D3DCMP_EQUAL);
+	pDevice->SetRenderState(D3DRS_STENCILENABLE, true);
+	pDevice->SetRenderState(D3DRS_STENCILREF, 1);
+	pDevice->SetRenderState(D3DRS_STENCILFUNC, D3DCMP_GREATEREQUAL);
 
 	transitionBG->Draw();
 

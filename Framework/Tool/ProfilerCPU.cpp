@@ -6,6 +6,7 @@
 //=====================================
 #include "ProfilerCPU.h"
 #include "DebugWindow.h"
+
 #include <string.h>
 #include <assert.h>
 
@@ -32,7 +33,16 @@ ProfilerCPU更新処理
 void ProfilerCPU::Update()
 {
 #ifdef USE_PROFILER_CPU
-	cntFrame++;
+	if (cntFrame % PROFILER_CPU_COUNT_INTERBAL == 0)
+	{
+		prevTime = time;
+		time = std::chrono::system_clock::now();
+
+		std::chrono::milliseconds deltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(time - prevTime);
+		std::chrono::milliseconds frame = std::chrono::milliseconds(PROFILER_CPU_COUNT_INTERBAL * 1000);
+		cntFPS = frame / deltaTime;
+	}
+	cntFrame = Math::WrapAround(0, PROFILER_CPU_COUNT_INTERBAL, ++cntFrame);
 #endif
 }
 
@@ -49,6 +59,7 @@ void ProfilerCPU::Draw()
 		Debug::Begin(profiler.first.c_str());
 
 		//FPS表示
+		Debug::Text("FPS:%d", cntFPS);
 
 		//総経過時間表示
 		double progress = 0.0;
@@ -130,6 +141,40 @@ void ProfilerCPU::End(const char* tag)
 		return;
 
 	profilerMap[currentLabel][string(tag)].Count(false);
+#endif
+}
+
+/**************************************
+現在のカウンター取得処理
+***************************************/
+LARGE_INTEGER ProfilerCPU::GetCounter()
+{
+#ifdef USE_PROFILER_CPU
+	LARGE_INTEGER frequency;
+	QueryPerformanceFrequency(&frequency);
+
+	LARGE_INTEGER counter;
+	QueryPerformanceCounter(&counter);
+
+	return counter;
+#else
+	return LARGE_INTEGER();
+#endif
+}
+
+/**************************************
+経過時間取得処理
+***************************************/
+double ProfilerCPU::CalcElapsed(LARGE_INTEGER & start, LARGE_INTEGER & end)
+{
+#ifdef USE_PROFILER_CPU
+	LARGE_INTEGER frequency;
+	QueryPerformanceFrequency(&frequency);
+	LONGLONG span = end.QuadPart - start.QuadPart;
+	double elapsedTime = (double)span * 1000.0 / (double)frequency.QuadPart;
+	return elapsedTime;
+#else
+	return 0.0f;
 #endif
 }
 

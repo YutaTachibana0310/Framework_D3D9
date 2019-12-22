@@ -8,10 +8,14 @@
 #define _MAIN_H_
 
 #define _CRT_SECURE_NO_WARNINGS
+#define _WINSOCK_DEPRECATED_NO_WARNINGS
 
 //*****************************************************************************
 // インクルードファイル
 //*****************************************************************************
+// windows.hの中にwinsock.hをインクルードするので
+// WinSock2.hのインクルード順番はWindows.hの前じゃないとコンパイルエラーになる
+#include <WinSock2.h>	// Network用
 #include <windows.h>
 #include "d3dx9.h"
 #include "Framework\Core\Transform.h"
@@ -25,6 +29,7 @@
 #include <tchar.h>
 #include <stdio.h>
 #include <assert.h>
+#include <process.h>	// MultiThread用
 
 //*****************************************************************************
 // ライブラリのリンク
@@ -36,6 +41,7 @@
 #pragma comment (lib, "dxguid.lib")
 #pragma comment (lib, "winmm.lib")
 #pragma comment (lib, "dxerr.lib")
+#pragma comment (lib, "ws2_32.lib")	// WinSockで必要
 #endif
 
 //*****************************************************************************
@@ -47,9 +53,11 @@
 #define	FVF_VERTEX_3D	(D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE | D3DFVF_TEX1)
 // ビルボード頂点フォーマット
 #define FVF_VERTEX_BILLBOARD	(D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1)
+//　マテリアルを使用する板ポリゴンフォーマット
+#define FVF_VERTEX_MATERIAL		(D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1)
 
-#define SCREEN_WIDTH	(1800)
-#define SCREEN_HEIGHT	(1000)
+#define SCREEN_WIDTH	(1920)
+#define SCREEN_HEIGHT	(1080)
 
 #define SCREEN_CENTER_X	(SCREEN_WIDTH / 2)
 #define SCREEN_CENTER_Y	(SCREEN_HEIGHT / 2)
@@ -58,9 +66,9 @@
 #define	NUM_POLYGON		(2)		// ポリゴン数
 
 //解放、削除関連
-#define SAFE_RELEASE(p)				{if(p){p->Release(); p = NULL;}}
-#define SAFE_DELETE(p)				{delete(p); p = NULL;}
-#define SAFE_DELETE_ARRAY(p)		{if(p){delete[](p); p = NULL;}}
+#define SAFE_RELEASE(p)				{if(p) {p->Release();	p = NULL;}}
+#define SAFE_DELETE(p)				{if(p) {delete(p);		p = NULL;}}
+#define SAFE_DELETE_ARRAY(p)		{if(p) {delete[](p);	p = NULL;}}
 
 // 上記２Ｄポリゴン頂点フォーマットに合わせた構造体を定義
 typedef struct
@@ -88,15 +96,23 @@ typedef struct
 	D3DXVECTOR2 tex;		// テクスチャ座標
 } VERTEX_BILLBOARD;
 
-#ifdef _DEBUG
-#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#else
-#define new new
-#endif
+// 上記マテリアルポリゴンフォーマットに合わせた構造体を定義
+typedef struct
+{
+	D3DXVECTOR3 vtx;		// 頂点座標
+	D3DXVECTOR3 nor;		// 法線ベクトル
+	D3DXVECTOR2 tex;		// テクスチャ座標
+} VERTEX_MATERIAL;
+
+//#ifdef _DEBUG
+//#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+//#else
+//#define new new
+//#endif
 
 //*****************************************************************************
 // プロトタイプ宣言
 //*****************************************************************************
 LPDIRECT3DDEVICE9 GetDevice(void);
-LPDIRECT3DTEXTURE9 CreateTextureFromFile(LPSTR szName, LPDIRECT3DDEVICE9 lpD3DDevice);
+
 #endif

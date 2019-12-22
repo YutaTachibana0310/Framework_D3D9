@@ -6,14 +6,15 @@
 //=============================================================================
 #include "main.h"
 #include <time.h>
-#include "Framework\Tool\DebugWindow.h"
-#include "Test/Framework.h"
+//#include "Framework/Tool/MemoryDetect.h"
+#include "Framework/Tool/DebugWindow.h"
+#include "Framework.h"
 
 //*****************************************************************************
 // マクロ定義
 //*****************************************************************************
 #define CLASS_NAME		"AppClass"		// ウインドウのクラス名
-#define WINDOW_NAME		"三校合同コンテスト_プロトタイプ"		// ウインドウのキャプション名
+#define WINDOW_NAME		"Link"			// ウインドウのキャプション名
 
 //*****************************************************************************
 // 構造体定義
@@ -27,18 +28,14 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow);
 void Uninit(void);
 void Update(HWND hWnd);
 void Draw(void);
-void DrawDebugWindowMain(void);
 
 //*****************************************************************************
 // グローバル変数:
 //*****************************************************************************
 LPDIRECT3D9			g_pD3D = NULL;			// Direct3D オブジェクト
 LPDIRECT3DDEVICE9	g_pD3DDevice = NULL;	// Deviceオブジェクト(描画に必要)
-static D3DXCOLOR backColor = D3DCOLOR_RGBA(0, 0, 50, 255);
-int					g_nCountFPS;			// FPSカウンタ
-bool				g_bDispDebug = true;	// デバッグ表示ON/OFF
-static bool flgPause = false;
-Framework* framework;
+
+static Framework* game;
 
 //=============================================================================
 // メイン関数
@@ -48,12 +45,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	UNREFERENCED_PARAMETER(hPrevInstance);	// 無くても良いけど、警告が出る（未使用宣言）
 	UNREFERENCED_PARAMETER(lpCmdLine);		// 無くても良いけど、警告が出る（未使用宣言）
 
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	// 使うために、先にFramework/Tool/MemotyDetect.hをインクルードする
+	// メモリリーク検査用
+	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	// 特定のcppを追跡用
+	//_CrtSetBreakAlloc(144324);
 
 	DWORD dwExecLastTime;
-	DWORD dwFPSLastTime;
 	DWORD dwCurrentTime;
-	DWORD dwFrameCount;
 
 	WNDCLASSEX wcex =
 	{
@@ -98,13 +97,12 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	// フレームカウント初期化
 	timeBeginPeriod(1);				// 分解能を設定
-	dwExecLastTime =
-		dwFPSLastTime = timeGetTime();
-	dwCurrentTime =
-		dwFrameCount = 0;
+	dwExecLastTime = timeGetTime();
+	dwCurrentTime = 0;
 
 	// ウインドウの表示(初期化処理の後に呼ばないと駄目)
-	ShowWindow(hWnd, nCmdShow);
+	ShowWindow(hWnd, SW_MAXIMIZE);
+	//ShowWindow(hWnd, nCmdShow);
 	UpdateWindow(hWnd);
 
 	// メッセージループ
@@ -113,7 +111,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT)
-			{// PostQuitMessage()が呼ばれたらループ終了
+			{
+				// PostQuitMessage()が呼ばれたらループ終了
 				break;
 			}
 			else
@@ -126,12 +125,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		else
 		{
 			dwCurrentTime = timeGetTime();
-			if ((dwCurrentTime - dwFPSLastTime) >= 500)	// 0.5秒ごとに実行
-			{
-				g_nCountFPS = dwFrameCount * 1000 / (dwCurrentTime - dwFPSLastTime);
-				dwFPSLastTime = dwCurrentTime;
-				dwFrameCount = 0;
-			}
 
 			if ((dwCurrentTime - dwExecLastTime) >= (1000 / 60))
 			{
@@ -142,8 +135,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 				// 描画処理
 				Draw();
-
-				dwFrameCount++;
 			}
 		}
 	}
@@ -280,7 +271,7 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// テクスチャステージ加算合成処理
 	g_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);	// アルファブレンディング処理
 	g_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);	// 最初のアルファ引数
-	g_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_CURRENT);	// ２番目のアルファ引数
+	g_pD3DDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);	// ２番目のアルファ引数
 
 	g_pD3DDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
 	g_pD3DDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
@@ -289,55 +280,7 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	g_pD3DDevice->SetRenderState(D3DRS_NORMALIZENORMALS, true);
 	g_pD3DDevice->SetRenderState(D3DRS_SPECULARENABLE, true);
 
-
-	//ライト初期化
-	D3DLIGHT9 light[3];
-	D3DXVECTOR3 vecDir;
-	// D3DLIGHT9構造体を0でクリアする
-	ZeroMemory(&light[0], sizeof(D3DLIGHT9));
-	// D3DLIGHT9構造体を0でクリアする
-	ZeroMemory(&light[2], sizeof(D3DLIGHT9));
-	// D3DLIGHT9構造体を0でクリアする
-	ZeroMemory(&light[1], sizeof(D3DLIGHT9));
-
-	// ライト0の設定
-	light[0].Type = D3DLIGHT_DIRECTIONAL;
-	light[0].Diffuse = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	light[0].Ambient = D3DXCOLOR(0.1f, 0.1f, 0.5f, 1.0f);
-	vecDir = D3DXVECTOR3(0.80f, -1.0f, 0.80f);
-	D3DXVec3Normalize((D3DXVECTOR3*)&light[0].Direction, &vecDir);
-
-	// ライト1の設定
-	light[1].Type = D3DLIGHT_DIRECTIONAL;
-	light[1].Diffuse = D3DXCOLOR(0.7f, 0.7f, 0.7f, 1.0f);
-	light[1].Ambient = D3DXCOLOR(0.2f, 0.2f, 0.2f, 1.0f);
-	vecDir = D3DXVECTOR3(-0.0f, 1.00f, -0.50f);
-	D3DXVec3Normalize((D3DXVECTOR3*)&light[1].Direction, &vecDir);
-
-	// ライト2の設定
-	light[2].Type = D3DLIGHT_DIRECTIONAL;
-	light[2].Diffuse = D3DXCOLOR(0.3f, 0.3f, 0.3f, 1.0f);
-	light[2].Ambient = D3DXCOLOR(0.3f, 0.3f, 0.3f, 1.0f);
-	vecDir = D3DXVECTOR3(-0.40f, -0.5f, 0.80f);
-	D3DXVec3Normalize((D3DXVECTOR3*)&light[2].Direction, &vecDir);
-
-	// ライトをレンダリングパイプラインに設定
-	g_pD3DDevice->SetLight(0, &light[0]);
-	g_pD3DDevice->LightEnable(0, TRUE);
-
-	// ライトをレンダリングパイプラインに設定
-	g_pD3DDevice->SetLight(1, &light[1]);
-	g_pD3DDevice->LightEnable(1, TRUE);
-
-	// ライトをレンダリングパイプラインに設定
-	g_pD3DDevice->SetLight(2, &light[2]);
-	g_pD3DDevice->LightEnable(2, TRUE);
-
-	// ライティングモード
-	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
-
-
-	framework = new Framework(hInstance, hWnd);
+	game = new Framework(hInstance, hWnd);
 
 	return S_OK;
 }
@@ -347,19 +290,13 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 //=============================================================================
 void Uninit(void)
 {
-	SAFE_DELETE(framework);
+	SAFE_DELETE(game);
 
-	if (g_pD3DDevice != NULL)
-	{// デバイスの開放
-		g_pD3DDevice->Release();
-		g_pD3DDevice = NULL;
-	}
+	// デバイスの開放
+	SAFE_RELEASE(g_pD3DDevice);
 
-	if (g_pD3D != NULL)
-	{// Direct3Dオブジェクトの開放
-		g_pD3D->Release();
-		g_pD3D = NULL;
-	}
+	// Direct3Dオブジェクトの開放
+	SAFE_RELEASE(g_pD3D);
 }
 
 //=============================================================================
@@ -367,7 +304,7 @@ void Uninit(void)
 //=============================================================================
 void Update(HWND hWnd)
 {
-	framework->Update();
+	game->Update();
 }
 
 //=============================================================================
@@ -377,9 +314,9 @@ void Draw(void)
 {
 	if (SUCCEEDED(g_pD3DDevice->BeginScene()))
 	{
-		g_pD3DDevice->Clear(0, NULL, (D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER), backColor, 1.0f, 0);
+		g_pD3DDevice->Clear(0, NULL, (D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER), D3DCOLOR_RGBA(0, 0, 50, 255), 1.0f, 0);
 
-		framework->Draw();
+		game->Draw();
 
 		g_pD3DDevice->EndScene();
 	}
@@ -394,44 +331,4 @@ void Draw(void)
 LPDIRECT3DDEVICE9 GetDevice(void)
 {
 	return g_pD3DDevice;
-}
-
-/******************************************************************************
-//関数名	：LPDIRECT3DTEXTURE9 CreateTextureFromFile(LPSTR szName, LPDIRECT3DDEVICE9 lpD3DDevice)
-//引数1		：LPSTR szName：読み込みたいファイル名
-//引数2		：LPDIRECT3DDEVICE9 lpD3DDevice：デバイスオブジェクト
-//戻り値	：読み込んだテクスチャへのポインタ
-//説明		：サイズを指定してテクスチャファイルを読み込む関数
-******************************************************************************/
-LPDIRECT3DTEXTURE9 CreateTextureFromFile(LPSTR szName, LPDIRECT3DDEVICE9 lpD3DDevice)
-{
-	HRESULT             hRet;
-
-	//戻り値のテクスチャ
-	LPDIRECT3DTEXTURE9  lpTex = NULL;
-	if (lpD3DDevice) {
-
-		//D3DXGetImageInfoFromFileで使用する画像ファイルの情報
-		D3DXIMAGE_INFO      iinfo;
-
-		//画像ファイルの情報を取得
-		hRet = D3DXGetImageInfoFromFile(szName, &iinfo);
-		if (hRet == D3D_OK)
-		{
-			//テクスチャをファイルから作成
-			hRet = D3DXCreateTextureFromFileEx(
-				lpD3DDevice,
-				szName,
-				iinfo.Width, iinfo.Height,			//取得した画像ファイルのサイズを指定する
-				1, 0,
-				D3DFMT_A8R8G8B8,
-				D3DPOOL_MANAGED,
-				D3DX_FILTER_NONE,
-				D3DX_FILTER_NONE,
-				0xFF000000,
-				NULL, NULL,
-				&lpTex);
-		}
-	}
-	return lpTex;
 }

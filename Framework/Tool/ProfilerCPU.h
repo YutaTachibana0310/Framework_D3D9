@@ -11,12 +11,13 @@
 #include "..\Pattern\BaseSingleton.h"
 
 #include <unordered_map>
+#include <chrono>
 
 class ProfilerNode;
 /**************************************
 マクロ定義
 ***************************************/
-#define USE_PROFILER_CPU
+//#define USE_PROFILER_CPU
 
 /**************************************
 プロファイラクラス
@@ -28,16 +29,24 @@ public:
 	void Update();
 	void Draw();
 	void Clear();
-
+	
 	void BeginLabel(const char* labe);
 	void EndLabel();
 
 	void Begin(const char* tag);
 	void End(const char* tag);
 
+	static LARGE_INTEGER GetCounter();
+	static double CalcElapsed(LARGE_INTEGER& start, LARGE_INTEGER& end);
+
 private:
 	std::unordered_map<std::string, std::unordered_map<std::string, ProfilerNode>> profilerMap;
+	
+	std::chrono::system_clock::time_point time, prevTime;
+	std::chrono::milliseconds::rep cntFPS;
 	DWORD cntFrame;
+	LARGE_INTEGER measureTime;
+
 	std::string currentLabel, prevLabel;
 
 	void CalcElapsed();

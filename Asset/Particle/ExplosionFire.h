@@ -8,7 +8,7 @@
 #ifndef _EXPLOSIONFIRE_H_
 #define _EXPLOSIONFIRE_H_
 
-#include "../../Framework/Particle/AnimationParticle.h"
+#include "../../Framework/Particle/3D/AnimationParticle3D.h"
 
 /**************************************
 前方宣言
@@ -23,9 +23,9 @@
 ***************************************/
 namespace Asset
 {
-	class ExplosionFire : public AnimationParticle
+	class ExplosionFire : public AnimationParticle3D
 	{
-		using AnimationParticle::AnimationParticle;
+		using AnimationParticle3D::AnimationParticle3D;
 	public:
 		ExplosionFire();		//コンストラクタ
 
