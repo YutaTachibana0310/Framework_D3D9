@@ -99,8 +99,6 @@ public:
 
 
 private:
-	std::weak_ptr<Polygon2D> reference;
-
 	ExpandType expandType;
 	CloseType closeType;
 
@@ -109,12 +107,48 @@ private:
 
 	void _Expand(std::shared_ptr<Polygon2D>& polygon)
 	{
+		float t = (float)cntFrame / duration;
 
+		if (expandType == ExpandType::DownToUp)
+			_ExpandDownToUp(t, polygon);
+
+		else if (expandType == ExpandType::LeftToRight)
+			_ExpandLeftToRight(t, polygon);
+
+		else if (expandType == ExpandType::RightToLeft)
+			_ExpandRightToLeft(t, polygon);
+
+		else if (expandType == ExpandType::ToLeftRight)
+			_ExpandToLeftRight(t, polygon);
+
+		else if (expandType == ExpandType::ToUpDown)
+			_ExpandToUpDown(t, polygon);
+
+		else if (expandType == ExpandType::UpToDown)
+			_ExpandUpToDown(t, polygon);
 	}
 
 	void _Close(std::shared_ptr<Polygon2D>& polygon)
 	{
+		float t = (float)cntFrame / duration;
 
+		if (closeType == CloseType::DownToUp)
+			_CloseDownToUp(t, polygon);
+
+		else if (closeType == CloseType::FromLeftRight)
+			_CloseFromLeftRight(t, polygon);
+
+		else if (closeType == CloseType::FromUpDown)
+			_CloseFromUpDown(t, polygon);
+
+		else if (closeType == CloseType::LeftToRight)
+			_CloseLeftToRight(t, polygon);
+
+		else if (closeType == CloseType::RightToLeft)
+			_CloseRightToLeft(t, polygon);
+
+		else if (closeType == CloseType::UpToDown)
+			_CloseUpToDown(t, polygon);
 	}
 
 	void _Fade(std::shared_ptr<Polygon2D>& polygon)
