@@ -305,9 +305,9 @@ private:
 		polygon->vtxPos[3] = D3DXVECTOR3( polygon->vtxSize.x * percentVtx,  polygon->vtxSize.y, 0.0f);
 
 		polygon->vtxWk[0].tex = D3DXVECTOR2(polygon->vtxUV[0].x + percentUV, polygon->vtxUV[0].y);
-		polygon->vtxWk[1].tex = D3DXVECTOR2(polygon->vtxUV[1].x + percentUV, polygon->vtxUV[1].y);
+		polygon->vtxWk[1].tex = D3DXVECTOR2(polygon->vtxUV[1].x - percentUV, polygon->vtxUV[1].y);
 		polygon->vtxWk[2].tex = D3DXVECTOR2(polygon->vtxUV[2].x + percentUV, polygon->vtxUV[2].y);
-		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x + percentUV, polygon->vtxUV[3].y);
+		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x - percentUV, polygon->vtxUV[3].y);
 	}
 
 	/**************************************
@@ -425,9 +425,9 @@ private:
 		polygon->vtxPos[3] = D3DXVECTOR3(polygon->vtxSize.x * percentVtx, polygon->vtxSize.y, 0.0f);
 
 		polygon->vtxWk[0].tex = D3DXVECTOR2(polygon->vtxUV[0].x + percentUV, polygon->vtxUV[0].y);
-		polygon->vtxWk[1].tex = D3DXVECTOR2(polygon->vtxUV[1].x + percentUV, polygon->vtxUV[1].y);
+		polygon->vtxWk[1].tex = D3DXVECTOR2(polygon->vtxUV[1].x - percentUV, polygon->vtxUV[1].y);
 		polygon->vtxWk[2].tex = D3DXVECTOR2(polygon->vtxUV[2].x + percentUV, polygon->vtxUV[2].y);
-		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x + percentUV, polygon->vtxUV[3].y);
+		polygon->vtxWk[3].tex = D3DXVECTOR2(polygon->vtxUV[3].x - percentUV, polygon->vtxUV[3].y);
 	}
 };
 

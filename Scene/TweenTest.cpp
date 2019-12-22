@@ -27,7 +27,8 @@ void TweenTestScene::Init()
 	polygon = std::make_shared<Polygon2D>();
 	polygon->SetPosition({ SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.0f });
 	polygon->SetSize({ 300.0f, 300.0f });
-	
+	polygon->LoadTexture("data/TEXTURE/circle.png");
+
 	useExpand = true;
 	close = 0;
 	expand = 0;
