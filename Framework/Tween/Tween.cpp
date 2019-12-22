@@ -18,24 +18,24 @@ using namespace std;
 /**************************************
 展開タイプ変換
 ***************************************/
-ViewerTweener::ExpandType ConvertExpandType(Tween::ExpandType type)
+ViewerTweener::ExpandType ConvertExpandType(ExpandType type)
 {
-	if (type == Tween::ExpandType::DownToUp)
+	if (type == ExpandType::DownToUp)
 		return ViewerTweener::ExpandType::DownToUp;
 
-	if (type == Tween::ExpandType::LeftToRight)
+	if (type == ExpandType::LeftToRight)
 		return ViewerTweener::ExpandType::LeftToRight;
 
-	if (type == Tween::ExpandType::RightToLeft)
+	if (type == ExpandType::RightToLeft)
 		return ViewerTweener::ExpandType::RightToLeft;
 
-	if (type == Tween::ExpandType::ToLeftRight)
+	if (type == ExpandType::ToLeftRight)
 		return ViewerTweener::ExpandType::ToLeftRight;
 
-	if (type == Tween::ExpandType::ToUpDown)
+	if (type == ExpandType::ToUpDown)
 		return ViewerTweener::ExpandType::ToUpDown;
 
-	if (type == Tween::ExpandType::UpToDown)
+	if (type == ExpandType::UpToDown)
 		return ViewerTweener::ExpandType::UpToDown;
 
 	return ViewerTweener::ExpandType::None;
@@ -44,24 +44,24 @@ ViewerTweener::ExpandType ConvertExpandType(Tween::ExpandType type)
 /**************************************
 圧縮タイプ変換
 ***************************************/
-ViewerTweener::CloseType ConvertCloseType(Tween::CloseType type)
+ViewerTweener::CloseType ConvertCloseType(CloseType type)
 {
-	if (type == Tween::CloseType::DownToUp)
+	if (type == CloseType::DownToUp)
 		return ViewerTweener::CloseType::DownToUp;
 
-	if (type == Tween::CloseType::LeftToRight)
+	if (type == CloseType::LeftToRight)
 		return ViewerTweener::CloseType::LeftToRight;
 
-	if (type == Tween::CloseType::RightToLeft)
+	if (type == CloseType::RightToLeft)
 		return ViewerTweener::CloseType::RightToLeft;
 
-	if (type == Tween::CloseType::FromLeftRight)
+	if (type == CloseType::FromLeftRight)
 		return ViewerTweener::CloseType::FromLeftRight;
 
-	if (type == Tween::CloseType::FromUpDown)
+	if (type == CloseType::FromUpDown)
 		return ViewerTweener::CloseType::FromUpDown;
 
-	if (type == Tween::CloseType::UpToDown)
+	if (type == CloseType::UpToDown)
 		return ViewerTweener::CloseType::UpToDown;
 
 	return ViewerTweener::CloseType::None;

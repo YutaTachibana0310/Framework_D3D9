@@ -26,6 +26,27 @@ class Polygon2D;
 /**************************************
 マクロ・列挙子定義
 ***************************************/
+enum class ExpandType : int
+{
+	None,
+	LeftToRight,
+	RightToLeft,
+	UpToDown,
+	DownToUp,
+	ToUpDown,
+	ToLeftRight
+};
+
+enum class CloseType : int
+{
+	None,
+	LeftToRight,
+	RightToLeft,
+	UpToDown,
+	DownToUp,
+	FromUpDown,
+	FromLeftRight
+};
 
 /**************************************
 クラス定義
@@ -36,28 +57,6 @@ class Tween
 	friend class BaseGame;
 	friend class SceneManager;
 public:
-	enum class ExpandType : int
-	{
-		None,
-		LeftToRight,
-		RightToLeft,
-		UpToDown,
-		DownToUp,
-		ToUpDown,
-		ToLeftRight
-	};
-
-	enum class CloseType : int
-	{
-		None,
-		LeftToRight,
-		RightToLeft,
-		UpToDown,
-		DownToUp,
-		FromUpDown,
-		FromLeftRight
-	};
-
 	/**************************************
 	移動トゥイーン
 	引数 ref：トゥイーン対象のゲームオブジェクト
