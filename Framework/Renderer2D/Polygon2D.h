@@ -24,7 +24,7 @@ public:
 
 	void Draw();
 
-	void SetSize(float x, float y);
+	void SetSize(const D3DXVECTOR2& size);
 	void SetColor(D3DXCOLOR color);
 	void SetUV(float left, float top, float width, float height);
 
@@ -37,8 +37,6 @@ protected:
 	D3DXVECTOR3 vtxPos[NUM_VERTEX];
 	D3DXVECTOR2 vtxSize;
 	D3DXVECTOR2 vtxUV[NUM_VERTEX];
-
-	LPDIRECT3DDEVICE9 pDevice;
 
 	void SetVertex();
 
