@@ -14,7 +14,7 @@
 マクロ定義
 ***************************************/
 #define INTERBAL_GETTIMER		(20)
-//#define USE_DEBUGLOG
+#define USE_DEBUGLOG
 
 /**************************************
 構造体定義
@@ -25,7 +25,7 @@
 ***************************************/
 LARGE_INTEGER timeCountBegin;
 static unsigned int cntFrame = 0;
-static bool enableDraw = false;
+static bool enableDraw = true;
 const unsigned Debug::MaxLog = 50;
 std::deque<std::string> Debug::textLog;
 
