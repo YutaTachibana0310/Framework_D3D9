@@ -30,15 +30,19 @@ public:
 
 	void LoadTexture(const char* path);
 
-private:
+protected:
 	VERTEX_2D vtxWk[NUM_VERTEX];
 	LPDIRECT3DTEXTURE9 texture;
 
 	D3DXVECTOR3 vtxPos[NUM_VERTEX];
+	D3DXVECTOR2 vtxSize;
+	D3DXVECTOR2 vtxUV[NUM_VERTEX];
 
 	LPDIRECT3DDEVICE9 pDevice;
 
 	void SetVertex();
+
+	friend class ViewerTweener;
 };
 
 #endif

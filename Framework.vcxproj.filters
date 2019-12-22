@@ -105,6 +105,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Framework.cpp" />
     <ClCompile Include="Scene\TweenTest.cpp" />
+    <ClCompile Include="Framework\Tween\Tweener\ViewerTweener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset\Particle\ExplosionFire.h" />
@@ -232,6 +233,7 @@
     <ClInclude Include="Framework\Tween\Tweener\RotateTweener.h" />
     <ClInclude Include="Framework\Tween\Tweener\Tweener.h" />
     <ClInclude Include="Framework\Tween\Tweener\ValueTweener.h" />
+    <ClInclude Include="Framework\Tween\Tweener\ViewerTweener.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\BloomFilter.fx" />

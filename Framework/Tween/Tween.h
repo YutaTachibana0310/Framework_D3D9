@@ -21,6 +21,7 @@
 前方宣言
 ***************************************/
 class BaseTweener;
+class Polygon2D;
 
 /**************************************
 マクロ・列挙子定義
@@ -35,6 +36,28 @@ class Tween
 	friend class BaseGame;
 	friend class SceneManager;
 public:
+	enum class ExpandType : int
+	{
+		None,
+		LeftToRight,
+		RightToLeft,
+		UpToDown,
+		DownToUp,
+		ToUpDown,
+		ToLeftRight
+	};
+
+	enum class CloseType : int
+	{
+		None,
+		LeftToRight,
+		RightToLeft,
+		UpToDown,
+		DownToUp,
+		FromUpDown,
+		FromLeftRight
+	};
+
 	/**************************************
 	移動トゥイーン
 	引数 ref：トゥイーン対象のゲームオブジェクト
@@ -111,7 +134,7 @@ public:
 	static void To(std::shared_ptr<T>& ref, const T& start, const T& end, int duration, EaseType type, std::function<void()> callback = nullptr)
 	{
 		ValueTweener<T> *tweener = new ValueTweener<T>(ref, start, end, duration, type, callback);
-		tweenerContainer.push_back(tweener);
+		mInstance->tweenerContainer.push_back(tweener);
 	}
 
 	/**************************************
@@ -127,8 +150,14 @@ public:
 	{
 		T start = *ref;
 		ValueTweener<T> *tweener = new ValueTweener<T>(ref, start, end, duration, type, callback);
-		tweenerContainer.push_back(tweener);
+		mInstance->tweenerContainer.push_back(tweener);
 	}
+
+	static void Expand(std::shared_ptr<Polygon2D>& ref, ExpandType expand, int duration, EaseType type, std::function<void()> callback = nullptr);
+
+	static void Close(std::shared_ptr<Polygon2D>& ref, CloseType close, int duration, EaseType type, std::function<void()> callback = nullptr);
+
+	static void Fade(std::shared_ptr<Polygon2D>& ref, float start, float end, int duration, EaseType type, std::function<void()> callback = nullptr);
 
 private:
 	void Update();

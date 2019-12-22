@@ -9,13 +9,63 @@
 #include "Tweener/MoveTweener.h"
 #include "Tweener/RotateTweener.h"
 #include "Tweener/ScaleTweener.h"
+#include "Tweener/ViewerTweener.h"
 
 #include <algorithm>
 
 using namespace std;
+
 /**************************************
-マクロ定義
+展開タイプ変換
 ***************************************/
+ViewerTweener::ExpandType ConvertExpandType(Tween::ExpandType type)
+{
+	if (type == Tween::ExpandType::DownToUp)
+		return ViewerTweener::ExpandType::DownToUp;
+
+	if (type == Tween::ExpandType::LeftToRight)
+		return ViewerTweener::ExpandType::LeftToRight;
+
+	if (type == Tween::ExpandType::RightToLeft)
+		return ViewerTweener::ExpandType::RightToLeft;
+
+	if (type == Tween::ExpandType::ToLeftRight)
+		return ViewerTweener::ExpandType::ToLeftRight;
+
+	if (type == Tween::ExpandType::ToUpDown)
+		return ViewerTweener::ExpandType::ToUpDown;
+
+	if (type == Tween::ExpandType::UpToDown)
+		return ViewerTweener::ExpandType::UpToDown;
+
+	return ViewerTweener::ExpandType::None;
+}
+
+/**************************************
+圧縮タイプ変換
+***************************************/
+ViewerTweener::CloseType ConvertCloseType(Tween::CloseType type)
+{
+	if (type == Tween::CloseType::DownToUp)
+		return ViewerTweener::CloseType::DownToUp;
+
+	if (type == Tween::CloseType::LeftToRight)
+		return ViewerTweener::CloseType::LeftToRight;
+
+	if (type == Tween::CloseType::RightToLeft)
+		return ViewerTweener::CloseType::RightToLeft;
+
+	if (type == Tween::CloseType::FromLeftRight)
+		return ViewerTweener::CloseType::FromLeftRight;
+
+	if (type == Tween::CloseType::FromUpDown)
+		return ViewerTweener::CloseType::FromUpDown;
+
+	if (type == Tween::CloseType::UpToDown)
+		return ViewerTweener::CloseType::UpToDown;
+
+	return ViewerTweener::CloseType::None;
+}
 
 /**************************************
 コンストラクタ
@@ -169,5 +219,32 @@ void Tween::Turn(GameObject & ref, const D3DXVECTOR3 & end, int duration, EaseTy
 
 	//回転Tweener作成
 	RotateTweener *tweener = new RotateTweener(ref.transform, start, endQuaternion, duration, type, callback);
+	mInstance->tweenerContainer.push_back(tweener);
+}
+
+/**************************************
+ビューア展開
+***************************************/
+void Tween::Expand(std::shared_ptr<Polygon2D>& ref, ExpandType expand, int duration, EaseType type, std::function<void()> callback)
+{
+	ViewerTweener* tweener = new ViewerTweener(ref, ConvertExpandType(expand), duration, type, callback);
+	mInstance->tweenerContainer.push_back(tweener);
+}
+
+/**************************************
+ビューア圧縮
+***************************************/
+void Tween::Close(std::shared_ptr<Polygon2D>& ref, CloseType close, int duration, EaseType type, std::function<void()> callback)
+{
+	ViewerTweener* tweener = new ViewerTweener(ref, ConvertCloseType(close), duration, type, callback);
+	mInstance->tweenerContainer.push_back(tweener);
+}
+
+/**************************************
+ビューアフェード
+***************************************/
+void Tween::Fade(std::shared_ptr<Polygon2D>& ref, float start, float end, int duration, EaseType type, std::function<void()> callback)
+{
+	ViewerTweener* tweener = new ViewerTweener(ref, start, end, duration, type, callback);
 	mInstance->tweenerContainer.push_back(tweener);
 }
