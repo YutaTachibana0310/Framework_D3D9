@@ -11,6 +11,7 @@
 #include "../Framework/Tween/Tween.h"
 #include "../Framework/Tool/DebugWindow.h"
 #include "../Library/nameof/nameof.hpp"
+#include "../Framework/Renderer2D/TextViewer.h"
 
 /**************************************
 ƒOƒ[ƒoƒ‹•Ï”
@@ -28,6 +29,13 @@ void TweenTestScene::Init()
 	polygon->SetPosition({ SCREEN_CENTER_X, SCREEN_CENTER_Y, 0.0f });
 	polygon->SetSize({ 300.0f, 300.0f });
 	polygon->LoadTexture("data/TEXTURE/circle.png");
+
+	text = new TextViewer("", 300);
+	text->SetPos((int)SCREEN_CENTER_X, 100);
+	text->SetText("aaaaaaa");
+	widthTextOutline = 5;
+	useTextOutline = true;
+	text->SetOutlineColor({ 1.0f, 0.0f, 0.0f, 0.5f });
 
 	useExpand = true;
 	close = 0;
@@ -115,6 +123,17 @@ void TweenTestScene::Update()
 		closeType = CloseType::FromLeftRight;
 	}
 
+	Debug::NewLine();
+	Debug::Text("Text");
+	if (Debug::Slider("Width", widthTextOutline, 0, 100))
+	{
+		text->SetOutlineWidth(widthTextOutline);
+	}
+	if (Debug::CheckBox("Use Outline", useTextOutline))
+	{
+		text->UseOutLine(useTextOutline);
+	}
+
 	Debug::End();
 }
 
@@ -126,6 +145,8 @@ void TweenTestScene::Draw()
 	sceneCamera->Set();
 
 	polygon->Draw();
+
+	text->Draw();
 }
 
 /**************************************

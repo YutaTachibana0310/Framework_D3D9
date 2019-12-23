@@ -15,6 +15,7 @@
 ‘O•ûéŒ¾
 ***************************************/
 class Polygon2D;
+class TextViewer;
 enum class ExpandType: int;
 enum class CloseType : int;
 enum EaseType : int;
@@ -34,11 +35,16 @@ public:
 private:
 	std::shared_ptr<Polygon2D> polygon;
 
+	TextViewer* text;
+
 	bool useExpand;
 	int expand, close;
 	ExpandType expandType;
 	CloseType closeType;
 	EaseType easeType;
+
+	int widthTextOutline;
+	bool useTextOutline;
 
 	void OnFinish();
 };
