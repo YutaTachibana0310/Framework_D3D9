@@ -56,6 +56,7 @@ void TweenTestScene::Init()
 void TweenTestScene::Uninit()
 {
 	SAFE_DELETE(sceneCamera);
+	SAFE_DELETE(text);
 	polygon.reset();
 }
 

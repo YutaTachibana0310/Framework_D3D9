@@ -123,6 +123,7 @@
     <ClCompile Include="Library\json11\json11.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Framework.cpp" />
+    <ClCompile Include="Scene\TransformTest.cpp" />
     <ClCompile Include="Scene\TweenTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -252,6 +253,7 @@
     <ClInclude Include="Library\picojson\picojson.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Framework.h" />
+    <ClInclude Include="Scene\TransformTest.h" />
     <ClInclude Include="Scene\TweenTest.h" />
   </ItemGroup>
   <ItemGroup>
