@@ -242,7 +242,11 @@ void Transform::Scale(const D3DXVECTOR3& delta)
 ***************************************/
 void Transform::SetScale(const D3DXVECTOR3& scale)
 {
-	if (!Vector3::Equal(scale, this->scale))
+	if (Math::Approximately(this->scale.x, 0.0f) || Math::Approximately(this->scale.y, 0.0f) || Math::Approximately(this->scale.z, 0.0f))
+	{
+		_SetScale(scale);
+	}
+	else
 	{
 		D3DXVECTOR3 delta = { scale.x / this->scale.x, scale.y / this->scale.y, scale.z / this->scale.z };
 		Scale(delta);
@@ -254,7 +258,11 @@ void Transform::SetScale(const D3DXVECTOR3& scale)
 ***************************************/
 void Transform::SetLocalScale(const D3DXVECTOR3& scale)
 {
-	if (!Vector3::Equal(scale, this->localScale))
+	if (Math::Approximately(this->localScale.x, 0.0f) || Math::Approximately(this->localScale.y, 0.0f) || Math::Approximately(this->localScale.z, 0.0f))
+	{
+		_SetScale(scale);
+	}
+	else
 	{
 		D3DXVECTOR3 delta = { scale.x / this->localScale.x, scale.y / this->localScale.y, scale.z / this->localScale.z };
 		Scale(delta);
@@ -480,6 +488,51 @@ void Transform::ScaleMatrix(const D3DXVECTOR3& scale)
 	mtxWorldLocal._33 *= scale.z;
 
 	UpdateChildMatrix();
+}
+
+/**************************************
+ƒXƒP[ƒ‹Ý’è“à•”ˆ—
+***************************************/
+void Transform::_SetScale(const D3DXVECTOR3& scale)
+{
+	this->scale = scale;
+
+	D3DXMatrixRotationQuaternion(&mtxWorldGlobal, &rotation);
+
+	mtxWorldGlobal._11 *= scale.x;
+	mtxWorldGlobal._12 *= scale.x;
+	mtxWorldGlobal._13 *= scale.x;
+
+	mtxWorldGlobal._21 *= scale.y;
+	mtxWorldGlobal._22 *= scale.y;
+	mtxWorldGlobal._23 *= scale.y;
+
+	mtxWorldGlobal._31 *= scale.z;
+	mtxWorldGlobal._32 *= scale.z;
+	mtxWorldGlobal._33 *= scale.z;
+
+	mtxWorldGlobal._41 = position.x;
+	mtxWorldGlobal._42 = position.y;
+	mtxWorldGlobal._43 = position.z;
+
+	D3DXMatrixRotationQuaternion(&mtxWorldLocal, &localRotation);
+
+	mtxWorldLocal._11 *= scale.x;
+	mtxWorldLocal._12 *= scale.x;
+	mtxWorldLocal._13 *= scale.x;
+
+	mtxWorldLocal._21 *= scale.y;
+	mtxWorldLocal._22 *= scale.y;
+	mtxWorldLocal._23 *= scale.y;
+
+	mtxWorldLocal._31 *= scale.z;
+	mtxWorldLocal._32 *= scale.z;
+	mtxWorldLocal._33 *= scale.z;
+
+	mtxWorldLocal._41 = localPosition.x;
+	mtxWorldLocal._42 = localPosition.y;
+	mtxWorldLocal._43 = localPosition.z;
+
 }
 
 /**************************************

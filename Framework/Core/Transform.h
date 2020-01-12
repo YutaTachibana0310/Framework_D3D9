@@ -98,6 +98,8 @@ protected:
 	void RotateMatrix(const D3DXQUATERNION& rotate);
 	void ScaleMatrix(const D3DXVECTOR3& scale);
 
+	void _SetScale(const D3DXVECTOR3& scale);
+
 	void UpdateChildMatrix();
 
 	std::list<std::weak_ptr<Transform>> listChildren;
