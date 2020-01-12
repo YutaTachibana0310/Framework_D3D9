@@ -8,6 +8,7 @@
 #include "Framework\Tool\DebugWindow.h"
 
 #include "Scene/TweenTest.h"
+#include "Scene/TransformTest.h"
 
 /**************************************
 ƒ}ƒNƒ’è‹`
@@ -15,8 +16,9 @@
 Framework::Framework(HINSTANCE hInstance, HWND hWnd) : BaseGame(hInstance, hWnd)
 {
 	sceneManager->Add(0, new TweenTestScene(renderTexture, renderSurface));
+	sceneManager->Add(1, new TransformTestScene(renderTexture, renderSurface));
 
-	sceneManager->ChangeScene(0);
+	sceneManager->ChangeScene(1);
 }
 
 /**************************************
