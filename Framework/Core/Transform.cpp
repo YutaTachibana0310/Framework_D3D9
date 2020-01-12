@@ -24,7 +24,7 @@ Transform::Transform() :
 /**************************************
 コンストラクタ
 ***************************************/
-Transform::Transform(const Transform &src) :
+Transform::Transform(const Transform& src) :
 	position(src.position),
 	rotation(src.rotation),
 	scale(src.scale),
@@ -39,7 +39,7 @@ Transform::Transform(const Transform &src) :
 /**************************************
 代入演算子
 ***************************************/
-Transform Transform::operator=(const Transform &src)
+Transform Transform::operator=(const Transform& src)
 {
 	this->mtxWorldGlobal = src.mtxWorldGlobal;
 	this->position = src.position;
@@ -57,7 +57,7 @@ Transform Transform::operator=(const Transform &src)
 /**************************************
 移動処理
 ***************************************/
-void Transform::Move(const D3DXVECTOR3 & velocity)
+void Transform::Move(const D3DXVECTOR3& velocity)
 {
 	position += velocity;
 	localPosition += velocity;
@@ -68,7 +68,7 @@ void Transform::Move(const D3DXVECTOR3 & velocity)
 /**************************************
 座標設定
 ***************************************/
-void Transform::SetPosition(const D3DXVECTOR3 & position)
+void Transform::SetPosition(const D3DXVECTOR3& position)
 {
 	D3DXVECTOR3 offset = position - this->position;
 	Move(offset);
@@ -77,7 +77,7 @@ void Transform::SetPosition(const D3DXVECTOR3 & position)
 /**************************************
 ローカル座標設定
 ***************************************/
-void Transform::SetLocalPosition(const D3DXVECTOR3 & position)
+void Transform::SetLocalPosition(const D3DXVECTOR3& position)
 {
 	D3DXVECTOR3 offset = position - localPosition;
 	Move(offset);
@@ -122,7 +122,7 @@ void Transform::Rotate(float deg, const D3DXVECTOR3& axis)
 /***************************************
 回転処理
 ***************************************/
-void Transform::Rotate(const D3DXQUATERNION & quaternion)
+void Transform::Rotate(const D3DXQUATERNION& quaternion)
 {
 	D3DXQuaternionMultiply(&rotation, &rotation, &quaternion);
 	D3DXQuaternionMultiply(&localRotation, &localRotation, &quaternion);
@@ -132,7 +132,7 @@ void Transform::Rotate(const D3DXQUATERNION & quaternion)
 /**************************************
 グローバル回転処理
 ***************************************/
-void Transform::SetRotation(const D3DXVECTOR3 & rotation)
+void Transform::SetRotation(const D3DXVECTOR3& rotation)
 {
 	D3DXQUATERNION inverseRot;
 	D3DXQuaternionInverse(&inverseRot, &this->rotation);
@@ -148,7 +148,7 @@ void Transform::SetRotation(const D3DXVECTOR3 & rotation)
 /**************************************
 グローバル回転設定処理
 ***************************************/
-void Transform::SetRotation(const D3DXQUATERNION & rotation)
+void Transform::SetRotation(const D3DXQUATERNION& rotation)
 {
 	D3DXQUATERNION inverseRot;
 	D3DXQuaternionInverse(&inverseRot, &this->rotation);
@@ -162,7 +162,7 @@ void Transform::SetRotation(const D3DXQUATERNION & rotation)
 /**************************************
 ローカル回転設定処理
 ***************************************/
-void Transform::SetLocalRotation(const D3DXVECTOR3 & rotation)
+void Transform::SetLocalRotation(const D3DXVECTOR3& rotation)
 {
 	D3DXQUATERNION inverseRot;
 	D3DXQuaternionInverse(&inverseRot, &this->localRotation);
@@ -178,7 +178,7 @@ void Transform::SetLocalRotation(const D3DXVECTOR3 & rotation)
 /**************************************
 ローカル回転設定処理
 ***************************************/
-void Transform::SetLocalRotation(const D3DXQUATERNION & rotation)
+void Transform::SetLocalRotation(const D3DXQUATERNION& rotation)
 {
 	D3DXQUATERNION inverseRot;
 	D3DXQuaternionInverse(&inverseRot, &this->localRotation);
@@ -234,27 +234,31 @@ void Transform::Scale(const D3DXVECTOR3& delta)
 	localScale.y *= delta.y;
 	localScale.z *= delta.z;
 
-	D3DXMATRIX mtxTransform;
-	D3DXMatrixScaling(&mtxTransform, delta.x, delta.y, delta.z);
-	ScaleMatrix(scale);
+	ScaleMatrix(delta);
 }
 
 /**************************************
 グローバルスケール設定
 ***************************************/
-void Transform::SetScale(const D3DXVECTOR3 & scale)
+void Transform::SetScale(const D3DXVECTOR3& scale)
 {
-	D3DXVECTOR3 delta = { this->scale.x / scale.x, this->scale.y / scale.y, this->scale.z / scale.z };
-	Scale(delta);
+	if (!Vector3::Equal(scale, this->scale))
+	{
+		D3DXVECTOR3 delta = { scale.x / this->scale.x, scale.y / this->scale.y, scale.z / this->scale.z };
+		Scale(delta);
+	}
 }
 
 /**************************************
 ローカルスケール設定
 ***************************************/
-void Transform::SetLocalScale(const D3DXVECTOR3 & scale)
+void Transform::SetLocalScale(const D3DXVECTOR3& scale)
 {
-	D3DXVECTOR3 delta = { localScale.x / scale.x, localScale.y / scale.y, localScale.z / scale.z };
-	Scale(delta);
+	if (!Vector3::Equal(scale, this->localScale))
+	{
+		D3DXVECTOR3 delta = { scale.x / this->localScale.x, scale.y / this->localScale.y, scale.z / this->localScale.z };
+		Scale(delta);
+	}
 }
 
 /**************************************
@@ -330,41 +334,12 @@ D3DXVECTOR3 Transform::Up() const
 D3DXMATRIX Transform::GetMatrix() const
 {
 	return mtxWorldGlobal;
-
-	/*************************************
-	NOTE:正直に行列計算するより、要素を直接計算した方が早かったので
-	回転だけ行列で、それ以外は直接計算している
-	*************************************/
-	D3DXMATRIX world;
-
-	//回転
-	D3DXMatrixRotationQuaternion(&world, &this->rotation);
-
-	//スケール
-	world._11 *= scale.x;
-	world._12 *= scale.x;
-	world._13 *= scale.x;
-
-	world._21 *= scale.y;
-	world._22 *= scale.y;
-	world._23 *= scale.y;
-
-	world._31 *= scale.z;
-	world._32 *= scale.z;
-	world._33 *= scale.z;
-
-	//移動
-	world._41 = position.x;
-	world._42 = position.y;
-	world._43 = position.z;
-
-	return world;
 }
 
 /**************************************
 指定の座標を向かせる処理
 ***************************************/
-void Transform::LookAt(const D3DXVECTOR3 & target)
+void Transform::LookAt(const D3DXVECTOR3& target)
 {
 	D3DXVECTOR3 z = (target - position);
 	D3DXVec3Normalize(&z, &z);
@@ -415,17 +390,32 @@ void Transform::RemoveChild(Transform* transform)
 	}
 
 	listChildren.remove_if([](auto wptr)
-	{
-		return wptr.expired();
-	});
+		{
+			return wptr.expired();
+		});
 }
 
 /**************************************
 グローバル空間でのワールド変換行列更新処理
 ***************************************/
-void Transform::OnUpdateParentMatrix(const D3DXMATRIX & mtxWorld)
+void Transform::OnUpdateParentMatrix(const D3DXMATRIX& mtxWorld)
 {
 	D3DXMatrixMultiply(&mtxWorldGlobal, &mtxWorldLocal, &mtxWorld);
+
+	position.x = mtxWorldGlobal._41;
+	position.y = mtxWorldGlobal._42;
+	position.z = mtxWorldGlobal._43;
+
+	D3DXVECTOR3 scaleX = { mtxWorldGlobal._11, mtxWorldGlobal._12, mtxWorldGlobal._13 };
+	D3DXVECTOR3 scaleY = { mtxWorldGlobal._21, mtxWorldGlobal._22, mtxWorldGlobal._23 };
+	D3DXVECTOR3 scaleZ = { mtxWorldGlobal._31, mtxWorldGlobal._32, mtxWorldGlobal._33 };
+
+	scale.x = D3DXVec3Length(&scaleX);
+	scale.y = D3DXVec3Length(&scaleY);
+	scale.z = D3DXVec3Length(&scaleZ);
+
+	D3DXQuaternionRotationMatrix(&rotation, &mtxWorld);
+	D3DXQuaternionNormalize(&rotation, &rotation);
 
 	UpdateChildMatrix();
 }
@@ -449,7 +439,7 @@ void Transform::MoveMatrix(const D3DXVECTOR3& offset)
 /**************************************
 内部回転処理
 ***************************************/
-void Transform::RotateMatrix(const D3DXQUATERNION & rotate)
+void Transform::RotateMatrix(const D3DXQUATERNION& rotate)
 {
 	D3DXMATRIX mtxRot;
 	D3DXMatrixRotationQuaternion(&mtxRot, &rotate);
@@ -463,7 +453,7 @@ void Transform::RotateMatrix(const D3DXQUATERNION & rotate)
 /**************************************
 内部スケール処理
 ***************************************/
-void Transform::ScaleMatrix(const D3DXVECTOR3 & scale)
+void Transform::ScaleMatrix(const D3DXVECTOR3& scale)
 {
 	mtxWorldGlobal._11 *= scale.x;
 	mtxWorldGlobal._12 *= scale.x;
@@ -498,9 +488,9 @@ void Transform::ScaleMatrix(const D3DXVECTOR3 & scale)
 void Transform::UpdateChildMatrix()
 {
 	listChildren.remove_if([](auto wptr)
-	{
-		return wptr.expired();
-	});
+		{
+			return wptr.expired();
+		});
 
 	for (auto&& child : listChildren)
 	{
